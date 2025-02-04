@@ -1,0 +1,23 @@
+name: BuildTest
+
+on:
+  pull_request:
+    branches:
+      - '**' # 모든 브랜치
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run lint
+        run: npm run lint # lint 테스트
+
+      - name: Run build
+        run: npm run build # build 테스트
