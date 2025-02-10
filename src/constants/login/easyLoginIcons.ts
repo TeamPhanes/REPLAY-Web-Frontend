@@ -8,16 +8,16 @@ export const easyLoginIcons: { [key: string]: IconType } = {
   kakao: {
     label: 'KAKAO',
     value: '/icons/kakao.svg',
-    color: 'bg-[#FEE500]',
+    color: 'bg-social-kakao',
   },
   google: {
     label: 'GOOGLE',
     value: '/icons/google.svg',
-    color: 'bg-[#FFFFFF]',
+    color: 'bg-social-google',
   },
   naver: {
     label: 'NAVER',
     value: '/icons/naver.svg',
-    color: 'bg-[#03C75A]',
+    color: 'bg-social-naver',
   },
 };
