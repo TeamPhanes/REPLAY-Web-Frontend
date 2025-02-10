@@ -21,7 +21,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'buildah login ${REGISTRY} -u "${HARBOR_USER}" -p "${HARBOR_PASSWORD}"'
+                    sh 'buildah login -u "${HARBOR_USER}" -p "${HARBOR_PASSWORD}" ${REGISTRY}'
                     sh 'make buildah-push'
                 }
             }
