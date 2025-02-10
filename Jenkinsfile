@@ -2,7 +2,11 @@ pipeline {
     agent {
         label 'phanes'
     }
-
+    environment {
+        REGISTRY = "harbor.phanescloud.com"
+        HARBOR_USER = credentials('harbor')
+        HARBOR_PASSWORD = credentials('harbor')
+    }
     stages {
         stage('Link & Build') {
             steps {
@@ -17,12 +21,8 @@ pipeline {
             }
             steps {
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'harbor',
-                                                      usernameVariable: 'HARBOR_USER',
-                                                      passwordVariable: 'HARBOR_PASSWORD')]) {
-                        sh 'docker login harbor.phanescloud.com -u "$HARBOR_USER" -p "$HARBOR_PASSWORD"'
-                    }
-                    sh 'make docker-push'
+                    sh 'buildah login ${REGISTRY} -u "${HARBOR_USER}" -p "${HARBOR_PASSWORD}"'
+                    sh 'make buildah-push'
                 }
             }
         }
