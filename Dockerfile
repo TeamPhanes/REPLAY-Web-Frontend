@@ -1,4 +1,4 @@
-FROM harbor.phanescloud.com/replay/node:18-buster-slim
+FROM harbor.phanescloud.com/public/node:18-buster-slim
 
 WORKDIR /app
 
