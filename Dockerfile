@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY package.json ./
 
-RUN npm install
+RUN npm install && \
+    npm run lint && \
+    npm run build
 
 COPY .next ./.next
 COPY public ./public
