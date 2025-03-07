@@ -17,9 +17,3 @@ docker-build:
 
 docker-push: docker-build
 	docker push ${REGISTRY}/replay/frontend
-
-buildah-build:
-	buildah bud -t ${REGISTRY}/replay/frontend .
-
-buildah-push: buildah-build
-	buildah push ${REGISTRY}/replay/frontend

@@ -19,9 +19,9 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'harbor',
                                                      usernameVariable: 'HARBOR_USER',
                                                      passwordVariable: 'HARBOR_PASSWORD')]) {
-                    sh "buildah login --username \"$HARBOR_USER\" --password \"$HARBOR_PASSWORD\" ${REGISTRY}"
+                    sh "docker login --username \"$HARBOR_USER\" --password \"$HARBOR_PASSWORD\" ${REGISTRY}"
                 }
-                sh 'make buildah-push'
+                sh 'make docker-push'
             }
         }
     }
