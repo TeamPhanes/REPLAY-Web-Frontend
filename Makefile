@@ -18,8 +18,8 @@ docker-build:
 docker-push: docker-build
 	docker push ${REGISTRY}/replay/frontend
 
-buildah-build:
-	buildah bud -t ${REGISTRY}/replay/frontend .
+encrypt:
+	sops -e -i .env
 
-buildah-push: buildah-build
-	buildah push ${REGISTRY}/replay/frontend
+decrypt:
+	sops -d -i .env
