@@ -7,17 +7,17 @@ export interface IconType {
 export const easyLoginIcons: { [key: string]: IconType } = {
   kakao: {
     label: 'KAKAO',
-    value: '/icons/kakao.svg',
+    value: '/icons/login/kakao.svg',
     color: 'bg-social-kakao',
   },
   google: {
     label: 'GOOGLE',
-    value: '/icons/google.svg',
+    value: '/icons/login/google.svg',
     color: 'bg-social-google',
   },
   naver: {
     label: 'NAVER',
-    value: '/icons/naver.svg',
+    value: '/icons/login/naver.svg',
     color: 'bg-social-naver',
   },
 };
