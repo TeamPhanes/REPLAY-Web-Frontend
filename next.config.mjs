@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: ['xdungeon.net', 'i.namu.wiki'],
+  },
+};
 
 export default nextConfig;
