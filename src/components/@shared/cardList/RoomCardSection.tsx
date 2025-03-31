@@ -1,5 +1,5 @@
 import { mockRooms } from '@/data/mockRooms';
-import RoomCardContainer from './RoomCardContainer';
+import RoomCardContainer from '@/components/@shared/cardList/RoomCardContainer';
 
 export default function RoomCardSection() {
   return (

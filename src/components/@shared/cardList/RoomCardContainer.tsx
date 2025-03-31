@@ -3,10 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import BookmarkLine from '@/public/icons/cardList/bookmark_line.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
-import TagAndPlaytime from './TagAndPlaytime';
-import TitleAndSpot from './TitleAndSpot';
-import ReviewAndRating from './ReviewAndRating';
-import AddressAndLevel from './AddressAndLevel';
+import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
+import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
+import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
+import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 
 interface RoomCardContainerProps {
   data: RoomDTO['get'][];
