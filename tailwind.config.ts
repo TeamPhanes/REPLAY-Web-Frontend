@@ -40,6 +40,12 @@ const config: Config = {
       sans: 'var(--font-pretendard), -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif',
     },
   },
+  safelist: [
+    'bg-social-kakao', // kakao 색상 클래스
+    'bg-social-google', // google 색상 클래스
+    'bg-social-naver', // naver 색상 클래스
+  ],
   plugins: [],
 };
+
 export default config;

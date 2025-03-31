@@ -1,14 +1,11 @@
-FROM node:18-buster-slim
-
+FROM harbor.phanescloud.com/public/node:18-buster-slim AS builder
 WORKDIR /app
 
-COPY package.json ./
-
-RUN npm install --only=production
-
-COPY .next ./.next
-COPY public ./public
+COPY . .
+RUN npm install && \
+    npm run lint && \
+    npm run build
 
 EXPOSE 3000
 
-ENTRYPOINT ["npm", "run", "start"]
+CMD ["npm", "run", "start"]
