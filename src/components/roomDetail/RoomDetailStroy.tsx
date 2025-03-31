@@ -18,13 +18,13 @@ export default function RoomDetailStroy({ story }: RoomDetailStoryProps) {
       <div className="mt-4 flex justify-between">
         <button
           type="button"
-          className="bg-detailButton h-[58px] w-[212px] rounded-2xl text-center text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont"
+          className="h-[58px] w-[212px] rounded-2xl bg-detailButton text-center text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont"
         >
           모임 만들기
         </button>
         <button
           type="button"
-          className="bg-detailButton h-[58px] w-[212px] rounded-2xl text-center text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont"
+          className="h-[58px] w-[212px] rounded-2xl bg-detailButton text-center text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont"
         >
           예약하기
         </button>

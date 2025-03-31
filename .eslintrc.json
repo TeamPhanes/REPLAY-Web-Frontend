@@ -12,7 +12,8 @@
     "plugin:react/recommended", // React 추천 규칙
     "plugin:react/jsx-runtime", // React 17+ JSX 변환 규칙
     "plugin:prettier/recommended", // Prettier 통합 설정
-    "next/core-web-vitals" // Next.js 코어 웹 바이탈 규칙
+    "next/core-web-vitals", // Next.js 코어 웹 바이탈 규칙
+    "prettier" // Prettier 설정 추가
   ],
   "overrides": [
     {

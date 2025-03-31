@@ -5,7 +5,7 @@ import ProgressBar from '@/components/@shared/progressBar/ProgressBar';
 export default function RoomDetailAllRating() {
   const rating = mockReviewAllRating;
   return (
-    <div className="bg-ratingCard mt-16 flex h-[177px] w-full justify-between rounded-[30px] p-7">
+    <div className="mt-16 flex h-[177px] w-full justify-between rounded-[30px] bg-ratingCard">
       <div className="flex w-full flex-col items-center justify-center gap-3">
         <p className="text-5xl font-extrabold text-basefont">
           {rating.averageScore}
