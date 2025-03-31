@@ -13,7 +13,7 @@ npm-run: next-build
 	npm run start
 
 docker-build:
-	docker build -t ${REGISTRY}/replay/frontend .
+	docker build --network host -t ${REGISTRY}/replay/frontend .
 
 docker-push: docker-build
-	docker push -t ${REGISTRY}/replay/frontend
+	docker push ${REGISTRY}/replay/frontend
