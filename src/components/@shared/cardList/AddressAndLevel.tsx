@@ -15,28 +15,28 @@ export default function AddressAndLevel({
     <>
       <div className="flex items-center">
         <Image src={AddressIcon} alt="주소 아이콘" width={24} height={24} />
-        <p className="text-basefont truncate text-base font-normal tracking-[-2.5%]">
+        <p className="truncate text-base font-normal tracking-[-2.5%] text-basefont">
           {address}
         </p>
       </div>
       <div className="flex items-center">
         <Image src={LevelIcon} alt="난이도 아이콘" width={24} height={24} />
-        <p className="text-basefont mr-2 truncate text-base font-normal tracking-[-2.5%]">
+        <p className="mr-2 truncate text-base font-normal tracking-[-2.5%] text-basefont">
           난이도
         </p>
         <ul className="flex gap-2">
           <li
-            className={`${level == '쉬움' ? 'text-mainBlue font-semibold' : 'text-spot font-light'} text-base font-light tracking-[-2.5%]`}
+            className={`${level === '쉬움' ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
           >
             쉬움
           </li>
           <li
-            className={`${level == '보통' ? 'text-mainBlue font-semibold' : 'text-spot font-light'} text-base font-light tracking-[-2.5%]`}
+            className={`${level === '보통' ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
           >
             보통
           </li>
           <li
-            className={`${level == '어려움' ? 'text-mainBlue font-semibold' : 'text-spot font-light'} text-base font-light tracking-[-2.5%]`}
+            className={`${level === '어려움' ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
           >
             어려움
           </li>
