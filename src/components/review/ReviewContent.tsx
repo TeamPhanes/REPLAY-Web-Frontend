@@ -11,14 +11,16 @@ export default function ReviewContent({ content, image }: ReviewContentProps) {
       <p className="line-clamp-6 h-[143px] text-base font-normal tracking-[-2.5%] text-basefont">
         {content}
       </p>
-      <Image
-        src={image[0]}
-        alt="리뷰 대표이미지"
-        width={162}
-        height={162}
-        quality={100}
-        className={`h-[162px] w-[162px] rounded-[10px] ${image.length === 0 ? 'hidden' : ''}`}
-      />
+      {image.length !== 0 && (
+        <Image
+          src={image[0]}
+          alt="리뷰 대표이미지"
+          width={162}
+          height={162}
+          quality={100}
+          className="h-[162px] w-[162px] rounded-[10px]"
+        />
+      )}
     </div>
   );
 }

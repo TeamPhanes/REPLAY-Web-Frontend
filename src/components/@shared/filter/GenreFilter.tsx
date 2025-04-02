@@ -11,7 +11,13 @@ export default function GenreFilter() {
       <p className="text-base font-medium tracking-[-2.5%] text-basefont">
         {genreList.genre.label}
       </p>
-      <Image src={BlackChevronDown} alt="더보기" width={20} height={20} />
+      <Image
+        src={BlackChevronDown}
+        alt="더보기"
+        width={20}
+        height={20}
+        className="h-5 w-5"
+      />
     </button>
   );
 }
