@@ -22,3 +22,9 @@ export const periodYearMonthDay = (dateString: string) => {
   const { shortYear, month, day } = formatDate(dateString);
   return `${shortYear}.${month}.${day}`;
 };
+
+// Ex) 25.04.01 12:50
+export const periodYearMonthDayHourTime = (dateString: string) => {
+  const { shortYear, month, day, hours, minutes } = formatDate(dateString);
+  return `${shortYear}.${month}.${day} ${hours}:${minutes}`;
+};

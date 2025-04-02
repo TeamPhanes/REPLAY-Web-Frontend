@@ -16,10 +16,12 @@ export default function DateAndParticipant({
 }: DateAndParticipantProps) {
   return (
     <div className="flex items-center">
-      <Image src={CalendarIcon} alt="캘린더 아이콘" width={24} height={24} />
-      <p className="text-base font-normal tracking-[-2.5%] text-basefont">
-        {yearMonthDayHourTime(registrationEnd)}
-      </p>
+      <div className="flex gap-1">
+        <Image src={CalendarIcon} alt="캘린더 아이콘" width={24} height={24} />
+        <p className="text-base font-normal tracking-[-2.5%] text-basefont">
+          {yearMonthDayHourTime(registrationEnd)}
+        </p>
+      </div>
       <div className="absolute right-8 ml-5 flex gap-3">
         <Rating
           rating={participantCount}

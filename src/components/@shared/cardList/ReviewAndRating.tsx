@@ -13,10 +13,12 @@ export default function ReviewAndRating({
 }: ReviewAndRatingProps) {
   return (
     <div className="flex items-center">
-      <Image src={ReviewMessage} alt="리뷰 아이콘" width={24} height={24} />
-      <p className="text-base font-normal tracking-[-2.5%] text-basefont">
-        리뷰{reviewCount >= 999 ? '999+' : reviewCount}
-      </p>
+      <div className="flex gap-1">
+        <Image src={ReviewMessage} alt="리뷰 아이콘" width={24} height={24} />
+        <p className="text-base font-normal tracking-[-2.5%] text-basefont">
+          리뷰{reviewCount >= 999 ? '999+' : reviewCount}
+        </p>
+      </div>
       <div className="ml-5 flex gap-3">
         <Rating rating={rating} width={120} height={24} type="Review" />
       </div>

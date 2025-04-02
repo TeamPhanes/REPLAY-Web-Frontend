@@ -1,4 +1,4 @@
-// 리뷰 목록 조회
+// 리뷰 목록 조회 Response
 export interface ReviewDTO {
   get: {
     themeId: number;

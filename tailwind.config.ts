@@ -22,6 +22,8 @@ const config: Config = {
         ratingCard: '#D9D9D9',
         spot: '#999999',
         progressBar: '#F0F0F0',
+        comment: '#FEFEFE',
+        commentButton: '#686868',
         social: {
           kakao: '#FEE500',
           google: '#FFFFFF',

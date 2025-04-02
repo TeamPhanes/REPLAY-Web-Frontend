@@ -13,17 +13,19 @@ export default function AddressAndLevel({
 }: AddressAndLevelProps) {
   return (
     <>
-      <div className="flex items-center">
+      <div className="flex items-center gap-1">
         <Image src={AddressIcon} alt="주소 아이콘" width={24} height={24} />
         <p className="truncate text-base font-normal tracking-[-2.5%] text-basefont">
           {address}
         </p>
       </div>
       <div className="flex items-center">
-        <Image src={LevelIcon} alt="난이도 아이콘" width={24} height={24} />
-        <p className="mr-2 truncate text-base font-normal tracking-[-2.5%] text-basefont">
-          난이도
-        </p>
+        <div className="flex gap-1">
+          <Image src={LevelIcon} alt="난이도 아이콘" width={24} height={24} />
+          <p className="mr-2 truncate text-base font-normal tracking-[-2.5%] text-basefont">
+            난이도
+          </p>
+        </div>
         <ul className="flex gap-2">
           <li
             className={`${level === '쉬움' ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}

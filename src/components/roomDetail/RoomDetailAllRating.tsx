@@ -5,7 +5,7 @@ import ProgressBar from '@/components/@shared/progressBar/ProgressBar';
 export default function RoomDetailAllRating() {
   const rating = mockReviewAllRating;
   return (
-    <div className="mt-16 flex h-[177px] w-full justify-between rounded-[30px] bg-ratingCard">
+    <div className="mt-16 flex h-[177px] w-full items-center justify-between rounded-[30px] bg-ratingCard">
       <div className="flex w-full flex-col items-center justify-center gap-3">
         <p className="text-5xl font-extrabold text-basefont">
           {rating.averageScore}
@@ -17,7 +17,7 @@ export default function RoomDetailAllRating() {
           type="Review"
         />
       </div>
-      <div className="flex items-center justify-center border-l-[1px] border-black pl-16">
+      <div className="flex h-[126px] items-center justify-center border-l-[1px] border-black pl-16">
         <div className="flex flex-col gap-3 text-center">
           <p className="flex-shrink-0 whitespace-nowrap text-xl font-normal tracking-[-2.5%] text-basefont">
             총 리뷰갯수
