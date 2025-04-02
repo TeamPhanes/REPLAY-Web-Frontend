@@ -13,7 +13,7 @@ export default function CommentsContainer({
   const list = mockComments;
 
   return (
-    <div className="bg-comment mt-5 w-full">
+    <div className="mt-5 w-full bg-comment">
       <CommentSortMenu />
       {list.map((comment) => (
         <div key={comment.commentId}>

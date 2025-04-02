@@ -11,7 +11,7 @@ export default function CommentInput() {
         />
         <button
           type="button"
-          className="bg-commentButton absolute bottom-5 right-5 rounded-2xl px-4 py-1 text-2xl/[34px] font-semibold tracking-[-2.5%] text-white"
+          className="absolute bottom-5 right-5 rounded-2xl bg-commentButton px-4 py-1 text-2xl/[34px] font-semibold tracking-[-2.5%] text-white"
         >
           등록
         </button>
