@@ -17,3 +17,9 @@ docker-build:
 
 docker-push: docker-build
 	docker push ${REGISTRY}/replay/frontend
+
+encrypt:
+	sops -e -i .env
+
+decrypt:
+	sops -d -i .env
