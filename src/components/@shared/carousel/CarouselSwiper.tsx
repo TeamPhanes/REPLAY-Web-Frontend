@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperType } from 'swiper/types';
 import { Autoplay } from 'swiper/modules';
 import { MutableRefObject } from 'react';
 import { CarouselDTO } from '@/src/types/home/home.type';
@@ -33,10 +34,10 @@ export default function CarouselSwiper({
       slidesPerView={perView}
       slidesPerGroup={perView}
       autoplay={{ delay: delayTime }}
-      onSwiper={(swiper) => {
+      onSwiper={(swiper: SwiperType) => {
         swiperRef.current = swiper;
       }}
-      onSlideChange={(swiper) => {
+      onSlideChange={(swiper: SwiperType) => {
         setActiveSwiper(swiper.activeIndex);
       }}
       className="overflow-hidden rounded-[30px]"
