@@ -2,9 +2,9 @@
 
 import classNames from 'classnames';
 import Image from 'next/image';
-import PageContainer from '@/src/components/@shared/layout/PageContainer';
-import { easyLoginIcons } from '@/src/constants/login/easyLoginIcons';
+import PageContainer from '@/components/@shared/layout/PageContainer';
 import Logo from '@/public/images/logo.png';
+import { easyLoginIcons } from '@/constants/login/easyLoginIcons';
 
 const REDIRECT_URI = process.env.oauth2_host
 const NAVER_CLIENT_ID = process.env.naver_client_id

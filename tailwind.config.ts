@@ -9,7 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: '#515151',
+        brand: '#1E1E1E',
+        mainBlue: '#2227F7',
+        basefont: '#111111',
+        grayFont: '#767676',
+        homeFont: '#DCDCDC',
+        setfont: '#C0C0C0',
+        detailButton: '#B9B9B9',
+        tag: '#505050',
+        homeCard: '#606060',
+        card: '#EAEAEA',
+        ratingCard: '#D9D9D9',
+        spot: '#999999',
+        progressBar: '#F0F0F0',
+        comment: '#FEFEFE',
+        commentButton: '#686868',
         social: {
           kakao: '#FEE500',
           google: '#FFFFFF',
@@ -23,6 +37,9 @@ const config: Config = {
         lg: '1024px',
         xl: '1280px',
       },
+    },
+    fontFamily: {
+      sans: 'var(--font-pretendard), -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif',
     },
   },
   safelist: [

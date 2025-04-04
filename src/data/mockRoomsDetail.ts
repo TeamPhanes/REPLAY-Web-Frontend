@@ -1,0 +1,7 @@
+import { RoomDetailDTO } from '../types/room/roomDetail.types';
+
+export const mockRoomsDetail: RoomDetailDTO['get'] = {
+  themeId: 1,
+  detailImage: 'https://xdungeon.net/file/theme/11/11_6145641280.jpg',
+  stroy: `모든 감정에는 고유의 색이 있다는 것을 아시나요? 지치는 일상 속에서 점점 바래져가는 마음들. 그리고 그 마음을 어루만져 주고자 한 사람.`,
+};

@@ -1,0 +1,22 @@
+import Link from 'next/link';
+import { mapNavList } from '@/src/constants/filter/mapNavList';
+import Image from 'next/image';
+import MapIcon from '@/public/icons/filter/map.svg';
+
+interface MapNavigationProps {
+  target: string;
+}
+
+export default function MapNavigation({ target }: MapNavigationProps) {
+  return (
+    <Link
+      href={mapNavList[target].value}
+      className="absolute right-0 top-[-3px] flex items-center justify-center gap-1 rounded-full bg-card px-4 py-2"
+    >
+      <Image src={MapIcon} alt="지도 아이콘" width={20} height={20} />
+      <p className="text-base font-medium tracking-[-2.5%] text-basefont">
+        지도로 보기
+      </p>
+    </Link>
+  );
+}
