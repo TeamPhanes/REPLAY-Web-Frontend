@@ -11,6 +11,7 @@ const NAVER_CLIENT_ID = process.env.naver_client_id;
 const GOOGLE_CLIENT_ID = process.env.google_client_id;
 const GOOGLE_SCOPE = 'email profile';
 const KAKAO_CLIENT_ID = process.env.kakao_client_id;
+const test = 'test';
 
 const handleNaverLogin = async () => {
   const state = Math.random().toString(36).substring(2, 15);
