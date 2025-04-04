@@ -6,6 +6,12 @@ import PageContainer from '@/src/components/@shared/layout/PageContainer';
 import { easyLoginIcons } from '@/src/constants/login/easyLoginIcons';
 import Logo from '@/public/images/logo.png';
 
+const REDIRECT_URI = process.env.oauth2_host
+const NAVER_CLIENT_ID = process.env.naver_client_id
+const GOOGLE_CLIENT_ID = process.env.google_client_id
+const GOOGLE_SCOPE = "email profile"
+const KAKAO_CLIENT_ID = process.env.kakao_client_id
+
 const handleNaverLogin = async () => {
   const state = Math.random().toString(36).substring(2, 15);
 
@@ -15,7 +21,7 @@ const handleNaverLogin = async () => {
     body: state,
   });
 
-  window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&redirect_uri=${NAVER_REDIRECT_URI}&state=${state}`;
+  window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=${state}`;
 };
 
 const handleGoogleLogin = async () => {
@@ -27,7 +33,7 @@ const handleGoogleLogin = async () => {
     body: state,
   });
 
-  window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${GOOGLE_REDIRECT_URI}&scope=${encodeURIComponent(
+  window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${encodeURIComponent(
     GOOGLE_SCOPE
   )}&state=${state}`;
 };
@@ -41,7 +47,7 @@ const handleKakaoLogin = async () => {
     body: state,
   });
 
-  window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_CLIENT_ID}&redirect_uri=${KAKAO_REDIRECT_URI}&state=${state}`;
+  window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=${state}`;
 };
 
 export default function LoginPage() {
