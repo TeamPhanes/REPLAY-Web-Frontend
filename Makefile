@@ -1,6 +1,6 @@
 REGISTRY := harbor.phanescloud.com
 
-BRANCH=$(git rev-parse --abbrev-ref HEAD | sed 's/[^a-zA-Z0-9]/-/g')
+BRANCH ?= $(shell git rev-parse --abbrev-ref HEAD | sed 's|/|-|g')
 GIT_SHA ?= $(shell git rev-parse --short HEAD)
 
 IMAGE_NAME := frontend
@@ -20,7 +20,7 @@ npm-build: npm-install npm-lint
 npm-run: next-build
 	npm run start
 
-docker-build:
+docker-build: decrypt
 	docker build --network host -t ${IMAGE} .
 
 docker-push: docker-build
