@@ -1,6 +1,5 @@
 REGISTRY := harbor.phanescloud.com
 
-BRANCH ?= $(shell git rev-parse --abbrev-ref HEAD | sed 's|/|-|g')
 GIT_SHA ?= $(shell git rev-parse --short HEAD)
 
 IMAGE_NAME := frontend
