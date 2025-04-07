@@ -31,7 +31,7 @@ export default function ParticipantUsers({
         quality={100}
         className={`h-20 w-20 rounded-full shadow-md ${userImage ? '' : 'bg-setfont'}`}
       />
-      <div className="flex flex-col gap-2">
+      <div className="ml-3 flex flex-col gap-2">
         <div className="flex w-[130px] items-center gap-1">
           <p className="text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
             {nickname}

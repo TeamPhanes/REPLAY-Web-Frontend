@@ -22,7 +22,7 @@ export default function ParticipantList() {
       {list.map((user, index) => (
         <div
           key={index}
-          className={`flex h-[112px] w-[702px] items-center justify-between rounded-3xl p-4 ${user.nickname ? 'bg-card' : 'bg-spot'}`}
+          className={`relative flex h-[112px] w-[702px] items-center rounded-3xl p-4 ${user.nickname ? 'bg-card' : 'bg-spot'}`}
         >
           <ParticipantUsers
             userImage={user.image}

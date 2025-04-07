@@ -21,12 +21,10 @@ export default function GlobalNav() {
           {Object.keys(navLabelList).map((key) => {
             const list = navLabelList[key];
             return (
-              <Link
-                key={key}
-                href={list.value}
-                className="text-xl font-semibold tracking-[-2.5%]"
-              >
-                {list.label}
+              <Link key={key} href={list.value}>
+                <p className="text-xl font-semibold tracking-[-2.5%]">
+                  {list.label}
+                </p>
               </Link>
             );
           })}
