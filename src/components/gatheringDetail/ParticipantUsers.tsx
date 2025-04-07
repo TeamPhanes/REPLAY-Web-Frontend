@@ -29,7 +29,7 @@ export default function ParticipantUsers({
         width={80}
         height={80}
         quality={100}
-        className={`h-20 w-20 rounded-full shadow-md ${userImage ? '' : 'bg-setfont'}`}
+        className={`h-20 w-20 rounded-full border-2 border-mainBlue shadow-md ${userImage ? '' : 'bg-setfont'}`}
       />
       <div className="ml-3 flex flex-col gap-2">
         <div className="flex w-[130px] items-center gap-1">

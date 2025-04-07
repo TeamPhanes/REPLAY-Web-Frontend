@@ -7,12 +7,12 @@ export default function BottomCarouselContainer() {
       <BottomCarousel
         title="전국 인기 방탈출"
         list={popularList}
-        delayTime={10000}
+        delayTime={12000}
       />
       <BottomCarousel
         title="전국 신규 방탈출"
         list={newList}
-        delayTime={12000}
+        delayTime={14000}
       />
     </>
   );

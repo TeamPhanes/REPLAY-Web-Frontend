@@ -10,7 +10,7 @@ export default function MiddleCarouselContainer() {
         imageWidth={1280}
         imageHeight={480}
         buttonSize={48}
-        delayTime={5000}
+        delayTime={10000}
       />
     </div>
   );
