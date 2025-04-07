@@ -1,5 +1,13 @@
 REGISTRY := harbor.phanescloud.com
 
+BRANCH=$(git rev-parse --abbrev-ref HEAD | sed 's/[^a-zA-Z0-9]/-/g')
+GIT_SHA ?= $(shell git rev-parse --short HEAD)
+
+IMAGE_NAME := frontend
+IMAGE_PROJECT := replay
+IMAGE_TAG := $(BRANCH)-$(GIT_SHA)
+IMAGE := $(REGISTRY)/$(IMAGE_PROJECT)/$(IMAGE_NAME):$(IMAGE_TAG)
+
 npm-install:
 	npm install
 
@@ -13,10 +21,10 @@ npm-run: next-build
 	npm run start
 
 docker-build: decrypt
-	docker build --network host -t ${REGISTRY}/replay/frontend .
+	docker build --network host -t ${IMAGE} .
 
 docker-push: docker-build
-	docker push ${REGISTRY}/replay/frontend
+	docker push ${IMAGE}
 
 encrypt:
 	sops -e -i .env
