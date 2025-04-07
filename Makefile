@@ -12,7 +12,7 @@ npm-build: npm-install npm-lint
 npm-run: next-build
 	npm run start
 
-docker-build:
+docker-build: decrypt
 	docker build --network host -t ${REGISTRY}/replay/frontend .
 
 docker-push: docker-build
