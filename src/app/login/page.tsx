@@ -1,8 +1,54 @@
+'use client';
+
 import classNames from 'classnames';
 import Image from 'next/image';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import Logo from '@/public/images/logo.png';
 import { easyLoginIcons } from '@/constants/login/easyLoginIcons';
+
+const REDIRECT_URI = process.env.oauth2_host;
+const NAVER_CLIENT_ID = process.env.naver_client_id;
+const GOOGLE_CLIENT_ID = process.env.google_client_id;
+const GOOGLE_SCOPE = 'email profile';
+const KAKAO_CLIENT_ID = process.env.kakao_client_id;
+
+const handleNaverLogin = async () => {
+  const state = Math.random().toString(36).substring(2, 15);
+
+  await fetch('http://localhost:8080/auth/state', {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: state,
+  });
+
+  window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=${state}`;
+};
+
+const handleGoogleLogin = async () => {
+  const state = Math.random().toString(36).substring(2, 15);
+
+  await fetch('http://localhost:8080/auth/state', {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: state,
+  });
+
+  window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${encodeURIComponent(
+    GOOGLE_SCOPE
+  )}&state=${state}`;
+};
+
+const handleKakaoLogin = async () => {
+  const state = Math.random().toString(36).substring(2, 15);
+
+  await fetch('http://localhost:8080/auth/state', {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: state,
+  });
+
+  window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=${state}`;
+};
 
 export default function LoginPage() {
   return (
@@ -25,6 +71,12 @@ export default function LoginPage() {
         <div className="mt-8 flex w-full justify-center gap-8">
           {Object.keys(easyLoginIcons).map((key) => {
             const icon = easyLoginIcons[key];
+            const loginHandlers = {
+              naver: () => handleNaverLogin(),
+              google: () => handleGoogleLogin(),
+              kakao: () => handleKakaoLogin(),
+            } as const;
+
             return (
               <div
                 key={key}
@@ -36,6 +88,7 @@ export default function LoginPage() {
                     'flex h-14 w-14 items-center justify-center rounded-full',
                     icon.color
                   )}
+                  onClick={loginHandlers[key as keyof typeof loginHandlers]}
                 >
                   <Image
                     src={icon.value}
