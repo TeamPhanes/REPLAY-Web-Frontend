@@ -20,13 +20,13 @@ export default function ReviewUser({
 }: ReviewUserProps) {
   return (
     <>
-      <div className="flex gap-1 pl-6 pr-1">
+      <div className="flex items-center gap-1 pl-6 pr-1">
         <Image
           src={userImage}
           alt={userNickname}
           width={20}
           height={20}
-          className="h-5 w-5 rounded-full shadow-sm"
+          className="h-5 w-5 rounded-full border-[1px] border-mainBlue shadow-sm"
         />
         <p className="text-base font-normal tracking-[-2.5%] text-tag">
           {userNickname}

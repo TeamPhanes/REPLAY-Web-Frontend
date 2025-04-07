@@ -12,7 +12,7 @@ export default function UserInfo() {
         alt="유저 프로필 이미지"
         width={32}
         height={32}
-        className="h-8 w-8 rounded-full shadow-md"
+        className="h-8 w-8 rounded-full border-2 border-mainBlue shadow-md"
       />
       <p className="text-xl font-semibold tracking-[-2.5%]">
         {mockUser.nickname} 님

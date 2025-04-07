@@ -43,11 +43,11 @@ export default function AchievementBadge({
             <Image
               src={AchievementDefault}
               alt="업적 기본 이미지"
-              width={type === 'mypage' ? 32 : 24}
-              height={type === 'mypage' ? 32 : 24}
+              width={type === 'mypage' ? 48 : 24}
+              height={type === 'mypage' ? 48 : 24}
               style={
                 type === 'mypage'
-                  ? { width: '32px', height: '32px' }
+                  ? { width: '48px', height: '48px' }
                   : { width: '24px', height: '24px' }
               }
             />

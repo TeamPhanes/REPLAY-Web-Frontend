@@ -18,7 +18,7 @@ export default function CardContentContainer({
         width={160}
         height={160}
         quality={100}
-        className="h-40 w-40 rounded-full"
+        className="h-40 w-40 rounded-full border-4 border-mainBlue"
       />
       <div className="ml-9">
         <div className="flex flex-col gap-3">

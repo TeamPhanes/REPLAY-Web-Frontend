@@ -20,8 +20,8 @@ export default function BottomCarousel({
       <Carousel
         carouselList={list}
         width={1280}
-        imageWidth={252}
-        imageHeight={250}
+        imageWidth={244}
+        imageHeight={244}
         buttonSize={24}
         delayTime={delayTime}
         perView={5}

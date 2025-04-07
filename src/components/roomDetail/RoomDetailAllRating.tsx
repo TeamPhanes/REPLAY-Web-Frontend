@@ -17,7 +17,7 @@ export default function RoomDetailAllRating() {
           type="Review"
         />
       </div>
-      <div className="flex h-[126px] items-center justify-center border-l-[1px] border-black pl-16">
+      <div className="flex h-[126px] items-center justify-center border-l-[1px] border-grayFont pl-16">
         <div className="flex flex-col gap-3 text-center">
           <p className="flex-shrink-0 whitespace-nowrap text-xl font-normal tracking-[-2.5%] text-basefont">
             총 리뷰갯수
@@ -35,7 +35,6 @@ export default function RoomDetailAllRating() {
               <div className="min-w-[389px]">
                 <ProgressBar value={count} max={rating.scoreCount} />
               </div>
-
               <p className="flex-shrink-0 text-xs/[18px] font-normal tracking-[-2.5%] text-tag">
                 {count.toLocaleString()}개
               </p>

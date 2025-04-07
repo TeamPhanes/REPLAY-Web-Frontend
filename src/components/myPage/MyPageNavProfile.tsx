@@ -12,7 +12,7 @@ export default function MyPageNavProfile() {
         width={48}
         height={48}
         quality={100}
-        className="absolute left-5 h-12 w-12 rounded-full shadow-md"
+        className="absolute left-5 h-12 w-12 rounded-full border-2 border-mainBlue shadow-md"
       />
       <Link href="/mypage">
         <p className="text-2xl/[34px] font-semibold tracking-[-2.5%] text-white">
