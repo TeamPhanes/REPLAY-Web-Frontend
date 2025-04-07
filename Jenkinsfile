@@ -21,7 +21,7 @@ pipeline {
                                                      passwordVariable: 'HARBOR_PASSWORD')]) {
                     sh "docker login --username \"$HARBOR_USER\" --password \"$HARBOR_PASSWORD\" ${REGISTRY}"
                 }
-                sh 'make BRANCH=${env.GIT_BRANCH} docker-push'
+                sh "make BRANCH=${env.GIT_BRANCH} docker-push"
             }
         }
     }
