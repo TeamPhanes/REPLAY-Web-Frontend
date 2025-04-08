@@ -3,10 +3,12 @@ import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardC
 
 interface GatheringCardSectionProps {
   type?: 'mypage' | 'liked';
+  review?: boolean;
 }
 
 export default function GatheringCardSection({
   type,
+  review,
 }: GatheringCardSectionProps) {
   let forwardingList;
 
@@ -18,7 +20,7 @@ export default function GatheringCardSection({
 
   return (
     <div className="mt-6 grid grid-cols-2 gap-5">
-      <GatheringCardContainer data={forwardingList} />
+      <GatheringCardContainer data={forwardingList} reviewCheck={review} />
     </div>
   );
 }

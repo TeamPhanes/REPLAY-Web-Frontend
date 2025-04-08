@@ -1,11 +1,12 @@
 'use client';
 
-import PageContainer from '@/src/components/@shared/layout/PageContainer';
-import FavoriteTypeChanger from '@/src/components/myPage/favorite/FavoriteTypeChanger';
-import MyPageNav from '@/src/components/myPage/home/MyPageNav';
 import { useState } from 'react';
-import GatheringCardSection from '@/src/components/@shared/cardList/GatheringCardSection';
+import PageContainer from '@/src/components/@shared/layout/PageContainer';
+import MyPageNav from '@/src/components/myPage/home/MyPageNav';
+import FavoriteTypeChanger from '@/src/components/myPage/favorite/TypeChanger';
 import RoomCardSection from '@/src/components/@shared/cardList/RoomCardSection';
+import GatheringCardSection from '@/src/components/@shared/cardList/GatheringCardSection';
+import { favoriteTypeList } from '@/src/constants/mypage/typeList';
 
 export default function MyFavoritePage() {
   const [selectedType, setSelectedType] = useState('room');
@@ -14,6 +15,7 @@ export default function MyFavoritePage() {
     <PageContainer>
       <MyPageNav />
       <FavoriteTypeChanger
+        options={favoriteTypeList}
         selectedType={selectedType}
         setSelectedType={setSelectedType}
       />

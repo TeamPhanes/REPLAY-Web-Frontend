@@ -14,6 +14,10 @@ export interface GatheringDTO {
     registrationEnd: string;
     capacity: number;
     participantCount: number;
+    participatingUsers: {
+      nickname: string;
+      image: string;
+    }[];
     address: string;
     isLiked?: boolean;
     level: '쉬움' | '보통' | '어려움';

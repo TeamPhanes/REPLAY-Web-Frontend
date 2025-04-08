@@ -1,23 +1,13 @@
 import { ratingIcons } from '@/src/constants/rating/ratingIcons';
 
-interface CommonRatingProps {
+interface RatingProps {
   rating: number;
   maxRating?: number;
   width: number;
   height: number;
+  type: 'Room' | 'Review' | 'User'; // 통합
+  capacity?: number; // 항상 존재하지만, 'User'일 때만 사용
 }
-
-interface RoomOrReviewRatingProps extends CommonRatingProps {
-  type: 'Room' | 'Review';
-  capacity: never;
-}
-
-interface UserRatingProps extends CommonRatingProps {
-  type: 'User';
-  capacity: number;
-}
-
-type RatingProps = RoomOrReviewRatingProps | UserRatingProps;
 
 /**
  * @param rating <number> 색이 칠해져야하는 캐릭터의 갯수
@@ -38,7 +28,7 @@ export default function Rating({
 }: RatingProps) {
   const starWidth = width / maxRating;
   const lineWidth =
-    type === 'User'
+    type === 'User' && typeof capacity === 'number'
       ? (capacity / maxRating) * width
       : (Math.ceil(rating) / maxRating) * width;
   const filledWidth = (rating / maxRating) * width;

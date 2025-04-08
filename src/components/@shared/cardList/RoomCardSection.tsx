@@ -3,9 +3,13 @@ import RoomCardContainer from '@/components/@shared/cardList/RoomCardContainer';
 
 interface RoomCardSectionProps {
   type?: 'mypage' | 'liked';
+  review?: boolean;
 }
 
-export default function RoomCardSection({ type }: RoomCardSectionProps) {
+export default function RoomCardSection({
+  type,
+  review,
+}: RoomCardSectionProps) {
   let forwardingList;
 
   if (type === 'mypage') {
@@ -16,7 +20,7 @@ export default function RoomCardSection({ type }: RoomCardSectionProps) {
 
   return (
     <div className="mt-6 grid grid-cols-2 gap-5">
-      <RoomCardContainer data={forwardingList} />
+      <RoomCardContainer data={forwardingList} reviewCheck={review} />
     </div>
   );
 }

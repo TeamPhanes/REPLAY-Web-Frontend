@@ -15,6 +15,23 @@ export const mockGatherings: GatheringDTO['get'][] = [
     registrationEnd: '2025-04-01T13:00:00',
     capacity: 6,
     participantCount: 3,
+    participatingUsers: [
+      {
+        nickname: '종화',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+      {
+        nickname: '종화2',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+      {
+        nickname: '종화3',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+    ],
     address: '서울 강남구 강남대로 84길 33, 대우디오빌플러스 B1',
     level: '쉬움',
   },
@@ -32,6 +49,18 @@ export const mockGatherings: GatheringDTO['get'][] = [
     registrationEnd: '2025-03-31T16:30:00',
     capacity: 4,
     participantCount: 2,
+    participatingUsers: [
+      {
+        nickname: '종화',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+      {
+        nickname: '종화2',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+    ],
     address: '서울 마포구 와우산로29길 21, 3층',
     level: '보통',
   },
@@ -49,6 +78,23 @@ export const mockGatherings: GatheringDTO['get'][] = [
     registrationEnd: '2025-04-03T13:00:00',
     capacity: 6,
     participantCount: 3,
+    participatingUsers: [
+      {
+        nickname: '종화',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+      {
+        nickname: '종화2',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+      {
+        nickname: '종화3',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+    ],
     address: '서울 강남구 강남대로 84길 33, 대우디오빌플러스 B1',
     level: '쉬움',
   },
@@ -69,6 +115,23 @@ export const mockLikedGatherings: GatheringDTO['get'][] = [
     registrationEnd: '2025-04-01T13:00:00',
     capacity: 6,
     participantCount: 3,
+    participatingUsers: [
+      {
+        nickname: '종화',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+      {
+        nickname: '종화2',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+      {
+        nickname: '종화3',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+    ],
     address: '서울 강남구 강남대로 84길 33, 대우디오빌플러스 B1',
     isLiked: true,
     level: '쉬움',
@@ -87,6 +150,18 @@ export const mockLikedGatherings: GatheringDTO['get'][] = [
     registrationEnd: '2025-03-31T16:30:00',
     capacity: 4,
     participantCount: 2,
+    participatingUsers: [
+      {
+        nickname: '종화',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+      {
+        nickname: '종화2',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+    ],
     address: '서울 마포구 와우산로29길 21, 3층',
     isLiked: true,
     level: '보통',
@@ -105,6 +180,23 @@ export const mockLikedGatherings: GatheringDTO['get'][] = [
     registrationEnd: '2025-04-03T13:00:00',
     capacity: 6,
     participantCount: 3,
+    participatingUsers: [
+      {
+        nickname: '종화',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+      {
+        nickname: '종화2',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+      {
+        nickname: '종화3',
+        image:
+          'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+      },
+    ],
     address: '서울 강남구 강남대로 84길 33, 대우디오빌플러스 B1',
     isLiked: false,
     level: '쉬움',

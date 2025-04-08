@@ -50,7 +50,9 @@ export const mockLikedRooms: RoomDTO['get'][] = [
     reviewCount: 1024,
     rating: 3.5,
     address: '서울 강남구 강남대로 84길 33, 대우디오빌플러스 B1',
+    isMarked: true,
     isLiked: true,
+    myRating: 0,
     level: '쉬움',
   },
   {
@@ -63,7 +65,9 @@ export const mockLikedRooms: RoomDTO['get'][] = [
     reviewCount: 483,
     rating: 4,
     address: '서울 마포구 와우산로29길 21, 3층',
+    isMarked: true,
     isLiked: false,
+    myRating: 3.5,
     level: '보통',
   },
   {
@@ -76,7 +80,9 @@ export const mockLikedRooms: RoomDTO['get'][] = [
     reviewCount: 578,
     rating: 3.8,
     address: '서울 강남구 강남대로 84길 33, 대우디오빌플러스 B',
+    isMarked: true,
     isLiked: true,
+    myRating: 4,
     level: '어려움',
   },
 ];
