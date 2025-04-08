@@ -10,6 +10,7 @@ export interface RoomDTO {
     reviewCount: number;
     rating: number;
     address: string;
+    isLiked?: boolean;
     level: '쉬움' | '보통' | '어려움';
   };
 }

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import BookmarkLine from '@/public/icons/cardList/bookmark_line.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
+import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
@@ -37,7 +38,12 @@ export default function RoomCardContainer({ data }: RoomCardContainerProps) {
                 />
               </button>
               <button type="button">
-                <Image src={HeartLine} alt="heart" width={32} height={32} />
+                <Image
+                  src={room.isLiked ? HeartFull : HeartLine}
+                  alt="heart"
+                  width={32}
+                  height={32}
+                />
               </button>
             </div>
 

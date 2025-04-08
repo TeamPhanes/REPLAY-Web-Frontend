@@ -9,11 +9,11 @@ export const mypageNavList: { [key: string]: ListType } = {
     value: '/mypage/schedule',
   },
   myfavorite: {
-    label: '관심 목록',
+    label: '찜한 목록',
     value: '/mypage/favorite',
   },
   myreview: {
-    label: '내가 쓴 리뷰',
+    label: '참여한 목록',
     value: '/mypage/review',
   },
   mycomment: {

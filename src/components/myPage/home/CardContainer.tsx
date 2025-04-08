@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import LogoImage from '@/public/images/mypage/logo_background.webp';
-import CardContentContainer from '@/src/components/myPage/CardContentContainer';
-import CardBottomDate from '@/src/components/myPage/CardBottomDate';
+import CardContentContainer from '@/src/components/myPage/home/CardContentContainer';
+import CardBottomDate from '@/src/components/myPage/home/CardBottomDate';
 import AchievementBadge from '@/src/components/gatheringDetail/AchievementBadge';
 import { mockUser } from '@/src/data/mockUser';
 

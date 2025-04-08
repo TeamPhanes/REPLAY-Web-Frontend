@@ -1,6 +1,7 @@
 import { GatheringDTO } from '@/src/types/gathering/gathering.type';
 import Image from 'next/image';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
+import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
@@ -33,7 +34,12 @@ export default function GatheringCardContainer({
 
             <div className="absolute right-5 flex flex-col">
               <button type="button">
-                <Image src={HeartLine} alt="heart" width={32} height={32} />
+                <Image
+                  src={gathering.isLiked ? HeartFull : HeartLine}
+                  alt="heart"
+                  width={32}
+                  height={32}
+                />
               </button>
             </div>
 

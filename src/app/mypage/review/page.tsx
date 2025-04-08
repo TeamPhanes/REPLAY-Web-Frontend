@@ -1,5 +1,5 @@
 import PageContainer from '@/src/components/@shared/layout/PageContainer';
-import MyPageNav from '@/src/components/myPage/MyPageNav';
+import MyPageNav from '@/src/components/myPage/home/MyPageNav';
 
 export default function MyReviewPage() {
   return (

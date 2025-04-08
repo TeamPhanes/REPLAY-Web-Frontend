@@ -15,6 +15,7 @@ export interface GatheringDTO {
     capacity: number;
     participantCount: number;
     address: string;
+    isLiked?: boolean;
     level: '쉬움' | '보통' | '어려움';
   };
 }
