@@ -33,6 +33,7 @@ export default function CarouselSwiper({
       modules={[Autoplay]}
       slidesPerView={perView}
       slidesPerGroup={perView}
+      spaceBetween={15}
       autoplay={{ delay: delayTime }}
       onSwiper={(swiper: SwiperType) => {
         swiperRef.current = swiper;
