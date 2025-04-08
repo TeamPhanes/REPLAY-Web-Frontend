@@ -5,7 +5,8 @@ interface RatingProps {
   maxRating?: number;
   width: number;
   height: number;
-  type: 'Room' | 'Review' | 'User';
+  type: 'Room' | 'Review' | 'User'; // 통합
+  capacity?: number; // 항상 존재하지만, 'User'일 때만 사용
 }
 
 /**
@@ -14,6 +15,7 @@ interface RatingProps {
  * @param width <number> 표현할 width 값
  * @param height <number> 표현할 height 값
  * @param type <string> 'Room' | 'Review' | 'User'
+ * @param capacity <number> type이 User일 경우 표기할 자리 값 (기본값 : 6)
  */
 
 export default function Rating({
@@ -22,36 +24,35 @@ export default function Rating({
   width,
   height,
   type,
+  capacity,
 }: RatingProps) {
   const starWidth = width / maxRating;
+  const lineWidth =
+    type === 'User' && typeof capacity === 'number'
+      ? (capacity / maxRating) * width
+      : (Math.ceil(rating) / maxRating) * width;
   const filledWidth = (rating / maxRating) * width;
-  const { line, full } = ratingIcons[type];
+  const { empty, line, full } = ratingIcons[type];
 
-  // inline 스타일을 위한 객체
-  const containerStyle = {
-    width: `${width}px`,
-    height: `${height}px`,
-  };
-
-  const backgroundStyle = {
-    width: `${width}px`,
+  const backgroundStyle = (imageUrl: string, changeWidth: number) => ({
+    position: 'absolute' as const,
+    width: `${changeWidth}px`,
     height: `${height}px`,
     backgroundSize: `${starWidth}px ${height}px`,
-    backgroundImage: `url(${line})`,
-  };
-
-  const filledStyle = {
-    width: `${filledWidth}px`,
-    height: `${height}px`,
-    backgroundSize: `${starWidth}px ${height}px`,
-    backgroundImage: `url(${full})`,
-  };
+    backgroundImage: `url(${imageUrl})`,
+    backgroundRepeat: 'repeat-x',
+    top: 0,
+    left: 0,
+  });
 
   return (
-    <div className="inline-block" style={containerStyle}>
-      <span className="inline-block bg-repeat-x" style={backgroundStyle}>
-        <span className="inline-block bg-repeat-x" style={filledStyle} />
-      </span>
+    <div
+      className="relative inline-block"
+      style={{ width: `${width}px`, height: `${height}px` }}
+    >
+      <span style={backgroundStyle(empty, width)} />
+      <span style={backgroundStyle(line, lineWidth)} />
+      <span style={backgroundStyle(full, filledWidth)} />
     </div>
   );
 }

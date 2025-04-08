@@ -29,6 +29,7 @@ export default function DateAndParticipant({
           height={24}
           maxRating={6}
           type="User"
+          capacity={capacity}
         />
         <p className="text-base font-normal tracking-[-2.5%] text-grayFont">
           {participantCount}/{capacity}

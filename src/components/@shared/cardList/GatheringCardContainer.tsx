@@ -1,6 +1,7 @@
 import { GatheringDTO } from '@/src/types/gathering/gathering.type';
 import Image from 'next/image';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
+import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
@@ -9,34 +10,40 @@ import Link from 'next/link';
 
 interface GatheringCardContainerProps {
   data: GatheringDTO['get'][];
+  reviewCheck?: boolean;
 }
 
 export default function GatheringCardContainer({
   data,
+  reviewCheck,
 }: GatheringCardContainerProps) {
   return (
     <>
       {data.map((gathering) => (
-        <Link
-          href={`/gathering/${gathering.gatheringId}`}
+        <div
           key={gathering.gatheringId}
+          className={`${reviewCheck ? 'h-[352px]' : 'h-[252px]'} relative flex  w-[630px] items-start rounded-3xl bg-card p-5`}
         >
-          <div className="relative flex h-[252px] w-[630px] items-start rounded-3xl bg-card p-5">
-            <Image
-              src={gathering.listImage}
-              alt={gathering.themeName}
-              width={212}
-              height={212}
-              quality={100}
-              className="rounded-3xl"
-            />
+          <Image
+            src={gathering.listImage}
+            alt={gathering.themeName}
+            width={212}
+            height={212}
+            quality={100}
+            className="rounded-3xl"
+          />
 
-            <div className="absolute right-5 flex flex-col">
-              <button type="button">
-                <Image src={HeartLine} alt="heart" width={32} height={32} />
-              </button>
-            </div>
-
+          <div className="absolute right-5 flex flex-col">
+            <button type="button">
+              <Image
+                src={gathering.isLiked ? HeartFull : HeartLine}
+                alt="heart"
+                width={32}
+                height={32}
+              />
+            </button>
+          </div>
+          <Link href={`/gathering/${gathering.gatheringId}`}>
             <div className="ml-5 flex h-[212px] w-[322px] flex-col justify-between">
               <div className="flex flex-col gap-3">
                 <TagAndPlaytime
@@ -60,8 +67,27 @@ export default function GatheringCardContainer({
                 />
               </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+          {reviewCheck ? (
+            <div className="absolute bottom-5 flex flex-col gap-1">
+              <p className="text-base font-semibold tracking-[-2.5%] text-basefont">
+                참여한 분들
+              </p>
+              <div className="flex gap-2">
+                {gathering.participatingUsers.map((user) => (
+                  <Image
+                    key={user.nickname}
+                    src={user.image}
+                    alt={user.nickname}
+                    width={60}
+                    height={60}
+                    className="h-[60px] w-[60px] rounded-full border-2 border-mainBlue shadow-md"
+                  />
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </div>
       ))}
     </>
   );

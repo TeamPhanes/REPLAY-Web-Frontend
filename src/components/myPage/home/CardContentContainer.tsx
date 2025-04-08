@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import userDefault from '@/public/icons/user/user_default.svg';
-import CardContentFont from '@/src/components/myPage/CardContentFont';
+import CardContentFont from '@/src/components/myPage/home/CardContentFont';
 import { UserDTO } from '@/src/types/user/user.types';
 
 interface CardContentContainerProps {

@@ -48,10 +48,11 @@ export default function GatheringDetailCard({
           <div className="mt-9 flex items-center justify-center gap-12">
             <Rating
               rating={list.participantCount}
-              maxRating={list.capacity}
+              maxRating={6}
               width={288}
               height={48}
               type="User"
+              capacity={list.capacity}
             />
             <p className="text-2xl/[34px] font-normal tracking-[-2.5%] text-grayFont">
               {list.participantCount}/{list.capacity}
