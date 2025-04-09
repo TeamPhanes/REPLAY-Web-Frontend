@@ -23,7 +23,7 @@ export const periodYearMonthDay = (dateString: string) => {
   return `${shortYear}.${month}.${day}`;
 };
 
-// Ex) 25.04.01
+// Ex) 2025.04.01
 export const periodFullYearMonthDay = (dateString: string) => {
   const { fullYear, month, day } = parseDate(dateString);
   return `${fullYear}.${month}.${day}`;
@@ -39,6 +39,12 @@ export const periodYearMonthDayHourTime = (dateString: string) => {
 export const koreaYearMonthDay = (dateString: string) => {
   const { fullYear, month, day } = parseDate(dateString);
   return `${fullYear}년 ${month}월 ${day}일`;
+};
+
+// Ex) 12:30
+export const HourTime = (dateString: string) => {
+  const { hours, minutes } = parseDate(dateString);
+  return `${hours} : ${minutes}`;
 };
 
 // Ex) 1년 2개월, 2개월 10일, 10일 (활동 기간을 체크하는 함수)

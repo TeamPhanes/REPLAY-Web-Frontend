@@ -19,8 +19,11 @@ export default function ReviewAndRating({
           리뷰{reviewCount >= 999 ? '999+' : reviewCount}
         </p>
       </div>
-      <div className="ml-5 flex gap-3">
+      <div className="ml-5 flex items-center gap-3">
         <Rating rating={rating} width={120} height={24} type="Review" />
+        <p className="text-base font-normal tracking-[-2.5%] text-basefont">
+          {rating?.toFixed(1)}
+        </p>
       </div>
     </div>
   );

@@ -12,3 +12,8 @@ export const reviewTypeList = [
   { value: 'room', label: '참여한 방탈출' },
   { value: 'gathering', label: '참여한 모임' },
 ];
+
+export const commentTypeList = [
+  { value: 'newestOrder', label: '최신순' },
+  { value: 'registrationOrder', label: '등록순' },
+];
