@@ -1,4 +1,4 @@
-import { CommentDTO } from '../types/comment/comment.type';
+import { CommentDTO, MyCommentDTO } from '../types/comment/comment.type';
 
 export const mockComments: CommentDTO['get'][] = [
   {
@@ -36,3 +36,52 @@ export const mockComments: CommentDTO['get'][] = [
     reComments: [],
   },
 ];
+
+export const mockMyComments: MyCommentDTO['get'] = {
+  '2025-02-04': [
+    {
+      gatheringId: 1,
+      gatheringName: '같이 방탈출 하실 분 구합니다.',
+      dateTime: '2025-03-26T15:00:00',
+      content: '내가 쓴 댓글입니다.',
+      createdAt: '2025-03-06T04:17:02.443Z',
+    },
+    {
+      gatheringId: 1,
+      gatheringName: '같이 방탈출 하실 분 구합니다.',
+      dateTime: '2025-03-26T15:00:00',
+      content: '내가 쓴 댓글입니다.2',
+      createdAt: '2025-03-07T04:17:02.443Z',
+    },
+    {
+      gatheringId: 2,
+      gatheringName: '홍대 근처에서 같이 노실 분?',
+      dateTime: '2025-03-26T15:00:00',
+      content: '내가 쓴 댓글입니다.3',
+      createdAt: '2025-03-08T04:17:02.443Z',
+    },
+    {
+      gatheringId: 1,
+      gatheringName: '같이 방탈출 하실 분 구합니다.',
+      dateTime: '2025-03-26T15:00:00',
+      content: '내가 쓴 댓글입니다.4',
+      createdAt: '2025-03-09T04:17:02.443Z',
+    },
+  ],
+  '2025-02-06': [
+    {
+      gatheringId: 2,
+      gatheringName: '홍대 근처에서 같이 노실 분?',
+      dateTime: '2025-03-26T15:00:00',
+      content: '내가 쓴 댓글입니다.3',
+      createdAt: '2025-03-08T04:17:02.443Z',
+    },
+    {
+      gatheringId: 1,
+      gatheringName: '같이 방탈출 하실 분 구합니다.',
+      dateTime: '2025-03-26T15:00:00',
+      content: '내가 쓴 댓글입니다.4',
+      createdAt: '2025-03-09T04:17:02.443Z',
+    },
+  ],
+};

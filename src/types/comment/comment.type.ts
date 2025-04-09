@@ -14,3 +14,15 @@ export interface CommentDTO {
     }[];
   };
 }
+
+export interface MyCommentDTO {
+  get: {
+    [key: string]: {
+      gatheringId: number;
+      gatheringName: string;
+      dateTime: string;
+      content: string;
+      createdAt: string;
+    }[];
+  };
+}
