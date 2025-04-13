@@ -16,10 +16,10 @@ export default function CommentCardSection() {
                 className="flex h-[180px] w-[421px] flex-col gap-1 rounded-3xl bg-spot p-5"
               >
                 <div className="flex items-center justify-between">
-                  <p className="text-base font-normal tracking-[-2.5%] text-card">
+                  <p className="text-base font-normal tracking-[-2.5%] text-homeFont">
                     {comment.gatheringName}
                   </p>
-                  <p className="text-base font-normal tracking-[-2.5%] text-card">
+                  <p className="text-base font-normal tracking-[-2.5%] text-homeFont">
                     {HourTime(comment.dateTime)}
                   </p>
                 </div>

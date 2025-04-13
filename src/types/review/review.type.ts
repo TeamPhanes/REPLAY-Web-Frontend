@@ -9,7 +9,7 @@ export interface ReviewDTO {
     content: string;
     image: string[];
     rating: number;
-    success: '성공' | '실패';
+    success: '성공' | '실패'; // boolean 형태로 변경
     hint: number;
     createdAt: string;
     playUser: number;

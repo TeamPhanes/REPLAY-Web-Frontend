@@ -1,7 +1,15 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['xdungeon.net', 'i.namu.wiki'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'xdungeon.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.namu.wiki',
+      },
+    ],
   },
 };
 

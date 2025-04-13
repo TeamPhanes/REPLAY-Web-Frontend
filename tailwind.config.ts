@@ -19,6 +19,7 @@ const config: Config = {
         tag: '#505050',
         homeCard: '#606060',
         card: '#EAEAEA',
+        cardHover: '#B5B7FC',
         ratingCard: '#D9D9D9',
         spot: '#999999',
         progressBar: '#F0F0F0',
