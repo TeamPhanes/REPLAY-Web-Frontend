@@ -20,8 +20,10 @@ export default function OrderChanger({
         <button
           key={option.value}
           type="button"
-          className={`rounded-full border-[1px] border-mainBlue bg-card px-4 py-1 text-2xl/[34px] font-normal tracking-[-2.5%] ${
-            selectedType === option.value ? 'text-mainBlue' : 'text-grayFont'
+          className={`rounded-full border-2 px-4 py-1 text-2xl/[34px] font-normal tracking-[-2.5%] ${
+            selectedType === option.value
+              ? 'border-mainBlue bg-card text-mainBlue'
+              : 'border-homeFont bg-homeFont text-grayFont'
           }`}
           onClick={() => setSelectedType(option.value)}
         >

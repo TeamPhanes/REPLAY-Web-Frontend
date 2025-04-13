@@ -55,6 +55,7 @@ export default function CarouselSwiper({
                 alt={list.name}
                 width={imageWidth}
                 height={imageHeight}
+                unoptimized
                 quality={100}
                 style={{
                   width: `${imageWidth}px`,
@@ -78,6 +79,7 @@ export default function CarouselSwiper({
               alt={list.name}
               width={imageWidth}
               height={imageHeight}
+              unoptimized
               quality={100}
               className="rounded-[30px]"
               style={{

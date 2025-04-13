@@ -11,6 +11,5 @@ export interface UserDTO {
   totalRE: number;
   successCount: number;
   failCount: number;
-  likeCount: number;
   representAchievement: string[];
 }
