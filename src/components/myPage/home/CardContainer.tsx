@@ -6,7 +6,7 @@ import MyPageModifyButton from './MyPageModifyButton';
 
 export default function CardContainer() {
   return (
-    <div className="bg-cardActive relative mt-5 h-[983px] w-full rounded-[30px] p-10">
+    <div className="relative mt-5 h-[983px] w-full rounded-[30px] bg-cardActive p-10">
       <MyPageModifyButton />
       <CardContentContainer user={mockUser} />
       <CardBottomDate

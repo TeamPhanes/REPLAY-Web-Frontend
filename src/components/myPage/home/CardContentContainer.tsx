@@ -13,7 +13,7 @@ export default function CardContentContainer({
   return (
     <div className="flex justify-between">
       <div className="absolute left-0 top-[250px] h-[558px] w-full bg-white" />
-      <div className="bg-cardActive absolute left-0 top-[786px] h-3 w-full" />
+      <div className="absolute left-0 top-[786px] h-3 w-full bg-cardActive" />
       <div className="z-10 ml-20 flex flex-col items-center">
         <p className="text-[32px]/[42px] font-semibold tracking-[0.2em]">
           PLAY CARD

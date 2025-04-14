@@ -6,7 +6,7 @@ export default function MyPageModifyButton() {
   return (
     <button
       type="button"
-      className="bg-cardActive group absolute right-0 top-[-60px] flex items-center gap-2 rounded-full px-4 py-2 text-xl font-normal tracking-[-2.5%] text-card transition-colors duration-500 ease-in-out hover:bg-cardHover hover:text-basefont"
+      className="group absolute right-0 top-[-60px] flex items-center gap-2 rounded-full bg-cardActive px-4 py-2 text-xl font-normal tracking-[-2.5%] text-card transition-colors duration-500 ease-in-out hover:bg-cardHover hover:text-basefont"
     >
       <span className="relative h-5 w-5">
         <Image

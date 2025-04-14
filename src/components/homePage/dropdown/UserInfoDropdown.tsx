@@ -36,7 +36,7 @@ export default function UserInfoDropdown({
       <DropdownMenuContent
         sideOffset={44}
         align="end"
-        className="data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut z-50 flex flex-col rounded-[20px] bg-card"
+        className="z-50 flex flex-col rounded-[20px] bg-card data-[state=closed]:animate-fadeOut data-[state=open]:animate-fadeIn"
       >
         <DropdownMenuItem asChild className="outline-none">
           <div className="flex items-center gap-4 border-b-[1px] border-setfont p-5">
