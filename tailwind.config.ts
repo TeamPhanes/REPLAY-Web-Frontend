@@ -19,6 +19,7 @@ const config: Config = {
         tag: '#505050',
         homeCard: '#606060',
         card: '#EAEAEA',
+        cardActive: '#5357F9',
         cardHover: '#B5B7FC',
         ratingCard: '#D9D9D9',
         spot: '#999999',
@@ -37,6 +38,20 @@ const config: Config = {
         md: '768px',
         lg: '1024px',
         xl: '1280px',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeOut: {
+          '0%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(10px)' },
+        },
+      },
+      animation: {
+        fadeIn: 'fadeIn 300ms ease-out forwards',
+        fadeOut: 'fadeOut 200ms ease-in forwards',
       },
     },
     fontFamily: {
