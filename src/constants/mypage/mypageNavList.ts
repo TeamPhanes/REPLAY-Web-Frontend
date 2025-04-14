@@ -4,6 +4,10 @@ export interface ListType {
 }
 
 export const mypageNavList: { [key: string]: ListType } = {
+  mypage: {
+    label: '내 프로필',
+    value: '/mypage',
+  },
   myschedule: {
     label: '나의 일정',
     value: '/mypage/schedule',
@@ -21,7 +25,7 @@ export const mypageNavList: { [key: string]: ListType } = {
     value: '/mypage/comment',
   },
   allachievements: {
-    label: '모든 업적',
+    label: '나의 업적',
     value: '/mypage/achievements',
   },
 };

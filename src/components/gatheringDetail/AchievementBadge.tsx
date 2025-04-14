@@ -15,13 +15,15 @@ export default function AchievementBadge({
   if (!nickname) return null;
 
   return (
-    <div className="absolute bottom-5 right-5 mt-9 flex gap-1">
+    <div
+      className={`absolute mt-9 flex ${type === 'mypage' ? 'bottom-2 right-10 gap-10' : 'bottom-5 right-5 gap-1'}`}
+    >
       {Array.from({ length: 3 }, (_, index) => (
         <div
           key={index}
           style={
             type === 'mypage'
-              ? { width: '120px', height: '120px' }
+              ? { width: '160px', height: '160px' }
               : { width: '44px', height: '44px' }
           }
           className="flex items-center justify-center rounded-full bg-card shadow-md"
@@ -30,11 +32,11 @@ export default function AchievementBadge({
             <Image
               src={achievement[index]}
               alt="업적"
-              width={type === 'mypage' ? 120 : 44}
-              height={type === 'mypage' ? 120 : 44}
+              width={type === 'mypage' ? 160 : 44}
+              height={type === 'mypage' ? 160 : 44}
               style={
                 type === 'mypage'
-                  ? { width: '120px', height: '120px' }
+                  ? { width: '160px', height: '160px' }
                   : { width: '44px', height: '44px' }
               }
               className="rounded-full"

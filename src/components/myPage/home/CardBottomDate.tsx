@@ -10,7 +10,7 @@ export default function CardBottomDate({
   createdAt,
 }: CardBottomDateProps) {
   return (
-    <div className="absolute bottom-5">
+    <div className="absolute bottom-12 left-[120px]">
       <div className="flex gap-6">
         <p className="text-2xl/[34px] font-normal tracking-[-2.5%] text-white">
           수정 날짜

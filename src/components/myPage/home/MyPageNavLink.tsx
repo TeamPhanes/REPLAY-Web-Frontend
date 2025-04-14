@@ -11,13 +11,10 @@ export default function MyPageNavLink({ pathname }: MyPageNavLinkProps) {
       {Object.keys(mypageNavList).map((key) => {
         const list = mypageNavList[key];
         return (
-          <div
-            key={key}
-            className="flex items-center justify-center border-t-[1px] border-spot py-3"
-          >
+          <div key={key} className="flex items-center justify-center">
             <Link href={list.value}>
               <p
-                className={`text-xl tracking-[-2.5%] ${pathname === list.value ? 'font-semibold text-mainBlue' : 'font-normal text-white'}`}
+                className={`rounded-full px-6 py-2 text-2xl/[34px] font-normal tracking-[-2.5%] text-white transition-colors duration-500 ease-in-out hover:bg-cardHover hover:text-basefont ${pathname === list.value ? 'bg-cardActive' : ''}`}
               >
                 {list.label}
               </p>

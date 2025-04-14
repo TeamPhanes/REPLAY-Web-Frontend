@@ -1,6 +1,6 @@
 'use client';
 
-import PageContainer from '@/src/components/@shared/layout/PageContainer';
+import MyPageContainer from '@/src/components/@shared/layout/MyPageContainer';
 import CommentCardSection from '@/src/components/myPage/comment/CommentCardSection';
 import CommentTitleContainer from '@/src/components/myPage/comment/CommentTitleContainer';
 import OrderChanger from '@/src/components/myPage/comment/OrderChanger';
@@ -13,7 +13,7 @@ export default function MyCommentPage() {
   const [selectedType, setSelectedType] = useState('newestOrder');
 
   return (
-    <PageContainer>
+    <MyPageContainer>
       <MyPageNav />
       <CommentTitleContainer />
       <OrderChanger
@@ -22,6 +22,6 @@ export default function MyCommentPage() {
         setSelectedType={setSelectedType}
       />
       <CommentCardSection />
-    </PageContainer>
+    </MyPageContainer>
   );
 }
