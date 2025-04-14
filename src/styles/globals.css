@@ -5,10 +5,12 @@
 @layer base {
   html {
     @apply antialiased;
+    overflow-y: scroll;
   }
 
   body {
     @apply bg-brand text-white;
+    padding-right: calc(100vw - 100%);
   }
 
   input:focus {

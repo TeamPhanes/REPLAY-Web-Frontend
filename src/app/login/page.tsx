@@ -6,48 +6,19 @@ import PageContainer from '@/components/@shared/layout/PageContainer';
 import Logo from '@/public/images/logo.png';
 import { easyLoginIcons } from '@/constants/login/easyLoginIcons';
 
-const REDIRECT_URI = process.env.oauth2_host;
-const NAVER_CLIENT_ID = process.env.naver_client_id;
-const GOOGLE_CLIENT_ID = process.env.google_client_id;
-const GOOGLE_SCOPE = 'email profile';
-const KAKAO_CLIENT_ID = process.env.kakao_client_id;
-
-const handleNaverLogin = async () => {
-  const state = Math.random().toString(36).substring(2, 15);
-
-  await fetch('http://localhost:8080/auth/state', {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
-    body: state,
-  });
-
-  window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=${state}`;
+const handleNaverLogin = () => {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/auth/naver`;
+  window.open(url, '_blank', 'width=1024,height=768');
 };
 
-const handleGoogleLogin = async () => {
-  const state = Math.random().toString(36).substring(2, 15);
-
-  await fetch('http://localhost:8080/auth/state', {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
-    body: state,
-  });
-
-  window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${encodeURIComponent(
-    GOOGLE_SCOPE
-  )}&state=${state}`;
+const handleGoogleLogin = () => {
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/auth/google`;
+  window.open(url, '_blank', 'width=1024,height=768');
 };
 
 const handleKakaoLogin = async () => {
-  const state = Math.random().toString(36).substring(2, 15);
-
-  await fetch('http://localhost:8080/auth/state', {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
-    body: state,
-  });
-
-  window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&state=${state}`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/auth/kakao`;
+  window.open(url, '_blank', 'width=1024,height=768');
 };
 
 export default function LoginPage() {

@@ -16,15 +16,19 @@ interface UserInfoDropdownProps {
   children: ReactNode;
   userImage: string;
   nickname: string;
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
 }
 
 export default function UserInfoDropdown({
   children,
   userImage,
   nickname,
+  isOpen,
+  onOpenChange,
 }: UserInfoDropdownProps) {
   return (
-    <DropdownMenu>
+    <DropdownMenu open={isOpen} onOpenChange={onOpenChange}>
       <DropdownMenuTrigger asChild className="outline-none">
         {children}
       </DropdownMenuTrigger>
@@ -32,7 +36,7 @@ export default function UserInfoDropdown({
       <DropdownMenuContent
         sideOffset={44}
         align="end"
-        className="z-50 flex flex-col rounded-[20px] bg-card"
+        className="data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut z-50 flex flex-col rounded-[20px] bg-card"
       >
         <DropdownMenuItem asChild className="outline-none">
           <div className="flex items-center gap-4 border-b-[1px] border-setfont p-5">
@@ -55,7 +59,7 @@ export default function UserInfoDropdown({
               href={list.value}
               className="border-b-[1px] border-setfont p-[10px]"
             >
-              <p className="flex h-[54px] w-[194px] items-center justify-center text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont hover:rounded-full hover:bg-cardHover">
+              <p className="flex h-[54px] w-[194px] items-center justify-center rounded-full text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont transition-colors duration-500 ease-in-out hover:bg-cardHover">
                 {list.label}
               </p>
             </Link>
@@ -64,7 +68,7 @@ export default function UserInfoDropdown({
 
         <DropdownMenuItem asChild className="outline-none">
           <button type="button" className="p-[10px]">
-            <p className="flex h-[54px] w-[194px] items-center justify-center text-2xl/[34px] font-semibold tracking-[-2.5%] text-spot hover:rounded-full hover:bg-cardHover">
+            <p className="flex h-[54px] w-[194px] items-center justify-center rounded-full text-2xl/[34px] font-semibold tracking-[-2.5%] text-spot transition-colors duration-500 ease-in-out hover:bg-cardHover">
               로그아웃
             </p>
           </button>
