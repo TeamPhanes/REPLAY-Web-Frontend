@@ -26,7 +26,7 @@ docker-push: docker-build
 	docker push ${IMAGE}
 
 encrypt:
-	sops -e -i .env
+	sops -e .env.local > .env.local.enc
 
 decrypt:
-	sops -d -i .env
+	sops -d .env.local.enc > .env.local
