@@ -1,6 +1,6 @@
-import { UserDTO } from '../types/user/user.types';
+import { UserDTO } from '@/types/user/user.types';
 
-export const mockUser: UserDTO = {
+export const mockUser: UserDTO['get'] = {
   image:
     'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
   updatedAt: '2025-04-07T15:00:00',
