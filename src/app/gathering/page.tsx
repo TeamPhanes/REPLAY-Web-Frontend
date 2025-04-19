@@ -1,13 +1,13 @@
-import PageContainer from '@/src/components/@shared/layout/PageContainer';
-import SearchBar from '@/src/components/@shared/search/SearchBar';
-import FilterContainer from '@/src/components/@shared/layout/FilterContainer';
-import LocationFilter from '@/src/components/@shared/filter/LocationFilter';
-import GenreFilter from '@/src/components/@shared/filter/GenreFilter';
-import MapNavigation from '@/src/components/@shared/filter/MapNavigation';
-import SortContainer from '@/src/components/@shared/layout/SortContainer';
-import CountListValue from '@/src/components/@shared/cardList/CountListValue';
-import SortDropdown from '@/src/components/@shared/cardList/SortDropdown';
-import GatheringCardSection from '@/src/components/@shared/cardList/GatheringCardSection';
+import CountListValue from '@/components/@shared/cardList/CountListValue';
+import GatheringCardSection from '@/components/@shared/cardList/GatheringCardSection';
+import SortDropdown from '@/components/@shared/cardList/SortDropdown';
+import GenreFilter from '@/components/@shared/filter/GenreFilter';
+import LocationFilter from '@/components/@shared/filter/LocationFilter';
+import MapNavigation from '@/components/@shared/filter/MapNavigation';
+import FilterContainer from '@/components/@shared/layout/FilterContainer';
+import PageContainer from '@/components/@shared/layout/PageContainer';
+import SortContainer from '@/components/@shared/layout/SortContainer';
+import SearchBar from '@/components/@shared/search/SearchBar';
 
 export default function GatheringPage() {
   return (

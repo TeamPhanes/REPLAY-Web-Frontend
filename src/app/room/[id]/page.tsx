@@ -1,11 +1,11 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import PageContainer from '@/src/components/@shared/layout/PageContainer';
+import PageContainer from '@/components/@shared/layout/PageContainer';
+import RoomDetailAllRating from '@/components/roomDetail/RoomDetailAllRating';
 import RoomDetailCard from '@/components/roomDetail/RoomDetailCard';
 import RoomDetailGatherings from '@/components/roomDetail/RoomDetailGatherings';
-import RoomDetailAllRating from '@/components/roomDetail/RoomDetailAllRating';
-import RoomDetailReviews from '@/src/components/roomDetail/RoomDetailReviews';
+import RoomDetailReviews from '@/components/roomDetail/RoomDetailReviews';
 
 export default function RoomDetailPage() {
   const { id } = useParams();

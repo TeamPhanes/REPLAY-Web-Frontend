@@ -1,7 +1,7 @@
-import TitleContainer from '@/src/components/myPage/home/TitleContainer';
-import CardContainer from '@/src/components/myPage/home/CardContainer';
-import MyPageNav from '@/src/components/myPage/home/MyPageNav';
-import MyPageContainer from '@/src/components/@shared/layout/MyPageContainer';
+import MyPageContainer from '@/components/@shared/layout/MyPageContainer';
+import CardContainer from '@/components/myPage/home/CardContainer';
+import MyPageNav from '@/components/myPage/home/MyPageNav';
+import TitleContainer from '@/components/myPage/home/TitleContainer';
 
 export default function MyPage() {
   return (
