@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: [
@@ -40,30 +41,53 @@ const config: Config = {
         xl: '1280px',
       },
       keyframes: {
-        fadeIn: {
+        dropdownIn: {
           '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        fadeOut: {
+        dropdownOut: {
           '0%': { opacity: '1', transform: 'translateY(0)' },
           '100%': { opacity: '0', transform: 'translateY(10px)' },
         },
+        modalIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        modalOut: {
+          '0%': { opacity: '1' },
+          '100%': { opacity: '0' },
+        },
       },
       animation: {
-        fadeIn: 'fadeIn 300ms ease-out forwards',
-        fadeOut: 'fadeOut 200ms ease-in forwards',
+        dropdownIn: 'dropdownIn 300ms ease-out forwards',
+        dropdownOut: 'dropdownOut 200ms ease-in forwards',
+        modalIn: 'modalIn 300ms ease-out forwards',
+        modalOut: 'modalOut 200ms ease-in forwards',
       },
     },
     fontFamily: {
       sans: 'var(--font-pretendard), -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif',
     },
   },
-  safelist: [
-    'bg-social-kakao', // kakao 색상 클래스
-    'bg-social-google', // google 색상 클래스
-    'bg-social-naver', // naver 색상 클래스
+  safelist: ['bg-social-kakao', 'bg-social-google', 'bg-social-naver'],
+  plugins: [
+    plugin(function myPlugin({ addUtilities }) {
+      addUtilities({
+        '.perspective-1000': {
+          perspective: '1000px',
+        },
+        '.preserve-3d': {
+          'transform-style': 'preserve-3d',
+        },
+        '.backface-hidden': {
+          'backface-visibility': 'hidden',
+        },
+        '.rotate-y-180': {
+          transform: 'rotateY(180deg)',
+        },
+      });
+    }),
   ],
-  plugins: [],
 };
 
 export default config;
