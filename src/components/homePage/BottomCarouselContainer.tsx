@@ -1,4 +1,4 @@
-import { popularList, newList } from '@/src/data/home/homeBottomCarouselList';
+import { newList, popularList } from '@/data/home/homeBottomCarouselList';
 import BottomCarousel from '@/components/homePage/BottomCarousel';
 
 export default function BottomCarouselContainer() {

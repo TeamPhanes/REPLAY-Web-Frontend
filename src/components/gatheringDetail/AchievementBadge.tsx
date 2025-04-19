@@ -4,20 +4,20 @@ import AchievementDefault from '@/public/icons/detail/achievement_default.svg';
 interface AchievementBadgeProps {
   nickname: string;
   achievement: string[];
+  absoluteLayout: string;
   type?: 'mypage';
 }
 
 export default function AchievementBadge({
   nickname,
   achievement,
+  absoluteLayout,
   type,
 }: AchievementBadgeProps) {
   if (!nickname) return null;
 
   return (
-    <div
-      className={`absolute mt-9 flex ${type === 'mypage' ? 'bottom-2 right-10 gap-10' : 'bottom-5 right-5 gap-1'}`}
-    >
+    <div className={`absolute flex ${absoluteLayout}`}>
       {Array.from({ length: 3 }, (_, index) => (
         <div
           key={index}

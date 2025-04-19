@@ -1,4 +1,4 @@
-import { ReviewAllRatingDTO } from '../types/review/review.type';
+import { ReviewAllRatingDTO } from '@/types/review/review.type';
 
 export const mockReviewAllRating: ReviewAllRatingDTO['get'] = {
   scoreCount: 1024,

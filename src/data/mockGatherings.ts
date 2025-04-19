@@ -1,4 +1,4 @@
-import { GatheringDTO } from '../types/gathering/gathering.type';
+import { GatheringDTO } from '@/types/gathering/gathering.type';
 
 export const mockGatherings: GatheringDTO['get'][] = [
   {

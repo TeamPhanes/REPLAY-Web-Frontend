@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import ReplayMainLogo from '@/public/images/Replay_Main_Logo.svg';
 import Link from 'next/link';
+import UserInfo from '@/components/@shared/gnb/UserInfo';
 import { navLabelList } from '@/constants/gnb/navLabelList';
-import UserInfo from './UserInfo';
+import ReplayMainLogo from '@/public/images/Replay_Main_Logo.svg';
 
 export default function GlobalNav() {
   return (

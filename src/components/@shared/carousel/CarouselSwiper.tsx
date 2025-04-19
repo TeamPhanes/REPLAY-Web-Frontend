@@ -1,11 +1,11 @@
-import Image from 'next/image';
-import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType } from 'swiper/types';
-import { Autoplay } from 'swiper/modules';
 import { MutableRefObject } from 'react';
-import { CarouselDTO } from '@/src/types/home/home.type';
+import Image from 'next/image';
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import { Autoplay } from 'swiper/modules';
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperType } from 'swiper/types';
+import { CarouselDTO } from '@/types/home/home.type';
 
 interface CarouselSwiperProps {
   carouselList: CarouselDTO[];

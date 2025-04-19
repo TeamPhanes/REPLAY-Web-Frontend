@@ -1,4 +1,4 @@
-import StorySection from './StorySection';
+import StorySection from '@/components/roomDetail/StorySection';
 
 interface RoomDetailStoryProps {
   story: string;

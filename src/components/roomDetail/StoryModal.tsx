@@ -1,4 +1,4 @@
-import Modal from '../@shared/modal/Modal';
+import Modal from '@/components/@shared/modal/Modal';
 
 interface StroyModalProps {
   isOpen: boolean;
@@ -12,7 +12,11 @@ export default function StroyModal({
   story,
 }: StroyModalProps) {
   return (
-    <Modal isOpen={isOpen} onClose={closeModal}>
+    <Modal
+      isOpen={isOpen}
+      onClose={closeModal}
+      customDimStyle="bg-card rounded-[30px]"
+    >
       <div className="m-5 w-[655px]">
         <div className="relative my-6 flex items-center justify-center">
           <div className="w-[169px] border-t border-black" />

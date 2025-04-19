@@ -1,13 +1,13 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import PageContainer from '@/src/components/@shared/layout/PageContainer';
-import GatheringDetailCard from '@/src/components/gatheringDetail/GatheringDetailCard';
-import ParticipantList from '@/src/components/gatheringDetail/ParticipantList';
-import CommentsContainer from '@/src/components/gatheringDetail/CommentsContainer';
-import { mockGatherings } from '@/src/data/mockGatherings';
-import { mockGatheringsDetail } from '@/src/data/mockGatheringsDetail';
-import AnotherGatherings from '@/src/components/gatheringDetail/AnotherGatherings';
+import { mockGatherings } from '@/data/mockGatherings';
+import { mockGatheringsDetail } from '@/data/mockGatheringsDetail';
+import PageContainer from '@/components/@shared/layout/PageContainer';
+import AnotherGatherings from '@/components/gatheringDetail/AnotherGatherings';
+import GatheringDetailCard from '@/components/gatheringDetail/GatheringDetailCard';
+import ParticipantList from '@/components/gatheringDetail/ParticipantList';
+import CommentsContainer from '@/components/gatheringDetail/comment/CommentsContainer';
 
 export default function GatheringDetailPage() {
   const { id } = useParams();

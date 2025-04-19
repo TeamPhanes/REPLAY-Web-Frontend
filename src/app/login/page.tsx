@@ -1,10 +1,10 @@
 'use client';
 
-import classNames from 'classnames';
 import Image from 'next/image';
+import classNames from 'classnames';
 import PageContainer from '@/components/@shared/layout/PageContainer';
-import Logo from '@/public/images/logo.png';
 import { easyLoginIcons } from '@/constants/login/easyLoginIcons';
+import Logo from '@/public/images/Replay_Main_Logo.svg';
 
 const handleNaverLogin = () => {
   const url = `${process.env.NEXT_PUBLIC_API_URL}/auth/naver`;

@@ -1,13 +1,13 @@
-import { mockRooms } from '@/src/data/mockRooms';
-import { mockRoomsDetail } from '@/src/data/mockRoomsDetail';
 import Image from 'next/image';
-import BookmarkLine from '@/public/icons/cardList/bookmark_line.svg';
-import HeartLine from '@/public/icons/cardList/heart_line.svg';
-import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
-import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
+import { mockRooms } from '@/data/mockRooms';
+import { mockRoomsDetail } from '@/data/mockRoomsDetail';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
+import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
+import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import RoomDetailStroy from '@/components/roomDetail/RoomDetailStroy';
+import BookmarkLine from '@/public/icons/cardList/bookmark_line.svg';
+import HeartLine from '@/public/icons/cardList/heart_line.svg';
 
 interface RoomDetailCardProps {
   id: string | string[];

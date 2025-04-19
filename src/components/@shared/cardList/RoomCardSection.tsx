@@ -1,4 +1,4 @@
-import { mockRooms, mockLikedRooms } from '@/data/mockRooms';
+import { mockLikedRooms, mockRooms } from '@/data/mockRooms';
 import RoomCardContainer from '@/components/@shared/cardList/RoomCardContainer';
 
 interface RoomCardSectionProps {

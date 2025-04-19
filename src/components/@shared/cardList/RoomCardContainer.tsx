@@ -1,16 +1,16 @@
-import { RoomDTO } from '@/src/types/room/room.types';
 import Image from 'next/image';
 import Link from 'next/link';
-import BookmarkLine from '@/public/icons/cardList/bookmark_line.svg';
-import BookmarkFull from '@/public/icons/cardList/bookmark_full.svg';
-import HeartLine from '@/public/icons/cardList/heart_line.svg';
-import HeartFull from '@/public/icons/cardList/heart_full.svg';
-import ReviewPencil from '@/public/icons/mypage/review_pencil.svg';
+import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
+import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
 import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
-import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
-import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
-import Rating from '../rating/Rating';
+import Rating from '@/components/@shared/rating/Rating';
+import { RoomDTO } from '@/types/room/room.types';
+import BookmarkFull from '@/public/icons/cardList/bookmark_full.svg';
+import BookmarkLine from '@/public/icons/cardList/bookmark_line.svg';
+import HeartFull from '@/public/icons/cardList/heart_full.svg';
+import HeartLine from '@/public/icons/cardList/heart_line.svg';
+import ReviewPencil from '@/public/icons/mypage/review_pencil.svg';
 
 interface RoomCardContainerProps {
   data: RoomDTO['get'][];

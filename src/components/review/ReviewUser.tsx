@@ -1,5 +1,5 @@
-import { periodYearMonthDay } from '@/src/utils/dateChange';
 import Image from 'next/image';
+import { periodYearMonthDay } from '@/utils/dateChange';
 
 interface ReviewUserProps {
   userImage: string;

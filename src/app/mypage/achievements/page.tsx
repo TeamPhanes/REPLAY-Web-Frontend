@@ -1,5 +1,5 @@
-import MyPageContainer from '@/src/components/@shared/layout/MyPageContainer';
-import MyPageNav from '@/src/components/myPage/home/MyPageNav';
+import MyPageContainer from '@/components/@shared/layout/MyPageContainer';
+import MyPageNav from '@/components/myPage/home/MyPageNav';
 
 export default function AllAchievementsPage() {
   return (

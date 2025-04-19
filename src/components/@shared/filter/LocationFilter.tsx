@@ -1,5 +1,5 @@
-import { locationList } from '@/src/constants/filter/locationList';
 import Image from 'next/image';
+import { locationList } from '@/constants/filter/locationList';
 import BlackChevronDown from '@/public/icons/filter/black_chevron_down.svg';
 
 export default function LocationFilter() {

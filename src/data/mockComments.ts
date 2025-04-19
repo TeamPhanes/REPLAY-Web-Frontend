@@ -1,4 +1,4 @@
-import { CommentDTO, MyCommentDTO } from '../types/comment/comment.type';
+import { CommentDTO, MyCommentDTO } from '@/types/comment/comment.type';
 
 export const mockComments: CommentDTO['get'][] = [
   {

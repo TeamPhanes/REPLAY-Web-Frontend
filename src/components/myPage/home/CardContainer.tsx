@@ -1,8 +1,8 @@
-import CardContentContainer from '@/src/components/myPage/home/CardContentContainer';
-import CardBottomDate from '@/src/components/myPage/home/CardBottomDate';
-import AchievementBadge from '@/src/components/gatheringDetail/AchievementBadge';
-import { mockUser } from '@/src/data/mockUser';
-import MyPageModifyButton from './MyPageModifyButton';
+import { mockUser } from '@/data/mockUser';
+import AchievementBadge from '@/components/gatheringDetail/AchievementBadge';
+import CardBottomDate from '@/components/myPage/home/CardBottomDate';
+import CardContentContainer from '@/components/myPage/home/CardContentContainer';
+import MyPageModifyButton from '@/components/myPage/home/MyPageModifyButton';
 
 export default function CardContainer() {
   return (
@@ -16,6 +16,7 @@ export default function CardContainer() {
       <AchievementBadge
         nickname={mockUser.nickname}
         achievement={mockUser.representAchievement}
+        absoluteLayout="mt-9 bottom-2 right-10 gap-10"
         type="mypage"
       />
     </div>

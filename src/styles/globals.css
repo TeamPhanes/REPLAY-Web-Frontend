@@ -5,12 +5,10 @@
 @layer base {
   html {
     @apply antialiased;
-    overflow-y: scroll;
   }
 
   body {
     @apply bg-brand text-white;
-    padding-right: calc(100vw - 100%);
   }
 
   input:focus {
@@ -21,6 +19,15 @@
   input:hover {
     outline: none;
     border: none;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
   }
 }
 
@@ -39,8 +46,12 @@ html {
   font-family: var(--font-pretendard);
 }
 
+dialog::backdrop {
+  background: rgba(80, 80, 80, 0.5);
+}
+
 /* scrollbar style */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
@@ -66,4 +77,4 @@ html {
 
 .scrollbar-hidden {
   scrollbar-width: none;
-}
+} */

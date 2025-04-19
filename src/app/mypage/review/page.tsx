@@ -1,12 +1,12 @@
 'use client';
 
-import MyPageNav from '@/src/components/myPage/home/MyPageNav';
-import FavoriteTypeChanger from '@/src/components/myPage/favorite/TypeChanger';
-import RoomCardSection from '@/src/components/@shared/cardList/RoomCardSection';
-import GatheringCardSection from '@/src/components/@shared/cardList/GatheringCardSection';
-import { reviewTypeList } from '@/src/constants/mypage/typeList';
 import { useState } from 'react';
-import MyPageContainer from '@/src/components/@shared/layout/MyPageContainer';
+import GatheringCardSection from '@/components/@shared/cardList/GatheringCardSection';
+import RoomCardSection from '@/components/@shared/cardList/RoomCardSection';
+import MyPageContainer from '@/components/@shared/layout/MyPageContainer';
+import TypeChanger from '@/components/myPage/favorite/TypeChanger';
+import MyPageNav from '@/components/myPage/home/MyPageNav';
+import { reviewTypeList } from '@/constants/mypage/typeList';
 
 export default function MyReviewPage() {
   const [selectedType, setSelectedType] = useState('room');
@@ -14,7 +14,7 @@ export default function MyReviewPage() {
   return (
     <MyPageContainer>
       <MyPageNav />
-      <FavoriteTypeChanger
+      <TypeChanger
         options={reviewTypeList}
         selectedType={selectedType}
         setSelectedType={setSelectedType}

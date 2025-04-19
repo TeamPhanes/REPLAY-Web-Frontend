@@ -1,5 +1,5 @@
-import { GatheringDTO } from '@/src/types/gathering/gathering.type';
-import GatheringCardContainer from '../@shared/cardList/GatheringCardContainer';
+import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
+import { GatheringDTO } from '@/types/gathering/gathering.type';
 
 interface AnotherGatheringsProps {
   title: string;

@@ -2,9 +2,9 @@
 
 import { useRef, useState } from 'react';
 import { SwiperClass } from 'swiper/react';
-import { CarouselDTO } from '@/src/types/home/home.type';
 import CarouselButton from '@/components/@shared/carousel/CarouselButton';
 import CarouselSwiper from '@/components/@shared/carousel/CarouselSwiper';
+import { CarouselDTO } from '@/types/home/home.type';
 
 export interface CarouselProps {
   carouselList: CarouselDTO[];

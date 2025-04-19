@@ -1,6 +1,6 @@
-import { mockReviewAllRating } from '@/src/data/mockReviewAllRating';
-import Rating from '@/components/@shared/rating/Rating';
+import { mockReviewAllRating } from '@/data/mockReviewAllRating';
 import ProgressBar from '@/components/@shared/progressBar/ProgressBar';
+import Rating from '@/components/@shared/rating/Rating';
 
 export default function RoomDetailAllRating() {
   const rating = mockReviewAllRating;

@@ -3,6 +3,8 @@ export interface ParticipantDTO {
   get: {
     image: string;
     nickname: string;
+    gender: string;
+    email: string;
     updateAt: string;
     createdAt: string;
     comment: string;

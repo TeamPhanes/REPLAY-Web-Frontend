@@ -1,7 +1,7 @@
-import { mockReviews } from '@/src/data/mockReviews';
-import SortContainer from '@/src/components/@shared/layout/SortContainer';
-import CountListValue from '@/src/components/@shared/cardList/CountListValue';
-import SortDropdown from '@/src/components/@shared/cardList/SortDropdown';
+import { mockReviews } from '@/data/mockReviews';
+import CountListValue from '@/components/@shared/cardList/CountListValue';
+import SortDropdown from '@/components/@shared/cardList/SortDropdown';
+import SortContainer from '@/components/@shared/layout/SortContainer';
 import ReviewCard from '@/components/review/ReviewCard';
 
 interface RoomDetailReviewsProps {

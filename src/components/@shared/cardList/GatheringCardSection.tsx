@@ -1,4 +1,4 @@
-import { mockGatherings, mockLikedGatherings } from '@/src/data/mockGatherings';
+import { mockGatherings, mockLikedGatherings } from '@/data/mockGatherings';
 import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
 
 interface GatheringCardSectionProps {

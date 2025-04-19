@@ -1,4 +1,4 @@
-import { ReviewDTO } from '../types/review/review.type';
+import { ReviewDTO } from '@/types/review/review.type';
 
 export const mockReviews: ReviewDTO['get'][] = [
   {

@@ -1,8 +1,8 @@
+import { MutableRefObject } from 'react';
 import Image from 'next/image';
+import { SwiperClass } from 'swiper/react';
 import ChevronLeft from '@/public/icons/home/chevron_left.svg';
 import ChevronRight from '@/public/icons/home/chevron_right.svg';
-import { MutableRefObject } from 'react';
-import { SwiperClass } from 'swiper/react';
 
 interface CarouselButtonProps {
   buttonSize: number;

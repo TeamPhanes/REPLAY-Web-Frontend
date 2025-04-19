@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { mapNavList } from '@/src/constants/filter/mapNavList';
 import Image from 'next/image';
+import Link from 'next/link';
+import { mapNavList } from '@/constants/filter/mapNavList';
 import MapIcon from '@/public/icons/filter/map.svg';
 
 interface MapNavigationProps {

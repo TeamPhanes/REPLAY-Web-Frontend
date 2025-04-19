@@ -1,4 +1,4 @@
-import { CarouselDTO } from '@/src/types/home/home.type';
+import { CarouselDTO } from '@/types/home/home.type';
 
 export const popularList: CarouselDTO[] = [
   {

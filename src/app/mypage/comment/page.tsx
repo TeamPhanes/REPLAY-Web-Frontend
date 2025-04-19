@@ -1,13 +1,12 @@
 'use client';
 
-import MyPageContainer from '@/src/components/@shared/layout/MyPageContainer';
-import CommentCardSection from '@/src/components/myPage/comment/CommentCardSection';
-import CommentTitleContainer from '@/src/components/myPage/comment/CommentTitleContainer';
-import OrderChanger from '@/src/components/myPage/comment/OrderChanger';
-import MyPageNav from '@/src/components/myPage/home/MyPageNav';
-import { commentTypeList } from '@/src/constants/mypage/typeList';
-
 import { useState } from 'react';
+import MyPageContainer from '@/components/@shared/layout/MyPageContainer';
+import CommentCardSection from '@/components/myPage/comment/CommentCardSection';
+import CommentTitleContainer from '@/components/myPage/comment/CommentTitleContainer';
+import OrderChanger from '@/components/myPage/comment/OrderChanger';
+import MyPageNav from '@/components/myPage/home/MyPageNav';
+import { commentTypeList } from '@/constants/mypage/typeList';
 
 export default function MyCommentPage() {
   const [selectedType, setSelectedType] = useState('newestOrder');

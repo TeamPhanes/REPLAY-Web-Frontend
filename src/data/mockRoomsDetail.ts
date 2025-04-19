@@ -1,4 +1,4 @@
-import { RoomDetailDTO } from '../types/room/roomDetail.types';
+import { RoomDetailDTO } from '@/types/room/roomDetail.types';
 
 export const mockRoomsDetail: RoomDetailDTO['get'] = {
   themeId: 1,

@@ -1,14 +1,14 @@
-import {
-  GatheringDetailDTO,
-  GatheringDTO,
-} from '@/src/types/gathering/gathering.type';
 import Image from 'next/image';
-import HeartLine from '@/public/icons/cardList/heart_line.svg';
-import TagAndLink from '@/components/gatheringDetail/TagAndLink';
+import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
-import DateAndPrice from './DateAndPrice';
-import AddressAndLevel from '../@shared/cardList/AddressAndLevel';
-import Rating from '../@shared/rating/Rating';
+import Rating from '@/components/@shared/rating/Rating';
+import DateAndPrice from '@/components/gatheringDetail/DateAndPrice';
+import TagAndLink from '@/components/gatheringDetail/TagAndLink';
+import {
+  GatheringDTO,
+  GatheringDetailDTO,
+} from '@/types/gathering/gathering.type';
+import HeartLine from '@/public/icons/cardList/heart_line.svg';
 
 interface GatheringDetailCardProps {
   list: GatheringDTO['get'];

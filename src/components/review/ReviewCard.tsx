@@ -1,8 +1,8 @@
-import { ReviewDTO } from '@/src/types/review/review.type';
 import Rating from '@/components/@shared/rating/Rating';
-import ReviewUser from '@/components/review/ReviewUser';
-import ReviewLikeButton from '@/components/review/ReviewLikeButton';
 import ReviewContent from '@/components/review/ReviewContent';
+import ReviewLikeButton from '@/components/review/ReviewLikeButton';
+import ReviewUser from '@/components/review/ReviewUser';
+import { ReviewDTO } from '@/types/review/review.type';
 
 interface ReviewCardProps {
   data: ReviewDTO['get'][];
