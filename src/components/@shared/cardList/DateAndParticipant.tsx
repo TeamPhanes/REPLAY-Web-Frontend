@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import CalendarIcon from '@/public/icons/cardList/calendar_schedule.svg';
-import { yearMonthDayHourTime } from '@/src/utils/dateChange';
 import Rating from '@/components/@shared/rating/Rating';
+import { yearMonthDayHourTime } from '@/utils/dateChange';
+import CalendarIcon from '@/public/icons/cardList/calendar_schedule.svg';
 
 interface DateAndParticipantProps {
   registrationEnd: string;

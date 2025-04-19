@@ -1,11 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import userDefault from '@/public/icons/user/user_default.svg';
-import chevronDown from '@/public/icons/user/chevron_down.svg';
 import Image from 'next/image';
-import { mockUser } from '@/src/data/mockUser';
-import UserInfoDropdown from '../../homePage/dropdown/UserInfoDropdown';
+import { mockUser } from '@/data/mockUser';
+import UserInfoDropdown from '@/components/@shared/dropdown/UserInfoDropdown';
+import chevronDown from '@/public/icons/user/chevron_down.svg';
+import userDefault from '@/public/icons/user/user_default.svg';
 
 export default function UserInfo() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -40,7 +40,7 @@ export default function UserInfo() {
             alt="유저 정보 더보기"
             width={24}
             height={24}
-            className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : 'rotate-0'}`}
+            className={`transition-transform transform duration-300 ${isDropdownOpen ? 'rotate-180' : 'rotate-0'}`}
           />
         </button>
       </UserInfoDropdown>

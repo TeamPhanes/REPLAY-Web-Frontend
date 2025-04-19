@@ -1,5 +1,5 @@
-import { genreList } from '@/src/constants/filter/genreList';
 import Image from 'next/image';
+import { genreList } from '@/constants/filter/genreList';
 import BlackChevronDown from '@/public/icons/filter/black_chevron_down.svg';
 
 export default function GenreFilter() {

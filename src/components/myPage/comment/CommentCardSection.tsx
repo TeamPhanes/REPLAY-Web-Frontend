@@ -1,5 +1,5 @@
-import { mockMyComments } from '@/src/data/mockComments';
-import { HourTime, periodFullYearMonthDay } from '@/src/utils/dateChange';
+import { mockMyComments } from '@/data/mockComments';
+import { HourTime, periodFullYearMonthDay } from '@/utils/dateChange';
 
 export default function CommentCardSection() {
   return (

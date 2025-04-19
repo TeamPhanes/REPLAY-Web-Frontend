@@ -1,5 +1,5 @@
-import { CarouselDTO } from '@/src/types/home/home.type';
-import Carousel from '../@shared/carousel/Carousel';
+import Carousel from '@/components/@shared/carousel/Carousel';
+import { CarouselDTO } from '@/types/home/home.type';
 
 interface BottomCarouselProps {
   title: string;

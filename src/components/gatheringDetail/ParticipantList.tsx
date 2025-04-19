@@ -1,6 +1,6 @@
-import { mockParticipants } from '@/src/data/mockParticipants';
-import AchievementBadge from './AchievementBadge';
-import ParticipantUsers from './ParticipantUsers';
+import { mockParticipants } from '@/data/mockParticipants';
+import AchievementBadge from '@/components/gatheringDetail/AchievementBadge';
+import ParticipantUsers from '@/components/gatheringDetail/ParticipantUsers';
 
 export default function ParticipantList() {
   const list = mockParticipants;
@@ -8,11 +8,18 @@ export default function ParticipantList() {
 
   while (list.length < minLength) {
     list.push({
-      nickname: '',
       image: '',
-      updateAt: '',
+      updatedAt: '',
       createdAt: '',
+      nickname: '',
+      gender: '',
+      email: '',
       comment: '',
+      totalGatherings: 0,
+      totalMakeGatherings: 0,
+      totalRE: 0,
+      successCount: 0,
+      failCount: 0,
       representAchievement: [''],
     });
   }
@@ -24,17 +31,11 @@ export default function ParticipantList() {
           key={index}
           className={`relative flex h-[112px] w-[702px] items-center rounded-3xl p-4 ${user.nickname ? 'bg-card' : 'bg-spot'}`}
         >
-          <ParticipantUsers
-            userImage={user.image}
-            nickname={user.nickname}
-            leaderCheck={list[0].nickname}
-            updateAt={user.updateAt}
-            createdAt={user.createdAt}
-            comment={user.comment}
-          />
+          <ParticipantUsers list={user} leaderCheck={list[0].nickname} />
           <AchievementBadge
             nickname={user.nickname}
             achievement={user.representAchievement}
+            absoluteLayout="mt-9 bottom-5 right-5 gap-1"
           />
         </div>
       ))}

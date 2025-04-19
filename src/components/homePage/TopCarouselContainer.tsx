@@ -1,4 +1,4 @@
-import { homeTopCarouselList } from '@/src/data/home/homeTopCarouselList';
+import { homeTopCarouselList } from '@/data/home/homeTopCarouselList';
 import Carousel from '@/components/@shared/carousel/Carousel';
 
 export default function TopCarouselContainer() {

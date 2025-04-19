@@ -1,10 +1,10 @@
 import Image from 'next/image';
+import CardContentFont from '@/components/myPage/home/CardContentFont';
+import { UserDTO } from '@/types/user/user.types';
 import userDefault from '@/public/icons/user/user_default.svg';
-import CardContentFont from '@/src/components/myPage/home/CardContentFont';
-import { UserDTO } from '@/src/types/user/user.types';
 
 interface CardContentContainerProps {
-  user: UserDTO;
+  user: UserDTO['get'];
 }
 
 export default function CardContentContainer({
@@ -12,8 +12,8 @@ export default function CardContentContainer({
 }: CardContentContainerProps) {
   return (
     <div className="flex justify-between">
-      <div className="absolute left-0 top-[250px] h-[558px] w-full bg-white" />
-      <div className="absolute left-0 top-[786px] h-3 w-full bg-cardActive" />
+      <div className="absolute left-0 top-[230px] h-[558px] w-full bg-white" />
+      <div className="absolute left-0 top-[766px] h-3 w-full bg-cardActive" />
       <div className="z-10 ml-20 flex flex-col items-center">
         <p className="text-[32px]/[42px] font-semibold tracking-[0.2em]">
           PLAY CARD
@@ -24,11 +24,14 @@ export default function CardContentContainer({
           width={406}
           height={494}
           quality={100}
-          className="mt-12 h-[494px] w-[406px]"
+          className="mt-5 h-[494px] w-[406px]"
         />
-        <h2 className="mt-12 text-[32px]/[42px] font-semibold tracking-[-2.5%] text-basefont">
+        <h2 className="mt-10 text-[32px]/[42px] font-semibold tracking-[-2.5%] text-basefont">
           {user.nickname}
         </h2>
+        <p className="mt-2 text-base font-normal tracking-[-2.5%] text-grayFont">
+          {user.gender}
+        </p>
         <p className="mt-2 text-base font-normal tracking-[-2.5%] text-grayFont">
           {user.email}
         </p>

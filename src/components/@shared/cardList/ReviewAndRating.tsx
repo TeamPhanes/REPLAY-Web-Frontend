@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import ReviewMessage from '@/public/icons/cardList/review_message.svg';
 import Rating from '@/components/@shared/rating/Rating';
+import ReviewMessage from '@/public/icons/cardList/review_message.svg';
 
 interface ReviewAndRatingProps {
   reviewCount: number;

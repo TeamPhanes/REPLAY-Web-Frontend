@@ -1,8 +1,8 @@
-import { mockGatherings } from '@/src/data/mockGatherings';
 import Image from 'next/image';
-import ChevronGrayRight from '@/public/icons/detail/chevron_gray_right.svg';
 import Link from 'next/link';
+import { mockGatherings } from '@/data/mockGatherings';
 import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
+import ChevronGrayRight from '@/public/icons/detail/chevron_gray_right.svg';
 
 interface RoomDetailGatheringsProps {
   id: string | string[];

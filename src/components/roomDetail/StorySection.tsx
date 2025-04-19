@@ -1,13 +1,13 @@
-import { useModal } from '@/src/hooks/useModal';
-import StroyModal from './StoryModal';
-import StoryContainer from './StoryContainer';
+import StoryContainer from '@/components/roomDetail/StoryContainer';
+import StroyModal from '@/components/roomDetail/StoryModal';
+import { useOpen } from '@/hooks/useOpen';
 
 interface StorySectionProps {
   story: string;
 }
 
 export default function StorySection({ story }: StorySectionProps) {
-  const { isOpen, openModal, closeModal } = useModal();
+  const { isOpen, openModal, closeModal } = useOpen();
 
   return (
     <>

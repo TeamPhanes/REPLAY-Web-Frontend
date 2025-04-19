@@ -1,16 +1,16 @@
 'use client';
 
+import { ReactNode } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@radix-ui/react-dropdown-menu';
+import { navLoginDropdownList } from '@/constants/gnb/navLabelList';
 import userDefault from '@/public/icons/user/user_default.svg';
-import Link from 'next/link';
-import { ReactNode } from 'react';
-import { navLoginDropdownList } from '@/src/constants/gnb/navLabelList';
-import Image from 'next/image';
 
 interface UserInfoDropdownProps {
   children: ReactNode;

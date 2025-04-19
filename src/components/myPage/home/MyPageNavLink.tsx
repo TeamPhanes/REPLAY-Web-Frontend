@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { mypageNavList } from '@/src/constants/mypage/mypageNavList';
+import { mypageNavList } from '@/constants/mypage/mypageNavList';
 
 interface MyPageNavLinkProps {
   pathname: string;

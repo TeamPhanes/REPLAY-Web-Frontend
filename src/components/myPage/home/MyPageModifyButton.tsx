@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import WhitePencil from '@/public/icons/mypage/white_pencil.svg';
 import BlackPencil from '@/public/icons/mypage/black_pencil.svg';
+import WhitePencil from '@/public/icons/mypage/white_pencil.svg';
 
 export default function MyPageModifyButton() {
   return (

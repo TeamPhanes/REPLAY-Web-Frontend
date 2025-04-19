@@ -1,4 +1,4 @@
-import { koreaYearMonthDay, periodOfActivity } from '@/src/utils/dateChange';
+import { koreaYearMonthDay, periodOfActivity } from '@/utils/dateChange';
 
 interface CardContentFontProps {
   title: string;

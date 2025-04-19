@@ -1,5 +1,5 @@
-import { homeMiddleCarouselList } from '@/src/data/home/homeMiddleCarouselList';
-import Carousel from '@/src/components/@shared/carousel/Carousel';
+import { homeMiddleCarouselList } from '@/data/home/homeMiddleCarouselList';
+import Carousel from '@/components/@shared/carousel/Carousel';
 
 export default function MiddleCarouselContainer() {
   return (

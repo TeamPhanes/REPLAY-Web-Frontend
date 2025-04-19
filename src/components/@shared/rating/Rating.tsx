@@ -1,4 +1,4 @@
-import { ratingIcons } from '@/src/constants/rating/ratingIcons';
+import { ratingIcons } from '@/constants/rating/ratingIcons';
 
 interface RatingProps {
   rating: number;

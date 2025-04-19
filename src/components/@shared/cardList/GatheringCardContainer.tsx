@@ -1,12 +1,12 @@
-import { GatheringDTO } from '@/src/types/gathering/gathering.type';
 import Image from 'next/image';
-import HeartLine from '@/public/icons/cardList/heart_line.svg';
-import HeartFull from '@/public/icons/cardList/heart_full.svg';
-import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
-import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
+import Link from 'next/link';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import DateAndParticipant from '@/components/@shared/cardList/DateAndParticipant';
-import Link from 'next/link';
+import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
+import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
+import { GatheringDTO } from '@/types/gathering/gathering.type';
+import HeartFull from '@/public/icons/cardList/heart_full.svg';
+import HeartLine from '@/public/icons/cardList/heart_line.svg';
 
 interface GatheringCardContainerProps {
   data: GatheringDTO['get'][];

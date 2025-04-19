@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { periodYearMonthDayHourTime } from '@/src/utils/dateChange';
+import { periodYearMonthDayHourTime } from '@/utils/dateChange';
 import UserDefaultImg from '@/public/icons/user/user_default.svg';
 
 interface CommentCardProps {

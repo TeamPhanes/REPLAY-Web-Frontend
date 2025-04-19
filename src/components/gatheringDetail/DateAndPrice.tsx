@@ -1,6 +1,6 @@
 import Image from 'next/image';
+import { yearMonthDayHourTime } from '@/utils/dateChange';
 import CalendarIcon from '@/public/icons/cardList/calendar_schedule.svg';
-import { yearMonthDayHourTime } from '@/src/utils/dateChange';
 
 interface DateAndPriceProps {
   registrationEnd: string;

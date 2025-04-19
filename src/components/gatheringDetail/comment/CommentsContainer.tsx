@@ -1,7 +1,7 @@
-import { mockComments } from '@/src/data/mockComments';
-import CommentCard from './CommentCard';
-import CommentSortMenu from './CommentSortMenu';
-import CommentInput from './CommentInput';
+import { mockComments } from '@/data/mockComments';
+import CommentCard from '@/components/gatheringDetail/comment/CommentCard';
+import CommentInput from '@/components/gatheringDetail/comment/CommentInput';
+import CommentSortMenu from '@/components/gatheringDetail/comment/CommentSortMenu';
 
 interface CommentsContainerProps {
   leaderCheck: string;
