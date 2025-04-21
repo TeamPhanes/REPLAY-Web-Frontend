@@ -29,4 +29,4 @@ encrypt:
 	sops -e -i .env
 
 decrypt:
-	sops -d -i .env
+	sops -d -i .env.dev
