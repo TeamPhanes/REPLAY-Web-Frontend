@@ -13,7 +13,7 @@ export default function CardBottomDate({
 }: CardBottomDateProps) {
   return (
     <div
-      className={`${type === 'mypage' ? 'absolute bottom-12 left-[120px]' : 'absolute right-0 mt-[110px]'}`}
+      className={`${type === 'mypage' ? 'absolute bottom-14 left-[120px]' : 'absolute right-0 mt-[110px]'}`}
     >
       <div className="flex gap-6">
         <p
