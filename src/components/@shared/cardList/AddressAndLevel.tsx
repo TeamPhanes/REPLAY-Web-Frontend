@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CheckList from '@/components/@shared/cardList/CheckList';
 import AddressIcon from '@/public/icons/cardList/address_icon.svg';
 import LevelIcon from '@/public/icons/cardList/level_icon.svg';
 
@@ -20,29 +21,20 @@ export default function AddressAndLevel({
         </p>
       </div>
       <div className="flex items-center">
-        <div className="flex gap-1">
-          <Image src={LevelIcon} alt="난이도 아이콘" width={24} height={24} />
-          <p className="mr-2 truncate text-base font-normal tracking-[-2.5%] text-basefont">
-            난이도
-          </p>
-        </div>
-        <ul className="flex gap-2">
-          <li
-            className={`${level === '쉬움' ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
-          >
-            쉬움
-          </li>
-          <li
-            className={`${level === '보통' ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
-          >
-            보통
-          </li>
-          <li
-            className={`${level === '어려움' ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
-          >
-            어려움
-          </li>
-        </ul>
+        <Image
+          src={LevelIcon}
+          alt="난이도 아이콘"
+          width={24}
+          height={24}
+          className="mr-1"
+        />
+        <CheckList
+          title="난이도"
+          contentOne="쉬움"
+          contentTwo="보통"
+          contentThree="어려움"
+          check={level}
+        />
       </div>
     </>
   );
