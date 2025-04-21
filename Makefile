@@ -13,7 +13,7 @@ npm-install:
 npm-lint: npm-install
 	npm run lint
 
-npm-build: npm-install npm-lint
+npm-build: npm-lint
 	npm run build
 
 docker-build: decrypt
