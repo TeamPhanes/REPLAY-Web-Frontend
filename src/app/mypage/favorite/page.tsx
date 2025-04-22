@@ -1,33 +1,15 @@
-'use client';
-
-import { useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import GatheringCardSection from '@/components/@shared/cardList/GatheringCardSection';
-import RoomCardSection from '@/components/@shared/cardList/RoomCardSection';
+import { Suspense } from 'react';
 import MyPageContainer from '@/components/@shared/layout/MyPageContainer';
-import TypeChanger from '@/components/myPage/favorite/TypeChanger';
+import RenderingPage from '@/components/myPage/favorite/RenderingPage';
 import MyPageNav from '@/components/myPage/home/MyPageNav';
-import { favoriteTypeList } from '@/constants/mypage/typeList';
 
 export default function MyFavoritePage() {
-  const searchParams = useSearchParams();
-  const homeRoutingType =
-    searchParams.get('type') === 'gathering' ? 'gathering' : 'room';
-  const [selectedType, setSelectedType] = useState(homeRoutingType);
-
   return (
     <MyPageContainer>
       <MyPageNav />
-      <TypeChanger
-        options={favoriteTypeList}
-        selectedType={selectedType}
-        setSelectedType={setSelectedType}
-      />
-      {selectedType === 'room' ? (
-        <RoomCardSection type="mypage" />
-      ) : (
-        <GatheringCardSection type="mypage" />
-      )}
+      <Suspense fallback={<div>Loading...</div>}>
+        <RenderingPage />
+      </Suspense>
     </MyPageContainer>
   );
 }
