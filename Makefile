@@ -13,11 +13,8 @@ npm-install:
 npm-lint: npm-install
 	npm run lint
 
-npm-build: npm-install npm-lint
+npm-build: npm-lint
 	npm run build
-
-npm-run: next-build
-	npm run start
 
 docker-build: decrypt
 	docker build --network host -t ${IMAGE} .
@@ -26,7 +23,11 @@ docker-push: docker-build
 	docker push ${IMAGE}
 
 encrypt:
-	sops -e -i .env
+	sops -e -i .env.replay
+	sops -e -i .env.dev
+	sops -e -i .env.prod
 
 decrypt:
-	sops -d -i .env
+	sops -d -i .env.replay
+	sops -d -i .env.dev
+	sops -d -i .env.prod
