@@ -6,7 +6,7 @@
     "replay": "cross-env ENV_MODE=replay next dev",
     "dev": "cross-env ENV_MODE=dev next dev",
     "start": "cross-env ENV_MODE=prod next start",
-    "build": "next build",
+    "build": "cross-env ENV_MODE=dev next build",
     "lint": "next lint"
   },
   "dependencies": {
