@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import GatheringCardSection from '@/components/@shared/cardList/GatheringCardSection';
 import RoomCardSection from '@/components/@shared/cardList/RoomCardSection';
 import MyPageContainer from '@/components/@shared/layout/MyPageContainer';
@@ -9,7 +10,10 @@ import MyPageNav from '@/components/myPage/home/MyPageNav';
 import { favoriteTypeList } from '@/constants/mypage/typeList';
 
 export default function MyFavoritePage() {
-  const [selectedType, setSelectedType] = useState('room');
+  const searchParams = useSearchParams();
+  const homeRoutingType =
+    searchParams.get('type') === 'gathering' ? 'gathering' : 'room';
+  const [selectedType, setSelectedType] = useState(homeRoutingType);
 
   return (
     <MyPageContainer>
