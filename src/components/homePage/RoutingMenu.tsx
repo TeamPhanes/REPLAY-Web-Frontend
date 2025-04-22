@@ -1,7 +1,13 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import AddGatheringModal from '@/components/@shared/modal/AddGatheringModal';
+import { useOpen } from '@/hooks/useOpen';
 
 export default function RoutingMenu() {
+  const { isOpen, openModal, closeModal } = useOpen();
+
   return (
     <div className="flex w-[912px] flex-col">
       <div className="mt-16 flex justify-between">
@@ -76,7 +82,10 @@ export default function RoutingMenu() {
             />
           </div>
         </Link>
-        <div className="flex h-[248px] w-[219px] items-center justify-center rounded-[28px] bg-homeCard p-8 relative">
+        <div
+          className="flex h-[248px] w-[219px] items-center justify-center rounded-[28px] bg-homeCard p-8 relative cursor-pointer"
+          onClick={openModal}
+        >
           <h2 className="text-[40px]/[52px] font-bold tracking-[-2.5%] text-white">
             모임생성
           </h2>
@@ -88,6 +97,7 @@ export default function RoutingMenu() {
             className="w-[56px] h-[56px] absolute top-8"
           />
         </div>
+        <AddGatheringModal isOpen={isOpen} onClose={closeModal} />
       </div>
     </div>
   );
