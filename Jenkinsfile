@@ -6,6 +6,11 @@ pipeline {
         REGISTRY = "harbor.phanescloud.com"
     }
     stages {
+        stage('Sops Decrypt') {
+            steps {
+                sh 'make decrypt'
+            }
+        }
         stage('Lint & Build') {
             steps {
                 sh 'make npm-build'
