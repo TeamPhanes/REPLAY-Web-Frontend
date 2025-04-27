@@ -2,17 +2,21 @@
 
 import { useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import SocialLoginButton from '@/components/login/SocialLoginButton';
 import Logo from '@/public/images/Replay_Main_Logo.svg';
 
 export default function LoginPage() {
+  const router = useRouter();
+
   useEffect(() => {
-    if (window.opener) {
-      window.opener.postMessage({ success: true }, window.origin);
-      window.close();
+    const token = localStorage.getItem('accessToken');
+
+    if (token) {
+      router.push('/');
     }
-  }, []);
+  }, [router]);
 
   return (
     <PageContainer>
