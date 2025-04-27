@@ -16,7 +16,7 @@ npm-lint: npm-install
 npm-build: npm-lint
 	npm run build
 
-docker-build: decrypt
+docker-build:
 	docker build --network host -t ${IMAGE} .
 
 docker-push: docker-build
