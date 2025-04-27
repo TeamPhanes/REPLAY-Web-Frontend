@@ -23,7 +23,7 @@ export default function SocialLoginButton() {
                   'flex h-[66px] w-full items-center justify-center rounded-[18px]',
                   icon.color
                 )}
-                onClick={() => login(key as keyof typeof easyLoginIcons)}
+                onClick={() => login(key)}
               >
                 <Image
                   src={icon.value}
