@@ -10,7 +10,7 @@ export default function LoginPage() {
   useEffect(() => {
     if (window.opener) {
       window.opener.postMessage({ success: true }, window.origin);
-      window.close();
+      // window.close();
     }
   }, []);
 
