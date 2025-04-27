@@ -1,4 +1,12 @@
-export default function AddGatheringWrite() {
+interface AddGatheringWriteProps {
+  content: string;
+  contentChange: (value: string) => void;
+}
+
+export default function AddGatheringWrite({
+  content,
+  contentChange,
+}: AddGatheringWriteProps) {
   return (
     <div className="flex flex-col mt-8">
       <p className="font-medium text-2xl/[34px] tracking-[-2.5%] text-basefont">
@@ -10,6 +18,8 @@ export default function AddGatheringWrite() {
 모임에 대한 변동 가격을 써주면 모임 참여시 많은 도움이 되요.
 ex) 인당 18,000원, 인당 20,000원이 예상됩니다.`}
         className="rounded-[30px] border-[1px] border-spot bg-card w-full h-96 p-5 outline-none text-basefont resize-none mt-3"
+        value={content}
+        onChange={(e) => contentChange(e.target.value)}
       />
     </div>
   );
