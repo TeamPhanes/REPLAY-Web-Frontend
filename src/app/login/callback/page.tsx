@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 
