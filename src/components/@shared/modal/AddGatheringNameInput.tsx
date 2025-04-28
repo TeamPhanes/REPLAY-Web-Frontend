@@ -1,6 +1,14 @@
 import Image from 'next/image';
 
-export default function AddGatheringNameInput() {
+interface AddGatheringNameInputProps {
+  name: string;
+  nameChange: (value: string) => void;
+}
+
+export default function AddGatheringNameInput({
+  name,
+  nameChange,
+}: AddGatheringNameInputProps) {
   return (
     <div className="flex gap-2 border-b-[1px] border-tag items-center mt-[30px]">
       <Image
@@ -14,6 +22,8 @@ export default function AddGatheringNameInput() {
         type="text"
         placeholder="모임명을 입력해 주세요."
         className="w-full py-1 font-normal text-2xl/[34px] tracking-[-2.5%] text-basefont"
+        value={name}
+        onChange={(e) => nameChange(e.target.value)}
       />
     </div>
   );

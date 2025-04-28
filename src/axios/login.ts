@@ -1,0 +1,27 @@
+import { API_PATH } from '@/axios/path.config';
+
+export const GetLogin = async (social: string) => {
+  const popupWindow = window.open(
+    API_PATH.auth.signUp(social),
+    '_blank',
+    'width=1024,height=768'
+  );
+
+  if (!popupWindow) {
+    alert('팝업을 차단한 것 같습니다. 팝업을 허용해 주세요.'); // 추후 toast ui로 변경
+    return;
+  }
+
+  const handleMessage = (e: MessageEvent) => {
+    // if (e.origin !== 'https://repaly.phanescloud.com') return;
+    if (!e.data || e.data.type !== 'token') return;
+
+    const { type, accessToken } = e.data;
+    if (type === 'token' && accessToken) {
+      localStorage.setItem('accessToken', accessToken);
+      window.removeEventListener('message', handleMessage);
+      popupWindow.close();
+    }
+  };
+  window.addEventListener('message', handleMessage);
+};

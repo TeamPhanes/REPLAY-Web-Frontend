@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const envMode = process.env.ENV_MODE;
+const envMode = process.env.ENV_MODE || 'replay';
 const envFile = path.resolve(process.cwd(), `.env.${envMode}`);
 
 if (fs.existsSync(envFile)) {

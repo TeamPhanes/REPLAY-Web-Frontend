@@ -1,6 +1,16 @@
 import Image from 'next/image';
 
-export default function AddGatheringValues() {
+interface AddGatheringValuesProps {
+  dateTime: string;
+  capacity: number;
+  price: number;
+}
+
+export default function AddGatheringValues({
+  dateTime,
+  capacity,
+  price,
+}: AddGatheringValuesProps) {
   return (
     <div className="flex justify-between mt-8">
       <div className="flex flex-col">
@@ -8,7 +18,7 @@ export default function AddGatheringValues() {
           모임 일정
         </p>
         <div className="rounded-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont mt-3">
-          2025-04-15 13:00
+          {dateTime}
         </div>
       </div>
       <div className="flex flex-col">
@@ -17,7 +27,7 @@ export default function AddGatheringValues() {
         </p>
         <div className="rounded-full bg-card py-2 px-4 mt-3 flex items-center justify-center gap-1">
           <p className="font-normal text-xl tracking-[-2.5%] text-basefont">
-            00
+            {String(capacity).padStart(2, '0')}
           </p>
           <Image
             src="/icons/modal/black_chevron_down.svg"
@@ -46,7 +56,7 @@ export default function AddGatheringValues() {
             />
           </div>
           <div className="rounded-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont mt-3">
-            24,000원
+            {price.toLocaleString()}원
           </div>
         </div>
       </div>

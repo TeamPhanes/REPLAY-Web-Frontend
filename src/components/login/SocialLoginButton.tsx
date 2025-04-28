@@ -1,12 +1,10 @@
 import Image from 'next/image';
 import classNames from 'classnames';
+import { GetLogin } from '@/axios/login';
 import ButtonContainer from '@/components/login/ButtonContainer';
 import { easyLoginIcons } from '@/constants/login/easyLoginIcons';
-import { useSocialLogin } from '@/hooks/useSocialLogin';
 
 export default function SocialLoginButton() {
-  const { login } = useSocialLogin();
-
   return (
     <ButtonContainer>
       <p className="font-bold text-2xl/[34px] tracking-[-2.5%] text-basefont">
@@ -23,7 +21,7 @@ export default function SocialLoginButton() {
                   'flex h-[66px] w-full items-center justify-center rounded-[18px]',
                   icon.color
                 )}
-                onClick={() => login(key as keyof typeof easyLoginIcons)}
+                onClick={() => GetLogin(key)}
               >
                 <Image
                   src={icon.value}
