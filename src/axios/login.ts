@@ -12,22 +12,15 @@ export const GetLogin = async (social: string) => {
     return;
   }
 
-  try {
-    window.addEventListener('message', (e) => {
-      if (e.origin !== window.location.origin) return;
-      if (e.data.type === 'token' && e.data.accessToken) {
-        localStorage.setItem('accessToken', e.data.accessToken);
-        window.opener.postMessage({ success: true }, window.origin);
-        popupWindow.close();
-      }
-    });
-  } catch (error) {
-    if (popupWindow) {
-      popupWindow.postMessage(
-        { success: false, message: `Authorization 요청 실패: ${error}` },
-        window.origin
-      );
+  const handleMessage = (e: MessageEvent) => {
+    if (e.origin !== window.location.origin) return;
+
+    const { type, accessToken } = e.data;
+    if (type === 'token' && accessToken) {
+      localStorage.setItem('accessToken', accessToken);
+      window.removeEventListener('message', handleMessage);
       popupWindow.close();
     }
-  }
+  };
+  window.addEventListener('message', handleMessage);
 };
