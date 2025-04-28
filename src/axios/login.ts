@@ -13,7 +13,8 @@ export const GetLogin = async (social: string) => {
   }
 
   const handleMessage = (e: MessageEvent) => {
-    if (e.origin !== window.location.origin) return;
+    // if (e.origin !== 'https://repaly.phanescloud.com') return;
+    if (!e.data || e.data.type !== 'token') return;
 
     const { type, accessToken } = e.data;
     if (type === 'token' && accessToken) {
