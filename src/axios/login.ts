@@ -20,7 +20,9 @@ export const GetLogin = async (social: string) => {
     if (type === 'token' && accessToken) {
       localStorage.setItem('accessToken', accessToken);
       window.removeEventListener('message', handleMessage);
-      popupWindow.close();
+      window.location.href = '/';
+    } else {
+      alert('로그인 진행 중 오류가 있습니다.');
     }
   };
   window.addEventListener('message', handleMessage);
