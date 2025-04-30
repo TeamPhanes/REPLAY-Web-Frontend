@@ -44,13 +44,13 @@ export default function CardContentContainer({
           <CardContentFont title="활동 기간" content={user.createdAt} />
           <CardContentFont
             title="내가 만든 모임"
-            content={user.totalMakeGatherings}
+            content={user.totalMakeGathering}
           />
           <CardContentFont
             title="내가 참여한 모임"
-            content={user.totalGatherings}
+            content={user.totalGathering}
           />
-          <CardContentFont title="플레이한 방탈출" content={user.totalRE} />
+          <CardContentFont title="플레이한 방탈출" content={user.totalTheme} />
           <CardContentFont title="성공한 방탈출" content={user.successCount} />
           <CardContentFont title="실패한 방탈출" content={user.failCount} />
         </div>

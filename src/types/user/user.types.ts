@@ -12,7 +12,8 @@ export interface UserDTO {
     successCount: number;
     totalGathering: number;
     totalMakeGathering: number;
-    totalRoomEscape: number;
+    totalTheme: number;
     updatedAt: string;
+    representAchievement: string[];
   };
 }
