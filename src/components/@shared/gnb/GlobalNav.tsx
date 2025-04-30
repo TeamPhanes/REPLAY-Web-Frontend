@@ -2,14 +2,14 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useUserStore } from '@/store/userStore';
 import MainBlueButton from '@/components/@shared/button/MainBlueButton';
 import UserInfo from '@/components/@shared/gnb/UserInfo';
 import { navLabelList } from '@/constants/gnb/navLabelList';
+import { useUserInfo } from '@/hooks/useUserInfo';
 import ReplayMainLogo from '@/public/images/Replay_Main_Logo.svg';
 
 export default function GlobalNav() {
-  const userInfo = useUserStore((state) => state.userInfo);
+  const { userInfo } = useUserInfo();
 
   return (
     <div className="h-[100px] w-full shadow-md">
@@ -34,12 +34,12 @@ export default function GlobalNav() {
               </Link>
             );
           })}
-          {userInfo === null ? (
+          {userInfo ? (
+            <UserInfo user={userInfo} />
+          ) : (
             <Link href="/login">
               <MainBlueButton className="w-32">로그인</MainBlueButton>
             </Link>
-          ) : (
-            <UserInfo user={userInfo} />
           )}
         </div>
       </div>
