@@ -2,12 +2,16 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { mockUser } from '@/data/mockUser';
 import UserInfoDropdown from '@/components/@shared/dropdown/UserInfoDropdown';
+import { UserDTO } from '@/types/user/user.types';
 import chevronDown from '@/public/icons/user/chevron_down.svg';
 import userDefault from '@/public/icons/user/user_default.svg';
 
-export default function UserInfo() {
+interface UserInfoProps {
+  user: UserDTO['get'];
+}
+
+export default function UserInfo({ user }: UserInfoProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
@@ -15,18 +19,18 @@ export default function UserInfo() {
   return (
     <div className="flex items-center justify-center gap-1">
       <Image
-        src={mockUser.image || userDefault}
+        src={user.image || userDefault}
         alt="유저 프로필 이미지"
         width={32}
         height={32}
         className="h-8 w-8 rounded-full border-2 border-mainBlue shadow-md"
       />
       <p className="text-xl font-semibold tracking-[-2.5%]">
-        {mockUser.nickname} 님
+        {user.nickname} 님
       </p>
       <UserInfoDropdown
-        userImage={mockUser.image}
-        nickname={mockUser.nickname}
+        userImage={user.image}
+        nickname={user.nickname}
         isOpen={isDropdownOpen}
         onOpenChange={setIsDropdownOpen}
       >

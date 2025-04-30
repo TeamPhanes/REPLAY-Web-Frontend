@@ -1,10 +1,16 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import MainBlueButton from '@/components/@shared/button/MainBlueButton';
 import UserInfo from '@/components/@shared/gnb/UserInfo';
+import { useUserStore } from '@/components/store/userStore';
 import { navLabelList } from '@/constants/gnb/navLabelList';
 import ReplayMainLogo from '@/public/images/Replay_Main_Logo.svg';
 
 export default function GlobalNav() {
+  const userInfo = useUserStore((state) => state.userInfo);
+
   return (
     <div className="h-[100px] w-full shadow-md">
       <div className="mx-auto flex h-full w-xl justify-between">
@@ -28,7 +34,13 @@ export default function GlobalNav() {
               </Link>
             );
           })}
-          <UserInfo />
+          {userInfo === null ? (
+            <Link href="/login">
+              <MainBlueButton className="w-32">로그인</MainBlueButton>
+            </Link>
+          ) : (
+            <UserInfo user={userInfo} />
+          )}
         </div>
       </div>
     </div>
