@@ -1,17 +1,18 @@
 export interface UserDTO {
   get: {
-    image: string;
-    updatedAt: string;
-    createdAt: string;
-    nickname: string;
-    gender: string;
-    email: string;
     comment: string;
-    totalGatherings: number;
-    totalMakeGatherings: number;
-    totalRE: number;
-    successCount: number;
+    createdAt: string;
+    email: string;
+    emailMark: boolean;
     failCount: number;
-    representAchievement: string[];
+    gender: string | null;
+    genderMark: boolean;
+    image: string;
+    nickname: string;
+    successCount: number;
+    totalGathering: number;
+    totalMakeGathering: number;
+    totalRoomEscape: number;
+    updatedAt: string;
   };
 }

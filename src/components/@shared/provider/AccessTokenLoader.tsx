@@ -19,7 +19,7 @@ export default function AccessTokenLoader() {
 
   const { data } = useQuery({
     queryKey: ['userInfo'],
-    queryFn: GetUser,
+    queryFn: () => GetUser(accessToken!),
     enabled: !!accessToken,
     retry: false,
     staleTime: 1000 * 60 * 5,
