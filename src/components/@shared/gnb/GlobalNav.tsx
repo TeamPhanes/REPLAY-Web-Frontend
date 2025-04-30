@@ -2,9 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useUserStore } from '@/store/userStore';
 import MainBlueButton from '@/components/@shared/button/MainBlueButton';
 import UserInfo from '@/components/@shared/gnb/UserInfo';
-import { useUserStore } from '@/components/store/userStore';
 import { navLabelList } from '@/constants/gnb/navLabelList';
 import ReplayMainLogo from '@/public/images/Replay_Main_Logo.svg';
 

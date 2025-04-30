@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useUserStore } from '@/store/userStore';
 import { useQuery } from '@tanstack/react-query';
 import { GetUser } from '@/axios/user';
-import { useUserStore } from '@/components/store/userStore';
 
 export default function AccessTokenLoader() {
   const setAccessToken = useUserStore((state) => state.setAccessToken);

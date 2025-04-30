@@ -1,6 +1,6 @@
+import { useUserStore } from '@/store/userStore';
 import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
-import { useUserStore } from '@/components/store/userStore';
 
 export const GetUser = async () => {
   const accessToken = useUserStore((state) => state.accessToken);
