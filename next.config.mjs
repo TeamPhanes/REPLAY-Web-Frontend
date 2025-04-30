@@ -36,6 +36,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'i.namu.wiki',
       },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
     ],
   },
   env: publicEnv,
