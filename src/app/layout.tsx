@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import GlobalNav from '@/components/@shared/gnb/GlobalNav';
+import AccessTokenLoader from '@/components/@shared/provider/AccessTokenLoader';
+import QueryProvider from '@/components/@shared/provider/QueryProvider';
 
 export const metadata: Metadata = {
   title: 'RE:PLAY',
@@ -25,7 +27,10 @@ export default function RootLayout({
       </head>
       <body>
         <GlobalNav />
-        {children}
+        <QueryProvider>
+          <AccessTokenLoader />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );

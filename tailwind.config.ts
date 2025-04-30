@@ -12,6 +12,7 @@ const config: Config = {
       colors: {
         brand: '#1E1E1E',
         mainBlue: '#2227F7',
+        mainBlueHover: '#060AAC',
         basefont: '#111111',
         grayFont: '#767676',
         homeFont: '#DCDCDC',

@@ -6,20 +6,20 @@ interface ModalProps {
   children: ReactNode;
   isOpen: boolean;
   onClose: () => void;
-  customDimStyle?: string;
+  className?: string;
 }
 
 /**
  * 공통 Modal 컴포넌트
  * @param isOpen 모달이 열린 상태 (true), 닫힌 상태 (false)를 가지는 boolean state
  * @param onClose 모달의 닫는 기능을 실행하는 함수
- * @param customDimStyle padding 등의 스타일을 커스텀 하는 tailwind css classname
+ * @param className padding 등의 스타일을 커스텀 하는 tailwind css classname
  */
 export default function Modal({
   children,
   isOpen,
   onClose,
-  customDimStyle,
+  className,
 }: ModalProps) {
   const modalContentRef = useRef<HTMLDivElement>(null);
 
@@ -87,7 +87,7 @@ export default function Modal({
     scrollbar-hide fixed left-1/2 top-1/2 z-50 
     max-h-[calc(100vh-40px)] -translate-x-1/2 
     -translate-y-1/2 overflow-auto transform animate-modalIn 
-    ${customDimStyle}
+    ${className}
   `}
       >
         {children}

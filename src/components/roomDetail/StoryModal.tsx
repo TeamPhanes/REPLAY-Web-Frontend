@@ -15,7 +15,7 @@ export default function StroyModal({
     <Modal
       isOpen={isOpen}
       onClose={closeModal}
-      customDimStyle="bg-card rounded-[30px]"
+      className="bg-card rounded-[30px]"
     >
       <div className="m-5 w-[655px]">
         <div className="relative my-6 flex items-center justify-center">
