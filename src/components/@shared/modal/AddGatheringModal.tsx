@@ -41,7 +41,7 @@ export default function AddGatheringModal({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      customDimStyle="bg-white rounded-[30px] py-10 px-[72px] w-[726px]"
+      className="bg-white rounded-[30px] py-10 px-[72px] w-[726px]"
     >
       <AddGatheringLocation />
       <SearchBar type="dark" />
