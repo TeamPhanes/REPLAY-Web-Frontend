@@ -1,10 +1,7 @@
-import { useUserStore } from '@/store/userStore';
 import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
 
-export const GetUser = async () => {
-  const accessToken = useUserStore((state) => state.accessToken);
-
+export const GetUser = async (accessToken: string) => {
   if (!accessToken) {
     throw new Error('accessToken이 없습니다.');
   }

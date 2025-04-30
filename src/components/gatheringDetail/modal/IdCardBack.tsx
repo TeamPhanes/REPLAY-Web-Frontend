@@ -14,9 +14,9 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
     comment,
     createdAt,
     updatedAt,
-    totalMakeGatherings,
-    totalGatherings,
-    totalRE,
+    totalMakeGathering,
+    totalGathering,
+    totalTheme,
     successCount,
     failCount,
     nickname,
@@ -30,9 +30,9 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
       </p>
       <div className="mt-10 flex flex-col gap-6">
         <CardContentFont title="활동 기간" content={createdAt} />
-        <CardContentFont title="내가 만든 모임" content={totalMakeGatherings} />
-        <CardContentFont title="내가 참여한 모임" content={totalGatherings} />
-        <CardContentFont title="플레이한 방탈출" content={totalRE} />
+        <CardContentFont title="내가 만든 모임" content={totalMakeGathering} />
+        <CardContentFont title="내가 참여한 모임" content={totalGathering} />
+        <CardContentFont title="플레이한 방탈출" content={totalTheme} />
         <CardContentFont title="성공한 방탈출" content={successCount} />
         <CardContentFont title="실패한 방탈출" content={failCount} />
       </div>
