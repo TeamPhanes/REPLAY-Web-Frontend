@@ -26,9 +26,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <GlobalNav />
         <QueryProvider>
           <AccessTokenLoader />
+          <GlobalNav />
           {children}
         </QueryProvider>
       </body>
