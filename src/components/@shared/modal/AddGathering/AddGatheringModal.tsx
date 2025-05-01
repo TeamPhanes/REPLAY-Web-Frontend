@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import AddGatheringButton from '@/components/@shared/modal/AddGatheringButton';
-import AddGatheringLocation from '@/components/@shared/modal/AddGatheringLocation';
-import AddGatheringNameInput from '@/components/@shared/modal/AddGatheringNameInput';
-import AddGatheringRecruitmentPeriod from '@/components/@shared/modal/AddGatheringRecruitmentPeriod';
-import AddGatheringValues from '@/components/@shared/modal/AddGatheringValues';
-import AddGatheringWrite from '@/components/@shared/modal/AddGatheringWrite';
+import AddGatheringButton from '@/components/@shared/modal/AddGathering/AddGatheringButton';
+import AddGatheringCapacity from '@/components/@shared/modal/AddGathering/AddGatheringCapacity';
+import AddGatheringLocation from '@/components/@shared/modal/AddGathering/AddGatheringLocation';
+import AddGatheringNameInput from '@/components/@shared/modal/AddGathering/AddGatheringNameInput';
+import AddGatheringPrice from '@/components/@shared/modal/AddGathering/AddGatheringPrice';
+import AddGatheringRecruitmentPeriod from '@/components/@shared/modal/AddGathering/AddGatheringRecruitmentPeriod';
+import AddGatheringSchedule from '@/components/@shared/modal/AddGathering/AddGatheringSchedule';
+import AddGatheringWrite from '@/components/@shared/modal/AddGathering/AddGatheringWrite';
 import Modal from '@/components/@shared/modal/Modal';
 import SearchBar from '@/components/@shared/search/SearchBar';
 import { yearMonthDayHourTime } from '@/utils/dateChange';
@@ -26,7 +28,8 @@ export default function AddGatheringModal({
 
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
-  const [price, setPrice] = useState(24000);
+  const [priceType, setPriceType] = useState('인당');
+  const [price, setPrice] = useState(0);
   const [dateTime, setDateTime] = useState(
     yearMonthDayHourTime(String(tomorrow))
   );
@@ -50,11 +53,20 @@ export default function AddGatheringModal({
         registrationStart={registrationStart}
         registrationEnd={registrationEnd}
       />
-      <AddGatheringValues
-        dateTime={dateTime}
-        capacity={capacity}
-        price={price}
-      />
+      <div className="flex justify-between mt-8">
+        <AddGatheringSchedule dateTime={dateTime} />
+        <AddGatheringCapacity
+          capacity={capacity}
+          capacityChange={setCapacity}
+        />
+        <AddGatheringPrice
+          priceType={priceType}
+          priceTypeChange={setPriceType}
+          price={price}
+          priceChange={setPrice}
+        />
+      </div>
+
       <AddGatheringWrite content={content} contentChange={setContent} />
       <AddGatheringButton onClose={onClose} />
     </Modal>
