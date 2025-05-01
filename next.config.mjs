@@ -1,5 +1,4 @@
 import fs from 'fs';
-import { hostname } from 'os';
 import path from 'path';
 
 const envMode = process.env.ENV_MODE || 'replay';
