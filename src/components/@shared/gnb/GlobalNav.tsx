@@ -9,8 +9,14 @@ import { useUserInfo } from '@/hooks/useUserInfo';
 import ReplayMainLogo from '@/public/images/Replay_Main_Logo.svg';
 
 export default function GlobalNav() {
-  const { userInfo } = useUserInfo();
+  const { userInfo, isLoading } = useUserInfo();
 
+  if (isLoading)
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        loading...
+      </div>
+    );
   return (
     <div className="h-[100px] w-full shadow-md">
       <div className="mx-auto flex h-full w-xl justify-between">

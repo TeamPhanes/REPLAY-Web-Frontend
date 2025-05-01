@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { hostname } from 'os';
 import path from 'path';
 
 const envMode = process.env.ENV_MODE || 'replay';
@@ -39,6 +40,14 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'lh3.googleusercontent.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'k.kakaocdn.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'phinf.pstatic.net',
       },
     ],
   },
