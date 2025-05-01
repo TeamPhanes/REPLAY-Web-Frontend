@@ -2,7 +2,7 @@ import { UserDTO } from '@/types/user/user.types';
 
 export const mockUser: UserDTO['get'] = {
   image:
-    'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
+    'http://k.kakaocdn.net/dn/bOHz9A/btsGfxJohYQ/kq0p7J3z3DcGGRjYAIVKx1/img_110x110.jpg',
   updatedAt: '2025-04-07T15:00:00',
   createdAt: '2025-03-02T15:00:00',
   nickname: '종화',

@@ -1,22 +1,10 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import MainBlueButton from '@/components/@shared/button/MainBlueButton';
-import UserInfo from '@/components/@shared/gnb/UserInfo';
+import AuthSection from '@/components/@shared/gnb/AuthSection';
 import { navLabelList } from '@/constants/gnb/navLabelList';
-import { useUserInfo } from '@/hooks/useUserInfo';
 import ReplayMainLogo from '@/public/images/Replay_Main_Logo.svg';
 
 export default function GlobalNav() {
-  const { userInfo, isLoading } = useUserInfo();
-
-  if (isLoading)
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        loading...
-      </div>
-    );
   return (
     <div className="h-[100px] w-full shadow-md">
       <div className="mx-auto flex h-full w-xl justify-between">
@@ -41,13 +29,7 @@ export default function GlobalNav() {
               </Link>
             );
           })}
-          {userInfo ? (
-            <UserInfo user={userInfo} />
-          ) : (
-            <Link href="/login">
-              <MainBlueButton className="w-32">로그인</MainBlueButton>
-            </Link>
-          )}
+          <AuthSection />
         </div>
       </div>
     </div>

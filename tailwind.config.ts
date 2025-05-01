@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       colors: {
         brand: '#1E1E1E',
+        loading: '#333333',
         mainBlue: '#2227F7',
         mainBlueHover: '#060AAC',
         basefont: '#111111',
