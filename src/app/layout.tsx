@@ -7,6 +7,9 @@ import QueryProvider from '@/components/@shared/provider/QueryProvider';
 export const metadata: Metadata = {
   title: 'RE:PLAY',
   description: '방탈출 정보와 리뷰, 모임까지 한 번에 즐기는 놀이터',
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({

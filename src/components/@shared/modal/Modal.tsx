@@ -26,10 +26,15 @@ export default function Modal({
   // modalContent가 등록되었고 현재 클릭한 target이 modal 혹은 modal 내부의 element가 아닌 경우
   const handleClickOutside = useCallback(
     (e: MouseEvent) => {
-      if (
-        modalContentRef.current &&
-        !modalContentRef.current.contains(e.target as Node)
-      ) {
+      if (!modalContentRef.current) return;
+      const target = e.target as HTMLElement;
+
+      // 만약 클릭한 곳이 <html> 태그라면 무시 (Radix UI와 같은 라이브러리 때문)
+      if (target.tagName === 'HTML') {
+        return;
+      }
+
+      if (!modalContentRef.current.contains(target)) {
         onClose();
       }
     },

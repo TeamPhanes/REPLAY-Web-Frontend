@@ -21,6 +21,7 @@ export default function GlobalNav() {
             width={184}
             height={68}
             quality={100}
+            priority
           />
         </Link>
         <div className="flex items-center justify-center gap-6">

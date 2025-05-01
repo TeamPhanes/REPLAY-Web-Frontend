@@ -26,15 +26,16 @@ export default function CommentsContainer({
             type="comment"
           />
           {comment.reComments.map((reComment) => (
-            <CommentCard
-              key={reComment.reCommentsId}
-              leaderCheck={leaderCheck}
-              userImage={reComment.image}
-              userNickname={reComment.nickname}
-              content={reComment.content}
-              createdAt={reComment.createdAt}
-              type="reComment"
-            />
+            <div key={reComment.reCommentsId}>
+              <CommentCard
+                leaderCheck={leaderCheck}
+                userImage={reComment.image}
+                userNickname={reComment.nickname}
+                content={reComment.content}
+                createdAt={reComment.createdAt}
+                type="reComment"
+              />
+            </div>
           ))}
         </div>
       ))}

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import AddGatheringModal from '@/components/@shared/modal/AddGatheringModal';
+import AddGatheringModal from '@/components/@shared/modal/AddGathering/AddGatheringModal';
 import { useOpen } from '@/hooks/useOpen';
 
 export default function RoutingMenu() {

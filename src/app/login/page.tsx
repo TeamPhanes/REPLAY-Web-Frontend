@@ -27,7 +27,7 @@ export default function LoginPage() {
         height={206}
         quality={100}
         priority
-        className="absolute top-[88px] -translate-x-1/2 left-1/2"
+        className="absolute w-[565px] h-[206px] top-[88px] -translate-x-1/2 left-1/2"
       />
       <SocialLoginButton />
     </PageContainer>

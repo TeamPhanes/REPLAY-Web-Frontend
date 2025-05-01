@@ -3,7 +3,6 @@ import { periodYearMonthDayHourTime } from '@/utils/dateChange';
 import UserDefaultImg from '@/public/icons/user/user_default.svg';
 
 interface CommentCardProps {
-  key?: number;
   leaderCheck: string;
   userImage: string;
   userNickname: string;
@@ -13,7 +12,6 @@ interface CommentCardProps {
 }
 
 export default function CommentCard({
-  key,
   leaderCheck,
   userImage,
   userNickname,
@@ -26,7 +24,6 @@ export default function CommentCard({
       className={`${userNickname === leaderCheck ? 'bg-progressBar' : ''} border-b-[1px] border-spot pb-2 pt-5`}
     >
       <div
-        key={key}
         className={`flex gap-2 ${type === 'comment' ? 'pl-5' : 'pl-[60px]'}`}
       >
         <Image
