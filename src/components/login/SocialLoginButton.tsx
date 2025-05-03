@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import classNames from 'classnames';
-import { GetLogin } from '@/axios/login';
+import { GetLogin } from '@/axios/auth';
 import ButtonContainer from '@/components/login/ButtonContainer';
 import { easyLoginIcons } from '@/constants/login/easyLoginIcons';
 
