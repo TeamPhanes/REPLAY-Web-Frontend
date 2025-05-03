@@ -17,12 +17,10 @@ import { UserDTO } from '@/types/user/user.types';
 //   return res;
 // };
 
-export const GetUser = async (): Promise<UserDTO['get']> => {
+export const GetUser = async () => {
   try {
-    const res = await axiosInstance.get<{ data: UserDTO['get'] }>(
-      API_PATH.user.me
-    );
-    return res.data.data;
+    const res = await axiosInstance.get(API_PATH.user.me);
+    return res;
   } catch (error) {
     console.error(error);
     throw error;
