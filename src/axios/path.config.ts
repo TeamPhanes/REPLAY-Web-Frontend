@@ -6,6 +6,7 @@ export const API_PATH = {
     signUp(social: string | number) {
       return `${BASE_URL}/auth/${social}`;
     },
+    refresh: `${BASE_URL}/auth/refresh`,
   },
   gathering: {
     default: `${BASE_URL}/gathering`,
