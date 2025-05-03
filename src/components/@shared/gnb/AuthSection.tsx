@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import { mockUser } from '@/data/mockUser';
 import MainBlueButton from '@/components/@shared/button/MainBlueButton';
 import UserInfo from '@/components/@shared/gnb/UserInfo';
 import { useHasHydrated } from '@/hooks/useHasHydrated';
@@ -22,11 +21,8 @@ export default function AuthSection() {
   }
 
   return (
-    <>
-      <UserInfo user={mockUser} />
-      <Link href="/login">
-        <MainBlueButton className="w-32">로그인</MainBlueButton>
-      </Link>
-    </>
+    <Link href="/login">
+      <MainBlueButton className="w-32">로그인</MainBlueButton>
+    </Link>
   );
 }
