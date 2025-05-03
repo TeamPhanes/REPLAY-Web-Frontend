@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/store/authStore';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import SocialLoginButton from '@/components/login/SocialLoginButton';
 import Logo from '@/public/images/Replay_Main_Logo.svg';
@@ -11,7 +12,7 @@ export default function LoginPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('accessToken');
+    const token = useAuthStore.getState().accessToken;
 
     if (token) {
       router.push('/');
