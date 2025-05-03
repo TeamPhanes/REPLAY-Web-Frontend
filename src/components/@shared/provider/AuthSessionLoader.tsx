@@ -8,7 +8,6 @@ export default function AuthSessionLoader() {
   const refreshAccessToken = useAuthStore((state) => state.refreshAccessToken);
 
   useEffect(() => {
-    // const accessToken = localStorage.getItem('accessToken');
     const { accessToken } = useAuthStore.getState();
     if (accessToken) {
       setAccessToken(accessToken);
