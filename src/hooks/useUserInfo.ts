@@ -15,7 +15,7 @@ export const useUserInfo = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const userInfo = data;
+  const userInfo = data?.data;
 
   return { userInfo, isLoading, error };
 };
