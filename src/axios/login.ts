@@ -20,10 +20,8 @@ export const GetLogin = async (social: string) => {
     const { type, accessToken } = e.data;
 
     if (type === 'token' && accessToken) {
-      console.log('AccessToken received:', accessToken);
       // localStorage.setItem('accessToken', accessToken);
       useAuthStore.getState().setAccessToken(accessToken);
-      console.log('Zustand accessToken:', useAuthStore.getState().accessToken);
       window.removeEventListener('message', handleMessage);
       window.location.href = '/';
     } else {

@@ -16,13 +16,15 @@ export default function AuthSection() {
     );
   }
 
-  if (userInfo) {
-    return <UserInfo user={userInfo} />;
+  console.log(userInfo);
+
+  if (!userInfo) {
+    return (
+      <Link href="/login">
+        <MainBlueButton className="w-32">로그인</MainBlueButton>
+      </Link>
+    );
   }
 
-  return (
-    <Link href="/login">
-      <MainBlueButton className="w-32">로그인</MainBlueButton>
-    </Link>
-  );
+  return <UserInfo user={userInfo} />;
 }
