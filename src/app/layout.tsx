@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import GlobalNav from '@/components/@shared/gnb/GlobalNav';
-import AccessTokenLoader from '@/components/@shared/provider/AccessTokenLoader';
+import AuthSessionLoader from '@/components/@shared/provider/AuthSessionLoader';
 import QueryProvider from '@/components/@shared/provider/QueryProvider';
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default function RootLayout({
       </head>
       <body>
         <QueryProvider>
-          <AccessTokenLoader />
+          <AuthSessionLoader />
           <GlobalNav />
           {children}
         </QueryProvider>

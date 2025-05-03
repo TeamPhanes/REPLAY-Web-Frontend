@@ -1,3 +1,4 @@
+import { useAuthStore } from '@/store/authStore';
 import { API_PATH } from '@/axios/path.config';
 
 export const GetLogin = async (social: string) => {
@@ -17,8 +18,10 @@ export const GetLogin = async (social: string) => {
     if (!e.data || e.data.type !== 'token') return;
 
     const { type, accessToken } = e.data;
+
     if (type === 'token' && accessToken) {
-      localStorage.setItem('accessToken', accessToken);
+      // localStorage.setItem('accessToken', accessToken);
+      useAuthStore.getState().setAccessToken(accessToken);
       window.removeEventListener('message', handleMessage);
       window.location.href = '/';
     } else {

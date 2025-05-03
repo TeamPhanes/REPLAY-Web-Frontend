@@ -78,7 +78,7 @@
       "error",
       {
         "props": true,
-        "ignorePropertyModificationsFor": ["ref", "swiperRef"]
+        "ignorePropertyModificationsFor": ["ref", "swiperRef", "config"]
       }
     ]
   }
