@@ -17,12 +17,12 @@ import { UserDTO } from '@/types/user/user.types';
 //   return res;
 // };
 
-export const GetUser = async (): Promise<{ data: UserDTO['get'] }> => {
+export const GetUser = async (): Promise<UserDTO['get']> => {
   try {
     const res = await axiosInstance.get<{ data: UserDTO['get'] }>(
       API_PATH.user.me
     );
-    return res.data;
+    return res.data.data;
   } catch (error) {
     console.error(error);
     throw error;
