@@ -1,3 +1,4 @@
+import { axiosInstance } from '@/libs/axiosInstance';
 import { useAuthStore } from '@/store/authStore';
 import { API_PATH } from '@/axios/path.config';
 
@@ -14,13 +15,12 @@ export const GetLogin = async (social: string) => {
   }
 
   const handleMessage = (e: MessageEvent) => {
-    // if (e.origin !== 'https://repaly.phanescloud.com') return;
+    if (e.origin !== 'https://repaly.phanescloud.com') return;
     if (!e.data || e.data.type !== 'token') return;
 
     const { type, accessToken } = e.data;
 
     if (type === 'token' && accessToken) {
-      // localStorage.setItem('accessToken', accessToken);
       useAuthStore.getState().setAccessToken(accessToken);
       window.removeEventListener('message', handleMessage);
       window.location.href = '/';
@@ -29,4 +29,13 @@ export const GetLogin = async (social: string) => {
     }
   };
   window.addEventListener('message', handleMessage);
+};
+
+export const PostLogout = async () => {
+  try {
+    await axiosInstance.post(API_PATH.auth.logout);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };

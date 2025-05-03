@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@radix-ui/react-dropdown-menu';
 import { navLoginDropdownList } from '@/constants/gnb/navLabelList';
+import { useLogout } from '@/hooks/useLogout';
 import userDefault from '@/public/icons/user/user_default.svg';
 
 interface UserInfoDropdownProps {
@@ -27,6 +28,8 @@ export default function UserInfoDropdown({
   isOpen,
   onOpenChange,
 }: UserInfoDropdownProps) {
+  const { mutate: logout } = useLogout();
+
   return (
     <DropdownMenu open={isOpen} onOpenChange={onOpenChange}>
       <DropdownMenuTrigger asChild className="outline-none">
@@ -67,7 +70,7 @@ export default function UserInfoDropdown({
         ))}
 
         <DropdownMenuItem asChild className="outline-none">
-          <button type="button" className="p-[10px]">
+          <button type="button" className="p-[10px]" onClick={() => logout}>
             <p className="flex h-[54px] w-[194px] items-center justify-center rounded-full text-2xl/[34px] font-semibold tracking-[-2.5%] text-spot transition-colors duration-500 ease-in-out hover:bg-cardHover">
               로그아웃
             </p>

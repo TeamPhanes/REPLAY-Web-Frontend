@@ -7,6 +7,7 @@ export const API_PATH = {
       return `${BASE_URL}/auth/${social}`;
     },
     refresh: `${BASE_URL}/auth/refresh`,
+    logout: `${BASE_URL}/auth/logout`,
   },
   gathering: {
     default: `${BASE_URL}/gathering`,
