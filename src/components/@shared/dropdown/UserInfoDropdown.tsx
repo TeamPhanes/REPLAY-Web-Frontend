@@ -70,7 +70,7 @@ export default function UserInfoDropdown({
         ))}
 
         <DropdownMenuItem asChild className="outline-none">
-          <button type="button" className="p-[10px]" onClick={() => logout}>
+          <button type="button" className="p-[10px]" onClick={() => logout()}>
             <p className="flex h-[54px] w-[194px] items-center justify-center rounded-full text-2xl/[34px] font-semibold tracking-[-2.5%] text-spot transition-colors duration-500 ease-in-out hover:bg-cardHover">
               로그아웃
             </p>
