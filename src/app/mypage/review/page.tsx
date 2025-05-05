@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { mockRooms } from '@/data/mockRooms';
 import GatheringCardSection from '@/components/@shared/cardList/GatheringCardSection';
-import RoomCardSection from '@/components/@shared/cardList/RoomCardSection';
+import RoomCardContainer from '@/components/@shared/cardList/RoomCardContainer';
 import MyPageContainer from '@/components/@shared/layout/MyPageContainer';
 import TypeChanger from '@/components/myPage/favorite/TypeChanger';
 import MyPageNav from '@/components/myPage/home/MyPageNav';
@@ -20,7 +21,7 @@ export default function MyReviewPage() {
         setSelectedType={setSelectedType}
       />
       {selectedType === 'room' ? (
-        <RoomCardSection type="mypage" review />
+        <RoomCardContainer data={mockRooms} reviewCheck />
       ) : (
         <GatheringCardSection type="mypage" review />
       )}

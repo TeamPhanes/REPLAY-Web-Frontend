@@ -1,5 +1,6 @@
+import { mockRooms } from '@/data/mockRooms';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
-import RoomCardSection from '@/components/@shared/cardList/RoomCardSection';
+import RoomCardContainer from '@/components/@shared/cardList/RoomCardContainer';
 import SortDropdown from '@/components/@shared/cardList/SortDropdown';
 import GenreFilter from '@/components/@shared/filter/GenreFilter';
 import LocationFilter from '@/components/@shared/filter/LocationFilter';
@@ -22,7 +23,7 @@ export default function RoomPage() {
         <CountListValue value={300} />
         <SortDropdown />
       </SortContainer>
-      <RoomCardSection />
+      <RoomCardContainer data={mockRooms} />
     </PageContainer>
   );
 }

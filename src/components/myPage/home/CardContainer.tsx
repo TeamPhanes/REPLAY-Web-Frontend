@@ -5,8 +5,8 @@ import AchievementBadge from '@/components/gatheringDetail/AchievementBadge';
 import CardBottomDate from '@/components/myPage/home/CardBottomDate';
 import CardContentContainer from '@/components/myPage/home/CardContentContainer';
 import MyPageModifyButton from '@/components/myPage/home/MyPageModifyButton';
+import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
 import { useHasHydrated } from '@/hooks/useHasHydrated';
-import { useUserInfo } from '@/hooks/useUserInfo';
 
 export default function CardContainer() {
   const hasHydrated = useHasHydrated();
