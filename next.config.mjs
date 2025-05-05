@@ -30,6 +30,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'minio-api.phanescloud.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'xdungeon.net',
       },
       {
