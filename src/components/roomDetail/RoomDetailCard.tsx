@@ -42,7 +42,11 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
           <TagAndPlaytime tag={list.genres} playtime={list.playtime} />
         </div>
         <div className="mt-3">
-          <TitleAndSpot themeName={list.themeName} spot={list.spot} />
+          <TitleAndSpot
+            themeName={list.themeName}
+            cafe={list.cafe}
+            spot={list.spot}
+          />
         </div>
         <div className="mt-7 flex flex-col gap-2">
           <ReviewAndRating
