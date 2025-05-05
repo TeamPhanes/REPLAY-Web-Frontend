@@ -9,6 +9,7 @@ export interface GatheringDTO {
     themeName: string;
     name: string;
     leader: string;
+    cafe: string;
     spot: string;
     dateTime: string;
     registrationEnd: string;

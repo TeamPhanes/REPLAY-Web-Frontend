@@ -6,6 +6,7 @@ export interface RoomDTO {
     genres: string[];
     playtime: number;
     themeName: string;
+    cafe: string;
     spot: string;
     reviewCount: number;
     rating: number;

@@ -52,6 +52,7 @@ export default function GatheringCardContainer({
                 />
                 <TitleAndSpot
                   themeName={gathering.name}
+                  cafe={gathering.cafe}
                   spot={gathering.spot}
                 />
               </div>

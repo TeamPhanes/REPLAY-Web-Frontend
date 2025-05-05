@@ -22,7 +22,7 @@ export default function RoomCardContainer({
   reviewCheck,
 }: RoomCardContainerProps) {
   return (
-    <>
+    <div className="mt-6 grid grid-cols-2 gap-5">
       {data.map((room) => (
         <div
           key={room.themeId}
@@ -52,13 +52,17 @@ export default function RoomCardContainer({
             width={212}
             height={212}
             quality={100}
-            className="rounded-3xl"
+            className="rounded-3xl w-[212px] h-[212px]"
           />
           <Link href={`/room/${room.themeId}`}>
             <div className="ml-5 flex h-[212px] w-[322px] flex-col justify-between">
               <div className="flex flex-col gap-3">
                 <TagAndPlaytime tag={room.genres} playtime={room.playtime} />
-                <TitleAndSpot themeName={room.themeName} spot={room.spot} />
+                <TitleAndSpot
+                  themeName={room.themeName}
+                  cafe={room.cafe}
+                  spot={room.spot}
+                />
               </div>
               <div className="flex flex-col gap-2">
                 <ReviewAndRating
@@ -102,6 +106,6 @@ export default function RoomCardContainer({
           ) : null}
         </div>
       ))}
-    </>
+    </div>
   );
 }

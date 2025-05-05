@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import MainBlueButton from '@/components/@shared/button/MainBlueButton';
 import UserInfo from '@/components/@shared/gnb/UserInfo';
+import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
 import { useHasHydrated } from '@/hooks/useHasHydrated';
-import { useUserInfo } from '@/hooks/useUserInfo';
 
 export default function AuthSection() {
   const hasHydrated = useHasHydrated();

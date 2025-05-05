@@ -10,3 +10,15 @@ export const GetUser = async () => {
     throw error;
   }
 };
+
+export const GetLikeTheme = async () => {
+  try {
+    const res = await axiosInstance.get(
+      `${API_PATH.user.likeTheme}?limit=10&offset=0`
+    );
+    return res;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};

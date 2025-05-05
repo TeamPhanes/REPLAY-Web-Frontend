@@ -7,7 +7,7 @@ export default function MyFavoritePage() {
   return (
     <MyPageContainer>
       <MyPageNav />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense>
         <RenderingPage />
       </Suspense>
     </MyPageContainer>

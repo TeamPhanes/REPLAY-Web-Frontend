@@ -36,7 +36,11 @@ export default function GatheringDetailCard({
           </button>
           <TagAndLink tag={list.genres} />
           <div className="mt-7 w-[395px]">
-            <TitleAndSpot themeName={list.name} spot={list.leader} />
+            <TitleAndSpot
+              themeName={list.name}
+              cafe={list.cafe}
+              spot={list.leader}
+            />
           </div>
           <div className="mt-9 flex w-[395px] flex-col gap-3">
             <DateAndPrice

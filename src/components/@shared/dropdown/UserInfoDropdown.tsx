@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@radix-ui/react-dropdown-menu';
 import { navLoginDropdownList } from '@/constants/gnb/navLabelList';
-import { useLogout } from '@/hooks/useLogout';
+import { useLogout } from '@/hooks/reactQuery/useLogout';
 import userDefault from '@/public/icons/user/user_default.svg';
 
 interface UserInfoDropdownProps {
