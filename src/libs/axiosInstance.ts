@@ -31,7 +31,7 @@ axiosInstance.interceptors.response.use(
 
         if (!success) {
           useAuthStore.getState().clearAccessToken();
-          window.location.href = '/login';
+          // window.location.href = '/login';
           return await Promise.reject(error);
         }
 
@@ -44,7 +44,7 @@ axiosInstance.interceptors.response.use(
       } catch (refreshError) {
         console.error('refresh 실패', refreshError);
         useAuthStore.getState().clearAccessToken();
-        window.location.href = '/login';
+        // window.location.href = '/login';
         return Promise.reject(refreshError);
       }
     }
