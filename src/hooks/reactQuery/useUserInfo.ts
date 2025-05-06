@@ -8,7 +8,7 @@ export const useUserInfo = () => {
   const { accessToken } = useAuthStore();
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ['userInfo'],
+    queryKey: ['userInfo', accessToken],
     queryFn: GetUser,
     enabled: !!accessToken && hasHydrated,
     retry: false,
