@@ -5,11 +5,11 @@ import { useHasHydrated } from '@/hooks/useHasHydrated';
 
 export const useUserInfo = () => {
   const hasHydrated = useHasHydrated();
-  const accessToken = useAuthStore((state) => state.accessToken);
+  const { accessToken } = useAuthStore();
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ['userInfo', accessToken],
-    queryFn: () => GetUser(),
+    queryKey: ['userInfo'],
+    queryFn: GetUser,
     enabled: !!accessToken && hasHydrated,
     retry: false,
     staleTime: 1000 * 60 * 5,
