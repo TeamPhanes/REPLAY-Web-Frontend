@@ -3,18 +3,20 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { API_PATH } from '@/axios/path.config';
 
-interface UserState {
+interface AuthState {
   accessToken: string | null;
+}
+
+interface AuthActions {
   setAccessToken: (token: string) => void;
   clearAccessToken: () => void;
   refreshAccessToken: () => Promise<boolean>;
 }
 
-export const useAuthStore = create<UserState>()(
+export const useAuthStore = create<AuthState & AuthActions>()(
   persist(
     (set) => ({
       accessToken: null,
-
       setAccessToken: (token) => set({ accessToken: token }),
       clearAccessToken: () => set({ accessToken: null }),
       refreshAccessToken: async () => {
@@ -28,8 +30,8 @@ export const useAuthStore = create<UserState>()(
           if (!authHeader)
             throw new Error('Authorization이 header에 없습니다.');
 
-          const newAccessToken = authHeader.replace('Bearer ', '');
-          set({ accessToken: newAccessToken });
+          const newToken = authHeader.replace('Bearer ', '');
+          set({ accessToken: newToken });
           return true;
         } catch (error) {
           console.error('자동 로그인 실패', error);
@@ -38,8 +40,6 @@ export const useAuthStore = create<UserState>()(
         }
       },
     }),
-    {
-      name: 'accessToken',
-    }
+    { name: 'accessToken' }
   )
 );
