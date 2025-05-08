@@ -40,7 +40,7 @@ export default function RoutingMenu() {
               사람들과 방탈출을 즐겨보세요!
             </p>
             <Image
-              src="/icons/home/home_gathering_button.webp"
+              src="/icons/home/home_gathering_button.svg"
               alt="모임 바로가기"
               width={96}
               height={96}
@@ -74,7 +74,7 @@ export default function RoutingMenu() {
               찜한모임
             </h2>
             <Image
-              src="/icons/home/home_likedGathering_button.webp"
+              src="/icons/home/home_likedGathering_button.svg"
               alt="모임 바로가기"
               width={56}
               height={56}
@@ -90,7 +90,7 @@ export default function RoutingMenu() {
             모임생성
           </h2>
           <Image
-            src="/icons/home/home_addGathering_button.webp"
+            src="/icons/home/home_addGathering_button.svg"
             alt="모임 바로가기"
             width={56}
             height={56}
