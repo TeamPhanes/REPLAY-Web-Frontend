@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import DateAndParticipant from '@/components/@shared/cardList/DateAndParticipant';
+import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
 import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import { GatheringDTO } from '@/types/gathering/gathering.type';
@@ -17,8 +18,13 @@ export default function GatheringCardContainer({
   data,
   reviewCheck,
 }: GatheringCardContainerProps) {
+  if (data.length === 0) {
+    return (
+      <EmptyArrayContainer type={reviewCheck ? '참여한' : '찜한'} kind="모임" />
+    );
+  }
   return (
-    <>
+    <div className="mt-6 grid grid-cols-2 gap-5">
       {data.map((gathering) => (
         <div
           key={gathering.gatheringId}
@@ -90,6 +96,6 @@ export default function GatheringCardContainer({
           ) : null}
         </div>
       ))}
-    </>
+    </div>
   );
 }

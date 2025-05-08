@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import GatheringCardSection from '@/components/@shared/cardList/GatheringCardSection';
+import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
 import RoomCardContainer from '@/components/@shared/cardList/RoomCardContainer';
 import Loading from '@/components/@shared/loading/Loading';
 import TypeChanger from '@/components/myPage/favorite/TypeChanger';
@@ -30,7 +30,7 @@ export default function RenderingPage() {
       {selectedType === 'room' ? (
         <RoomCardContainer data={userLikeTheme} />
       ) : (
-        <GatheringCardSection type="mypage" />
+        <GatheringCardContainer data={[]} />
       )}
     </>
   );
