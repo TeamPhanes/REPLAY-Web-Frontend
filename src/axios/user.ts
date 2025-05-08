@@ -23,3 +23,15 @@ export const GetLikeTheme = async () => {
     throw error;
   }
 };
+
+export const GetLikeGathering = async () => {
+  try {
+    const res = await axiosInstance.get(
+      `${API_PATH.user.likeGathering}?limit=10&offset=0`
+    );
+    return res;
+  } catch (error) {
+    toast.error(`찜한 모임 최신화 중 오류가 있습니다. : ${error}`);
+    throw error;
+  }
+};

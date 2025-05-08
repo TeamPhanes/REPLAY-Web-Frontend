@@ -36,17 +36,21 @@ export default function GatheringCardContainer({
             width={212}
             height={212}
             quality={100}
-            className="rounded-3xl"
+            className="rounded-3xl w-[212px] h-[212px]"
           />
 
           <div className="absolute right-5 flex flex-col">
             <button type="button">
-              <Image
-                src={gathering.isLiked ? HeartFull : HeartLine}
-                alt="heart"
-                width={32}
-                height={32}
-              />
+              {reviewCheck ? (
+                <Image
+                  src={gathering.isLiked ? HeartFull : HeartLine}
+                  alt="heart"
+                  width={32}
+                  height={32}
+                />
+              ) : (
+                <Image src={HeartFull} alt="heart" width={32} height={32} />
+              )}
             </button>
           </div>
           <Link href={`/gathering/${gathering.gatheringId}`}>

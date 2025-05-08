@@ -16,5 +16,6 @@ export const API_PATH = {
     default: `${BASE_URL}/user`,
     me: `${BASE_URL}/user/me`,
     likeTheme: `${BASE_URL}/user/me/theme/like`,
+    likeGathering: `${BASE_URL}/user/me/gathering/like`,
   },
 };

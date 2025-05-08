@@ -16,9 +16,7 @@ export default function GatheringDetailPage() {
   );
   if (!findDetailGathering) return <div>임시 오류처리</div>;
 
-  const leaderAnotherGathering = mockGatherings
-    .filter((gathering) => gathering.leader === findDetailGathering.leader)
-    .slice(0, 2);
+  const leaderAnotherGathering = mockGatherings.slice(0, 2);
   const dateTimeAntherGathering = mockGatherings
     .filter((gathering) => gathering.dateTime === findDetailGathering.dateTime)
     .slice(0, 2);
@@ -32,7 +30,7 @@ export default function GatheringDetailPage() {
       <ParticipantList />
       <CommentsContainer leaderCheck={mockGatheringsDetail.leader} />
       <AnotherGatherings
-        title={`${findDetailGathering.leader}님이 만든 모임`}
+        title={`${mockGatheringsDetail.leader}님이 만든 모임`}
         gatherings={leaderAnotherGathering}
       />
       <AnotherGatherings
