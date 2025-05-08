@@ -8,7 +8,6 @@ export interface GatheringDTO {
     themeId: number;
     themeName: string;
     name: string;
-    leader: string;
     cafe: string;
     spot: string;
     dateTime: string;
@@ -20,7 +19,27 @@ export interface GatheringDTO {
       image: string;
     }[];
     address: string;
-    isLiked?: boolean;
+    isLiked: boolean;
+    level: '쉬움' | '보통' | '어려움';
+  };
+}
+
+export interface GatheringLikedDTO {
+  get: {
+    gatheringId: number;
+    name: string;
+    address: string;
+    spot: string;
+    cafe: string;
+    dateTime: string;
+    registrationEnd: string;
+    themeId: number;
+    listImage: string;
+    themeName: string;
+    genres: string[];
+    playtime: number;
+    capacity: number;
+    participantCount: number;
     level: '쉬움' | '보통' | '어려움';
   };
 }

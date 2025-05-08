@@ -36,7 +36,7 @@ export default function GatheringCardContainer({
             width={212}
             height={212}
             quality={100}
-            className="rounded-3xl"
+            className="rounded-3xl w-[212px] h-[212px]"
           />
 
           <div className="absolute right-5 flex flex-col">
