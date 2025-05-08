@@ -6,13 +6,13 @@ import CardBottomDate from '@/components/myPage/home/CardBottomDate';
 import CardContentContainer from '@/components/myPage/home/CardContentContainer';
 import MyPageModifyButton from '@/components/myPage/home/MyPageModifyButton';
 import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
-import { useHasHydrated } from '@/hooks/useHasHydrated';
+import { useAuthGuard } from '@/hooks/useAuthGuard';
 
 export default function CardContainer() {
-  const hasHydrated = useHasHydrated();
   const { userInfo, isLoading } = useUserInfo();
+  const { isGuardLoading } = useAuthGuard(isLoading);
 
-  if (!hasHydrated || isLoading) return <Loading isLoading={isLoading} />;
+  if (isGuardLoading) return <Loading isLoading={isLoading} />;
 
   return (
     <div className="relative mt-5 h-[983px] w-full rounded-[30px] bg-cardActive p-10">
