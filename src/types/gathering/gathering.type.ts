@@ -19,7 +19,7 @@ export interface GatheringDTO {
       image: string;
     }[];
     address: string;
-    isLiked: boolean;
+    isLiked?: boolean;
     level: '쉬움' | '보통' | '어려움';
   };
 }
@@ -39,7 +39,7 @@ export interface GatheringLikedDTO {
     genres: string[];
     playtime: number;
     capacity: number;
-    participantCount: number;
+    participantCount?: number;
     level: '쉬움' | '보통' | '어려움';
   };
 }

@@ -39,7 +39,7 @@ export default function GatheringDetailCard({
             <TitleAndSpot
               themeName={list.name}
               cafe={list.cafe}
-              spot={list.leader}
+              spot={list.spot}
             />
           </div>
           <div className="mt-9 flex w-[395px] flex-col gap-3">
