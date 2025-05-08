@@ -1,5 +1,6 @@
+import { mockGatherings } from '@/data/mockGatherings';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
-import GatheringCardSection from '@/components/@shared/cardList/GatheringCardSection';
+import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
 import SortDropdown from '@/components/@shared/cardList/SortDropdown';
 import GenreFilter from '@/components/@shared/filter/GenreFilter';
 import LocationFilter from '@/components/@shared/filter/LocationFilter';
@@ -22,7 +23,7 @@ export default function GatheringPage() {
         <CountListValue value={300} />
         <SortDropdown />
       </SortContainer>
-      <GatheringCardSection />
+      <GatheringCardContainer data={mockGatherings} />
     </PageContainer>
   );
 }
