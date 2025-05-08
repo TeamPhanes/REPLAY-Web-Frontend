@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useAuthStore } from '@/store/authStore';
 import { useMutation } from '@tanstack/react-query';
 import { PostLogout } from '@/axios/auth';
@@ -11,7 +12,7 @@ export const useLogout = () => {
       clearAccessToken();
     },
     onError: (error) => {
-      console.error('로그아웃 실패', error); // 추후에 toast UI로 변경 예정
+      toast.error(`로그아웃 진행 중 오류가 있습니다. : ${error}`);
       clearAccessToken();
     },
   });

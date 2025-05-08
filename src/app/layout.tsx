@@ -1,3 +1,5 @@
+import { Slide, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import GlobalNav from '@/components/@shared/gnb/GlobalNav';
@@ -33,6 +35,16 @@ export default function RootLayout({
           <AuthSessionLoader />
           <GlobalNav />
           {children}
+          <ToastContainer
+            position="top-center"
+            closeOnClick={false}
+            pauseOnHover
+            draggable
+            autoClose={4000}
+            theme="dark"
+            transition={Slide}
+            hideProgressBar={false}
+          />
         </QueryProvider>
       </body>
     </html>

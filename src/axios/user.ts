@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { axiosInstance } from '@/libs/axiosInstance';
 import { API_PATH } from '@/axios/path.config';
 
@@ -6,7 +7,7 @@ export const GetUser = async () => {
     const res = await axiosInstance.get(API_PATH.user.me);
     return res;
   } catch (error) {
-    console.error(error);
+    toast.error(`유저정보 최신화 중 오류가 있습니다. : ${error}`);
     throw error;
   }
 };
@@ -18,7 +19,7 @@ export const GetLikeTheme = async () => {
     );
     return res;
   } catch (error) {
-    console.error(error);
+    toast.error(`찜한 방탈출 최신화 중 오류가 있습니다. : ${error}`);
     throw error;
   }
 };

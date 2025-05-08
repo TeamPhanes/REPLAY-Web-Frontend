@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { axiosInstance } from '@/libs/axiosInstance';
 import { useAuthStore } from '@/store/authStore';
 import { API_PATH } from '@/axios/path.config';
@@ -10,7 +11,7 @@ export const GetLogin = async (social: string) => {
   );
 
   if (!popupWindow) {
-    alert('팝업을 차단한 것 같습니다. 팝업을 허용해 주세요.'); // 추후 toast ui로 변경
+    toast.warn('팝업을 차단한 것 같습니다. 팝업을 허용해 주세요');
     return;
   }
 
@@ -25,7 +26,7 @@ export const GetLogin = async (social: string) => {
       window.removeEventListener('message', handleMessage);
       window.location.href = '/';
     } else {
-      alert('로그인 진행 중 오류가 있습니다.');
+      toast.error('로그인 진행 중 오류가 있습니다.');
     }
   };
   window.addEventListener('message', handleMessage);
@@ -35,7 +36,6 @@ export const PostLogout = async () => {
   try {
     await axiosInstance.post(API_PATH.auth.logout);
   } catch (error) {
-    console.error(error);
-    throw error;
+    toast.error(`로그아웃 진행 중 오류가 있습니다. : ${error}`);
   }
 };
