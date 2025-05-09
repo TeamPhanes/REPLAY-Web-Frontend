@@ -10,16 +10,6 @@
   body {
     @apply bg-brand text-white;
   }
-
-  input:focus {
-    outline: none;
-    border: none;
-  }
-
-  input:hover {
-    outline: none;
-    border: none;
-  }
 }
 
 @layer utilities {

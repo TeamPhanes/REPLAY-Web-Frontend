@@ -12,6 +12,31 @@ export const GetUser = async () => {
   }
 };
 
+interface PatchMyPageData {
+  nickname: string;
+  comment: string;
+  genderMark: boolean;
+  emailMark: boolean;
+  image?: File | null;
+}
+export const PatchMyPage = async (data: PatchMyPageData) => {
+  const formData = new FormData();
+  formData.append('nickname', data.nickname);
+  formData.append('comment', data.comment);
+  formData.append('genderMark', String(data.genderMark));
+  formData.append('emailMark', String(data.emailMark));
+
+  if (data.image) {
+    formData.append('image', data.image);
+  }
+
+  return axiosInstance.patch(API_PATH.user.me, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+};
+
 export const GetLikeTheme = async () => {
   try {
     const res = await axiosInstance.get(

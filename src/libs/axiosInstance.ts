@@ -46,7 +46,7 @@ axiosInstance.interceptors.response.use(
         return await axiosInstance(originalRequest);
       } catch (refreshError) {
         toast.error(`토큰 최신화 중 오류가 있습니다. : ${error}`);
-        useAuthStore.getState().clearAccessToken();
+        // useAuthStore.getState().clearAccessToken();
         // window.location.href = '/login';
         return Promise.reject(refreshError);
       }
