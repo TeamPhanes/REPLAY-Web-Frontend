@@ -14,6 +14,6 @@ export const reviewTypeList = [
 ];
 
 export const commentTypeList = [
-  { value: 'newestOrder', label: '최신순' },
-  { value: 'registrationOrder', label: '등록순' },
+  { value: 'new', label: '최신순' },
+  { value: 'create', label: '등록순' },
 ];

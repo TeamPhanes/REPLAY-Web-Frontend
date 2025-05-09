@@ -29,12 +29,16 @@ export default function CardContentContainer({
         <h2 className="mt-10 text-[32px]/[42px] font-semibold tracking-[-2.5%] text-basefont">
           {user.nickname}
         </h2>
-        <p className="mt-2 text-base font-normal tracking-[-2.5%] text-grayFont">
-          {user.gender}
-        </p>
-        <p className="mt-2 text-base font-normal tracking-[-2.5%] text-grayFont">
-          {user.email}
-        </p>
+        {user.genderMark ? (
+          <p className="mt-2 text-base font-normal tracking-[-2.5%] text-grayFont">
+            {user.gender}
+          </p>
+        ) : null}
+        {user.emailMark ? (
+          <p className="mt-2 text-base font-normal tracking-[-2.5%] text-grayFont">
+            {user.email}
+          </p>
+        ) : null}
       </div>
       <div className="z-10 ml-9">
         <p className="line-clamp-5 h-[186px] w-[576px] text-2xl/[34px] font-normal tracking-[-2.5%] text-white">
