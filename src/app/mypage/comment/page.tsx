@@ -9,7 +9,7 @@ import MyPageNav from '@/components/myPage/home/MyPageNav';
 import { commentTypeList } from '@/constants/mypage/typeList';
 
 export default function MyCommentPage() {
-  const [selectedType, setSelectedType] = useState('newestOrder');
+  const [selectedType, setSelectedType] = useState('new');
 
   return (
     <MyPageContainer>
@@ -20,7 +20,7 @@ export default function MyCommentPage() {
         selectedType={selectedType}
         setSelectedType={setSelectedType}
       />
-      <CommentCardSection />
+      <CommentCardSection type={selectedType} />
     </MyPageContainer>
   );
 }

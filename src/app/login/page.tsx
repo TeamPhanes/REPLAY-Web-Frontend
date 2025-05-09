@@ -21,16 +21,18 @@ export default function LoginPage() {
 
   return (
     <PageContainer>
-      <Image
-        src={Logo}
-        alt="서비스 로고"
-        width={565}
-        height={206}
-        quality={100}
-        priority
-        className="absolute w-[565px] h-[206px] top-[88px] -translate-x-1/2 left-1/2"
-      />
-      <SocialLoginButton />
+      <div className="flex flex-col justify-center items-center">
+        <Image
+          src={Logo}
+          alt="서비스 로고"
+          width={565}
+          height={206}
+          quality={100}
+          priority
+          className="w-[565px] h-[206px] mt-20"
+        />
+        <SocialLoginButton />
+      </div>
     </PageContainer>
   );
 }

@@ -35,3 +35,15 @@ export const GetLikeGathering = async () => {
     throw error;
   }
 };
+
+export const GetMyComment = async (type: string) => {
+  try {
+    const res = await axiosInstance.get(
+      `${API_PATH.user.myComment}?sortBy=${type}&limit=10&offset=0`
+    );
+    return res;
+  } catch (error) {
+    toast.error(`내가 쓴 댓글 최신화 중 오류가 있습니다. : ${error}`);
+    throw error;
+  }
+};
