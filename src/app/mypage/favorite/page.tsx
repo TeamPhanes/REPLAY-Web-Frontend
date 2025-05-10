@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import MyPageContainer from '@/components/@shared/layout/MyPageContainer';
-import RenderingPage from '@/components/myPage/favorite/RenderingPage';
+import FavoriteRenderingPage from '@/components/myPage/favorite/FavoriteRenderingPage';
 import MyPageNav from '@/components/myPage/home/MyPageNav';
 
 export default function MyFavoritePage() {
@@ -8,7 +8,7 @@ export default function MyFavoritePage() {
     <MyPageContainer>
       <MyPageNav />
       <Suspense>
-        <RenderingPage />
+        <FavoriteRenderingPage />
       </Suspense>
     </MyPageContainer>
   );

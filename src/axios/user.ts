@@ -61,6 +61,30 @@ export const GetLikeGathering = async () => {
   }
 };
 
+export const GetReviewTheme = async () => {
+  try {
+    const res = await axiosInstance.get(
+      `${API_PATH.user.reviewTheme}?limit=10&offset=0`
+    );
+    return res;
+  } catch (error) {
+    toast.error(`참여한 방탈출 최신화 중 오류가 있습니다. : ${error}`);
+    throw error;
+  }
+};
+
+export const GetReviewGathering = async () => {
+  try {
+    const res = await axiosInstance.get(
+      `${API_PATH.user.reviewGathering}?limit=10&offset=0`
+    );
+    return res;
+  } catch (error) {
+    toast.error(`참여한 모임 최신화 중 오류가 있습니다. : ${error}`);
+    throw error;
+  }
+};
+
 export const GetMyComment = async (type: string) => {
   try {
     const res = await axiosInstance.get(
