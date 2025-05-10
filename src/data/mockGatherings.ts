@@ -18,19 +18,19 @@ export const mockGatherings: GatheringDTO['get'][] = [
     registrationEnd: '2025-04-01T13:00:00',
     capacity: 6,
     participantCount: 3,
-    participatingUsers: [
+    participants: [
       {
-        nickname: '종화',
+        name: '종화',
         image:
           'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
       },
       {
-        nickname: '종화2',
+        name: '종화2',
         image:
           'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
       },
       {
-        nickname: '종화3',
+        name: '종화3',
         image:
           'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
       },
@@ -52,14 +52,14 @@ export const mockGatherings: GatheringDTO['get'][] = [
     registrationEnd: '2025-03-31T16:30:00',
     capacity: 4,
     participantCount: 2,
-    participatingUsers: [
+    participants: [
       {
-        nickname: '종화',
+        name: '종화',
         image:
           'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
       },
       {
-        nickname: '종화2',
+        name: '종화2',
         image:
           'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
       },
@@ -81,19 +81,19 @@ export const mockGatherings: GatheringDTO['get'][] = [
     registrationEnd: '2025-04-03T13:00:00',
     capacity: 6,
     participantCount: 3,
-    participatingUsers: [
+    participants: [
       {
-        nickname: '종화',
+        name: '종화',
         image:
           'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
       },
       {
-        nickname: '종화2',
+        name: '종화2',
         image:
           'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
       },
       {
-        nickname: '종화3',
+        name: '종화3',
         image:
           'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
       },
