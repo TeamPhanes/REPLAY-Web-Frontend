@@ -7,7 +7,7 @@ import ThemeLikedSection from '@/components/myPage/favorite/ThemeLikedSection';
 import TypeChanger from '@/components/myPage/favorite/TypeChanger';
 import { favoriteTypeList } from '@/constants/mypage/typeList';
 
-export default function RenderingPage() {
+export default function FavoriteRenderingPage() {
   const searchParams = useSearchParams();
   const homeRoutingType =
     searchParams.get('type') === 'gathering' ? 'gathering' : 'room';

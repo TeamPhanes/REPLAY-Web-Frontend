@@ -70,7 +70,11 @@ export default function GatheringCardContainer({
                 <DateAndParticipant
                   registrationEnd={gathering.registrationEnd}
                   capacity={gathering.capacity}
-                  participantCount={gathering.participantCount}
+                  participantCount={
+                    reviewCheck
+                      ? gathering.participants.length
+                      : gathering.participantCount
+                  }
                 />
                 <AddressAndLevel
                   address={gathering.address}
@@ -85,11 +89,11 @@ export default function GatheringCardContainer({
                 참여한 분들
               </p>
               <div className="flex gap-2">
-                {gathering.participatingUsers.map((user) => (
+                {gathering.participants.map((user) => (
                   <Image
-                    key={user.nickname}
+                    key={user.name}
                     src={user.image}
-                    alt={user.nickname}
+                    alt={user.name}
                     width={60}
                     height={60}
                     className="h-[60px] w-[60px] rounded-full border-2 border-mainBlue shadow-md"

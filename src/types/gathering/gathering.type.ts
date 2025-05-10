@@ -14,8 +14,8 @@ export interface GatheringDTO {
     registrationEnd: string;
     capacity: number;
     participantCount: number;
-    participatingUsers: {
-      nickname: string;
+    participants: {
+      name: string;
       image: string;
     }[];
     address: string;
@@ -41,6 +41,30 @@ export interface GatheringLikedDTO {
     capacity: number;
     participantCount?: number;
     level: '쉬움' | '보통' | '어려움';
+  };
+}
+
+export interface GatheringReviewDTO {
+  get: {
+    address: string;
+    cafe: string;
+    capacity: number;
+    dateTime: string;
+    gatheringId: number;
+    genres: string[];
+    level: '쉬움' | '보통' | '어려움';
+    listImage: string;
+    name: string;
+    participants: {
+      name: string;
+      image: string;
+    }[];
+    playtime: number;
+    registrationEnd: string;
+    spot: string;
+    themeId: number;
+    themeName: string;
+    userId: number;
   };
 }
 
