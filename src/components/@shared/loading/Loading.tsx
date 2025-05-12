@@ -7,11 +7,11 @@ interface LoadingProps {
 }
 
 export default function Loading({ isLoading }: LoadingProps) {
-  const currentImage = !isLoading ? LoadingGif : FinishLoading;
-  const message = !isLoading ? `열쇠를 찾는 중...` : '열쇠를 찾았습니다!';
+  const currentImage = isLoading ? LoadingGif : FinishLoading;
+  const message = isLoading ? `열쇠를 찾는 중...` : '열쇠를 찾았습니다!';
 
   return (
-    <div className="fixed inset-0 w-full h-full flex flex-col justify-center items-center">
+    <div className="fixed inset-0 w-full h-full flex flex-col justify-center items-center bg-brand">
       <Image
         src={currentImage}
         alt={message}
