@@ -4,8 +4,8 @@ import { useLikeGathering } from '@/hooks/reactQuery/useLikeGathering';
 import { useAuthGuard } from '@/hooks/useAuthGuard';
 
 export default function GatheringLikedSection() {
-  const { userLikeGathering, isLoading } = useLikeGathering();
-  const { isGuardLoading } = useAuthGuard(isLoading);
+  const { userLikeGathering, isLoading, showLoading } = useLikeGathering();
+  const { isGuardLoading } = useAuthGuard(showLoading);
 
   if (isGuardLoading) return <Loading isLoading={isLoading} />;
   return <GatheringCardContainer data={userLikeGathering} />;

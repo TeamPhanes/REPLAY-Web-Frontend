@@ -1,13 +1,12 @@
 // 리뷰 목록 조회 Response
 export interface ReviewDTO {
   get: {
-    themeId: number;
     user: {
-      nickname: string;
+      name: string;
       image: string;
     };
     content: string;
-    image: string[];
+    image: string;
     rating: number;
     success: boolean;
     themeReview: string;

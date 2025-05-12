@@ -9,8 +9,8 @@ import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
 import { useAuthGuard } from '@/hooks/useAuthGuard';
 
 export default function CardContainer() {
-  const { userInfo, isLoading } = useUserInfo();
-  const { isGuardLoading } = useAuthGuard(isLoading);
+  const { userInfo, isLoading, showLoading } = useUserInfo();
+  const { isGuardLoading } = useAuthGuard(showLoading);
 
   if (isGuardLoading) return <Loading isLoading={isLoading} />;
 

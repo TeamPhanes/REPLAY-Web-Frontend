@@ -9,8 +9,8 @@ interface CommentCardSectionProps {
 }
 
 export default function CommentCardSection({ type }: CommentCardSectionProps) {
-  const { MyComment, isLoading } = useMyComment(type);
-  const { isGuardLoading } = useAuthGuard(isLoading);
+  const { MyComment, isLoading, showLoading } = useMyComment(type);
+  const { isGuardLoading } = useAuthGuard(showLoading);
 
   if (isGuardLoading) return <Loading isLoading={isLoading} />;
   return (

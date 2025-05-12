@@ -4,9 +4,9 @@ import { useMutation } from '@tanstack/react-query';
 import { PostLogout } from '@/axios/auth';
 
 export const useLogout = () => {
-  const clearAccessToken = useAuthStore((state) => state.clearAccessToken);
+  const { clearAccessToken } = useAuthStore();
 
-  return useMutation({
+  const mutation = useMutation({
     mutationFn: PostLogout,
     onSuccess: () => {
       clearAccessToken();
@@ -16,4 +16,6 @@ export const useLogout = () => {
       clearAccessToken();
     },
   });
+
+  return mutation;
 };
