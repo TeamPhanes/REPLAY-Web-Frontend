@@ -12,6 +12,9 @@ export const API_PATH = {
   gathering: {
     default: `${BASE_URL}/gathering`,
   },
+  review: {
+    default: `${BASE_URL}/review`,
+  },
   user: {
     default: `${BASE_URL}/user`,
     me: `${BASE_URL}/user/me`,

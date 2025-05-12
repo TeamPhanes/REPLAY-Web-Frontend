@@ -80,7 +80,7 @@ export const GetReviewGathering = async () => {
     );
     return res;
   } catch (error) {
-    toast.error(`참여한 모임 최신화 중 오류가 있습니다. : ${error}`);
+    toast.error(`참여한 모임 최신화 중 오류가 있습니다. ${error}`);
     throw error;
   }
 };
@@ -92,7 +92,7 @@ export const GetMyComment = async (type: string) => {
     );
     return res;
   } catch (error) {
-    toast.error(`내가 쓴 댓글 최신화 중 오류가 있습니다. : ${error}`);
+    toast.error(`내가 쓴 댓글 최신화 중 오류가 있습니다. ${error}`);
     throw error;
   }
 };

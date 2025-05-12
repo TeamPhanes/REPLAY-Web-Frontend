@@ -2,18 +2,18 @@ import Image from 'next/image';
 
 interface ReviewContentProps {
   content: string;
-  image: string[];
+  image: string;
 }
 
 export default function ReviewContent({ content, image }: ReviewContentProps) {
   return (
-    <div className="mt-3 flex items-center gap-3">
+    <div className="mt-3 flex items-center gap-3 justify-between">
       <p className="line-clamp-6 h-[144px] text-base font-normal tracking-[-2.5%] text-basefont">
         {content}
       </p>
       {image.length !== 0 && (
         <Image
-          src={image[0]}
+          src={image}
           alt="리뷰 대표이미지"
           width={162}
           height={162}
