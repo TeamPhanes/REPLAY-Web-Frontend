@@ -1,11 +1,9 @@
 // 모임 참가자 목록 조회 Response
-export interface ParticipantDTO {
+export interface GatheringMemberDTO {
   get: {
     image: string;
     nickname: string;
-    gender: string;
-    email: string;
-    updateAt: string;
+    updatedAt: string;
     createdAt: string;
     comment: string;
     representAchievement: string[];
