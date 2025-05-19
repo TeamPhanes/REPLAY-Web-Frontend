@@ -10,6 +10,14 @@ interface ReviewCardProps {
 }
 
 export default function ReviewCard({ data }: ReviewCardProps) {
+  if (data.length === 0)
+    return (
+      <div className="flex flex-col gap-4 justify-center items-center w-xl h-[346px] rounded-[30px] bg-card">
+        <p className="font-semibold text-2xl/[34px] tracking-[-2.5%] text-basefont">
+          아직 작성된 리뷰가 없습니다.
+        </p>
+      </div>
+    );
   return (
     <>
       {data.map((review, index) => (

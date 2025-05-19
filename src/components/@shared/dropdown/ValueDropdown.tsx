@@ -19,7 +19,7 @@ interface ValueDropdownProps {
 }
 
 /**
- * 공통 Dropdown 컴포넌트
+ * 공통 ValueDropdown 컴포넌트
  * @param list Dropdown에 표현할 List 배열 Ex) const Example = [1,2,3]
  * @param children Dropdown의 메뉴 Ex) <DropdownMenuItem asChild><div>아이템1</div></DropdownMenuItem>
  * @param isOpen useOpen() Hook의 isOpen<boolean>
@@ -49,9 +49,9 @@ export default function ValueDropdown({
       <DropdownMenuContent
         sideOffset={marginTop}
         align={align}
-        className={`${className} ${flexType === 'flex-col' ? 'flex-col' : 'flex-row'} z-50 flex border-cardHover border-2 rounded-[20px] bg-card data-[state=open]:animate-dropdownIn data-[state=closed]:animate-dropdownOut`}
+        className={`${className} ${flexType === 'flex-col' ? 'flex-col' : 'flex-row'} z-50 flex rounded-[20px] bg-grayFont data-[state=open]:animate-dropdownIn data-[state=closed]:animate-dropdownOut`}
       >
-        {list.map((value, index) => (
+        {list.map((value) => (
           <div
             key={value}
             className={`${flexType === 'flex-col' ? 'flex-col' : 'flex-row'} flex items-center`}
@@ -59,17 +59,12 @@ export default function ValueDropdown({
             <DropdownMenuItem asChild className="outline-none">
               <button
                 type="button"
-                className={`${flexType === 'flex-col' ? 'w-[80%] my-2' : 'h-[80%] mx-2 px-2'} flex items-center justify-center rounded-full text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont transition-colors duration-500 ease-in-out hover:bg-cardHover`}
+                className={`${flexType === 'flex-col' ? 'w-[80%] my-2 px-5' : 'h-[80%] mx-2 px-2'} whitespace-nowrap flex items-center justify-center rounded-full text-2xl/[34px] font-normal tracking-[-2.5%] transition-colors duration-500 ease-in-out hover:bg-mainBlue`}
                 onClick={() => onClickHandler(value)}
               >
                 {value}
               </button>
             </DropdownMenuItem>
-            {index !== list.length - 1 && (
-              <span
-                className={`${flexType === 'flex-col' ? 'border-b-[1px] w-[80%]' : 'border-r-[1px] h-[80%]'} border-setfont`}
-              />
-            )}
           </div>
         ))}
       </DropdownMenuContent>

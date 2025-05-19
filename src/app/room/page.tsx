@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import { mockRooms } from '@/data/mockRooms';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
 import RoomCardContainer from '@/components/@shared/cardList/RoomCardContainer';
@@ -11,6 +14,7 @@ import SortContainer from '@/components/@shared/layout/SortContainer';
 import SearchBar from '@/components/@shared/search/SearchBar';
 
 export default function RoomPage() {
+  const [sort, setSort] = useState('인기순');
   return (
     <PageContainer>
       <SearchBar />
@@ -20,8 +24,8 @@ export default function RoomPage() {
         <MapNavigation target="room" />
       </FilterContainer>
       <SortContainer>
-        <CountListValue value={300} />
-        <SortDropdown />
+        <CountListValue value={mockRooms.length} />
+        <SortDropdown sort={sort} sortChange={setSort} />
       </SortContainer>
       <RoomCardContainer data={mockRooms} />
     </PageContainer>
