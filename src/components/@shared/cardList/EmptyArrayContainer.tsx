@@ -50,7 +50,7 @@ export default function EmptyArrayContainer({
           >
             모임
           </Link>
-          {' 에 댓글을 작성하고 이 페이지에 기록해 보세요!'}
+          에 댓글을 작성하고 이 페이지에 기록해 보세요!
         </p>
       ) : (
         <div className="flex gap-1 items-center">

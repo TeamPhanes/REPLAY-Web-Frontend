@@ -12,7 +12,7 @@ export default function RoomDetailGatherings({
   id,
 }: RoomDetailGatheringsProps) {
   const filteredGatherings = mockGatherings
-    .filter((gatherings) => gatherings.themeId === Number(id))
+    // .filter((gatherings) => gatherings.themeId === Number(id))
     .slice(0, 2);
 
   return (
