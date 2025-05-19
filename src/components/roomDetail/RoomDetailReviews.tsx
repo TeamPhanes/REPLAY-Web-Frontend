@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
 import SortDropdown from '@/components/@shared/cardList/SortDropdown';
 import SortContainer from '@/components/@shared/layout/SortContainer';
@@ -10,14 +11,15 @@ interface RoomDetailReviewsProps {
 }
 
 export default function RoomDetailReviews({ id }: RoomDetailReviewsProps) {
+  const [sort, setSort] = useState('인기순');
   const { review, isLoading, showLoading } = useGetReview(id);
 
   if (showLoading) return <Loading isLoading={isLoading} />;
   return (
     <>
       <SortContainer>
-        <CountListValue value={300} />
-        <SortDropdown />
+        <CountListValue value={review.length} />
+        <SortDropdown sort={sort} sortChange={setSort} />
       </SortContainer>
       <div className="mt-6 grid grid-cols-2">
         <ReviewCard data={review} />
