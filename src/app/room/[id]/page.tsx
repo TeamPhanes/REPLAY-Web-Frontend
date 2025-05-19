@@ -14,7 +14,7 @@ export default function RoomDetailPage() {
     <PageContainer>
       <RoomDetailCard id={id} />
       <RoomDetailGatherings id={id} />
-      <RoomDetailAllRating />
+      <RoomDetailAllRating id={id} />
       <RoomDetailReviews id={id} />
     </PageContainer>
   );
