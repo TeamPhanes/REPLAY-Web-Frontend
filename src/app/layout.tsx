@@ -29,6 +29,18 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        <link
+          rel="preload"
+          href="/images/loading/loading.gif"
+          as="image"
+          type="image/gif"
+        />
+        <link
+          rel="preload"
+          href="/images/loading/finish_loading.gif"
+          as="image"
+          type="image/gif"
+        />
       </head>
       <body>
         <QueryProvider>
