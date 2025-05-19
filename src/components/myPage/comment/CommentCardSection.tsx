@@ -1,3 +1,4 @@
+import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
 import Loading from '@/components/@shared/loading/Loading';
 import { useMyComment } from '@/hooks/reactQuery/useMyComment';
 import { useAuthGuard } from '@/hooks/useAuthGuard';
@@ -11,8 +12,16 @@ interface CommentCardSectionProps {
 export default function CommentCardSection({ type }: CommentCardSectionProps) {
   const { MyComment, isLoading, showLoading } = useMyComment(type);
   const { isGuardLoading } = useAuthGuard(showLoading);
-
   if (isGuardLoading) return <Loading isLoading={isLoading} />;
+
+  if (MyComment === undefined || null) return null;
+  if (
+    MyComment &&
+    typeof MyComment === 'object' &&
+    Object.keys(MyComment).length === 0
+  ) {
+    return <EmptyArrayContainer type="작성한" kind="댓글" />;
+  }
   return (
     <>
       {Object.entries(MyComment as MyCommentDTO['get']).map(
