@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
-import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
 import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
 import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
@@ -22,14 +21,6 @@ export default function RoomCardContainer({
   data,
   reviewCheck,
 }: RoomCardContainerProps) {
-  if (data.length === 0) {
-    return (
-      <EmptyArrayContainer
-        type={reviewCheck ? '참여한' : '찜한'}
-        kind="방탈출"
-      />
-    );
-  }
   return (
     <div className="mt-6 grid grid-cols-2 gap-5">
       {data.map((room) => (

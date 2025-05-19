@@ -1,17 +1,24 @@
-import { mockReviewAllRating } from '@/data/mockReviewAllRating';
+import Loading from '@/components/@shared/loading/Loading';
 import ProgressBar from '@/components/@shared/progressBar/ProgressBar';
 import Rating from '@/components/@shared/rating/Rating';
+import { useGetReviewAllRating } from '@/hooks/reactQuery/useGetReview';
 
-export default function RoomDetailAllRating() {
-  const rating = mockReviewAllRating;
+interface RoomDetailAllRatingProps {
+  id: string | string[];
+}
+
+export default function RoomDetailAllRating({ id }: RoomDetailAllRatingProps) {
+  const { reviewAllRating, isLoading, showLoading } = useGetReviewAllRating(id);
+
+  if (showLoading) return <Loading isLoading={isLoading} />;
   return (
     <div className="mt-16 flex h-[177px] w-full items-center justify-between rounded-[30px] bg-ratingCard">
       <div className="flex w-full flex-col items-center justify-center gap-3">
         <p className="text-5xl font-extrabold text-basefont">
-          {rating.averageScore}
+          {reviewAllRating.averageScore}
         </p>
         <Rating
-          rating={rating.averageScore}
+          rating={reviewAllRating.averageScore}
           width={240}
           height={48}
           type="Review"
@@ -23,17 +30,17 @@ export default function RoomDetailAllRating() {
             총 리뷰갯수
           </p>
           <p className="text-[32px]/[42px] font-bold tracking-[-2.5^] text-basefont">
-            {rating.scoreCount}
+            {reviewAllRating.scoreCount}
           </p>
         </div>
         <div className="flex flex-col px-16">
-          {rating.score.map((count, index) => (
+          {reviewAllRating.scores.map((count: number, index: number) => (
             <div key={index} className="flex items-center gap-2">
               <p className="w-5 flex-shrink-0 text-xs/[18px] font-normal tracking-[-2.5%] text-tag">
                 {5 - index}점
               </p>
               <div className="min-w-[389px]">
-                <ProgressBar value={count} max={rating.scoreCount} />
+                <ProgressBar value={count} max={reviewAllRating.scoreCount} />
               </div>
               <p className="flex-shrink-0 text-xs/[18px] font-normal tracking-[-2.5%] text-tag">
                 {count.toLocaleString()}개
