@@ -1,34 +1,34 @@
-import { mockParticipants } from '@/data/mockParticipants';
+import Loading from '@/components/@shared/loading/Loading';
 import AchievementBadge from '@/components/gatheringDetail/AchievementBadge';
 import ParticipantUsers from '@/components/gatheringDetail/ParticipantUsers';
+import { useGetGatheringMember } from '@/hooks/reactQuery/useGetGatheringMember';
+import { GatheringMemberDTO } from '@/types/participant/participant.type';
 
-export default function ParticipantList() {
-  const list = mockParticipants;
+interface ParticipantListProps {
+  id: string | string[];
+}
+
+export default function ParticipantList({ id }: ParticipantListProps) {
+  const { gatheringMember, isLoading, showLoading } = useGetGatheringMember(id);
+
+  if (showLoading) return <Loading isLoading={isLoading} />;
+  const list = gatheringMember;
   const minLength = 6;
 
-  while (list.length < minLength) {
+  while (gatheringMember.length < minLength) {
     list.push({
       image: '',
       updatedAt: '',
       createdAt: '',
       nickname: '',
-      gender: '',
-      genderMark: false,
-      email: '',
-      emailMark: false,
       comment: '',
-      totalGathering: 0,
-      totalMakeGathering: 0,
-      totalTheme: 0,
-      successCount: 0,
-      failCount: 0,
       representAchievement: [''],
     });
   }
 
   return (
     <div className="absolute right-0 top-[480px] flex h-[712px] flex-col justify-between">
-      {list.map((user, index) => (
+      {list.map((user: GatheringMemberDTO['get'], index: number) => (
         <div
           key={index}
           className={`relative flex h-[112px] w-[702px] items-center rounded-3xl p-4 ${user.nickname ? 'bg-card' : 'bg-spot'}`}

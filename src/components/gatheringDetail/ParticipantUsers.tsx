@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import IdCardModal from '@/components/gatheringDetail/modal/IdCardModal';
 import { useOpen } from '@/hooks/useOpen';
-import { UserDTO } from '@/types/user/user.types';
+import { GatheringMemberDTO } from '@/types/participant/participant.type';
 import { periodYearMonthDay } from '@/utils/dateChange';
 import LeaderBadge from '@/public/icons/detail/leader_badge.svg';
 
 interface ParticipantUsersProps {
-  list: UserDTO['get'];
+  list: GatheringMemberDTO['get'];
   leaderCheck: string;
 }
 
@@ -29,7 +29,7 @@ export default function ParticipantUsers({
       />
       <div className="ml-3 flex flex-col gap-2">
         <div className="flex w-[130px] items-center gap-1">
-          <p className="text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
+          <p className="text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont truncate">
             {list.nickname}
           </p>
           <Image
@@ -62,7 +62,7 @@ export default function ParticipantUsers({
       <p className="line-clamp-3 h-20 w-[284px] text-base font-normal tracking-[-2.5%] text-basefont">
         {list.comment}
       </p>
-      <IdCardModal openModal={isOpen} closeModal={closeModal} userData={list} />
+      {/* <IdCardModal openModal={isOpen} closeModal={closeModal} userData={list} /> */}
     </div>
   );
 }
