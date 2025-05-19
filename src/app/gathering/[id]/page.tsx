@@ -27,7 +27,7 @@ export default function GatheringDetailPage() {
         list={findDetailGathering}
         detail={mockGatheringsDetail}
       />
-      <ParticipantList id={id} />
+      <ParticipantList />
       <CommentsContainer id={id} leaderCheck={mockGatheringsDetail.leader} />
       <AnotherGatherings
         title={`${mockGatheringsDetail.leader}님이 만든 모임`}
