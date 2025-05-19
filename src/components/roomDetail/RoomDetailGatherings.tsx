@@ -17,8 +17,8 @@ export default function RoomDetailGatherings({
 
   return (
     <>
-      <Link href="/gathering">
-        <div className="mt-6 flex items-center justify-end gap-1">
+      <div className="mt-6 flex justify-end">
+        <Link href="/gathering" className="flex items-center gap-1">
           <p className="text-2xl/[34px] font-normal tracking-[-2.5%] text-setfont">
             이 방탈출 모임 더 보기
           </p>
@@ -29,8 +29,9 @@ export default function RoomDetailGatherings({
             height={24}
             className="h-6 w-6"
           />
-        </div>
-      </Link>
+        </Link>
+      </div>
+
       <div className="mt-6 flex justify-between">
         <GatheringCardContainer data={filteredGatherings} />
       </div>

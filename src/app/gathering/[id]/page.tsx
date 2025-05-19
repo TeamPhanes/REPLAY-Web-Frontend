@@ -28,7 +28,7 @@ export default function GatheringDetailPage() {
         detail={mockGatheringsDetail}
       />
       <ParticipantList />
-      <CommentsContainer leaderCheck={mockGatheringsDetail.leader} />
+      <CommentsContainer id={id} leaderCheck={mockGatheringsDetail.leader} />
       <AnotherGatherings
         title={`${mockGatheringsDetail.leader}님이 만든 모임`}
         gatherings={leaderAnotherGathering}

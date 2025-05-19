@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { useDeleteComment } from '@/hooks/reactQuery/useDeleteComment';
+import { usePatchComment } from '@/hooks/reactQuery/usePatchComment';
 import { periodYearMonthDayHourTime } from '@/utils/dateChange';
 import UserDefaultImg from '@/public/icons/user/user_default.svg';
 
@@ -19,6 +21,13 @@ export default function CommentCard({
   createdAt,
   type,
 }: CommentCardProps) {
+  const CommentId = '5';
+  const GatheringId = '1';
+  const { mutate: PatchComment } = usePatchComment({ CommentId, GatheringId });
+  const { mutate: DeleteComment } = useDeleteComment({
+    CommentId,
+    GatheringId,
+  });
   return (
     <div
       className={`${userNickname === leaderCheck ? 'bg-progressBar' : ''} border-b-[1px] border-spot pb-2 pt-5`}
@@ -53,12 +62,14 @@ export default function CommentCard({
             <button
               type="button"
               className="text-xl font-normal tracking-[-2.5%] text-grayFont"
+              onClick={() => PatchComment()}
             >
               수정
             </button>
             <button
               type="button"
               className="text-xl font-normal tracking-[-2.5%] text-grayFont"
+              onClick={() => DeleteComment()}
             >
               삭제
             </button>
