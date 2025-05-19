@@ -14,6 +14,7 @@ const config: Config = {
         loading: '#333333',
         mainBlue: '#2227F7',
         mainBlueHover: '#060AAC',
+        mainPink: '#FFB0B2',
         basefont: '#111111',
         grayFont: '#767676',
         homeFont: '#DCDCDC',

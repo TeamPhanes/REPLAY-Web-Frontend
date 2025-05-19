@@ -5,8 +5,6 @@ export interface GatheringDTO {
     listImage: string;
     genres: string[];
     playtime: number;
-    themeId: number;
-    themeName: string;
     name: string;
     cafe: string;
     spot: string;
@@ -14,10 +12,6 @@ export interface GatheringDTO {
     registrationEnd: string;
     capacity: number;
     participantCount: number;
-    participants: {
-      name: string;
-      image: string;
-    }[];
     address: string;
     isLiked?: boolean;
     level: '쉬움' | '보통' | '어려움';
@@ -61,6 +55,7 @@ export interface GatheringReviewDTO {
     }[];
     playtime: number;
     registrationEnd: string;
+    isLiked: boolean;
     spot: string;
     themeId: number;
     themeName: string;
@@ -75,6 +70,5 @@ export interface GatheringDetailDTO {
     detailImage: string;
     price: number;
     content: string;
-    leader: string;
   };
 }
