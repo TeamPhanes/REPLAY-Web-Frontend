@@ -24,7 +24,7 @@ export default function GatheringDetailCard({
       <div className="flex h-[460px] justify-between">
         <Image
           src={detail.detailImage}
-          alt={list.themeName}
+          alt={list.name}
           width={797}
           height={460}
           quality={100}

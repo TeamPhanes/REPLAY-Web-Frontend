@@ -1,5 +1,5 @@
 import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
-import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
+import GatheringCardReviewContainer from '@/components/@shared/cardList/GatheringCardReviewContainer';
 import Loading from '@/components/@shared/loading/Loading';
 import { useReviewGathering } from '@/hooks/reactQuery/useReviewGathering';
 import { useAuthGuard } from '@/hooks/useAuthGuard';
@@ -12,6 +12,6 @@ export default function GatheringReviewSection() {
   return userReviewGathering.length === 0 ? (
     <EmptyArrayContainer type="참여한" kind="모임" />
   ) : (
-    <GatheringCardContainer data={userReviewGathering} reviewCheck />
+    <GatheringCardReviewContainer data={userReviewGathering} />
   );
 }
