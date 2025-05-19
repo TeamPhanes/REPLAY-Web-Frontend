@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import usePatchCommentForm from '@/hooks/form/usePatchCommentForm';
+import usePatchCommentForm from '@/hooks/form/usePostCommentForm';
 import { usePostComment } from '@/hooks/reactQuery/usePostComment';
 
 export default function CommentInput() {
