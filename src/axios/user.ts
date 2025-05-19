@@ -19,7 +19,7 @@ interface PatchMyPageData {
   emailMark: boolean;
   image?: File | null;
 }
-export const PatchMyPage = async (data: PatchMyPageData) => {
+export const PatchMyProfile = async (data: PatchMyPageData) => {
   const formData = new FormData();
   formData.append('nickname', data.nickname);
   formData.append('comment', data.comment);

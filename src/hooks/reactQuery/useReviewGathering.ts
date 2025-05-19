@@ -1,17 +1,13 @@
 'use client';
 
-import { useAuthStore } from '@/store/authStore';
 import { useQuery } from '@tanstack/react-query';
 import { GetReviewGathering } from '@/axios/user';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
 export const useReviewGathering = () => {
-  const { accessToken } = useAuthStore();
-
   const { data, isLoading, error } = useQuery({
-    queryKey: ['userReviewGathering', accessToken],
+    queryKey: ['userReviewGathering'],
     queryFn: GetReviewGathering,
-    enabled: !!accessToken,
     retry: false,
     staleTime: 1000 * 60 * 5,
   });

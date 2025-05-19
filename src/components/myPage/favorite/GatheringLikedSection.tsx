@@ -1,3 +1,4 @@
+import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
 import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
 import Loading from '@/components/@shared/loading/Loading';
 import { useLikeGathering } from '@/hooks/reactQuery/useLikeGathering';
@@ -8,5 +9,9 @@ export default function GatheringLikedSection() {
   const { isGuardLoading } = useAuthGuard(showLoading);
 
   if (isGuardLoading) return <Loading isLoading={isLoading} />;
-  return <GatheringCardContainer data={userLikeGathering} />;
+  return userLikeGathering.length === 0 ? (
+    <EmptyArrayContainer type="찜한" kind="모임" />
+  ) : (
+    <GatheringCardContainer data={userLikeGathering} />
+  );
 }
