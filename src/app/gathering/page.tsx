@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import { mockGatherings } from '@/data/mockGatherings';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
 import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
@@ -11,6 +14,7 @@ import SortContainer from '@/components/@shared/layout/SortContainer';
 import SearchBar from '@/components/@shared/search/SearchBar';
 
 export default function GatheringPage() {
+  const [sort, setSort] = useState('인기순');
   return (
     <PageContainer>
       <SearchBar />
@@ -20,8 +24,8 @@ export default function GatheringPage() {
         <MapNavigation target="gathering" />
       </FilterContainer>
       <SortContainer>
-        <CountListValue value={300} />
-        <SortDropdown />
+        <CountListValue value={mockGatherings.length} />
+        <SortDropdown sort={sort} sortChange={setSort} />
       </SortContainer>
       <GatheringCardContainer data={mockGatherings} />
     </PageContainer>

@@ -1,0 +1,46 @@
+import Image from 'next/image';
+import ValueDropdown from '@/components/@shared/dropdown/ValueDropdown';
+import { useOpen } from '@/hooks/useOpen';
+import BlackChevronDown from '@/public/icons/filter/black_chevron_down.svg';
+
+interface MiddleDistrictDropdownProps {
+  middleDistrict: string;
+  setMiddleDistrict: (value: string) => void;
+  list: string[];
+}
+
+export default function MiddleDistrictDropdown({
+  middleDistrict,
+  setMiddleDistrict,
+  list,
+}: MiddleDistrictDropdownProps) {
+  const { isOpen, toggleOpen } = useOpen();
+  if (list.length === 0) return null;
+  return (
+    <ValueDropdown
+      list={list}
+      isOpen={isOpen}
+      onOpenChange={toggleOpen}
+      onClickHandler={setMiddleDistrict}
+      className={`${list.length === 2 ? 'grid-cols-2' : ''} ${list.length === 3 ? 'grid-cols-3' : ''} ${list.length >= 4 ? 'grid-cols-4' : ''} grid p-2`}
+      marginTop={14}
+      align="start"
+    >
+      <button
+        type="button"
+        className="flex items-center justify-center gap-1 rounded-full bg-card px-4 py-2"
+      >
+        <p className="text-base font-medium tracking-[-2.5%] text-basefont">
+          {middleDistrict}
+        </p>
+        <Image
+          src={BlackChevronDown}
+          alt="더보기"
+          width={20}
+          height={20}
+          className={`h-5 w-5 transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+        />
+      </button>
+    </ValueDropdown>
+  );
+}

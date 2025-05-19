@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Dropdown from '@/components/@shared/dropdown/ValueDropdown';
+import ValueDropdown from '@/components/@shared/dropdown/ValueDropdown';
 import { useOpen } from '@/hooks/useOpen';
 
 interface AddGatheringCapacityProps {
@@ -23,15 +23,14 @@ export default function AddGatheringCapacity({
         <p className="font-normal text-xl tracking-[-2.5%] text-basefont">
           {String(capacity).padStart(2, '0')}
         </p>
-        <Dropdown
+        <ValueDropdown
           list={capacityList}
           isOpen={isOpen}
           onOpenChange={toggleOpen}
           onClickHandler={capacityChange}
-          className="min-h-[60px]"
+          className="min-w-[88px]"
           marginTop={14}
           align="center"
-          flexType="flex-row"
         >
           <button
             type="button"
@@ -46,7 +45,7 @@ export default function AddGatheringCapacity({
               className={`transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
             />
           </button>
-        </Dropdown>
+        </ValueDropdown>
       </div>
     </div>
   );
