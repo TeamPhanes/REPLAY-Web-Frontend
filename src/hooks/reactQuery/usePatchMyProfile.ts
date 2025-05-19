@@ -1,12 +1,12 @@
 import { toast } from 'react-toastify';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { PatchMyPage } from '@/axios/user';
+import { PatchMyProfile } from '@/axios/user';
 
-export const usePatchMyPageMutation = (onSuccess: () => void) => {
+export const usePatchMyProfile = (onSuccess: () => void) => {
   const queryclient = useQueryClient();
 
   const mutation = useMutation({
-    mutationFn: PatchMyPage,
+    mutationFn: PatchMyProfile,
     onSuccess: () => {
       queryclient.invalidateQueries({ queryKey: ['userInfo'] });
       onSuccess();

@@ -1,3 +1,4 @@
+import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
 import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
 import Loading from '@/components/@shared/loading/Loading';
 import { useReviewGathering } from '@/hooks/reactQuery/useReviewGathering';
@@ -8,5 +9,9 @@ export default function GatheringReviewSection() {
   const { isGuardLoading } = useAuthGuard(showLoading);
 
   if (isGuardLoading) return <Loading isLoading={isLoading} />;
-  return <GatheringCardContainer data={userReviewGathering} reviewCheck />;
+  return userReviewGathering.length === 0 ? (
+    <EmptyArrayContainer type="참여한" kind="모임" />
+  ) : (
+    <GatheringCardContainer data={userReviewGathering} reviewCheck />
+  );
 }

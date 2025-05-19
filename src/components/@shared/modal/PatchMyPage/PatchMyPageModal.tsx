@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Modal from '@/components/@shared/modal/Modal';
 import PatchMyPageImage from '@/components/@shared/modal/PatchMyPage/PatchMyPageImage';
 import PatchMyPageSwitch from '@/components/@shared/modal/PatchMyPage/PatchMyPageSwitch';
-import { usePatchMyPageMutation } from '@/hooks/reactQuery/usePatchMyPageMutation';
+import { usePatchMyProfile } from '@/hooks/reactQuery/usePatchMyProfile';
 import useImagePreview from '@/hooks/useImagePreview';
 import usePatchMyPageForm from '@/hooks/usePatchMyPageForm';
 import DefaultUser from '@/public/icons/user/user_default.svg';
@@ -27,7 +27,7 @@ export default function PatchMyPageModal({
   onClose,
 }: PatchMyPageModalProps) {
   const { imageFile, previewUrl, handleImageChange } = useImagePreview();
-  const { mutate } = usePatchMyPageMutation(onClose);
+  const { mutate } = usePatchMyProfile(onClose);
   const {
     register,
     handleSubmit,
