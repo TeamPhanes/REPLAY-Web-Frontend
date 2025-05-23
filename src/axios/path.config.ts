@@ -9,6 +9,9 @@ export const API_PATH = {
     refresh: `${BASE_URL}/auth/refresh`,
     logout: `${BASE_URL}/auth/logout`,
   },
+  theme: {
+    default: `${BASE_URL}/theme`,
+  },
   gathering: {
     default: `${BASE_URL}/gathering`,
   },

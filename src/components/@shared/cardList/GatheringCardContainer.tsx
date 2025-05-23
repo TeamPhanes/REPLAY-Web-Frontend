@@ -50,7 +50,7 @@ export default function GatheringCardContainer({
               </div>
               <div className="flex flex-col gap-2">
                 <DateAndParticipant
-                  registrationEnd={gathering.registrationEnd}
+                  registrationEnd={gathering.dateTime}
                   capacity={gathering.capacity}
                   participantCount={gathering.participantCount}
                 />

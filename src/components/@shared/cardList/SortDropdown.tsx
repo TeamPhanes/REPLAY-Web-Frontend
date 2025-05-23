@@ -7,11 +7,15 @@ import GrayChevronDown from '@/public/icons/cardList/gray_chevron_down.svg';
 
 interface SortDropdownProps {
   sort: string;
+  sortList: string[];
   sortChange: (value: string) => void;
 }
 
-export default function SortDropdown({ sort, sortChange }: SortDropdownProps) {
-  const sortList = ['인기순', '최신순'];
+export default function SortDropdown({
+  sort,
+  sortList,
+  sortChange,
+}: SortDropdownProps) {
   const { isOpen, toggleOpen } = useOpen();
   return (
     <ValueDropdown
