@@ -1,5 +1,28 @@
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
+
+export const GetGathering = async () => {
+  try {
+    const res = await axios.get(
+      `${API_PATH.gathering.default}?sortBy=dateTime&limit=10&offset=0`
+    );
+    return res;
+  } catch (error) {
+    toast.error(`모임 목록 최신화 중 오류가 있습니다. ${error}`);
+    throw error;
+  }
+};
+
+export const GetGatheringDetail = async (id: string | string[]) => {
+  try {
+    const res = await axios.get(`${API_PATH.gathering.default}/${id}`);
+    return res;
+  } catch (error) {
+    toast.error(`모임 상세 정보 최신화 중 오류가 있습니다. ${error}`);
+    throw error;
+  }
+};
 
 export const PostGathering = async () => {
   try {

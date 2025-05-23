@@ -8,6 +8,7 @@ export interface GatheringDTO {
     name: string;
     cafe: string;
     spot: string;
+    themeId: number;
     dateTime: string;
     registrationEnd: string;
     capacity: number;

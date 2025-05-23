@@ -11,10 +11,15 @@ import MapNavigation from '@/components/@shared/filter/MapNavigation';
 import FilterContainer from '@/components/@shared/layout/FilterContainer';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import SortContainer from '@/components/@shared/layout/SortContainer';
+import Loading from '@/components/@shared/loading/Loading';
 import SearchBar from '@/components/@shared/search/SearchBar';
+import { useGetTheme } from '@/hooks/reactQuery/useGetTheme';
 
 export default function RoomPage() {
   const [sort, setSort] = useState('인기순');
+  const sortList = ['인기순', '평점순', '리뷰순'];
+  const { theme, showLoading, isLoading } = useGetTheme();
+  if (showLoading) return <Loading isLoading={isLoading} />;
   return (
     <PageContainer>
       <SearchBar />
@@ -25,9 +30,9 @@ export default function RoomPage() {
       </FilterContainer>
       <SortContainer>
         <CountListValue value={mockRooms.length} />
-        <SortDropdown sort={sort} sortChange={setSort} />
+        <SortDropdown sort={sort} sortList={sortList} sortChange={setSort} />
       </SortContainer>
-      <RoomCardContainer data={mockRooms} />
+      <RoomCardContainer data={theme} />
     </PageContainer>
   );
 }

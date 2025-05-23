@@ -12,6 +12,7 @@ interface RoomDetailReviewsProps {
 
 export default function RoomDetailReviews({ id }: RoomDetailReviewsProps) {
   const [sort, setSort] = useState('인기순');
+  const sortList = ['인기순', '최신순'];
   const { review, isLoading, showLoading } = useGetReview(id);
 
   if (showLoading) return <Loading isLoading={isLoading} />;
@@ -19,9 +20,9 @@ export default function RoomDetailReviews({ id }: RoomDetailReviewsProps) {
     <>
       <SortContainer>
         <CountListValue value={review.length} />
-        <SortDropdown sort={sort} sortChange={setSort} />
+        <SortDropdown sort={sort} sortList={sortList} sortChange={setSort} />
       </SortContainer>
-      <div className="mt-6 grid grid-cols-2">
+      <div className="mt-6 grid grid-cols-2 gap-4">
         <ReviewCard data={review} />
       </div>
     </>

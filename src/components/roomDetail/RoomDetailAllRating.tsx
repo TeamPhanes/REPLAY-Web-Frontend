@@ -15,7 +15,7 @@ export default function RoomDetailAllRating({ id }: RoomDetailAllRatingProps) {
     <div className="mt-16 flex h-[177px] w-full items-center justify-between rounded-[30px] bg-ratingCard">
       <div className="flex w-full flex-col items-center justify-center gap-3">
         <p className="text-5xl font-extrabold text-basefont">
-          {reviewAllRating.averageScore}
+          {reviewAllRating.averageScore.toFixed(1)}
         </p>
         <Rating
           rating={reviewAllRating.averageScore}

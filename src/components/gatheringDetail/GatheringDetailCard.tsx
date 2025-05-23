@@ -44,7 +44,7 @@ export default function GatheringDetailCard({
           </div>
           <div className="mt-9 flex w-[395px] flex-col gap-3">
             <DateAndPrice
-              registrationEnd={list.registrationEnd}
+              registrationEnd={list.dateTime}
               price={detail.price}
             />
             <AddressAndLevel address={list.address} level={list.level} />

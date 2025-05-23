@@ -1,11 +1,12 @@
 import Image from 'next/image';
-import { mockRooms } from '@/data/mockRooms';
-import { mockRoomsDetail } from '@/data/mockRoomsDetail';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
 import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
+import Loading from '@/components/@shared/loading/Loading';
 import RoomDetailStroy from '@/components/roomDetail/RoomDetailStroy';
+import { useGetReviewAllRating } from '@/hooks/reactQuery/useGetReview';
+import { useGetTheme, useGetThemeDetail } from '@/hooks/reactQuery/useGetTheme';
 import BookmarkLine from '@/public/icons/cardList/bookmark_line.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
 
@@ -14,10 +15,16 @@ interface RoomDetailCardProps {
 }
 
 export default function RoomDetailCard({ id }: RoomDetailCardProps) {
-  const list = mockRooms.find((room) => room.themeId === Number(id));
-  const detail = mockRoomsDetail;
+  const { theme } = useGetTheme();
+  const list = theme.find(
+    (room: { themeId: number }) => room.themeId === Number(id)
+  );
+  const { themeDetail, isLoading, showLoading } = useGetThemeDetail(id);
+  const detail = themeDetail;
+  const { reviewAllRating } = useGetReviewAllRating(id);
 
   if (!list) return <div>임시 오류처리</div>;
+  if (showLoading) return <Loading isLoading={isLoading} />;
 
   return (
     <div className="flex h-[460px] justify-between">
@@ -50,12 +57,12 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
         </div>
         <div className="mt-7 flex flex-col gap-2">
           <ReviewAndRating
-            reviewCount={list.reviewCount}
-            rating={list.rating}
+            reviewCount={reviewAllRating.scoreCount}
+            rating={reviewAllRating.averageScore}
           />
           <AddressAndLevel address={list.address} level={list.level} />
         </div>
-        <RoomDetailStroy story={detail.stroy} />
+        <RoomDetailStroy story={detail.story} />
       </div>
     </div>
   );
