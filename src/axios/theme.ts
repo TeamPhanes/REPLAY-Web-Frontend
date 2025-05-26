@@ -2,10 +2,17 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
 
-export const GetTheme = async () => {
+interface GetThemeProps {
+  page: number;
+  sort: string;
+  state: string | null;
+  city: string | null;
+}
+
+export const GetTheme = async ({ page, sort, state, city }: GetThemeProps) => {
   try {
     const res = await axios.get(
-      `${API_PATH.theme.default}?sortBy=likes&limit=10&offset=0`
+      `${API_PATH.theme.default}?sortBy=${sort}${state !== '시.도' ? `&state=${state}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}&limit=10&offset=${page}`
     );
     return res;
   } catch (error) {

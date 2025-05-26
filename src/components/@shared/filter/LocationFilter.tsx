@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useQueryStringStore } from '@/store/useQueryStringStore';
 import LargeDistrictDropdown from '@/components/@shared/filter/LargeDistrictDropdown';
 import MiddleDistrictDropdown from '@/components/@shared/filter/MiddleDistrictDropdown';
 import { locationDetailList } from '@/constants/filter/locationList';
 
 export default function LocationFilter() {
-  const [largeDistrict, setLargeDistrict] = useState('시.도');
-  const [middleDistrict, setMiddleDistrict] = useState('시.군.구');
+  const { largeDistrict, middleDistrict, setLargeDistrict, setMiddleDistrict } =
+    useQueryStringStore();
   const largeDistrictList = Object.keys(locationDetailList);
   const middleDistrictList = locationDetailList[largeDistrict] ?? [];
 

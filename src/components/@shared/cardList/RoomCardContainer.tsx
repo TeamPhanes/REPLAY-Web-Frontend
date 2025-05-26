@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useThemeStore } from '@/store/useThemeStore';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
 import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
@@ -21,6 +22,7 @@ export default function RoomCardContainer({
   data,
   reviewCheck,
 }: RoomCardContainerProps) {
+  const { setSelectedTheme } = useThemeStore();
   return (
     <div className="mt-6 grid grid-cols-2 gap-5">
       {data.map((room) => (
@@ -54,7 +56,10 @@ export default function RoomCardContainer({
             quality={100}
             className="rounded-3xl w-[212px] h-[212px]"
           />
-          <Link href={`/room/${room.themeId}`}>
+          <Link
+            href={`/room/${room.themeId}`}
+            onClick={() => setSelectedTheme(room)}
+          >
             <div className="ml-5 flex h-[212px] w-[322px] flex-col justify-between">
               <div className="flex flex-col gap-3">
                 <TagAndPlaytime tag={room.genres} playtime={room.playtime} />

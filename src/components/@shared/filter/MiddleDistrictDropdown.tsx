@@ -2,6 +2,7 @@ import Image from 'next/image';
 import ValueDropdown from '@/components/@shared/dropdown/ValueDropdown';
 import { useOpen } from '@/hooks/useOpen';
 import BlackChevronDown from '@/public/icons/filter/black_chevron_down.svg';
+import BlackExit from '@/public/icons/filter/black_exit.svg';
 
 interface MiddleDistrictDropdownProps {
   middleDistrict: string;
@@ -17,30 +18,44 @@ export default function MiddleDistrictDropdown({
   const { isOpen, toggleOpen } = useOpen();
   if (list.length === 0) return null;
   return (
-    <ValueDropdown
-      list={list}
-      isOpen={isOpen}
-      onOpenChange={toggleOpen}
-      onClickHandler={setMiddleDistrict}
-      className={`${list.length === 2 ? 'grid-cols-2' : ''} ${list.length === 3 ? 'grid-cols-3' : ''} ${list.length >= 4 ? 'grid-cols-4' : ''} grid p-2`}
-      marginTop={14}
-      align="start"
-    >
-      <button
-        type="button"
-        className="flex items-center justify-center gap-1 rounded-full bg-card px-4 py-2"
+    <div className="flex items-center justify-center rounded-full bg-card px-4 py-2 gap-1">
+      <ValueDropdown
+        list={list}
+        isOpen={isOpen}
+        onOpenChange={toggleOpen}
+        onClickHandler={setMiddleDistrict}
+        className={`${list.length === 2 ? 'grid-cols-2' : ''} ${list.length === 3 ? 'grid-cols-3' : ''} ${list.length >= 4 ? 'grid-cols-4' : ''} grid p-2`}
+        marginTop={14}
+        align="start"
       >
-        <p className="text-base font-medium tracking-[-2.5%] text-basefont">
-          {middleDistrict}
-        </p>
+        <button
+          type="button"
+          className="flex items-center justify-center gap-1"
+        >
+          <p className="text-base font-medium tracking-[-2.5%] text-basefont">
+            {middleDistrict}
+          </p>
+          {middleDistrict === '시.군.구' ? (
+            <Image
+              src={BlackChevronDown}
+              alt="더보기"
+              width={20}
+              height={20}
+              className={`h-5 w-5 transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+            />
+          ) : null}
+        </button>
+      </ValueDropdown>
+      {middleDistrict !== '시.군.구' ? (
         <Image
-          src={BlackChevronDown}
-          alt="더보기"
+          src={BlackExit}
+          alt="필터 제거"
           width={20}
           height={20}
-          className={`h-5 w-5 transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+          className={`h-5 w-5 transition-transform transform duration-300 cursor-pointer ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+          onClick={() => setMiddleDistrict('시.군.구')}
         />
-      </button>
-    </ValueDropdown>
+      ) : null}
+    </div>
   );
 }

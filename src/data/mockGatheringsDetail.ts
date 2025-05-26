@@ -1,6 +1,4 @@
-import { GatheringDetailDTO } from '@/types/gathering/gathering.type';
-
-export const mockGatheringsDetail: GatheringDetailDTO['get'] = {
+export const mockGatheringsDetail = {
   gatheringId: 1,
   detailImage: 'https://xdungeon.net/file/theme/11/11_6145641280.jpg',
   price: 24000,
