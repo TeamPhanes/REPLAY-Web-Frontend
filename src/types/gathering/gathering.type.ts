@@ -69,6 +69,8 @@ export interface GatheringDetailDTO {
   get: {
     gatheringId: number;
     detailImage: string;
+    registrationStart: string;
+    registrationEnd: string;
     price: number;
     content: string;
   };

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { mockRooms } from '@/data/mockRooms';
+import { useQueryStringStore } from '@/store/useQueryStringStore';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
 import RoomCardContainer from '@/components/@shared/cardList/RoomCardContainer';
 import SortDropdown from '@/components/@shared/cardList/SortDropdown';
@@ -12,13 +12,31 @@ import FilterContainer from '@/components/@shared/layout/FilterContainer';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import SortContainer from '@/components/@shared/layout/SortContainer';
 import Loading from '@/components/@shared/loading/Loading';
+import Pagination from '@/components/@shared/pagination/Pagination';
 import SearchBar from '@/components/@shared/search/SearchBar';
 import { useGetTheme } from '@/hooks/reactQuery/useGetTheme';
+import { usePagination } from '@/hooks/usePagination';
 
 export default function RoomPage() {
+  const [page, setPage] = useState(0);
   const [sort, setSort] = useState('인기순');
   const sortList = ['인기순', '평점순', '리뷰순'];
-  const { theme, showLoading, isLoading } = useGetTheme();
+  const sortLabels: Record<string, string> = {
+    인기순: 'likes',
+    평점순: 'rating',
+    리뷰순: 'reviews',
+  };
+  const { largeDistrict, middleDistrict } = useQueryStringStore();
+
+  const { theme, showLoading, isLoading } = useGetTheme(
+    page,
+    sortLabels[sort],
+    largeDistrict,
+    middleDistrict
+  );
+  const totalItems = theme ? theme.length : 0;
+  const { totalPages } = usePagination(page, totalItems);
+
   if (showLoading) return <Loading isLoading={isLoading} />;
   return (
     <PageContainer>
@@ -29,10 +47,15 @@ export default function RoomPage() {
         <MapNavigation target="room" />
       </FilterContainer>
       <SortContainer>
-        <CountListValue value={mockRooms.length} />
+        <CountListValue value={theme.length} />
         <SortDropdown sort={sort} sortList={sortList} sortChange={setSort} />
       </SortContainer>
       <RoomCardContainer data={theme} />
+      <Pagination
+        currentPage={page}
+        totalPages={totalPages}
+        onChange={setPage}
+      />
     </PageContainer>
   );
 }
