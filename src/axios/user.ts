@@ -7,7 +7,7 @@ export const GetUser = async () => {
     const res = await axiosInstance.get(API_PATH.user.me);
     return res;
   } catch (error) {
-    toast.error(`유저정보 최신화 중 오류가 있습니다. : ${error}`);
+    console.error(`유저정보 최신화 중 오류가 있습니다. : ${error}`);
     throw error;
   }
 };
