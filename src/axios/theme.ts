@@ -3,16 +3,25 @@ import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
 
 interface GetThemeProps {
+  keyword: string;
   page: number;
+  limit: number;
   sort: string;
   state: string | null;
   city: string | null;
 }
 
-export const GetTheme = async ({ page, sort, state, city }: GetThemeProps) => {
+export const GetTheme = async ({
+  keyword,
+  page,
+  limit,
+  sort,
+  state,
+  city,
+}: GetThemeProps) => {
   try {
     const res = await axios.get(
-      `${API_PATH.theme.default}?sortBy=${sort}${state !== '시.도' ? `&state=${state}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}&limit=10&offset=${page}`
+      `${API_PATH.theme.default}?sortBy=${sort}${keyword !== '' ? `&keyword=${keyword}` : ''}${state !== '시.도' ? `&state=${state}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}&limit=${limit}&offset=${page}`
     );
     return res;
   } catch (error) {
