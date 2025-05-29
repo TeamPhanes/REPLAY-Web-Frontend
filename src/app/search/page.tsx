@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import GenreFilter from '@/components/@shared/filter/GenreFilter';
 import LocationFilter from '@/components/@shared/filter/LocationFilter';
 import FilterContainer from '@/components/@shared/layout/FilterContainer';
@@ -13,7 +14,9 @@ export default function SearchPage() {
         <LocationFilter />
         <GenreFilter />
       </FilterContainer>
-      <SearchResults />
+      <Suspense>
+        <SearchResults />
+      </Suspense>
     </PageContainer>
   );
 }
