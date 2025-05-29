@@ -1,3 +1,5 @@
+'use client';
+
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import LargeDistrictDropdown from '@/components/@shared/filter/LargeDistrictDropdown';
 import MiddleDistrictDropdown from '@/components/@shared/filter/MiddleDistrictDropdown';

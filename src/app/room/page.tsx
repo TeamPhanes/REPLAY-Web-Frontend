@@ -29,7 +29,9 @@ export default function RoomPage() {
   const { largeDistrict, middleDistrict } = useQueryStringStore();
 
   const { theme, showLoading, isLoading } = useGetTheme(
+    '',
     page,
+    10,
     sortLabels[sort],
     largeDistrict,
     middleDistrict
