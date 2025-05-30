@@ -4,10 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 import { GetLikeTheme } from '@/axios/user';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
-export const useLikeTheme = () => {
+export const useLikeTheme = (page: number, limit: number) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['userLikeTheme'],
-    queryFn: GetLikeTheme,
+    queryKey: ['userLikeTheme', page, limit],
+    queryFn: () => GetLikeTheme({ page, limit }),
     retry: false,
     staleTime: 1000 * 60 * 5,
   });

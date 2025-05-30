@@ -1,30 +1,35 @@
+import { useState } from 'react';
 import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
 import Loading from '@/components/@shared/loading/Loading';
+import Pagination from '@/components/@shared/pagination/Pagination';
 import { useMyComment } from '@/hooks/reactQuery/useMyComment';
 import { useAuthGuard } from '@/hooks/useAuthGuard';
+import { usePagination } from '@/hooks/usePagination';
 import { MyCommentDTO } from '@/types/comment/comment.type';
 import { HourTime, periodFullYearMonthDay } from '@/utils/dateChange';
 
 interface CommentCardSectionProps {
-  type: string;
+  sort: string;
 }
 
-export default function CommentCardSection({ type }: CommentCardSectionProps) {
-  const { MyComment, isLoading, showLoading } = useMyComment(type);
+export default function CommentCardSection({ sort }: CommentCardSectionProps) {
+  const [page, setPage] = useState(0);
+  const { MyComment, isLoading, showLoading } = useMyComment(sort, page, 10);
   const { isGuardLoading } = useAuthGuard(showLoading);
+  const { totalPages } = usePagination(page, MyComment?.totalCount);
   if (isGuardLoading) return <Loading isLoading={isLoading} />;
 
   if (MyComment === undefined || null) return null;
   if (
     MyComment &&
     typeof MyComment === 'object' &&
-    Object.keys(MyComment).length === 0
+    Object.keys(MyComment.data).length === 0
   ) {
     return <EmptyArrayContainer type="작성한" kind="댓글" />;
   }
   return (
     <>
-      {Object.entries(MyComment as MyCommentDTO['get']).map(
+      {Object.entries(MyComment.data as MyCommentDTO['get']).map(
         ([date, comments]) => (
           <div key={date} className="mt-8 flex flex-col gap-2">
             <h2 className="text-2xl/[34px] font-normal tracking-[-2.5%] text-white">
@@ -53,6 +58,11 @@ export default function CommentCardSection({ type }: CommentCardSectionProps) {
           </div>
         )
       )}
+      <Pagination
+        currentPage={page}
+        totalPages={totalPages}
+        onChange={setPage}
+      />
     </>
   );
 }

@@ -4,10 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 import { GetReviewTheme } from '@/axios/user';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
-export const useReviewTheme = () => {
+export const useReviewTheme = (page: number, limit: number) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['userReviewTheme'],
-    queryFn: GetReviewTheme,
+    queryKey: ['userReviewTheme', page, limit],
+    queryFn: () => GetReviewTheme({ page, limit }),
     retry: false,
     staleTime: 1000 * 60 * 5,
   });
