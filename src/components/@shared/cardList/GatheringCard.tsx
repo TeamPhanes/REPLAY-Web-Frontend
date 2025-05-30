@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useGatheringStore } from '@/store/useGatheringStore';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import DateAndParticipant from '@/components/@shared/cardList/DateAndParticipant';
 import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
@@ -13,6 +14,7 @@ interface GatheringCardProps {
 }
 
 export default function GatheringCard({ gathering }: GatheringCardProps) {
+  const { setSelectedGathering } = useGatheringStore();
   return (
     <div
       key={gathering.gatheringId}
@@ -31,7 +33,10 @@ export default function GatheringCard({ gathering }: GatheringCardProps) {
           <Image src={HeartLine} alt="heart" width={32} height={32} />
         </button>
       </div>
-      <Link href={`/gathering/${gathering.gatheringId}`}>
+      <Link
+        href={`/gathering/${gathering.gatheringId}`}
+        onClick={() => setSelectedGathering(gathering)}
+      >
         <div className="ml-5 flex h-[212px] w-[322px] flex-col justify-between">
           <div className="flex flex-col gap-3">
             <TagAndPlaytime

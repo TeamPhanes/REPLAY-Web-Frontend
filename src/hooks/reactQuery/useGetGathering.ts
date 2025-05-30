@@ -4,10 +4,17 @@ import { useQuery } from '@tanstack/react-query';
 import { GetGathering, GetGatheringDetail } from '@/axios/gathering';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
-export const useGetGathering = () => {
+export const useGetGathering = (
+  keyword: string,
+  page: number,
+  limit: number,
+  sort: string,
+  state: string,
+  city: string
+) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['gathering'],
-    queryFn: () => GetGathering(),
+    queryKey: ['gathering', keyword, page, limit, sort, state, city],
+    queryFn: () => GetGathering({ keyword, page, limit, sort, state, city }),
     retry: false,
     staleTime: 1000 * 60 * 5,
   });
@@ -19,7 +26,7 @@ export const useGetGathering = () => {
 
 export const useGetGatheringDetail = (id: string | string[]) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['gatheringDetail'],
+    queryKey: ['gatheringDetail', id],
     queryFn: () => GetGatheringDetail(id),
     retry: false,
     staleTime: 1000 * 60 * 5,

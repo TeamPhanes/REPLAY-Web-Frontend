@@ -44,7 +44,7 @@ export const useGetTheme = (
 
 export const useGetThemeDetail = (id: string | string[]) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['themeDetail'],
+    queryKey: ['themeDetail', id],
     queryFn: () => GetThemeDetail(id),
     retry: false,
     staleTime: 1000 * 60 * 5,

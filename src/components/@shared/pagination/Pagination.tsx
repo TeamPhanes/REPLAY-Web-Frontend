@@ -27,7 +27,7 @@ export default function Pagination({
     }
   }
 
-  return (
+  return range.length !== 0 ? (
     <div className="flex items-center gap-1 justify-center my-20">
       <button
         type="button"
@@ -74,5 +74,5 @@ export default function Pagination({
         />
       </button>
     </div>
-  );
+  ) : null;
 }

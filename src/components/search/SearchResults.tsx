@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import 'swiper/css';
@@ -12,11 +11,11 @@ import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper/types';
 import GatheringCard from '@/components/@shared/cardList/GatheringCard';
 import RoomCard from '@/components/@shared/cardList/RoomCard';
+import EmptySearchResult from '@/components/search/EmptySearchResult';
 import { useGetGathering } from '@/hooks/reactQuery/useGetGathering';
 import { useGetTheme } from '@/hooks/reactQuery/useGetTheme';
 import { GatheringDTO } from '@/types/gathering/gathering.type';
 import { RoomDTO } from '@/types/room/room.types';
-import SearchNotFound from '@/public/images/error/search.png';
 
 export default function SearchResults() {
   const searchParams = useSearchParams();
@@ -34,7 +33,14 @@ export default function SearchResults() {
     largeDistrict,
     middleDistrict
   );
-  const { gathering } = useGetGathering();
+  const { gathering } = useGetGathering(
+    keyword,
+    page,
+    4,
+    'dateTime',
+    largeDistrict,
+    middleDistrict
+  );
   return (
     <>
       <h2 className="font-semibold text-[32px]/[42px] tracking-[-2.5%] mt-[52px]">
@@ -58,24 +64,7 @@ export default function SearchResults() {
               <RoomCard room={room} />
             </SwiperSlide>
           ))}
-        {theme && theme.length === 0 && (
-          <div className="flex justify-center items-center flex-col">
-            <p className="font-normal text-[64px] tracking-[0.31em] mb-5">
-              NOT FOUND
-            </p>
-            <Image
-              src={SearchNotFound}
-              alt="검색 결과 없음"
-              width={200}
-              height={200}
-              priority
-              quality={100}
-            />
-            <p className="font-normal text-2xl/[34px] tracking-[-2.5%]">
-              열쇠를 찾지 못했어요.
-            </p>
-          </div>
-        )}
+        {theme && theme.length === 0 && <EmptySearchResult />}
       </Swiper>
       <h2 className="font-semibold text-[32px]/[42px] tracking-[-2.5%] mt-[52px]">
         모임
@@ -98,6 +87,7 @@ export default function SearchResults() {
               <GatheringCard gathering={data} />
             </SwiperSlide>
           ))}
+        {gathering && gathering.length === 0 && <EmptySearchResult />}
       </Swiper>
     </>
   );
