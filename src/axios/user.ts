@@ -37,10 +37,14 @@ export const PatchMyProfile = async (data: PatchMyPageData) => {
   });
 };
 
-export const GetLikeTheme = async () => {
+interface GetLikeThemeProps {
+  page: number;
+  limit: number;
+}
+export const GetLikeTheme = async ({ page, limit }: GetLikeThemeProps) => {
   try {
     const res = await axiosInstance.get(
-      `${API_PATH.user.likeTheme}?limit=10&offset=0`
+      `${API_PATH.user.likeTheme}?limit=${limit}&offset=${page}`
     );
     return res;
   } catch (error) {
@@ -49,10 +53,17 @@ export const GetLikeTheme = async () => {
   }
 };
 
-export const GetLikeGathering = async () => {
+interface GetLikeGatheringProps {
+  page: number;
+  limit: number;
+}
+export const GetLikeGathering = async ({
+  page,
+  limit,
+}: GetLikeGatheringProps) => {
   try {
     const res = await axiosInstance.get(
-      `${API_PATH.user.likeGathering}?limit=10&offset=0`
+      `${API_PATH.user.likeGathering}?limit=${limit}&offset=${page}`
     );
     return res;
   } catch (error) {
@@ -61,10 +72,14 @@ export const GetLikeGathering = async () => {
   }
 };
 
-export const GetReviewTheme = async () => {
+interface GetReviewThemeProps {
+  page: number;
+  limit: number;
+}
+export const GetReviewTheme = async ({ page, limit }: GetReviewThemeProps) => {
   try {
     const res = await axiosInstance.get(
-      `${API_PATH.user.reviewTheme}?limit=10&offset=0`
+      `${API_PATH.user.reviewTheme}?limit=${limit}&offset=${page}`
     );
     return res;
   } catch (error) {
@@ -73,10 +88,17 @@ export const GetReviewTheme = async () => {
   }
 };
 
-export const GetReviewGathering = async () => {
+interface GetReviewGatheringProps {
+  page: number;
+  limit: number;
+}
+export const GetReviewGathering = async ({
+  page,
+  limit,
+}: GetReviewGatheringProps) => {
   try {
     const res = await axiosInstance.get(
-      `${API_PATH.user.reviewGathering}?limit=10&offset=0`
+      `${API_PATH.user.reviewGathering}?limit=${limit}&offset=${page}`
     );
     return res;
   } catch (error) {
@@ -85,10 +107,19 @@ export const GetReviewGathering = async () => {
   }
 };
 
-export const GetMyComment = async (type: string) => {
+interface GetMyCommentProps {
+  sort: string;
+  page: number;
+  limit: number;
+}
+export const GetMyComment = async ({
+  sort,
+  page,
+  limit,
+}: GetMyCommentProps) => {
   try {
     const res = await axiosInstance.get(
-      `${API_PATH.user.myComment}?sortBy=${type}&limit=10&offset=0`
+      `${API_PATH.user.myComment}?sortBy=${sort}&limit=${limit}&offset=${page}`
     );
     return res;
   } catch (error) {

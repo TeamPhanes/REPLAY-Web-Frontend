@@ -20,7 +20,7 @@ export default function MyCommentPage() {
         selectedType={selectedType}
         setSelectedType={setSelectedType}
       />
-      <CommentCardSection type={selectedType} />
+      <CommentCardSection sort={selectedType} />
     </MyPageContainer>
   );
 }
