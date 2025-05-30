@@ -32,7 +32,7 @@ export default function RoomDetailGatherings({
         </Link>
       </div>
 
-      <div className="mt-6 flex justify-between">
+      <div className="mt-6">
         <GatheringCardContainer data={filteredGatherings} />
       </div>
     </>

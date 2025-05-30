@@ -49,7 +49,7 @@ export default function RoomPage() {
         <MapNavigation target="room" />
       </FilterContainer>
       <SortContainer>
-        <CountListValue value={theme.length} />
+        <CountListValue value={totalItems} />
         <SortDropdown sort={sort} sortList={sortList} sortChange={setSort} />
       </SortContainer>
       <RoomCardContainer data={theme} />

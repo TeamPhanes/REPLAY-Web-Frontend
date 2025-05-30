@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useThemeStore } from '@/store/useThemeStore';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
@@ -16,6 +17,7 @@ interface RoomDetailCardProps {
 }
 
 export default function RoomDetailCard({ id }: RoomDetailCardProps) {
+  const router = useRouter();
   const { selectedTheme } = useThemeStore();
   const { themeDetail, isLoading, showLoading } = useGetThemeDetail(id);
   const detail = themeDetail;
@@ -23,6 +25,10 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
 
   if (showLoading) return <Loading isLoading={isLoading} />;
 
+  if (themeDetail.themeId !== selectedTheme.themeId) {
+    router.replace('/not-found');
+    return null;
+  }
   return (
     <div className="flex h-[460px] justify-between">
       <Image
