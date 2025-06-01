@@ -1,8 +1,10 @@
 import { toast } from 'react-toastify';
+import { axiosInstance } from '@/libs/axiosInstance';
 import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
 
 interface GetThemeProps {
+  accessToken: string | null;
   keyword: string;
   page: number;
   limit: number;
@@ -12,6 +14,7 @@ interface GetThemeProps {
 }
 
 export const GetTheme = async ({
+  accessToken,
   keyword,
   page,
   limit,
@@ -20,7 +23,7 @@ export const GetTheme = async ({
   city,
 }: GetThemeProps) => {
   try {
-    const res = await axios.get(
+    const res = await (accessToken === null ? axios : axiosInstance).get(
       `${API_PATH.theme.default}?sortBy=${sort}${keyword !== '' ? `&keyword=${keyword}` : ''}${state !== '시.도' ? `&state=${state}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}&limit=${limit}&offset=${page}`
     );
     return res;
@@ -36,6 +39,42 @@ export const GetThemeDetail = async (id: string | string[]) => {
     return res;
   } catch (error) {
     toast.error(`방탈출 상세 정보 최신화 중 오류가 있습니다. ${error}`);
+    throw error;
+  }
+};
+
+export const PostLikeTheme = async (themeId: number) => {
+  try {
+    await axiosInstance.post(`${API_PATH.theme.default}/${themeId}/like`);
+  } catch (error) {
+    console.error(`찜하기 진행 중 오류가 있습니다. ${error}`);
+    throw error;
+  }
+};
+
+export const DeleteLikeTheme = async (themeId: number) => {
+  try {
+    await axiosInstance.delete(`${API_PATH.theme.default}/${themeId}/like`);
+  } catch (error) {
+    toast.error(`찜하기 취소 중 오류가 있습니다. ${error}`);
+    throw error;
+  }
+};
+
+export const PostMarkTheme = async (themeId: number) => {
+  try {
+    await axiosInstance.post(`${API_PATH.theme.default}/${themeId}/visit`);
+  } catch (error) {
+    console.error(`참여 목록 추가 중 오류가 있습니다. ${error}`);
+    throw error;
+  }
+};
+
+export const DeleteMarkTheme = async (themeId: number) => {
+  try {
+    await axiosInstance.delete(`${API_PATH.theme.default}/${themeId}/visit`);
+  } catch (error) {
+    toast.error(`참여 목록 취소 중 오류가 있습니다. ${error}`);
     throw error;
   }
 };

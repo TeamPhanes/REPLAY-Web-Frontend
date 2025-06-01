@@ -4,11 +4,13 @@ import { RoomDTO } from '@/types/room/room.types';
 
 interface RoomCardContainerProps {
   data: RoomDTO['get'][];
+  favoriteCheck?: boolean;
   reviewCheck?: boolean;
 }
 
 export default function RoomCardContainer({
   data,
+  favoriteCheck,
   reviewCheck,
 }: RoomCardContainerProps) {
   return (
@@ -19,6 +21,7 @@ export default function RoomCardContainer({
             <RoomCard
               key={room.themeId}
               room={room}
+              favoriteCheck={favoriteCheck}
               reviewCheck={reviewCheck}
             />
           ))}

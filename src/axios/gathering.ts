@@ -1,8 +1,10 @@
 import { toast } from 'react-toastify';
+import { axiosInstance } from '@/libs/axiosInstance';
 import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
 
 interface GetGatheringProps {
+  accessToken: string | null;
   keyword: string;
   page: number;
   limit: number;
@@ -11,6 +13,7 @@ interface GetGatheringProps {
   city: string;
 }
 export const GetGathering = async ({
+  accessToken,
   keyword,
   page,
   limit,
@@ -19,7 +22,7 @@ export const GetGathering = async ({
   city,
 }: GetGatheringProps) => {
   try {
-    const res = await axios.get(
+    const res = await (accessToken === null ? axios : axiosInstance).get(
       `${API_PATH.gathering.default}?sortBy=${sort}${keyword !== '' ? `&keyword=${keyword}` : ''}${state !== '시.도' ? `&state=${state}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}&limit=${limit}&offset=${page}`
     );
     return res;
@@ -61,5 +64,27 @@ export const PostGathering = async () => {
     });
   } catch (error) {
     throw new Error('모임 생성에 실패했습니다.');
+  }
+};
+
+export const PostLikeGathering = async (gatheringId: number) => {
+  try {
+    await axiosInstance.post(
+      `${API_PATH.gathering.default}/${gatheringId}/like`
+    );
+  } catch (error) {
+    console.error(`찜하기 진행 중 오류가 있습니다. ${error}`);
+    throw error;
+  }
+};
+
+export const DeleteLikeGathering = async (gatheringId: number) => {
+  try {
+    await axiosInstance.delete(
+      `${API_PATH.gathering.default}/${gatheringId}/like`
+    );
+  } catch (error) {
+    toast.error(`찜하기 취소 중 오류가 있습니다. ${error}`);
+    throw error;
   }
 };

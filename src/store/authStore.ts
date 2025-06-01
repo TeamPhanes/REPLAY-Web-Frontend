@@ -29,7 +29,6 @@ export const useAuthStore = create<AuthState & AuthActions>()(
           const authHeader = res.headers.authorization;
           if (!authHeader)
             throw new Error('Authorization이 header에 없습니다.');
-
           const newToken = authHeader.replace('Bearer ', '');
           set({ accessToken: newToken });
           return true;

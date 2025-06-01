@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useThemeStore } from '@/store/useThemeStore';
@@ -6,6 +7,8 @@ import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
 import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import Rating from '@/components/@shared/rating/Rating';
+import { usePostThemeLike } from '@/hooks/reactQuery/usePostThemeLike';
+import { usePostThemeMark } from '@/hooks/reactQuery/usePostThemeMark';
 import { RoomDTO } from '@/types/room/room.types';
 import BookmarkFull from '@/public/icons/cardList/bookmark_full.svg';
 import BookmarkLine from '@/public/icons/cardList/bookmark_line.svg';
@@ -15,28 +18,69 @@ import ReviewPencil from '@/public/icons/mypage/review_pencil.svg';
 
 interface RoomCardProps {
   room: RoomDTO['get'];
+  favoriteCheck?: boolean;
   reviewCheck?: boolean;
 }
 
-export default function RoomCard({ room, reviewCheck }: RoomCardProps) {
+export default function RoomCard({
+  room,
+  favoriteCheck,
+  reviewCheck,
+}: RoomCardProps) {
+  const [isLiked, setIsLiked] = useState(favoriteCheck ? true : room.isLiked);
+  const [isMarked, setIsMarked] = useState(reviewCheck ? true : room.isMarked);
   const { setSelectedTheme } = useThemeStore();
+  const { likesMutation } = usePostThemeLike();
+  const { marksMutation } = usePostThemeMark();
+
+  const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {
+    setIsLiked(userAction === 'LIKE_POST');
+    likesMutation.mutate({
+      themeId: room.themeId,
+      userAction,
+    });
+  };
+
+  const handleMarkButtonClick = (userAction: 'MARK_POST' | 'UNMARK_POST') => {
+    setIsMarked(userAction === 'MARK_POST');
+    marksMutation.mutate({
+      themeId: room.themeId,
+      userAction,
+    });
+  };
+
+  useEffect(() => {
+    if (!favoriteCheck) {
+      setIsLiked(room.isLiked);
+    }
+  }, [room.isLiked, favoriteCheck]);
   return (
     <div
       key={room.themeId}
       className={`${reviewCheck ? 'h-[352px]' : 'h-[252px]'} relative flex  w-[630px] items-start rounded-3xl bg-card p-5`}
     >
       <div className="absolute right-5 flex flex-col">
-        <button type="button">
+        <button
+          type="button"
+          onClick={() =>
+            handleMarkButtonClick(isMarked ? 'UNMARK_POST' : 'MARK_POST')
+          }
+        >
           <Image
-            src={room.isMarked ? BookmarkFull : BookmarkLine}
+            src={isMarked ? BookmarkFull : BookmarkLine}
             alt="bookmark"
             width={32}
             height={32}
           />
         </button>
-        <button type="button">
+        <button
+          type="button"
+          onClick={() =>
+            handleLikeButtonClick(isLiked ? 'UNLIKE_POST' : 'LIKE_POST')
+          }
+        >
           <Image
-            src={room.isLiked ? HeartFull : HeartLine}
+            src={isLiked ? HeartFull : HeartLine}
             alt="heart"
             width={32}
             height={32}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useAuthStore } from '@/store/authStore';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
 import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
@@ -18,6 +19,7 @@ import { useGetGathering } from '@/hooks/reactQuery/useGetGathering';
 import { usePagination } from '@/hooks/usePagination';
 
 export default function GatheringPage() {
+  const { accessToken } = useAuthStore();
   const [page, setPage] = useState(0);
   const [sort, setSort] = useState('최신순');
   const sortList = ['최신순', '마감순', '참여순'];
@@ -27,7 +29,9 @@ export default function GatheringPage() {
     참여순: 'participantCount',
   };
   const { largeDistrict, middleDistrict } = useQueryStringStore();
+
   const { gathering, isLoading, showLoading } = useGetGathering(
+    accessToken,
     '',
     page,
     10,
@@ -35,10 +39,10 @@ export default function GatheringPage() {
     largeDistrict,
     middleDistrict
   );
-  const totalItems = gathering ? gathering.length : 0;
+  const totalItems = gathering ? gathering.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
 
-  if (showLoading) return <Loading isLoading={isLoading} />;
+  if (showLoading || isLoading) return <Loading isLoading={isLoading} />;
   return (
     <PageContainer>
       <SearchBar />
@@ -51,7 +55,7 @@ export default function GatheringPage() {
         <CountListValue value={totalItems} />
         <SortDropdown sort={sort} sortList={sortList} sortChange={setSort} />
       </SortContainer>
-      <GatheringCardContainer data={gathering} />
+      <GatheringCardContainer data={gathering.data} />
       <Pagination
         currentPage={page}
         totalPages={totalPages}
