@@ -21,7 +21,7 @@ export default function GatheringLikedSection() {
     <EmptyArrayContainer type="찜한" kind="모임" />
   ) : (
     <>
-      <GatheringCardContainer data={userLikeGathering.data} />
+      <GatheringCardContainer data={userLikeGathering.data} favoriteCheck />
       <Pagination
         currentPage={page}
         totalPages={totalPages}

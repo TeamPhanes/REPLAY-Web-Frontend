@@ -18,7 +18,7 @@ export default function ThemeLikedSection() {
     <EmptyArrayContainer type="찜한" kind="방탈출" />
   ) : (
     <>
-      <RoomCardContainer data={userLikeTheme.data} />
+      <RoomCardContainer data={userLikeTheme.data} favoriteCheck />
       <Pagination
         currentPage={page}
         totalPages={totalPages}

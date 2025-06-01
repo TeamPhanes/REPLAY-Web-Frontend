@@ -1,4 +1,3 @@
-import { toast } from 'react-toastify';
 import { useAuthStore } from '@/store/authStore';
 import axios from 'axios';
 
@@ -34,7 +33,6 @@ axiosInstance.interceptors.response.use(
 
         if (!success) {
           useAuthStore.getState().clearAccessToken();
-          // window.location.href = '/login';
           return await Promise.reject(error);
         }
 
@@ -46,8 +44,6 @@ axiosInstance.interceptors.response.use(
         return await axiosInstance(originalRequest);
       } catch (refreshError) {
         console.error(`토큰 최신화 중 오류가 있습니다. : ${error}`);
-        // useAuthStore.getState().clearAccessToken();
-        // window.location.href = '/login';
         return Promise.reject(refreshError);
       }
     }

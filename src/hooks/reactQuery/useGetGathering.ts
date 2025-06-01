@@ -5,6 +5,7 @@ import { GetGathering, GetGatheringDetail } from '@/axios/gathering';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
 export const useGetGathering = (
+  accessToken: string | null,
   keyword: string,
   page: number,
   limit: number,
@@ -13,8 +14,18 @@ export const useGetGathering = (
   city: string
 ) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['gathering', keyword, page, limit, sort, state, city],
-    queryFn: () => GetGathering({ keyword, page, limit, sort, state, city }),
+    queryKey: [
+      'gathering',
+      accessToken,
+      keyword,
+      page,
+      limit,
+      sort,
+      state,
+      city,
+    ],
+    queryFn: () =>
+      GetGathering({ accessToken, keyword, page, limit, sort, state, city }),
     retry: false,
     staleTime: 1000 * 60 * 5,
   });

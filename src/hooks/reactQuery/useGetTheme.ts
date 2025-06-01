@@ -8,6 +8,7 @@ import { useShowLoading } from '@/hooks/useShowLoading';
 const queryClient = new QueryClient();
 
 export const useGetTheme = (
+  accessToken: string | null,
   keyword: string,
   page: number,
   limit: number,
@@ -16,8 +17,9 @@ export const useGetTheme = (
   city: string
 ) => {
   const { data, isLoading, error, isPlaceholderData } = useQuery({
-    queryKey: ['theme', keyword, page, limit, sort, state, city],
-    queryFn: () => GetTheme({ keyword, page, limit, sort, state, city }),
+    queryKey: ['theme', accessToken, keyword, page, limit, sort, state, city],
+    queryFn: () =>
+      GetTheme({ accessToken, keyword, page, limit, sort, state, city }),
     placeholderData: keepPreviousData,
     retry: false,
     staleTime: 1000 * 60 * 5,
@@ -30,10 +32,21 @@ export const useGetTheme = (
     if (!isPlaceholderData) {
       queryClient.prefetchQuery({
         queryKey: ['theme', page + 1],
-        queryFn: () => GetTheme({ keyword, page, limit, sort, state, city }),
+        queryFn: () =>
+          GetTheme({ accessToken, keyword, page, limit, sort, state, city }),
       });
     }
-  }, [isPlaceholderData, theme, keyword, page, limit, sort, state, city]);
+  }, [
+    isPlaceholderData,
+    theme,
+    accessToken,
+    keyword,
+    page,
+    limit,
+    sort,
+    state,
+    city,
+  ]);
   return {
     theme,
     isLoading,

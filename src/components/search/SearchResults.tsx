@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { useAuthStore } from '@/store/authStore';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import 'swiper/css';
 import 'swiper/css/autoplay';
@@ -21,11 +22,13 @@ export default function SearchResults() {
   const searchParams = useSearchParams();
   const keyword = searchParams.get('keyword') || '';
   const swiperRef = useRef<SwiperClass>();
+  const { accessToken } = useAuthStore();
 
   const [page, setPage] = useState(0);
   const { largeDistrict, middleDistrict } = useQueryStringStore();
 
   const { theme } = useGetTheme(
+    accessToken,
     keyword,
     page,
     4,
@@ -34,6 +37,7 @@ export default function SearchResults() {
     middleDistrict
   );
   const { gathering } = useGetGathering(
+    accessToken,
     keyword,
     page,
     4,
@@ -59,12 +63,12 @@ export default function SearchResults() {
         className="mt-6"
       >
         {theme &&
-          theme.map((room: RoomDTO['get']) => (
+          theme.data.map((room: RoomDTO['get']) => (
             <SwiperSlide key={room.themeId}>
               <RoomCard room={room} />
             </SwiperSlide>
           ))}
-        {theme && theme.length === 0 && <EmptySearchResult />}
+        {theme && theme.data.length === 0 && <EmptySearchResult />}
       </Swiper>
       <h2 className="font-semibold text-[32px]/[42px] tracking-[-2.5%] mt-[52px]">
         모임
@@ -82,12 +86,12 @@ export default function SearchResults() {
         className="mt-6"
       >
         {gathering &&
-          gathering.map((data: GatheringDTO['get']) => (
+          gathering.data.map((data: GatheringDTO['get']) => (
             <SwiperSlide key={data.gatheringId}>
               <GatheringCard gathering={data} />
             </SwiperSlide>
           ))}
-        {gathering && gathering.length === 0 && <EmptySearchResult />}
+        {gathering && gathering.data.length === 0 && <EmptySearchResult />}
       </Swiper>
     </>
   );

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useAuthStore } from '@/store/authStore';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
 import RoomCardContainer from '@/components/@shared/cardList/RoomCardContainer';
@@ -18,6 +19,7 @@ import { useGetTheme } from '@/hooks/reactQuery/useGetTheme';
 import { usePagination } from '@/hooks/usePagination';
 
 export default function RoomPage() {
+  const { accessToken } = useAuthStore();
   const [page, setPage] = useState(0);
   const [sort, setSort] = useState('인기순');
   const sortList = ['인기순', '평점순', '리뷰순'];
@@ -29,6 +31,7 @@ export default function RoomPage() {
   const { largeDistrict, middleDistrict } = useQueryStringStore();
 
   const { theme, showLoading, isLoading } = useGetTheme(
+    accessToken,
     '',
     page,
     10,
@@ -36,7 +39,7 @@ export default function RoomPage() {
     largeDistrict,
     middleDistrict
   );
-  const totalItems = theme ? theme.length : 0;
+  const totalItems = theme ? theme.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
 
   if (showLoading) return <Loading isLoading={isLoading} />;
@@ -49,10 +52,10 @@ export default function RoomPage() {
         <MapNavigation target="room" />
       </FilterContainer>
       <SortContainer>
-        <CountListValue value={totalItems} />
+        <CountListValue value={theme.totalCount} />
         <SortDropdown sort={sort} sortList={sortList} sortChange={setSort} />
       </SortContainer>
-      <RoomCardContainer data={theme} />
+      <RoomCardContainer data={theme.data} />
       <Pagination
         currentPage={page}
         totalPages={totalPages}
