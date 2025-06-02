@@ -21,6 +21,7 @@ export default function AddGatheringModal({
   onClose,
 }: AddGatheringModalProps) {
   const now = new Date();
+  now.setMinutes(0);
   const after23Hours = new Date(now);
   after23Hours.setHours(after23Hours.getHours() + 23);
   const tomorrow = new Date(now);
@@ -30,15 +31,9 @@ export default function AddGatheringModal({
   const [content, setContent] = useState('');
   const [priceType, setPriceType] = useState('인당');
   const [price, setPrice] = useState(0);
-  const [dateTime, setDateTime] = useState(
-    yearMonthDayHourTime(String(tomorrow))
-  );
-  const [registrationStart, setRegistrationStart] = useState(
-    yearMonthDayHourTime(String(now))
-  );
-  const [registrationEnd, setRegistrationEnd] = useState(
-    yearMonthDayHourTime(String(after23Hours))
-  );
+  const [dateTime, setDateTime] = useState(tomorrow);
+  const [registrationStart, setRegistrationStart] = useState(now);
+  const [registrationEnd, setRegistrationEnd] = useState(after23Hours);
   const [capacity, setCapacity] = useState(4);
   return (
     <Modal
@@ -51,10 +46,15 @@ export default function AddGatheringModal({
       <AddGatheringNameInput name={name} nameChange={setName} />
       <AddGatheringRecruitmentPeriod
         registrationStart={registrationStart}
+        registrationStartChange={setRegistrationStart}
         registrationEnd={registrationEnd}
+        registrationEndChange={setRegistrationEnd}
       />
       <div className="flex justify-between mt-8">
-        <AddGatheringSchedule dateTime={dateTime} />
+        <AddGatheringSchedule
+          dateTime={dateTime}
+          dateTimeChange={setDateTime}
+        />
         <AddGatheringCapacity
           capacity={capacity}
           capacityChange={setCapacity}
@@ -66,7 +66,6 @@ export default function AddGatheringModal({
           priceChange={setPrice}
         />
       </div>
-
       <AddGatheringWrite content={content} contentChange={setContent} />
       <AddGatheringButton onClose={onClose} />
     </Modal>
