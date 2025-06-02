@@ -26,7 +26,7 @@ export default function MiddleDistrictDropdown({
         onClickHandler={setMiddleDistrict}
         className={`${list.length === 2 ? 'grid-cols-2' : ''} ${list.length === 3 ? 'grid-cols-3' : ''} ${list.length >= 4 ? 'grid-cols-4' : ''} grid p-2`}
         marginTop={14}
-        align="start"
+        align="center"
       >
         <button
           type="button"

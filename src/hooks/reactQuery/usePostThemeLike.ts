@@ -23,6 +23,7 @@ export const usePostThemeLike = () => {
     },
     onSuccess: () => {
       queryclient.invalidateQueries({ queryKey: ['userLikeTheme'] });
+      queryclient.invalidateQueries({ queryKey: ['userReviewTheme'] });
     },
     onError: () => {
       toast.info('로그인 후 이용해주세요', { toastId: 'auth-required' });
