@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { mockGatherings } from '@/data/mockGatherings';
 import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
 import ChevronGrayRight from '@/public/icons/detail/chevron_gray_right.svg';
 
@@ -11,10 +10,6 @@ interface RoomDetailGatheringsProps {
 export default function RoomDetailGatherings({
   id,
 }: RoomDetailGatheringsProps) {
-  const filteredGatherings = mockGatherings
-    .filter((gatherings) => gatherings.themeId === Number(id))
-    .slice(0, 2);
-
   return (
     <>
       <div className="mt-6 flex justify-end">
@@ -33,7 +28,7 @@ export default function RoomDetailGatherings({
       </div>
 
       <div className="mt-6">
-        <GatheringCardContainer data={filteredGatherings} />
+        <GatheringCardContainer data={[]} />
       </div>
     </>
   );
