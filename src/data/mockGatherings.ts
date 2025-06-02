@@ -1,9 +1,4 @@
-import {
-  GatheringDTO,
-  GatheringLikedDTO,
-} from '@/types/gathering/gathering.type';
-
-export const mockGatherings: GatheringDTO['get'][] = [
+export const mockGatherings = [
   {
     gatheringId: 1,
     listImage: 'https://xdungeon.net/file/theme/11/11_6145641280.jpg',
@@ -198,7 +193,7 @@ export const mockGatherings: GatheringDTO['get'][] = [
   },
 ];
 
-export const mockLikedGatherings: GatheringLikedDTO['get'][] = [
+export const mockLikedGatherings = [
   {
     gatheringId: 1,
     listImage: 'https://xdungeon.net/file/theme/11/11_6145641280.jpg',
