@@ -25,7 +25,7 @@ export default function RegistrationEndDate({
         selectedDate={registrationEnd}
         onClose={toggleOpen}
         onDateChange={registrationEndChange}
-        layout="top-[100px] left-0"
+        layout="top-[52px] left-0"
       />
     </>
   );

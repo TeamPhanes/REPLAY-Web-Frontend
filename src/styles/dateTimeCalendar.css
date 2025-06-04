@@ -70,7 +70,7 @@
   .react-calendar__month-view__days__day:enabled:hover::before,
 .date-time-calendar .react-calendar__tile--active::before {
   content: '';
-  background-color: #2227f7;
+  background-color: #8487fb;
   border-radius: 9999px;
   width: 34px;
   height: 34px;
@@ -83,5 +83,5 @@
 
 .date-time-calendar
   .react-calendar__month-view__days__day:enabled:hover::before {
-  background-color: #060aac;
+  background-color: #2227f7;
 }
