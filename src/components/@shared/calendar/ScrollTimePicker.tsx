@@ -23,8 +23,8 @@ export default function ScrollTimePicker({
               type="button"
               key={hour}
               className={`rounded-md p-3 text-center ${
-                selectedHour === hour ? 'bg-mainBlue' : ''
-              } hover:bg-mainBlueHover`}
+                selectedHour === hour ? 'bg-mainPurple' : ''
+              } hover:bg-mainBlue`}
               onClick={() => onHourChange(hour)}
             >
               {hour.toString().padStart(2, '0')}
@@ -38,8 +38,8 @@ export default function ScrollTimePicker({
               type="button"
               key={minute}
               className={`rounded-md p-3 text-center ${
-                selectedMinute === minute ? 'bg-mainBlue' : ''
-              } hover:bg-mainBlueHover`}
+                selectedMinute === minute ? 'bg-mainPurple' : ''
+              } hover:bg-mainBlue`}
               onClick={() => onMinuteChange(minute)}
             >
               {minute.toString().padStart(2, '0')}
