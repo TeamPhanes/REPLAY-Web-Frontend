@@ -6,10 +6,11 @@ import AddGatheringNameInput from '@/components/@shared/modal/AddGathering/AddGa
 import AddGatheringPrice from '@/components/@shared/modal/AddGathering/AddGatheringPrice';
 import AddGatheringRecruitmentPeriod from '@/components/@shared/modal/AddGathering/AddGatheringRecruitmentPeriod';
 import AddGatheringSchedule from '@/components/@shared/modal/AddGathering/AddGatheringSchedule';
+import AddGatheringSearchBar from '@/components/@shared/modal/AddGathering/AddGatheringSearchBar';
 import AddGatheringWrite from '@/components/@shared/modal/AddGathering/AddGatheringWrite';
 import Modal from '@/components/@shared/modal/Modal';
-import SearchBar from '@/components/@shared/search/SearchBar';
-import { yearMonthDayHourTime } from '@/utils/dateChange';
+import usePostGatheringForm from '@/hooks/form/usePostGatheringForm';
+import { usePostGathering } from '@/hooks/reactQuery/usePostGathering';
 
 interface AddGatheringModalProps {
   isOpen: boolean;
@@ -20,54 +21,68 @@ export default function AddGatheringModal({
   isOpen,
   onClose,
 }: AddGatheringModalProps) {
-  const now = new Date();
-  now.setMinutes(0);
-  const after23Hours = new Date(now);
-  after23Hours.setHours(after23Hours.getHours() + 23);
-  const tomorrow = new Date(now);
-  tomorrow.setDate(tomorrow.getDate() + 1);
-
-  const [name, setName] = useState('');
-  const [content, setContent] = useState('');
-  const [priceType, setPriceType] = useState('인당');
-  const [price, setPrice] = useState(0);
-  const [dateTime, setDateTime] = useState(tomorrow);
-  const [registrationStart, setRegistrationStart] = useState(now);
-  const [registrationEnd, setRegistrationEnd] = useState(after23Hours);
-  const [capacity, setCapacity] = useState(4);
+  const [search, setSearch] = useState('');
+  const { mutate } = usePostGathering();
+  const {
+    register,
+    handleSubmit,
+    onSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = usePostGatheringForm(mutate, onClose);
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
       className="bg-white rounded-[30px] py-10 px-[72px] w-[726px]"
     >
-      <AddGatheringLocation />
-      <SearchBar type="dark" />
-      <AddGatheringNameInput name={name} nameChange={setName} />
-      <AddGatheringRecruitmentPeriod
-        registrationStart={registrationStart}
-        registrationStartChange={setRegistrationStart}
-        registrationEnd={registrationEnd}
-        registrationEndChange={setRegistrationEnd}
-      />
-      <div className="flex justify-between mt-8">
-        <AddGatheringSchedule
-          dateTime={dateTime}
-          dateTimeChange={setDateTime}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <AddGatheringLocation />
+        <AddGatheringSearchBar
+          search={search}
+          searchChange={setSearch}
+          themeId={watch('themeId')}
+          themeIdChange={(themeId) => setValue('themeId', themeId)}
         />
-        <AddGatheringCapacity
-          capacity={capacity}
-          capacityChange={setCapacity}
+        <AddGatheringNameInput
+          name={watch('name')}
+          nameChange={(name) => setValue('name', name)}
         />
-        <AddGatheringPrice
-          priceType={priceType}
-          priceTypeChange={setPriceType}
-          price={price}
-          priceChange={setPrice}
+        <AddGatheringRecruitmentPeriod
+          registrationStart={watch('registrationStart')}
+          registrationStartChange={(registrationStart) =>
+            setValue('registrationStart', registrationStart)
+          }
+          registrationEnd={watch('registrationEnd')}
+          registrationEndChange={(registrationEnd) =>
+            setValue('registrationEnd', registrationEnd)
+          }
         />
-      </div>
-      <AddGatheringWrite content={content} contentChange={setContent} />
-      <AddGatheringButton onClose={onClose} />
+        <div className="flex justify-between mt-8">
+          <AddGatheringSchedule
+            dateTime={watch('dateTime')}
+            dateTimeChange={(dateTime) => setValue('dateTime', dateTime)}
+          />
+          <AddGatheringCapacity
+            capacity={watch('capacity')}
+            capacityChange={(capacity) => setValue('capacity', capacity)}
+          />
+          <AddGatheringPrice
+            priceType={watch('isIndividual')}
+            priceTypeChange={(isIndividual) =>
+              setValue('isIndividual', isIndividual)
+            }
+            price={watch('price')}
+            priceChange={(price) => setValue('price', price)}
+          />
+        </div>
+        <AddGatheringWrite
+          content={watch('content')}
+          contentChange={(content) => setValue('content', content)}
+        />
+        <AddGatheringButton onClose={onClose} />
+      </form>
     </Modal>
   );
 }

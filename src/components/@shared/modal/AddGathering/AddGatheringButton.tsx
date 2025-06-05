@@ -1,5 +1,3 @@
-import { PostGathering } from '@/axios/gathering';
-
 interface AddGatheringButtonProps {
   onClose: () => void;
 }
@@ -17,9 +15,8 @@ export default function AddGatheringButton({
         취소하기
       </button>
       <button
-        type="button"
+        type="submit"
         className="w-full py-3 px-[10px] bg-mainBlue rounded-2xl font-semibold text-2xl/[34px] tracking-[-2.5%] text-white hover:bg-mainBlueHover"
-        onClick={PostGathering}
       >
         등록하기
       </button>

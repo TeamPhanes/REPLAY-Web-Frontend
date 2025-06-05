@@ -82,3 +82,7 @@ export const periodOfActivity = (dateString: string) => {
 
   return `${days}일`;
 };
+
+// Ex) 2025-06-06T15:00:00
+export const toKSTString = (date: Date): string =>
+  date.toLocaleString('sv-SE', { timeZone: 'Asia/Seoul' }).replace(' ', 'T');

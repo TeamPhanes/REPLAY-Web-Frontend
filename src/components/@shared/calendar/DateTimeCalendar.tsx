@@ -57,10 +57,10 @@ export default function DateTimeCalendar({
   };
 
   const handleReset = () => {
-    setDate(tomorrow);
-    setSelectedHour(tomorrow.getHours());
-    setSelectedMinute(tomorrow.getMinutes());
-    onDateChange(tomorrow);
+    setDate(date);
+    setSelectedHour(date.getHours());
+    setSelectedMinute(date.getMinutes());
+    onDateChange(date);
     onClose();
   };
 
