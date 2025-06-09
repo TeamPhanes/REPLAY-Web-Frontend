@@ -29,5 +29,6 @@ export interface GatheringDetailDTO {
     registrationEnd: string;
     price: number;
     content: string;
+    isIndividual: boolean;
   };
 }
