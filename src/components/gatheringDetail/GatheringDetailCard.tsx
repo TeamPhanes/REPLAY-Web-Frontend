@@ -1,13 +1,16 @@
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import Rating from '@/components/@shared/rating/Rating';
 import DateAndPrice from '@/components/gatheringDetail/DateAndPrice';
 import TagAndLink from '@/components/gatheringDetail/TagAndLink';
+import { usePostGatheringLike } from '@/hooks/reactQuery/usePostGatheringLike';
 import {
   GatheringDTO,
   GatheringDetailDTO,
 } from '@/types/gathering/gathering.type';
+import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
 
 interface GatheringDetailCardProps {
@@ -19,6 +22,21 @@ export default function GatheringDetailCard({
   list,
   detail,
 }: GatheringDetailCardProps) {
+  const [isLiked, setIsLiked] = useState(list.isLiked);
+  const { likesMutation } = usePostGatheringLike();
+
+  const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {
+    setIsLiked(userAction === 'LIKE_POST');
+    likesMutation.mutate({
+      gatheringId: detail.gatheringId,
+      userAction,
+    });
+  };
+
+  useEffect(() => {
+    setIsLiked(list.isLiked);
+  }, [list.isLiked]);
+
   return (
     <>
       <div className="flex h-[460px] justify-between">
@@ -31,8 +49,19 @@ export default function GatheringDetailCard({
           className="rounded-[30px]"
         />
         <div className="relative h-[460px] w-[471px] rounded-[30px] bg-card p-5">
-          <button type="button" className="absolute right-5 top-20">
-            <Image src={HeartLine} alt="heart" width={32} height={32} />
+          <button
+            type="button"
+            className="absolute right-5 top-20"
+            onClick={() =>
+              handleLikeButtonClick(isLiked ? 'UNLIKE_POST' : 'LIKE_POST')
+            }
+          >
+            <Image
+              src={isLiked ? HeartFull : HeartLine}
+              alt="heart"
+              width={32}
+              height={32}
+            />
           </button>
           <TagAndLink tag={list.genres} />
           <div className="mt-7 w-[395px]">
@@ -45,6 +74,7 @@ export default function GatheringDetailCard({
           <div className="mt-9 flex w-[395px] flex-col gap-3">
             <DateAndPrice
               registrationEnd={list.dateTime}
+              isIndividual={detail.isIndividual}
               price={detail.price}
             />
             <AddressAndLevel address={list.address} level={list.level} />

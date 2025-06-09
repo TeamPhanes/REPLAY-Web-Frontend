@@ -4,11 +4,13 @@ import CalendarIcon from '@/public/icons/cardList/calendar_schedule.svg';
 
 interface DateAndPriceProps {
   registrationEnd: string;
+  isIndividual: boolean;
   price: number;
 }
 
 export default function DateAndPrice({
   registrationEnd,
+  isIndividual,
   price,
 }: DateAndPriceProps) {
   return (
@@ -20,6 +22,7 @@ export default function DateAndPrice({
         </p>
       </div>
       <p className="text-xl font-semibold tracking-[-2.5%] text-basefont">
+        {isIndividual ? '인당 ' : '총액 '}
         {price.toLocaleString()}원
       </p>
     </div>
