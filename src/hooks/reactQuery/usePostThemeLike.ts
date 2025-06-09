@@ -23,6 +23,7 @@ export const usePostThemeLike = () => {
       }
     },
     onSuccess: () => {
+      queryclient.invalidateQueries({ queryKey: ['theme'] });
       queryclient.invalidateQueries({ queryKey: ['userLikeTheme'] });
       queryclient.invalidateQueries({ queryKey: ['userReviewTheme'] });
     },

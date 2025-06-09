@@ -23,6 +23,8 @@ export const usePostThemeMark = () => {
       }
     },
     onSuccess: () => {
+      queryclient.invalidateQueries({ queryKey: ['theme'] });
+      queryclient.invalidateQueries({ queryKey: ['userLikeTheme'] });
       queryclient.invalidateQueries({ queryKey: ['userReviewTheme'] });
     },
     onError: (error: AxiosError) => {
