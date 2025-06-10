@@ -17,7 +17,7 @@ interface PatchGatheringModalProps {
     name: string;
     themeId: number;
     content: string;
-    isIndividual: boolean;
+    isIndividual: string;
     price: number;
     dateTime: Date;
     registrationStart: Date;
