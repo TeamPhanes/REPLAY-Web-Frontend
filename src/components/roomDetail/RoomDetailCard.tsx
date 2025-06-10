@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useThemeStore } from '@/store/useThemeStore';
@@ -9,7 +10,11 @@ import Loading from '@/components/@shared/loading/Loading';
 import RoomDetailStroy from '@/components/roomDetail/RoomDetailStroy';
 import { useGetReviewAllRating } from '@/hooks/reactQuery/useGetReview';
 import { useGetThemeDetail } from '@/hooks/reactQuery/useGetTheme';
+import { usePostThemeLike } from '@/hooks/reactQuery/usePostThemeLike';
+import { usePostThemeMark } from '@/hooks/reactQuery/usePostThemeMark';
+import BookmarkFull from '@/public/icons/cardList/bookmark_full.svg';
 import BookmarkLine from '@/public/icons/cardList/bookmark_line.svg';
+import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
 
 interface RoomDetailCardProps {
@@ -22,6 +27,26 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
   const { themeDetail, isLoading, showLoading } = useGetThemeDetail(id);
   const detail = themeDetail;
   const { reviewAllRating } = useGetReviewAllRating(id);
+  const [isLiked, setIsLiked] = useState(selectedTheme.isLiked);
+  const [isMarked, setIsMarked] = useState(selectedTheme.isMarked);
+  const { likesMutation } = usePostThemeLike();
+  const { marksMutation } = usePostThemeMark();
+
+  const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {
+    setIsLiked(userAction === 'LIKE_POST');
+    likesMutation.mutate({
+      themeId: selectedTheme.themeId,
+      userAction,
+    });
+  };
+
+  const handleMarkButtonClick = (userAction: 'MARK_POST' | 'UNMARK_POST') => {
+    setIsMarked(userAction === 'MARK_POST');
+    marksMutation.mutate({
+      themeId: selectedTheme.themeId,
+      userAction,
+    });
+  };
 
   if (showLoading) return <Loading isLoading={isLoading} />;
 
@@ -41,11 +66,31 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
       />
       <div className="relative h-[460px] w-[471px] rounded-[30px] bg-card p-5">
         <div className="absolute right-5 flex">
-          <button type="button">
-            <Image src={BookmarkLine} alt="bookmark" width={32} height={32} />
+          <button
+            type="button"
+            onClick={() =>
+              handleMarkButtonClick(isMarked ? 'UNMARK_POST' : 'MARK_POST')
+            }
+          >
+            <Image
+              src={isMarked ? BookmarkFull : BookmarkLine}
+              alt="bookmark"
+              width={32}
+              height={32}
+            />
           </button>
-          <button type="button">
-            <Image src={HeartLine} alt="heart" width={32} height={32} />
+          <button
+            type="button"
+            onClick={() =>
+              handleLikeButtonClick(isLiked ? 'UNLIKE_POST' : 'LIKE_POST')
+            }
+          >
+            <Image
+              src={isLiked ? HeartFull : HeartLine}
+              alt="heart"
+              width={32}
+              height={32}
+            />
           </button>
         </div>
         <div className="w-[360px]">

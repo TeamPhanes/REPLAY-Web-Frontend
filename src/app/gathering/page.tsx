@@ -13,6 +13,7 @@ import FilterContainer from '@/components/@shared/layout/FilterContainer';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import SortContainer from '@/components/@shared/layout/SortContainer';
 import Loading from '@/components/@shared/loading/Loading';
+import FixedAddGatheringButton from '@/components/@shared/modal/AddGathering/FixedAddGatheringButton';
 import Pagination from '@/components/@shared/pagination/Pagination';
 import SearchBar from '@/components/@shared/search/SearchBar';
 import { useGetGathering } from '@/hooks/reactQuery/useGetGathering';
@@ -61,6 +62,7 @@ export default function GatheringPage() {
         totalPages={totalPages}
         onChange={setPage}
       />
+      <FixedAddGatheringButton />
     </PageContainer>
   );
 }
