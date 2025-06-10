@@ -4,6 +4,7 @@ import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import Rating from '@/components/@shared/rating/Rating';
 import DateAndPrice from '@/components/gatheringDetail/DateAndPrice';
+import GatheringDetailButton from '@/components/gatheringDetail/GatheringDetailButton';
 import TagAndLink from '@/components/gatheringDetail/TagAndLink';
 import { usePostGatheringLike } from '@/hooks/reactQuery/usePostGatheringLike';
 import {
@@ -16,11 +17,13 @@ import HeartLine from '@/public/icons/cardList/heart_line.svg';
 interface GatheringDetailCardProps {
   list: GatheringDTO['get'];
   detail: GatheringDetailDTO['get'];
+  leader: string;
 }
 
 export default function GatheringDetailCard({
   list,
   detail,
+  leader,
 }: GatheringDetailCardProps) {
   const [isLiked, setIsLiked] = useState(list.isLiked);
   const { likesMutation } = usePostGatheringLike();
@@ -92,12 +95,12 @@ export default function GatheringDetailCard({
               {list.participantCount}/{list.capacity}
             </p>
           </div>
-          <button
-            type="button"
-            className="absolute bottom-5 w-[431px] rounded-2xl bg-mainBlue px-[10px] py-3"
-          >
-            <p className="text-2xl font-semibold text-white">모임 참여하기</p>
-          </button>
+          <GatheringDetailButton
+            list={list}
+            detail={detail}
+            leader={leader}
+            gatheringId={detail.gatheringId}
+          />
         </div>
       </div>
       <div className="mt-5 h-[712px] w-[570px] rounded-[30px] bg-card p-5">

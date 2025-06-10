@@ -15,6 +15,7 @@ const config: Config = {
         mainBlue: '#2227F7',
         mainBlueHover: '#060AAC',
         mainPurple: '#8487fb',
+        mainPurpleHover: '#5357F9',
         mainPink: '#FFB0B2',
         basefont: '#111111',
         grayFont: '#767676',
