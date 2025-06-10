@@ -79,14 +79,52 @@ export const PostGathering = async (data: PostGatheringData) => {
   }
 };
 
+export const PatchGathering = async (
+  gatheringId: number,
+  data: PostGatheringData
+) => {
+  const formData = new FormData();
+  formData.append('name', data.name);
+  formData.append('themeId', String(data.themeId));
+  formData.append('content', data.content);
+  formData.append(
+    'isIndividual',
+    data.isIndividual === '인당' ? 'true' : 'false'
+  );
+  formData.append('price', String(data.price));
+  formData.append('dateTime', String(toKSTString(data.dateTime)));
+  formData.append(
+    'registrationStart',
+    String(toKSTString(data.registrationStart))
+  );
+  formData.append('registrationEnd', String(toKSTString(data.registrationEnd)));
+  formData.append('capacity', String(data.capacity));
+
+  try {
+    await axiosInstance.patch(
+      `${API_PATH.gathering.default}/${gatheringId}`,
+      formData
+    );
+  } catch (error) {
+    throw new Error('모임 수정에 실패했습니다.');
+  }
+};
+
+export const DeleteGathering = async (gatheringId: number) => {
+  try {
+    await axiosInstance.delete(`${API_PATH.gathering.default}/${gatheringId}`);
+  } catch (error) {
+    throw new Error('모임 삭제에 실패했습니다.');
+  }
+};
+
 export const PostLikeGathering = async (gatheringId: number) => {
   try {
     await axiosInstance.post(
       `${API_PATH.gathering.default}/${gatheringId}/like`
     );
   } catch (error) {
-    console.error(`찜하기 진행 중 오류가 있습니다. ${error}`);
-    throw error;
+    throw new Error(`찜하기 진행 중 오류가 있습니다. ${error}`);
   }
 };
 
