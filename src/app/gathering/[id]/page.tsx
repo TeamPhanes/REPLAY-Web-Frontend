@@ -36,7 +36,11 @@ export default function GatheringDetailPage() {
   }
   return (
     <PageContainer>
-      <GatheringDetailCard list={selectedGathering} detail={gatheringDetail} />
+      <GatheringDetailCard
+        list={selectedGathering}
+        detail={gatheringDetail}
+        leader={gatheringMember[0].nickname}
+      />
       <ParticipantList gatheringMember={gatheringMember} />
       <CommentsContainer id={id} leaderCheck={gatheringMember[0].nickName} />
       {/* <AnotherGatherings
