@@ -28,7 +28,7 @@ export const GetGathering = async ({
     );
     return res;
   } catch (error) {
-    toast.error(`모임 목록 최신화 중 오류가 있습니다. ${error}`);
+    toast.error('모임 목록 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -38,7 +38,7 @@ export const GetGatheringDetail = async (id: string | string[]) => {
     const res = await axios.get(`${API_PATH.gathering.default}/${id}`);
     return res;
   } catch (error) {
-    toast.error(`모임 상세 정보 최신화 중 오류가 있습니다. ${error}`);
+    toast.error('모임 상세 정보 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -75,7 +75,8 @@ export const PostGathering = async (data: PostGatheringData) => {
   try {
     await axiosInstance.post(API_PATH.gathering.default, formData);
   } catch (error) {
-    throw new Error('모임 생성에 실패했습니다.');
+    toast.error('모임 생성에 실패했습니다.');
+    throw error;
   }
 };
 
@@ -106,7 +107,8 @@ export const PatchGathering = async (
       formData
     );
   } catch (error) {
-    throw new Error('모임 수정에 실패했습니다.');
+    toast.error('모임 수정에 실패했습니다.');
+    throw error;
   }
 };
 
@@ -114,7 +116,8 @@ export const DeleteGathering = async (gatheringId: number) => {
   try {
     await axiosInstance.delete(`${API_PATH.gathering.default}/${gatheringId}`);
   } catch (error) {
-    throw new Error('모임 삭제에 실패했습니다.');
+    toast.error('모임 삭제에 실패했습니다.');
+    throw error;
   }
 };
 
@@ -124,7 +127,8 @@ export const PostLikeGathering = async (gatheringId: number) => {
       `${API_PATH.gathering.default}/${gatheringId}/like`
     );
   } catch (error) {
-    throw new Error(`찜하기 진행 중 오류가 있습니다. ${error}`);
+    toast.error('찜하기 진행 중 오류가 있습니다.');
+    throw error;
   }
 };
 
@@ -134,7 +138,7 @@ export const DeleteLikeGathering = async (gatheringId: number) => {
       `${API_PATH.gathering.default}/${gatheringId}/like`
     );
   } catch (error) {
-    toast.error(`찜하기 취소 중 오류가 있습니다. ${error}`);
+    toast.error('찜하기 취소 중 오류가 있습니다.');
     throw error;
   }
 };

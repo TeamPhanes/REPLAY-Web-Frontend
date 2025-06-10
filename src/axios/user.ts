@@ -7,7 +7,7 @@ export const GetUser = async () => {
     const res = await axiosInstance.get(API_PATH.user.me);
     return res;
   } catch (error) {
-    console.error(`유저정보 최신화 중 오류가 있습니다. : ${error}`);
+    toast.error('유저정보 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -48,7 +48,7 @@ export const GetLikeTheme = async ({ page, limit }: GetLikeThemeProps) => {
     );
     return res;
   } catch (error) {
-    toast.error(`찜한 방탈출 최신화 중 오류가 있습니다. : ${error}`);
+    toast.error('찜한 방탈출 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -67,7 +67,7 @@ export const GetLikeGathering = async ({
     );
     return res;
   } catch (error) {
-    toast.error(`찜한 모임 최신화 중 오류가 있습니다. : ${error}`);
+    toast.error('찜한 모임 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -83,7 +83,7 @@ export const GetReviewTheme = async ({ page, limit }: GetReviewThemeProps) => {
     );
     return res;
   } catch (error) {
-    toast.error(`참여한 방탈출 최신화 중 오류가 있습니다. : ${error}`);
+    toast.error('참여한 방탈출 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -102,7 +102,7 @@ export const GetReviewGathering = async ({
     );
     return res;
   } catch (error) {
-    toast.error(`참여한 모임 최신화 중 오류가 있습니다. ${error}`);
+    toast.error('참여한 모임 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -123,7 +123,7 @@ export const GetMyComment = async ({
     );
     return res;
   } catch (error) {
-    toast.error(`내가 쓴 댓글 최신화 중 오류가 있습니다. ${error}`);
+    toast.error('내가 쓴 댓글 최신화 중 오류가 있습니다.');
     throw error;
   }
 };

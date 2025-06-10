@@ -1,6 +1,7 @@
 import { useAuthStore } from '@/store/authStore';
 import Modal from '@/components/@shared/modal/Modal';
 import PatchGatheringModal from '@/components/@shared/modal/PatchGathering/PatchGatheringModal';
+import GatheringMemberButton from '@/components/gatheringDetail/GatheringMemberButton';
 import { useDeleteGathering } from '@/hooks/reactQuery/useDeleteGathering';
 import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
 import { useOpen } from '@/hooks/useOpen';
@@ -31,6 +32,7 @@ export default function GatheringDetailButton({
     closeModal: closePatchGathering,
   } = useOpen();
   const { mutate } = useDeleteGathering(gatheringId);
+
   return (
     <div>
       {userInfo && userInfo.nickname === leader ? (
@@ -51,18 +53,13 @@ export default function GatheringDetailButton({
           </button>
         </div>
       ) : (
-        <button
-          type="button"
-          className="absolute bottom-5 w-[431px] rounded-2xl bg-mainBlue px-[10px] py-3 hover:bg-mainBlueHover"
-        >
-          <p className="text-2xl font-semibold text-white">모임 참여하기</p>
-        </button>
+        <GatheringMemberButton gatheringId={detail.gatheringId} />
       )}
 
       <Modal
         isOpen={isOpen}
         onClose={closeModal}
-        className="bg-white rounded-[30px] py-10 px-10 py-5"
+        className="bg-white rounded-[30px] px-10 py-5"
       >
         <p className="font-semibold text-2xl text-basefont">
           모임을 삭제하시겠습니까?
@@ -88,19 +85,19 @@ export default function GatheringDetailButton({
         isOpen={isPatchGatheringOpen}
         onClose={closePatchGathering}
         defaultValues={{
-          name: list.name,
+          name: detail.name,
           themeId: list.themeId,
           content: detail.content,
-          isIndividual: detail.isIndividual ? '인당' : '총액',
+          isIndividual: detail.isIndividual === true ? '인당' : '총액',
           price: detail.price,
-          dateTime: list.dateTime ? new Date(list.dateTime) : new Date(),
+          dateTime: detail.dateTime ? new Date(detail.dateTime) : new Date(),
           registrationStart: detail.registrationStart
             ? new Date(detail.registrationStart)
             : new Date(),
           registrationEnd: detail.registrationEnd
             ? new Date(detail.registrationEnd)
             : new Date(),
-          capacity: list.capacity,
+          capacity: detail.capacity,
         }}
       />
     </div>

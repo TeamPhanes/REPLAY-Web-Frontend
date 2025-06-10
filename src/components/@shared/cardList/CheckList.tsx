@@ -20,17 +20,17 @@ export default function CheckList({
       </p>
       <ul className="flex gap-2">
         <li
-          className={`${check === contentOne ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
+          className={`${check === 'EASY' ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
         >
           {contentOne}
         </li>
         <li
-          className={`${check === contentTwo ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
+          className={`${check === 'NORMAL' ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
         >
           {contentTwo}
         </li>
         <li
-          className={`${check === contentThree ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
+          className={`${check === 'HARD' ? 'font-semibold text-mainBlue' : 'font-light text-spot'} text-base font-light tracking-[-2.5%]`}
         >
           {contentThree}
         </li>
