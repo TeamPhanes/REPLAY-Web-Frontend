@@ -28,9 +28,9 @@ export default function AddGatheringCapacity({
           isOpen={isOpen}
           onOpenChange={toggleOpen}
           onClickHandler={capacityChange}
-          className="min-w-[88px]"
+          className="min-w-[88px] absolute left-[-48px]"
           marginTop={14}
-          align="center"
+          align="start"
         >
           <button
             type="button"

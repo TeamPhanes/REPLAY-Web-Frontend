@@ -24,10 +24,13 @@ export interface GatheringDTO {
 export interface GatheringDetailDTO {
   get: {
     gatheringId: number;
+    name: string;
     detailImage: string;
+    capacity: number;
+    dateTime: string;
+    price: number;
     registrationStart: string;
     registrationEnd: string;
-    price: number;
     content: string;
     isIndividual: boolean;
   };

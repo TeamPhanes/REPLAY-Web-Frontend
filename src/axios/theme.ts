@@ -28,7 +28,7 @@ export const GetTheme = async ({
     );
     return res;
   } catch (error) {
-    toast.error(`방탈출 목록 최신화 중 오류가 있습니다. ${error}`);
+    toast.error('방탈출 목록 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -38,7 +38,7 @@ export const GetThemeDetail = async (id: string | string[]) => {
     const res = await axios.get(`${API_PATH.theme.default}/${id}`);
     return res;
   } catch (error) {
-    toast.error(`방탈출 상세 정보 최신화 중 오류가 있습니다. ${error}`);
+    toast.error('방탈출 상세 정보 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -47,7 +47,7 @@ export const PostLikeTheme = async (themeId: number) => {
   try {
     await axiosInstance.post(`${API_PATH.theme.default}/${themeId}/like`);
   } catch (error) {
-    console.error(`찜하기 진행 중 오류가 있습니다. ${error}`);
+    toast.error('찜하기 진행 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -56,7 +56,7 @@ export const DeleteLikeTheme = async (themeId: number) => {
   try {
     await axiosInstance.delete(`${API_PATH.theme.default}/${themeId}/like`);
   } catch (error) {
-    toast.error(`찜하기 취소 중 오류가 있습니다. ${error}`);
+    toast.error('찜하기 취소 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -65,7 +65,7 @@ export const PostMarkTheme = async (themeId: number) => {
   try {
     await axiosInstance.post(`${API_PATH.theme.default}/${themeId}/visit`);
   } catch (error) {
-    console.error(`참여 목록 추가 중 오류가 있습니다. ${error}`);
+    toast.error('참여 목록 추가 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -74,7 +74,7 @@ export const DeleteMarkTheme = async (themeId: number) => {
   try {
     await axiosInstance.delete(`${API_PATH.theme.default}/${themeId}/visit`);
   } catch (error) {
-    toast.error(`참여 목록 취소 중 오류가 있습니다. ${error}`);
+    toast.error('참여 목록 취소 중 오류가 있습니다.');
     throw error;
   }
 };

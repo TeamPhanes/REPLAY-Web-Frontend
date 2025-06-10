@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import AddGatheringButton from '@/components/@shared/modal/AddGathering/AddGatheringButton';
 import AddGatheringCapacity from '@/components/@shared/modal/AddGathering/AddGatheringCapacity';
@@ -39,12 +40,17 @@ export default function PatchGatheringModal({
     onSubmit,
     watch,
     setValue,
+    reset,
     formState: { errors },
   } = usePatchGatheringForm({
     mutate,
     onClose,
     defaultValues,
   });
+
+  useEffect(() => {
+    reset(defaultValues);
+  }, [defaultValues]);
   return (
     <Modal
       isOpen={isOpen}

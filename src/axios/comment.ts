@@ -19,7 +19,7 @@ export const GetComment = async ({ id }: CommentProps) => {
     );
     return res;
   } catch (error) {
-    toast.error(`댓글 정보 최신화 중 오류가 있습니다. ${error}`);
+    toast.error('댓글 정보 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -42,7 +42,8 @@ export const PostComment = async (
       formData
     );
   } catch (error) {
-    toast.error(`댓글 전송 중 오류가 있습니다. ${error}`);
+    toast.error('댓글 전송 중 오류가 있습니다.');
+    throw error;
   }
 };
 
@@ -59,7 +60,8 @@ export const PatchComment = async ({
       body
     );
   } catch (error) {
-    toast.error(`댓글 수정 중 오류가 있습니다. ${error}`);
+    toast.error('댓글 수정 중 오류가 있습니다.');
+    throw error;
   }
 };
 
@@ -72,6 +74,7 @@ export const DeleteComment = async ({
       `${API_PATH.comment.default}/${CommentId}?gatheringId=${GatheringId}`
     );
   } catch (error) {
-    toast.error(`댓글 삭제 중 오류가 있습니다. ${error}`);
+    toast.error('댓글 삭제 중 오류가 있습니다.');
+    throw error;
   }
 };

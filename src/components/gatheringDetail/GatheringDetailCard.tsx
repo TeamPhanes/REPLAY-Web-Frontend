@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import Rating from '@/components/@shared/rating/Rating';
 import DateAndPrice from '@/components/gatheringDetail/DateAndPrice';
 import GatheringDetailButton from '@/components/gatheringDetail/GatheringDetailButton';
 import TagAndLink from '@/components/gatheringDetail/TagAndLink';
+import { useGetGatheringMember } from '@/hooks/reactQuery/useGetGatheringMember';
 import { usePostGatheringLike } from '@/hooks/reactQuery/usePostGatheringLike';
 import {
   GatheringDTO,
@@ -25,8 +27,14 @@ export default function GatheringDetailCard({
   detail,
   leader,
 }: GatheringDetailCardProps) {
+  const { id } = useParams();
+  const { gatheringMember } = useGetGatheringMember(id);
   const [isLiked, setIsLiked] = useState(list.isLiked);
   const { likesMutation } = usePostGatheringLike();
+
+  const participantCount = gatheringMember.filter(
+    (user: any) => user.nickname
+  ).length;
 
   const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {
     setIsLiked(userAction === 'LIKE_POST');
@@ -69,30 +77,32 @@ export default function GatheringDetailCard({
           <TagAndLink tag={list.genres} />
           <div className="mt-7 w-[395px]">
             <TitleAndSpot
-              themeName={list.name}
+              themeName={detail.name}
               cafe={list.cafe}
               spot={list.spot}
             />
           </div>
-          <div className="mt-9 flex w-[395px] flex-col gap-3">
+          <div className="mt-5 flex w-[395px] flex-col gap-3">
             <DateAndPrice
-              registrationEnd={list.dateTime}
+              registrationStart={detail.registrationStart}
+              registrationEnd={detail.registrationEnd}
+              dateTime={detail.dateTime}
               isIndividual={detail.isIndividual}
               price={detail.price}
             />
             <AddressAndLevel address={list.address} level={list.level} />
           </div>
-          <div className="mt-9 flex items-center justify-center gap-12">
+          <div className="mt-5 flex items-center justify-center gap-12">
             <Rating
-              rating={list.participantCount}
+              rating={participantCount}
               maxRating={6}
               width={288}
               height={48}
               type="User"
-              capacity={list.capacity}
+              capacity={detail.capacity}
             />
             <p className="text-2xl/[34px] font-normal tracking-[-2.5%] text-grayFont">
-              {list.participantCount}/{list.capacity}
+              {participantCount}/{detail.capacity}
             </p>
           </div>
           <GatheringDetailButton

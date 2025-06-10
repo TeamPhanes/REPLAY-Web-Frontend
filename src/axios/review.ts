@@ -13,7 +13,7 @@ export const GetReview = async ({ id }: GetReviewProps) => {
     );
     return res;
   } catch (error) {
-    toast.error(`리뷰 정보 최신화 중 오류가 있습니다. ${error}`);
+    toast.error('리뷰 정보 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
@@ -23,7 +23,7 @@ export const GetReviewAllRating = async ({ id }: GetReviewProps) => {
     const res = await axios.get(`${API_PATH.review.rating}?themeId=${id}`);
     return res;
   } catch (error) {
-    toast.error(`총 리뷰갯수 정보 최신화 중 오류가 있습니다. ${error}`);
+    toast.error('총 리뷰갯수 정보 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
