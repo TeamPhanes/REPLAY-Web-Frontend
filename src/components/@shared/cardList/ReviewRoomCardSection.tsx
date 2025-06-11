@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import CheckList from '@/components/@shared/cardList/CheckList';
 import PostReviewModal from '@/components/@shared/modal/PostReview/PostReviewModal';
 import Rating from '@/components/@shared/rating/Rating';

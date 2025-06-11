@@ -20,7 +20,7 @@ export default function usePostReviewForm(
 ) {
   const methods = useForm<FormValues>({
     defaultValues: {
-      themeId: themeId,
+      themeId,
       content: '',
       rating: 0,
       success: 'true',
