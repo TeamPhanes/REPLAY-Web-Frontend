@@ -3,7 +3,7 @@ interface CheckListProps {
   contentOne: string;
   contentTwo: string;
   contentThree: string;
-  check: string;
+  check: string | undefined;
 }
 
 export default function CheckList({
