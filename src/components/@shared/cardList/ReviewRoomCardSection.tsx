@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import CheckList from '@/components/@shared/cardList/CheckList';
+import PostReviewModal from '@/components/@shared/modal/PostReview/PostReviewModal';
 import Rating from '@/components/@shared/rating/Rating';
 import ReviewLikeButton from '@/components/review/ReviewLikeButton';
+import { useOpen } from '@/hooks/useOpen';
 import { RoomDTO } from '@/types/room/room.types';
 
 interface ReviewRoomCardSectionProps {
@@ -9,6 +12,7 @@ interface ReviewRoomCardSectionProps {
 export default function ReviewRoomCardSection({
   room,
 }: ReviewRoomCardSectionProps) {
+  const { isOpen, openModal, closeModal } = useOpen();
   return (
     <>
       <div className="absolute top-[252px] flex flex-col gap-2">
@@ -74,9 +78,11 @@ export default function ReviewRoomCardSection({
       <button
         type="button"
         className="absolute bottom-5 right-5 rounded-full border-[1px] border-mainBlue bg-white px-6 py-2 text-xl font-semibold tracking-[2.5%] text-grayFont"
+        onClick={openModal}
       >
         {room.myRating === null ? '리뷰쓰기' : '수정하기'}
       </button>
+      <PostReviewModal isOpen={isOpen} onClose={closeModal} room={room} />
     </>
   );
 }

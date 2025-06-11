@@ -17,3 +17,26 @@ export const commentTypeList = [
   { value: 'new', label: '최신순' },
   { value: 'create', label: '등록순' },
 ];
+
+export const successTypeList = [
+  { value: 'true', label: '성공' },
+  { value: 'false', label: '실패' },
+];
+
+export const themeReviewList = [
+  { value: 'GOOD', label: '좋았어요' },
+  { value: 'NORMAL', label: '보통이에요' },
+  { value: 'BAD', label: '별로예요' },
+];
+
+export const levelReviewList = [
+  { value: 'GOOD', label: '좋았어요' },
+  { value: 'NORMAL', label: '보통이에요' },
+  { value: 'BAD', label: '별로예요' },
+];
+
+export const storyReviewList = [
+  { value: 'GOOD', label: '좋았어요' },
+  { value: 'NORMAL', label: '보통이에요' },
+  { value: 'BAD', label: '별로예요' },
+];
