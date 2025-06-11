@@ -14,6 +14,14 @@ export interface RoomDTO {
     isMarked?: boolean;
     isLiked?: boolean;
     myRating?: number;
+    hint?: number;
+    numberOfPlayer?: number;
+    themeReview?: string;
+    levelReview?: string;
+    storyReview?: string;
+    reviewComment?: string;
+    success?: boolean;
+    totalLikes?: number;
     level: '쉬움' | '보통' | '어려움';
   };
 }

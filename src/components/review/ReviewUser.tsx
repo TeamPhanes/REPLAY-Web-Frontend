@@ -24,7 +24,7 @@ export default function ReviewUser({ dataList }: ReviewUserProps) {
           {name}
         </p>
       </div>
-      <div className="flex gap-1 pr-6">
+      <div className="flex gap-1 pr-3">
         <p className="text-xs/[18px] font-normal tracking-[-2.5%] text-tag">
           {periodYearMonthDay(createdAt)}
         </p>
