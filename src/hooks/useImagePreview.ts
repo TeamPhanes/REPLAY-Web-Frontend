@@ -15,9 +15,15 @@ export default function useImagePreview() {
     }
   };
 
+  const handleImageReset = () => {
+    setImageFile(null);
+    setPreviewUrl(null);
+  };
+
   return {
     imageFile,
     previewUrl,
     handleImageChange,
+    handleImageReset,
   };
 }

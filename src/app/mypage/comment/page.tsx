@@ -19,6 +19,7 @@ export default function MyCommentPage() {
         options={commentTypeList}
         selectedType={selectedType}
         setSelectedType={setSelectedType}
+        gap="gap-2"
       />
       <CommentCardSection sort={selectedType} />
     </MyPageContainer>

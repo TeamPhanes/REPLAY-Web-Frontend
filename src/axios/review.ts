@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import { axiosInstance } from '@/libs/axiosInstance';
 import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
 
@@ -24,6 +25,46 @@ export const GetReviewAllRating = async ({ id }: GetReviewProps) => {
     return res;
   } catch (error) {
     toast.error('총 리뷰갯수 정보 최신화 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
+interface PostReviewData {
+  themeId: number;
+  content: string;
+  rating: number;
+  success: string;
+  hint: number;
+  numberOfPlayer: number;
+  themeReview: string;
+  storyReview: string;
+  levelReview: string;
+  images?: File | null;
+}
+export const PostReview = async (data: PostReviewData) => {
+  const formData = new FormData();
+  formData.append('themeId', String(data.themeId));
+  formData.append('content', data.content);
+  formData.append('rating', String(data.rating));
+  formData.append('success', data.success);
+  formData.append('hint', String(data.hint));
+  formData.append('numberOfPlayer', String(data.numberOfPlayer));
+  formData.append('themeReview', data.themeReview);
+  formData.append('storyReview', data.storyReview);
+  formData.append('levelReview', data.levelReview);
+
+  if (data.images) {
+    formData.append('images', data.images);
+  }
+
+  try {
+    await axiosInstance.post(API_PATH.review.default, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  } catch (error) {
+    toast.error('리뷰 생성에 실패했습니다.');
     throw error;
   }
 };
