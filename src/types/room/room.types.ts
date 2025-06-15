@@ -13,6 +13,7 @@ export interface RoomDTO {
     address: string;
     isMarked?: boolean;
     isLiked?: boolean;
+    reviewId?: number;
     myRating?: number;
     hint?: number;
     numberOfPlayer?: number;

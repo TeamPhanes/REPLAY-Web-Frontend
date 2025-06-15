@@ -36,7 +36,7 @@ export default function ReviewCard({ data }: ReviewCardProps) {
             <ReviewLikeButton totalLikes={review.totalLikes} />
           </div>
           <ThemeLevelStoryContainer dataList={review} />
-          <ReviewContent content={review.content} image={review.image} />
+          <ReviewContent content={review.content} images={review.images} />
         </div>
       ))}
     </>
