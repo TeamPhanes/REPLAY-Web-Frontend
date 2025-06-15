@@ -1,7 +1,9 @@
 import CheckList from '@/components/@shared/cardList/CheckList';
+import DeleteCheckModal from '@/components/@shared/modal/Delete/DeleteCheckModal';
+import PatchReviewModal from '@/components/@shared/modal/PatchReview/PatchReviewModal';
 import PostReviewModal from '@/components/@shared/modal/PostReview/PostReviewModal';
 import Rating from '@/components/@shared/rating/Rating';
-import ReviewLikeButton from '@/components/review/ReviewLikeButton';
+import { useDeleteReview } from '@/hooks/reactQuery/useDeleteReview';
 import { useOpen } from '@/hooks/useOpen';
 import { RoomDTO } from '@/types/room/room.types';
 
@@ -11,7 +13,26 @@ interface ReviewRoomCardSectionProps {
 export default function ReviewRoomCardSection({
   room,
 }: ReviewRoomCardSectionProps) {
-  const { isOpen, openModal, closeModal } = useOpen();
+  const {
+    isOpen: isPostModal,
+    openModal: openPostModal,
+    closeModal: closePostModal,
+  } = useOpen();
+  const {
+    isOpen: isPatchModal,
+    openModal: openPatchModal,
+    closeModal: closePatchModal,
+  } = useOpen();
+  const {
+    isOpen: isDeleteModal,
+    openModal: openDeleteModal,
+    closeModal: closeDeleteModal,
+  } = useOpen();
+  const { mutate: deleteReview } = useDeleteReview(
+    room.reviewId,
+    room.themeId,
+    closeDeleteModal
+  );
   return (
     <>
       <div className="absolute top-[252px] flex flex-col gap-2">
@@ -61,27 +82,57 @@ export default function ReviewRoomCardSection({
             check={room.storyReview}
           />
         </div>
-        <div className="w-[458px] h-20 rounded-xl border-[1px] border-spot mt-2 py-1 px-2">
-          <p className="font-medium text-base text-spot line-clamp-3">
+        <div className="w-[458px] h-[104px] rounded-xl border-[1px] border-spot mt-2 py-1 px-2">
+          <p className="font-medium text-base text-spot line-clamp-4">
             {room.reviewComment ?? '최소 10자 이상 리뷰를 적어주세요.'}
           </p>
         </div>
       </div>
-      <div className="flex items-center absolute right-[82px] bottom-[80px]">
-        <p className="font-normal text-basefont text-xs">도움이 되요</p>
+      <div className="flex flex-col absolute bottom-5 right-5 gap-1">
+        <button
+          type="button"
+          className="rounded-full border-2 border-mainBlue bg-white px-6 py-2 text-xl font-semibold tracking-[2.5%] text-grayFont"
+          onClick={room.reviewId === null ? openPostModal : openPatchModal}
+        >
+          {room.reviewId === null ? '리뷰쓰기' : '수정하기'}
+        </button>
+        <button
+          type="button"
+          className="rounded-full border-2 border-mainPink bg-white px-6 py-2 text-xl font-semibold tracking-[2.5%] text-grayFont"
+          onClick={openDeleteModal}
+        >
+          삭제하기
+        </button>
       </div>
-      <ReviewLikeButton
-        totalLikes={room.totalLikes}
-        className="bottom-[74px]"
-      />
-      <button
-        type="button"
-        className="absolute bottom-5 right-5 rounded-full border-[1px] border-mainBlue bg-white px-6 py-2 text-xl font-semibold tracking-[2.5%] text-grayFont"
-        onClick={openModal}
+      <DeleteCheckModal
+        isOpen={isDeleteModal}
+        closeModal={closeDeleteModal}
+        mutate={deleteReview}
       >
-        {room.myRating === null ? '리뷰쓰기' : '수정하기'}
-      </button>
-      <PostReviewModal isOpen={isOpen} onClose={closeModal} room={room} />
+        리뷰를 삭제하시겠습니까?
+      </DeleteCheckModal>
+      <PostReviewModal
+        isOpen={isPostModal}
+        onClose={closePostModal}
+        room={room}
+      />
+      <PatchReviewModal
+        isOpen={isPatchModal}
+        onClose={closePatchModal}
+        room={room}
+        defaultValues={{
+          id: room.reviewId,
+          themeId: room.themeId,
+          content: room.reviewComment,
+          rating: room.myRating,
+          success: String(room.success),
+          hint: room.hint,
+          numberOfPlayer: room.numberOfPlayer,
+          themeReview: room.themeReview,
+          storyReview: room.storyReview,
+          levelReview: room.levelReview,
+        }}
+      />
     </>
   );
 }

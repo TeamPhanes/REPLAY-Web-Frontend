@@ -16,7 +16,7 @@ export default function RoomCard({
   return (
     <div
       key={room.themeId}
-      className={`${reviewCheck ? 'h-[421px]' : 'h-[252px]'} relative flex  w-[630px] items-start rounded-3xl bg-card p-5`}
+      className={`${reviewCheck ? 'h-[445px]' : 'h-[252px]'} relative flex  w-[630px] items-start rounded-3xl bg-card p-5`}
     >
       <RoomCardSection
         room={room}

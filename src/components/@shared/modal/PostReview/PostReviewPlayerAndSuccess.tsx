@@ -20,7 +20,7 @@ export default function PostReviewPlayerAndSuccess({
   const { isOpen, toggleOpen } = useOpen();
   return (
     <div className="flex items-center mt-5">
-      <p className="font-normal text-2xl/[34px] tracking-[-2.5%] text-basefont w-48">
+      <p className="font-normal text-2xl/[34px] tracking-[-2.5%] text-basefont w-44">
         플레이 인원
       </p>
       <div className="rounded-full bg-card py-2 px-4 flex items-center justify-center gap-1">

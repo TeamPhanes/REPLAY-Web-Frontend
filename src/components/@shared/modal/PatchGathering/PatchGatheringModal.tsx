@@ -50,7 +50,7 @@ export default function PatchGatheringModal({
 
   useEffect(() => {
     reset(defaultValues);
-  }, [defaultValues]);
+  }, [defaultValues, reset]);
   return (
     <Modal
       isOpen={isOpen}
