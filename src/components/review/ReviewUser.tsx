@@ -3,7 +3,7 @@ import { ReviewDTO } from '@/types/review/review.type';
 import { periodYearMonthDay } from '@/utils/dateChange';
 
 interface ReviewUserProps {
-  dataList: ReviewDTO['get'];
+  dataList: ReviewDTO['get']['data'][number];
 }
 
 export default function ReviewUser({ dataList }: ReviewUserProps) {

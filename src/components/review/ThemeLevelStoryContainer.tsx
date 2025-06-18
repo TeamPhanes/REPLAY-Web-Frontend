@@ -2,7 +2,7 @@ import CheckList from '@/components/@shared/cardList/CheckList';
 import { ReviewDTO } from '@/types/review/review.type';
 
 interface ThemeLevelStoryContainerProps {
-  dataList: ReviewDTO['get'];
+  dataList: ReviewDTO['get']['data'][number];
 }
 
 export default function ThemeLevelStoryContainer({

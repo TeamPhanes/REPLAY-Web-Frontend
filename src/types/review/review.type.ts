@@ -1,21 +1,25 @@
 // 리뷰 목록 조회 Response
 export interface ReviewDTO {
   get: {
-    user: {
-      name: string;
-      image: string;
-    };
-    content: string;
-    images: string[];
-    rating: number;
-    success: boolean;
-    themeReview: string;
-    levelReview: string;
-    storyReview: string;
-    hint: number;
-    createdAt: string;
-    playUser: number;
-    totalLikes: number;
+    totalCount: number;
+    currentPage: number;
+    data: {
+      user: {
+        name: string;
+        image: string;
+      };
+      content: string;
+      images: string[];
+      rating: number;
+      success: boolean;
+      themeReview: string;
+      levelReview: string;
+      storyReview: string;
+      hint: number;
+      createdAt: string;
+      playUser: number;
+      totalLikes: number;
+    }[];
   };
 }
 

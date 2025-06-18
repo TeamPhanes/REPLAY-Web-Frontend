@@ -6,11 +6,11 @@ import ThemeLevelStoryContainer from '@/components/review/ThemeLevelStoryContain
 import { ReviewDTO } from '@/types/review/review.type';
 
 interface ReviewCardProps {
-  data: ReviewDTO['get'][];
+  data: ReviewDTO['get'];
 }
 
 export default function ReviewCard({ data }: ReviewCardProps) {
-  if (data.length === 0)
+  if (data.data.length === 0)
     return (
       <div className="flex flex-col justify-center items-center w-xl h-[346px] rounded-[30px] bg-card">
         <p className="font-semibold text-2xl/[34px] tracking-[-2.5%] text-basefont">
@@ -20,7 +20,7 @@ export default function ReviewCard({ data }: ReviewCardProps) {
     );
   return (
     <>
-      {data.map((review, index) => (
+      {data.data.map((review, index) => (
         <div
           key={index}
           className="relative h-[270px] w-[630px] rounded-3xl bg-card p-5"
