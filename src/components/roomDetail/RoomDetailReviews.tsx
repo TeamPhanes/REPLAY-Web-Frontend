@@ -19,7 +19,7 @@ export default function RoomDetailReviews({ id }: RoomDetailReviewsProps) {
   return (
     <>
       <SortContainer>
-        <CountListValue value={review.length} />
+        <CountListValue value={review.totalCount} />
         <SortDropdown sort={sort} sortList={sortList} sortChange={setSort} />
       </SortContainer>
       <div className="mt-6 grid grid-cols-2 gap-4">
