@@ -39,8 +39,8 @@ export default function PatchReviewModal({
   defaultValues,
 }: PatchReviewModalProps) {
   const { imageFile, previewUrl, handleImageChange, handleImageReset } =
-    useImagePreview();
-  const { mutate } = usePatchReview(room.reviewId);
+    useImagePreview(room.reviewImage);
+  const { mutate } = usePatchReview(room.reviewId, previewUrl);
   const {
     register,
     handleSubmit,
@@ -60,7 +60,7 @@ export default function PatchReviewModal({
       onClose={onClose}
       className="bg-white p-5 w-[726px] rounded-[30px]"
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit((data) => onSubmit(data, imageFile))}>
         <PostReviewTitle
           listImage={room.listImage}
           themeName={room.themeName}

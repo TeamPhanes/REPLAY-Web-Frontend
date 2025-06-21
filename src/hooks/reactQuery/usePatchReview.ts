@@ -16,12 +16,16 @@ interface PatchReviewData {
   storyReview: string;
   levelReview: string;
 }
-export const usePatchReview = (reviewId: number | undefined) => {
+export const usePatchReview = (
+  reviewId: number | undefined,
+  previewUrl: string | null
+) => {
   const queryclient = useQueryClient();
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: (data: PatchReviewData) => PatchReview(data, reviewId),
+    mutationFn: (data: PatchReviewData) =>
+      PatchReview(data, reviewId, previewUrl),
     onSuccess: () => {
       queryclient.invalidateQueries({ queryKey: ['theme'] });
       queryclient.invalidateQueries({ queryKey: ['userReviewTheme'] });

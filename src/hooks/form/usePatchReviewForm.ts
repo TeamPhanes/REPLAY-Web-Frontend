@@ -25,13 +25,16 @@ export default function usePatchReviewForm(
 
   const { reset } = methods;
 
-  const onSubmit = (data: FormValues) => {
-    mutate(data, {
-      onSuccess: () => {
-        onclose();
-        reset();
-      },
-    });
+  const onSubmit = (data: FormValues, imageFile: File | null) => {
+    mutate(
+      { ...data, image: imageFile },
+      {
+        onSuccess: () => {
+          onclose();
+          reset();
+        },
+      }
+    );
   };
   return { ...methods, onSubmit };
 }

@@ -9,7 +9,7 @@ export interface ReviewDTO {
         image: string;
       };
       content: string;
-      images: string[];
+      image: string;
       rating: number;
       success: boolean;
       themeReview: string;
