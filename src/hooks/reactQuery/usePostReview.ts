@@ -9,7 +9,7 @@ interface PostReviewData {
   content: string;
   rating: number;
   success: string;
-  images: File | null;
+  image: File | null;
   hint: number;
   numberOfPlayer: number;
   themeReview: string;

@@ -39,7 +39,7 @@ interface ReviewData {
   themeReview: string;
   storyReview: string;
   levelReview: string;
-  images?: File | null;
+  image?: File | null;
 }
 export const PostReview = async (data: ReviewData) => {
   const formData = new FormData();
@@ -53,8 +53,8 @@ export const PostReview = async (data: ReviewData) => {
   formData.append('storyReview', data.storyReview);
   formData.append('levelReview', data.levelReview);
 
-  if (data.images) {
-    formData.append('images', data.images);
+  if (data.image) {
+    formData.append('image', data.image);
   }
 
   try {
@@ -71,7 +71,8 @@ export const PostReview = async (data: ReviewData) => {
 
 export const PatchReview = async (
   data: ReviewData,
-  reviewId: number | undefined
+  reviewId: number | undefined,
+  previewUrl: string | null
 ) => {
   const formData = new FormData();
   formData.append('themeId', String(data.themeId));
@@ -84,20 +85,27 @@ export const PatchReview = async (
   formData.append('storyReview', data.storyReview);
   formData.append('levelReview', data.levelReview);
 
-  if (data.images) {
-    formData.append('images', data.images);
+  if (data.image) {
+    formData.append('image', data.image);
   }
 
   try {
-    await axiosInstance.patch(
-      `${API_PATH.review.default}/${reviewId}`,
-      formData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      }
-    );
+    if (data.image || previewUrl === null) {
+      await axiosInstance.patch(
+        `${API_PATH.review.default}/${reviewId}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+    } else {
+      await axiosInstance.patch(
+        `${API_PATH.review.default}/${reviewId}`,
+        formData
+      );
+    }
   } catch (error) {
     toast.error('리뷰 수정에 실패했습니다.');
     throw error;

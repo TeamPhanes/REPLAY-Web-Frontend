@@ -5,7 +5,7 @@ interface FormValues {
   content: string;
   rating: number;
   success: string;
-  images: File | null;
+  image: File | null;
   hint: number;
   numberOfPlayer: number;
   themeReview: string;
@@ -16,7 +16,8 @@ interface FormValues {
 export default function usePostReviewForm(
   mutate: any,
   onclose: () => void,
-  themeId: number
+  themeId: number,
+  handleImageReset: () => void
 ) {
   const methods = useForm<FormValues>({
     defaultValues: {
@@ -24,7 +25,7 @@ export default function usePostReviewForm(
       content: '',
       rating: 0,
       success: 'true',
-      images: null,
+      image: null,
       hint: 0,
       numberOfPlayer: 0,
       themeReview: 'NORMAL',
@@ -35,13 +36,17 @@ export default function usePostReviewForm(
 
   const { reset } = methods;
 
-  const onSubmit = (data: FormValues) => {
-    mutate(data, {
-      onSuccess: () => {
-        onclose();
-        reset();
-      },
-    });
+  const onSubmit = (data: FormValues, imageFile: File | null) => {
+    mutate(
+      { ...data, image: imageFile },
+      {
+        onSuccess: () => {
+          onclose();
+          reset();
+          handleImageReset();
+        },
+      }
+    );
   };
   return { ...methods, onSubmit };
 }

@@ -11,18 +11,6 @@ import { usePostReview } from '@/hooks/reactQuery/usePostReview';
 import useImagePreview from '@/hooks/useImagePreview';
 import { RoomDTO } from '@/types/room/room.types';
 
-interface FormValues {
-  themeId: number;
-  content: string;
-  rating: number;
-  success: string;
-  hint: number;
-  numberOfPlayer: number;
-  themeReview: string;
-  storyReview: string;
-  levelReview: string;
-}
-
 interface PostReviewModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -34,7 +22,7 @@ export default function PostReviewModal({
   room,
 }: PostReviewModalProps) {
   const { imageFile, previewUrl, handleImageChange, handleImageReset } =
-    useImagePreview();
+    useImagePreview(null);
   const { mutate } = usePostReview();
   const {
     register,
@@ -43,7 +31,7 @@ export default function PostReviewModal({
     setValue,
     onSubmit,
     formState: { errors },
-  } = usePostReviewForm(mutate, onClose, room.themeId);
+  } = usePostReviewForm(mutate, onClose, room.themeId, handleImageReset);
 
   return (
     <Modal
@@ -51,7 +39,7 @@ export default function PostReviewModal({
       onClose={onClose}
       className="bg-white p-5 w-[726px] rounded-[30px]"
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit((data) => onSubmit(data, imageFile))}>
         <PostReviewTitle
           listImage={room.listImage}
           themeName={room.themeName}

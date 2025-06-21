@@ -21,6 +21,7 @@ export interface RoomDTO {
     levelReview?: string;
     storyReview?: string;
     reviewComment?: string;
+    reviewImage: string | null;
     success?: boolean;
     totalLikes?: number;
     level: '쉬움' | '보통' | '어려움';

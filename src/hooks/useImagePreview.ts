@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function useImagePreview() {
+export default function useImagePreview(reviewImage: string | null) {
   const [imageFile, setImageFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(reviewImage);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selected = e.target.files?.[0];
@@ -19,6 +19,10 @@ export default function useImagePreview() {
     setImageFile(null);
     setPreviewUrl(null);
   };
+
+  useEffect(() => {
+    setPreviewUrl(reviewImage);
+  }, [reviewImage]);
 
   return {
     imageFile,

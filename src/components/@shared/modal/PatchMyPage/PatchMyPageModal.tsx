@@ -26,7 +26,7 @@ export default function PatchMyPageModal({
   isOpen,
   onClose,
 }: PatchMyPageModalProps) {
-  const { imageFile, previewUrl, handleImageChange } = useImagePreview();
+  const { imageFile, previewUrl, handleImageChange } = useImagePreview(null);
   const { mutate } = usePatchMyProfile(onClose);
   const {
     register,

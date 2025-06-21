@@ -1,6 +1,4 @@
-import { RoomDTO } from '@/types/room/room.types';
-
-export const mockRooms: RoomDTO['get'][] = [
+export const mockRooms = [
   {
     themeId: 1,
     listImage: 'https://xdungeon.net/file/theme/11/11_6145641280.jpg',
