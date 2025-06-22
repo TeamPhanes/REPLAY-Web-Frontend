@@ -42,7 +42,7 @@ export default function GatheringCard({
   return (
     <div
       key={gathering.gatheringId}
-      className="h-[252px] relative flex  w-[630px] items-start rounded-3xl bg-card p-5"
+      className="h-[252px] relative flex w-[630px] items-start rounded-3xl bg-card p-5"
     >
       <Image
         src={gathering.listImage}
