@@ -43,6 +43,38 @@ export const GetGatheringDetail = async (id: string | string[]) => {
   }
 };
 
+export const GetHostGathering = async (
+  accessToken: string | null,
+  hostName: string,
+  gatheringId: number
+) => {
+  try {
+    const res = await (accessToken === null ? axios : axiosInstance).get(
+      `${API_PATH.gathering.host}/${hostName}?gatheringId=${gatheringId}`
+    );
+    return res;
+  } catch (error) {
+    toast.error('호스트의 다른 모임 최신화 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
+export const GetDateGathering = async (
+  accessToken: string | null,
+  dateTime: string,
+  gatheringId: number
+) => {
+  try {
+    const res = await (accessToken === null ? axios : axiosInstance).get(
+      `${API_PATH.gathering.date}?dateTime=${dateTime}&gatheringId=${gatheringId}`
+    );
+    return res;
+  } catch (error) {
+    toast.error('똑같은 일정 다른 모임 최신화 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
 interface PostGatheringData {
   name: string;
   themeId: number;

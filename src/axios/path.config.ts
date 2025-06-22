@@ -11,9 +11,12 @@ export const API_PATH = {
   },
   theme: {
     default: `${BASE_URL}/theme`,
+    search: `${BASE_URL}/theme/search`,
   },
   gathering: {
     default: `${BASE_URL}/gathering`,
+    host: `${BASE_URL}/gathering/host`,
+    date: `${BASE_URL}/gathering/date`,
   },
   gathering_member: {
     default: `${BASE_URL}/gathering/member`,

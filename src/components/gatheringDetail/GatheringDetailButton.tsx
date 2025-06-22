@@ -11,7 +11,7 @@ import {
 } from '@/types/gathering/gathering.type';
 
 interface GatheringDetailButtonProps {
-  list: GatheringDTO['get'];
+  list: GatheringDTO['get']['data'][number];
   detail: GatheringDetailDTO['get'];
   leader: string;
   gatheringId: number;
