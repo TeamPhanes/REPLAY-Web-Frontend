@@ -33,6 +33,22 @@ export const GetTheme = async ({
   }
 };
 
+export const GetSearchTheme = async (
+  keyword: string,
+  state: string,
+  city: string
+) => {
+  try {
+    const res = await axios.get(
+      `${API_PATH.theme.search}?${keyword !== '' ? `&keyword=${keyword}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}${state !== '시.도' ? `&state=${state}` : ''}`
+    );
+    return res;
+  } catch (error) {
+    toast.error('방탈출 리스트업 진행 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
 export const GetThemeDetail = async (id: string | string[]) => {
   try {
     const res = await axios.get(`${API_PATH.theme.default}/${id}`);
