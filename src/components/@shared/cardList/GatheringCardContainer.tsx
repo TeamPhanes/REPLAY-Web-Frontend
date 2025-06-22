@@ -3,7 +3,7 @@ import EmptySearchResult from '@/components/search/EmptySearchResult';
 import { GatheringDTO } from '@/types/gathering/gathering.type';
 
 interface GatheringCardContainerProps {
-  data: GatheringDTO['get'][];
+  data: GatheringDTO['get']['data'];
   favoriteCheck?: boolean;
 }
 
@@ -13,7 +13,7 @@ export default function GatheringCardContainer({
 }: GatheringCardContainerProps) {
   return (
     <>
-      <div className="mt-6 grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-2 gap-5">
         {data &&
           data.map((gathering) => (
             <GatheringCard

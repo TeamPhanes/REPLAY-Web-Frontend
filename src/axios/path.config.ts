@@ -15,6 +15,8 @@ export const API_PATH = {
   },
   gathering: {
     default: `${BASE_URL}/gathering`,
+    host: `${BASE_URL}/gathering/host`,
+    date: `${BASE_URL}/gathering/date`,
   },
   gathering_member: {
     default: `${BASE_URL}/gathering/member`,

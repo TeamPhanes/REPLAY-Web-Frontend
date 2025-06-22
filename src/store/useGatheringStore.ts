@@ -7,7 +7,9 @@ interface State {
 }
 
 interface Actions {
-  setSelectedGathering: (selectedGathering: GatheringDTO['get']) => void;
+  setSelectedGathering: (
+    selectedGathering: GatheringDTO['get']['data'][number]
+  ) => void;
 }
 
 export const useGatheringStore = create<State & Actions>()(

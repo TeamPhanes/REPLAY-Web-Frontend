@@ -3,7 +3,7 @@ import { GatheringDTO } from '@/types/gathering/gathering.type';
 
 interface AnotherGatheringsProps {
   title: string;
-  gatherings: GatheringDTO['get'][];
+  gatherings: GatheringDTO['get']['data'];
 }
 
 export default function AnotherGatherings({
