@@ -35,7 +35,7 @@ export default function GatheringDetailPage() {
   );
 
   useEffect(() => {
-    if (gatheringMember.length > 0) {
+    if (gatheringMember && gatheringMember.length > 0) {
       setHost(gatheringMember[0].nickname);
     }
     if (gatheringDetail) {
