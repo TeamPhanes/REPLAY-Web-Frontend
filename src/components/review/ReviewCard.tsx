@@ -33,7 +33,11 @@ export default function ReviewCard({ data }: ReviewCardProps) {
               height={24}
               type="Review"
             />
-            <ReviewLikeButton totalLikes={review.totalLikes} />
+            <ReviewLikeButton
+              totalLikes={review.totalLikes}
+              isLiked={review.isLiked}
+              id={review.id}
+            />
           </div>
           <ThemeLevelStoryContainer dataList={review} />
           <ReviewContent content={review.content} image={review.image} />
