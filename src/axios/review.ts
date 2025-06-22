@@ -125,3 +125,21 @@ export const DeleteReview = async (
     throw error;
   }
 };
+
+export const PostLikeReview = async (reviewId: number) => {
+  try {
+    await axiosInstance.post(`${API_PATH.review.default}/${reviewId}/like`);
+  } catch (error) {
+    toast.error('리뷰 좋아요 진행 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
+export const DeleteLikeReview = async (reviewId: number) => {
+  try {
+    await axiosInstance.delete(`${API_PATH.review.default}/${reviewId}/like`);
+  } catch (error) {
+    toast.error('리뷰 좋아요 취소 중 오류가 있습니다.');
+    throw error;
+  }
+};

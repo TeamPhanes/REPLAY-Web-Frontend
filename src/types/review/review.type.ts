@@ -4,6 +4,7 @@ export interface ReviewDTO {
     totalCount: number;
     currentPage: number;
     data: {
+      id: number;
       user: {
         name: string;
         image: string;
@@ -19,6 +20,7 @@ export interface ReviewDTO {
       createdAt: string;
       playUser: number;
       totalLikes: number;
+      isLiked?: boolean;
     }[];
   };
 }

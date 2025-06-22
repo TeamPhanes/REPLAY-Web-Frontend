@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useThemeStore } from '@/store/useThemeStore';
@@ -27,8 +27,8 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
   const { themeDetail, isLoading, showLoading } = useGetThemeDetail(id);
   const detail = themeDetail;
   const { reviewAllRating } = useGetReviewAllRating(id);
-  const [isLiked, setIsLiked] = useState(selectedTheme.isLiked);
-  const [isMarked, setIsMarked] = useState(selectedTheme.isMarked);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isMarked, setIsMarked] = useState(false);
   const { likesMutation } = usePostThemeLike();
   const { marksMutation } = usePostThemeMark();
 
@@ -47,6 +47,13 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
       userAction,
     });
   };
+
+  useEffect(() => {
+    if (selectedTheme) {
+      setIsLiked(selectedTheme.isLiked);
+      setIsMarked(selectedTheme.isMarked);
+    }
+  }, [selectedTheme]);
 
   if (showLoading) return <Loading isLoading={isLoading} />;
 
