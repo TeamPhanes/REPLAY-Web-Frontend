@@ -23,7 +23,9 @@ export default function GatheringCardContainer({
             />
           ))}
       </div>
-      {data && data.length === 0 && <EmptySearchResult />}
+      <div className="w-full">
+        {data && data.length === 0 && <EmptySearchResult />}
+      </div>
     </>
   );
 }

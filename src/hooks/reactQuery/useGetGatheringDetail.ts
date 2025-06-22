@@ -21,11 +21,12 @@ export const useGetGatheringDetail = (id: string | string[]) => {
 
 export const useGetHostGathering = (
   accessToken: string | null,
-  hostName: string
+  hostName: string,
+  id: string | string[]
 ) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['hostGathering', hostName],
-    queryFn: () => GetHostGathering(accessToken, hostName),
+    queryFn: () => GetHostGathering(accessToken, hostName, Number(id)),
     enabled: !!hostName,
     staleTime: 1000 * 60 * 5,
   });
@@ -37,11 +38,12 @@ export const useGetHostGathering = (
 
 export const useGetDateGathering = (
   accessToken: string | null,
-  dateTime: string
+  dateTime: string,
+  id: string | string[]
 ) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['dateGathering', dateTime],
-    queryFn: () => GetDateGathering(accessToken, dateTime),
+    queryFn: () => GetDateGathering(accessToken, dateTime, Number(id)),
     enabled: !!dateTime,
     staleTime: 1000 * 60 * 5,
   });

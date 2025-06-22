@@ -45,11 +45,12 @@ export const GetGatheringDetail = async (id: string | string[]) => {
 
 export const GetHostGathering = async (
   accessToken: string | null,
-  hostName: string
+  hostName: string,
+  gatheringId: number
 ) => {
   try {
     const res = await (accessToken === null ? axios : axiosInstance).get(
-      `${API_PATH.gathering.host}/${hostName}`
+      `${API_PATH.gathering.host}/${hostName}?gatheringId=${gatheringId}`
     );
     return res;
   } catch (error) {
@@ -60,11 +61,12 @@ export const GetHostGathering = async (
 
 export const GetDateGathering = async (
   accessToken: string | null,
-  dateTime: string
+  dateTime: string,
+  gatheringId: number
 ) => {
   try {
     const res = await (accessToken === null ? axios : axiosInstance).get(
-      `${API_PATH.gathering.date}?dateTime=${dateTime}`
+      `${API_PATH.gathering.date}?dateTime=${dateTime}&gatheringId=${gatheringId}`
     );
     return res;
   } catch (error) {

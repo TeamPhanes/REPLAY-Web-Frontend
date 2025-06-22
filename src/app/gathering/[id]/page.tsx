@@ -27,8 +27,12 @@ export default function GatheringDetailPage() {
   const { gatheringMember } = useGetGatheringMember(id);
   const { selectedGathering } = useGatheringStore();
   const { gatheringDetail, isLoading, showLoading } = useGetGatheringDetail(id);
-  const { hostGathering } = useGetHostGathering(accessToken, host ?? '');
-  const { dateGathering } = useGetDateGathering(accessToken, dateTime ?? '');
+  const { hostGathering } = useGetHostGathering(accessToken, host ?? '', id);
+  const { dateGathering } = useGetDateGathering(
+    accessToken,
+    dateTime ?? '',
+    id
+  );
 
   useEffect(() => {
     if (gatheringMember.length > 0) {
