@@ -14,7 +14,7 @@ export default function AnotherGatherings({
     <div className="mt-14">
       <p className="ml-1 text-2xl font-semibold text-white">{title}</p>
       <div>
-        <div className="mt-3 flex justify-between">
+        <div className="flex justify-between">
           <GatheringCardContainer data={gatherings} />
         </div>
       </div>
