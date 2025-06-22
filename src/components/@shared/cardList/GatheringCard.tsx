@@ -13,7 +13,7 @@ import HeartLine from '@/public/icons/cardList/heart_line.svg';
 
 interface GatheringCardProps {
   favoriteCheck?: boolean;
-  gathering: GatheringDTO['get'];
+  gathering: GatheringDTO['get']['data'][number];
 }
 
 export default function GatheringCard({

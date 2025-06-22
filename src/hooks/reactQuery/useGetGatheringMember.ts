@@ -12,7 +12,7 @@ export const useGetGatheringMember = (gatheringId: string | string[]) => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const gatheringMember = data?.data ?? [];
+  const gatheringMember = data?.data;
   const showLoading = useShowLoading(isLoading);
   return { gatheringMember, isLoading, showLoading, error };
 };

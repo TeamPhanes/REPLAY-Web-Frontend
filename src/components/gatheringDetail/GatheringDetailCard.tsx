@@ -17,7 +17,7 @@ import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
 
 interface GatheringDetailCardProps {
-  list: GatheringDTO['get'];
+  list: GatheringDTO['get']['data'][number];
   detail: GatheringDetailDTO['get'];
   leader: string;
 }

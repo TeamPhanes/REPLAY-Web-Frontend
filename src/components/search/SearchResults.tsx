@@ -86,7 +86,7 @@ export default function SearchResults() {
         className="mt-6"
       >
         {gathering &&
-          gathering.data.map((data: GatheringDTO['get']) => (
+          gathering.data.map((data: GatheringDTO['get']['data'][number]) => (
             <SwiperSlide key={data.gatheringId}>
               <GatheringCard gathering={data} />
             </SwiperSlide>

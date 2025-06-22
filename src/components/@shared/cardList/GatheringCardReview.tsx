@@ -12,7 +12,7 @@ import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
 
 interface GatheringCardReviewProps {
-  gathering: GatheringDTO['get'];
+  gathering: GatheringDTO['get']['data'][number];
 }
 
 export default function GatheringCardReview({
