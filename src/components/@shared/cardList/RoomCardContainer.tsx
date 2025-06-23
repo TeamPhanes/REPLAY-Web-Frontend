@@ -15,7 +15,7 @@ export default function RoomCardContainer({
 }: RoomCardContainerProps) {
   return (
     <>
-      <div className="mt-6 grid grid-cols-2 gap-5">
+      <div className="mt-6 grid grid-cols-1 gap-5">
         {data &&
           data.map((room) => (
             <RoomCard

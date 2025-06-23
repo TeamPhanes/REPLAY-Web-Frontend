@@ -13,7 +13,7 @@ export default function PostReviewImageFile({
   handleImageReset,
 }: PostReviewImageFileProps) {
   return previewUrl === null ? (
-    <div className="w-full h-[60px] border-[1px] border-spot rounded-xl border-dashed mt-2 cursor-pointer">
+    <div className="w-full h-[60px] border-[1px] border-spot rounded-xl border-dashed mt-2 cursor-pointer mb-[100px]">
       <label
         htmlFor="image"
         className="cursor-pointer flex items-center gap-2 w-full justify-center h-full"
@@ -42,12 +42,12 @@ export default function PostReviewImageFile({
       <Image
         src={previewUrl}
         alt="첨부 이미지 미리보기"
-        width={240}
-        height={240}
-        className="w-[240xp] h-[240px] p-2 rounded-2xl"
+        width={200}
+        height={200}
+        className="w-[200xp] h-[200px] p-2 rounded-2xl"
       />
-      <div className="flex flex-col w-[446px] gap-2">
-        <div className="flex items-center border-[1px] border-spot rounded-xl border-dashed relative h-[110px] justify-center">
+      <div className="flex flex-col w-[486px] gap-2">
+        <div className="flex items-center border-[1px] border-spot rounded-xl border-dashed relative h-[90px] justify-center">
           <label
             htmlFor="image"
             className="cursor-pointer flex items-center gap-2 justify-center"
@@ -71,7 +71,7 @@ export default function PostReviewImageFile({
             />
           </label>
         </div>
-        <div className="border-[1px] border-spot rounded-xl border-dashed relative h-[110px] flex items-center justify-center">
+        <div className="border-[1px] border-spot rounded-xl border-dashed relative h-[90px] flex items-center justify-center">
           <button
             type="button"
             className="flex items-center gap-2"

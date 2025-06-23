@@ -55,7 +55,9 @@ export default function RoomCardSection({
 
   return (
     <>
-      <div className="absolute right-5 flex flex-col">
+      <div
+        className={`${reviewCheck ? 'left-[580px]' : 'right-5'} absolute flex flex-col`}
+      >
         <button
           type="button"
           onClick={() =>
