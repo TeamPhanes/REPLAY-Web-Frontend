@@ -65,12 +65,36 @@ const config: Config = {
           '0%': { opacity: '1' },
           '100%': { opacity: '0' },
         },
+        typing: {
+          '0%': {
+            width: '0%',
+            visibility: 'hidden',
+          },
+          '100%': {
+            width: '100%',
+          },
+        },
+        blink: {
+          '50%': {
+            borderColor: 'transparent',
+          },
+          '100%': {
+            borderColor: 'white',
+          },
+        },
+        pop: {
+          '0%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.2)' },
+          '100%': { transform: 'scale(1)' },
+        },
       },
       animation: {
         dropdownIn: 'dropdownIn 300ms ease-out forwards',
         dropdownOut: 'dropdownOut 200ms ease-in forwards',
         modalIn: 'modalIn 300ms ease-out forwards',
         modalOut: 'modalOut 200ms ease-in forwards',
+        typing: 'typing 2s steps(20) infinite alternate, blink .7s infinite',
+        pop: 'pop 0.3s ease',
       },
     },
     fontFamily: {

@@ -12,11 +12,11 @@ export default function RoutingMenu() {
     <div className="flex w-[912px] flex-col">
       <div className="mt-16 flex justify-between">
         <Link href="/room">
-          <div className="h-[248px] w-[450px] rounded-[28px] bg-homeCard p-8 relative">
+          <div className="h-[248px] w-[450px] rounded-[28px] bg-homeCard p-8 relative transition-all hover:scale-[102%] hover:border-2 hover:border-white">
             <h2 className="text-5xl font-bold tracking-[-2.5%] text-white">
               방탈출
             </h2>
-            <p className="mt-4 w-[338px] text-base font-normal tracking-[-2.5%] text-homeFont">
+            <p className="mt-4 max-w-[338px] text-base font-normal tracking-[-2.5%] text-homeFont">
               전국 각지에 있는 다양한 테마의 방탈출을
               <br />
               필터링하여 볼 수 있습니다.
@@ -31,7 +31,7 @@ export default function RoutingMenu() {
           </div>
         </Link>
         <Link href="/gathering">
-          <div className="h-[248px] w-[450px] rounded-[28px] bg-homeCard p-8 relative">
+          <div className="h-[248px] w-[450px] rounded-[28px] bg-homeCard p-8 relative transition-all hover:scale-[102%] hover:border-2 hover:border-white">
             <h2 className="text-5xl font-bold tracking-[-2.5%] text-white">
               모임
             </h2>
@@ -52,7 +52,7 @@ export default function RoutingMenu() {
 
       <div className="mt-3 flex justify-between">
         <Link href="/mypage/favorite?type=room">
-          <div className="h-[248px] w-[450px] rounded-[28px] bg-homeCard p-8 relative">
+          <div className="h-[248px] w-[450px] rounded-[28px] bg-homeCard p-8 relative transition-all hover:scale-[102%] hover:border-2 hover:border-white">
             <h2 className="text-5xl font-bold tracking-[-2.5%] text-white">
               찜한 방탈출
             </h2>
@@ -69,7 +69,7 @@ export default function RoutingMenu() {
           </div>
         </Link>
         <Link href="/mypage/favorite?type=gathering">
-          <div className="flex h-[248px] w-[219px] items-center justify-center rounded-[28px] bg-homeCard p-8 relative">
+          <div className="flex h-[248px] w-[219px] items-center justify-center rounded-[28px] bg-homeCard p-8 relative transition-all hover:scale-[102%] hover:border-2 hover:border-white">
             <h2 className="text-[40px]/[52px] font-bold tracking-[-2.5%] text-white">
               찜한모임
             </h2>
@@ -83,7 +83,7 @@ export default function RoutingMenu() {
           </div>
         </Link>
         <div
-          className="flex h-[248px] w-[219px] items-center justify-center rounded-[28px] bg-homeCard p-8 relative cursor-pointer"
+          className="flex h-[248px] w-[219px] items-center justify-center rounded-[28px] bg-homeCard p-8 relative cursor-pointer transition-all hover:scale-[102%] hover:border-2 hover:border-white"
           onClick={openModal}
         >
           <h2 className="text-[40px]/[52px] font-bold tracking-[-2.5%] text-white">

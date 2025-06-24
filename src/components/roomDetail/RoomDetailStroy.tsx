@@ -1,3 +1,4 @@
+import MainBlueButton from '@/components/@shared/button/MainBlueButton';
 import AddGatheringModal from '@/components/@shared/modal/AddGathering/AddGatheringModal';
 import StorySection from '@/components/roomDetail/StorySection';
 import { useOpen } from '@/hooks/useOpen';
@@ -12,13 +13,9 @@ export default function RoomDetailStroy({ story }: RoomDetailStoryProps) {
     <>
       <StorySection story={story} />
       <div className="mt-4 flex justify-between absolute bottom-5">
-        <button
-          type="button"
-          className="h-[58px] w-[431px] rounded-2xl bg-mainBlue text-center text-2xl/[34px] font-semibold tracking-[-2.5%] hover:bg-mainBlueHover"
-          onClick={openModal}
-        >
+        <MainBlueButton className="h-[58px] w-[431px]" onClick={openModal}>
           모임 만들기
-        </button>
+        </MainBlueButton>
         <AddGatheringModal isOpen={isOpen} onClose={closeModal} />
       </div>
     </>

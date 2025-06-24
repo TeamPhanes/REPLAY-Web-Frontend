@@ -12,9 +12,10 @@ import MapNavigation from '@/components/@shared/filter/MapNavigation';
 import FilterContainer from '@/components/@shared/layout/FilterContainer';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import SortContainer from '@/components/@shared/layout/SortContainer';
-import Loading from '@/components/@shared/loading/Loading';
 import Pagination from '@/components/@shared/pagination/Pagination';
 import SearchBar from '@/components/@shared/search/SearchBar';
+import CardSkeleton from '@/components/@shared/skeleton/CardSkeleton';
+import LineSkeleton from '@/components/@shared/skeleton/SortSkeleton';
 import { useGetTheme } from '@/hooks/reactQuery/useGetTheme';
 import { usePagination } from '@/hooks/usePagination';
 
@@ -30,7 +31,7 @@ export default function RoomPage() {
   };
   const { largeDistrict, middleDistrict } = useQueryStringStore();
 
-  const { theme, showLoading, isLoading } = useGetTheme(
+  const { theme } = useGetTheme(
     accessToken,
     '',
     page,
@@ -42,7 +43,6 @@ export default function RoomPage() {
   const totalItems = theme ? theme.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
 
-  if (showLoading) return <Loading isLoading={isLoading} />;
   return (
     <PageContainer>
       <SearchBar />
@@ -51,11 +51,24 @@ export default function RoomPage() {
         <GenreFilter />
         <MapNavigation target="room" />
       </FilterContainer>
-      <SortContainer>
-        <CountListValue value={theme.totalCount} />
-        <SortDropdown sort={sort} sortList={sortList} sortChange={setSort} />
-      </SortContainer>
-      <RoomCardContainer data={theme.data} />
+      {!theme ? (
+        <>
+          <LineSkeleton className="h-6 mt-6" />
+          <CardSkeleton className="mt-6" />
+        </>
+      ) : (
+        <>
+          <SortContainer>
+            <CountListValue value={theme.totalCount} />
+            <SortDropdown
+              sort={sort}
+              sortList={sortList}
+              sortChange={setSort}
+            />
+          </SortContainer>
+          <RoomCardContainer data={theme.data} className="grid-cols-2" />
+        </>
+      )}
       <Pagination
         currentPage={page}
         totalPages={totalPages}

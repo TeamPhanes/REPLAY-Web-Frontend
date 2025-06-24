@@ -27,11 +27,12 @@ export default function GlobalNav() {
             const list = navLabelList[key];
             return (
               <Link key={key} href={list.value}>
-                <p
-                  className={`${pathName === list.value ? 'underline-offset-4 underline decoration-mainPink' : ''} text-xl font-semibold tracking-[-2.5%]`}
-                >
+                <span className="relative inline-block group text-xl font-semibold tracking-[-2.5%]">
                   {list.label}
-                </p>
+                  <span
+                    className={`absolute left-0 -bottom-1 h-[2px] ${pathName === list.value ? 'w-full' : 'w-0'} bg-mainPink transition-all duration-300 group-hover:w-full`}
+                  />
+                </span>
               </Link>
             );
           })}

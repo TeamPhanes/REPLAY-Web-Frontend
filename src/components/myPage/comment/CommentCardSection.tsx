@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
-import Loading from '@/components/@shared/loading/Loading';
 import Pagination from '@/components/@shared/pagination/Pagination';
+import LineSkeleton from '@/components/@shared/skeleton/LineSkeleton';
+import MyPageCommentSkeleton from '@/components/@shared/skeleton/MyPageCommentSkeleton';
 import { useMyComment } from '@/hooks/reactQuery/useMyComment';
 import { useAuthGuard } from '@/hooks/useAuthGuard';
 import { usePagination } from '@/hooks/usePagination';
@@ -17,14 +18,17 @@ export default function CommentCardSection({ sort }: CommentCardSectionProps) {
   const { MyComment, isLoading, showLoading } = useMyComment(sort, page, 10);
   const { isGuardLoading } = useAuthGuard(showLoading);
   const { totalPages } = usePagination(page, MyComment?.totalCount);
-  if (isGuardLoading) return <Loading isLoading={isLoading} />;
 
-  if (MyComment === undefined || null) return null;
-  if (
-    MyComment &&
-    typeof MyComment === 'object' &&
-    Object.keys(MyComment.data).length === 0
-  ) {
+  if (isGuardLoading || isLoading) {
+    return (
+      <>
+        <LineSkeleton className="mt-8 h-[34px]" />
+        <MyPageCommentSkeleton count={6} className="mt-2" />
+      </>
+    );
+  }
+
+  if (!MyComment || Object.keys(MyComment.data).length === 0) {
     return <EmptyArrayContainer type="작성한" kind="댓글" />;
   }
   return (
@@ -39,13 +43,13 @@ export default function CommentCardSection({ sort }: CommentCardSectionProps) {
               {comments.map((comment, index) => (
                 <div
                   key={index}
-                  className="flex h-[180px] w-[421px] flex-col gap-1 rounded-3xl bg-spot p-5"
+                  className="flex h-[180px] w-[421px] flex-col gap-1 rounded-3xl bg-card p-5"
                 >
                   <div className="flex items-center justify-between">
-                    <p className="text-base font-normal tracking-[-2.5%] text-homeFont">
+                    <p className="text-base font-normal tracking-[-2.5%] text-basefont">
                       {comment.gatheringName}
                     </p>
-                    <p className="text-base font-normal tracking-[-2.5%] text-homeFont">
+                    <p className="text-base font-normal tracking-[-2.5%] text-basefont">
                       {HourTime(comment.createdAt)}
                     </p>
                   </div>

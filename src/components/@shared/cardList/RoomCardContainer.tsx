@@ -6,16 +6,18 @@ interface RoomCardContainerProps {
   data: RoomDTO['get'][];
   favoriteCheck?: boolean;
   reviewCheck?: boolean;
+  className: string;
 }
 
 export default function RoomCardContainer({
   data,
   favoriteCheck,
   reviewCheck,
+  className,
 }: RoomCardContainerProps) {
   return (
     <>
-      <div className="mt-6 grid grid-cols-1 gap-5">
+      <div className={`${className} mt-6 grid gap-5`}>
         {data &&
           data.map((room) => (
             <RoomCard

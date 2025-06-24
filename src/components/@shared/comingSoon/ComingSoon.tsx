@@ -5,7 +5,7 @@ import ComingSoonShadow from '@/public/images/comingSoon/comingSoon_shadow.png';
 export default function ComingSoon() {
   return (
     <div className="flex justify-center items-center flex-col">
-      <p className="font-normal text-[64px] tracking-[0.31em] mb-40">
+      <p className="font-normal text-[64px] tracking-[0.31em] mb-40 max-w-[665px] animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white">
         COMING SOON
       </p>
       <Image

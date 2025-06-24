@@ -1,6 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
+import MainBlueButton from '@/components/@shared/button/MainBlueButton';
 import usePatchCommentForm from '@/hooks/form/usePostCommentForm';
 import { usePostComment } from '@/hooks/reactQuery/usePostComment';
 
@@ -34,12 +35,12 @@ export default function CommentInput() {
               {errors.content.message}
             </p>
           )}
-          <button
+          <MainBlueButton
             type="submit"
-            className="absolute bottom-5 right-5 rounded-2xl bg-commentButton px-4 py-1 text-2xl/[34px] font-semibold tracking-[-2.5%] text-white"
+            className="absolute bottom-5 right-5 w-[74px] h-[42px] flex items-center justify-center"
           >
             등록
-          </button>
+          </MainBlueButton>
         </form>
       </div>
     </div>

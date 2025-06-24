@@ -60,6 +60,9 @@ export default function RoomCardSection({
       >
         <button
           type="button"
+          className={`transition-transform duration-300 active:scale-90 ${
+            isMarked ? 'animate-pop' : ''
+          }`}
           onClick={() =>
             handleMarkButtonClick(isMarked ? 'UNMARK_POST' : 'MARK_POST')
           }
@@ -71,8 +74,12 @@ export default function RoomCardSection({
             height={32}
           />
         </button>
+
         <button
           type="button"
+          className={`transition-transform duration-300 active:scale-90 ${
+            isLiked ? 'animate-pop' : ''
+          }`}
           onClick={() =>
             handleLikeButtonClick(isLiked ? 'UNLIKE_POST' : 'LIKE_POST')
           }

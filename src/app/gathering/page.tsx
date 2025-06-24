@@ -12,10 +12,11 @@ import MapNavigation from '@/components/@shared/filter/MapNavigation';
 import FilterContainer from '@/components/@shared/layout/FilterContainer';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import SortContainer from '@/components/@shared/layout/SortContainer';
-import Loading from '@/components/@shared/loading/Loading';
 import FixedAddGatheringButton from '@/components/@shared/modal/AddGathering/FixedAddGatheringButton';
 import Pagination from '@/components/@shared/pagination/Pagination';
 import SearchBar from '@/components/@shared/search/SearchBar';
+import CardSkeleton from '@/components/@shared/skeleton/CardSkeleton';
+import SortSkeleton from '@/components/@shared/skeleton/SortSkeleton';
 import { useGetGathering } from '@/hooks/reactQuery/useGetGathering';
 import { usePagination } from '@/hooks/usePagination';
 
@@ -31,7 +32,7 @@ export default function GatheringPage() {
   };
   const { largeDistrict, middleDistrict } = useQueryStringStore();
 
-  const { gathering, isLoading, showLoading } = useGetGathering(
+  const { gathering } = useGetGathering(
     accessToken,
     '',
     page,
@@ -43,7 +44,6 @@ export default function GatheringPage() {
   const totalItems = gathering ? gathering.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
 
-  if (showLoading || isLoading) return <Loading isLoading={isLoading} />;
   return (
     <PageContainer>
       <SearchBar />
@@ -52,11 +52,24 @@ export default function GatheringPage() {
         <GenreFilter />
         <MapNavigation target="gathering" />
       </FilterContainer>
-      <SortContainer>
-        <CountListValue value={totalItems} />
-        <SortDropdown sort={sort} sortList={sortList} sortChange={setSort} />
-      </SortContainer>
-      <GatheringCardContainer data={gathering.data} />
+      {!gathering ? (
+        <>
+          <SortSkeleton className="h-6 mt-6" />
+          <CardSkeleton className="mt-6" />
+        </>
+      ) : (
+        <>
+          <SortContainer>
+            <CountListValue value={totalItems} />
+            <SortDropdown
+              sort={sort}
+              sortList={sortList}
+              sortChange={setSort}
+            />
+          </SortContainer>
+          <GatheringCardContainer data={gathering.data} />
+        </>
+      )}
       <Pagination
         currentPage={page}
         totalPages={totalPages}
