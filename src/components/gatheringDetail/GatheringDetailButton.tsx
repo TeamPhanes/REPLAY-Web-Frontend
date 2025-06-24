@@ -1,4 +1,6 @@
 import { useAuthStore } from '@/store/authStore';
+import MainBlueButton from '@/components/@shared/button/MainBlueButton';
+import MainPurpleButton from '@/components/@shared/button/MainPurpleButton';
 import Modal from '@/components/@shared/modal/Modal';
 import PatchGatheringModal from '@/components/@shared/modal/PatchGathering/PatchGatheringModal';
 import GatheringMemberButton from '@/components/gatheringDetail/GatheringMemberButton';
@@ -37,20 +39,12 @@ export default function GatheringDetailButton({
     <div>
       {userInfo && userInfo.nickname === leader ? (
         <div className="absolute bottom-5 grid grid-cols-2 w-[431px] gap-2">
-          <button
-            type="button"
-            className="rounded-2xl bg-mainBlue px-[10px] py-3 hover:bg-mainBlueHover"
-            onClick={openPatchGathering}
-          >
+          <MainBlueButton onClick={openPatchGathering}>
             <p className="text-2xl font-semibold text-white">모임 수정하기</p>
-          </button>
-          <button
-            type="button"
-            className="rounded-2xl bg-mainPurple px-[10px] py-3 hover:bg-mainPurpleHover"
-            onClick={openModal}
-          >
+          </MainBlueButton>
+          <MainPurpleButton onClick={openModal}>
             <p className="text-2xl font-semibold text-white">모임 삭제하기</p>
-          </button>
+          </MainPurpleButton>
         </div>
       ) : (
         <GatheringMemberButton gatheringId={detail.gatheringId} />
@@ -65,22 +59,15 @@ export default function GatheringDetailButton({
           모임을 삭제하시겠습니까?
         </p>
         <div className="flex justify-between gap-2 mt-5">
-          <button
-            type="button"
-            className="rounded-2xl bg-mainBlue px-[10px] py-3 hover:bg-mainBlueHover w-full"
-            onClick={() => mutate()}
-          >
+          <MainBlueButton className="w-full" onClick={() => mutate()}>
             확인
-          </button>
-          <button
-            type="button"
-            className="rounded-2xl bg-mainPurple px-[10px] py-3 hover:bg-mainPurpleHover w-full"
-            onClick={closeModal}
-          >
+          </MainBlueButton>
+          <MainPurpleButton className="w-full" onClick={closeModal}>
             취소
-          </button>
+          </MainPurpleButton>
         </div>
       </Modal>
+
       <PatchGatheringModal
         isOpen={isPatchGatheringOpen}
         onClose={closePatchGathering}

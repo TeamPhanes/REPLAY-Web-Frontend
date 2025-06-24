@@ -2,6 +2,8 @@
 
 import { Controller } from 'react-hook-form';
 import Image from 'next/image';
+import MainBlueButton from '@/components/@shared/button/MainBlueButton';
+import MainWhiteButton from '@/components/@shared/button/MainWhiteButton';
 import Modal from '@/components/@shared/modal/Modal';
 import PatchMyPageImage from '@/components/@shared/modal/PatchMyPage/PatchMyPageImage';
 import PatchMyPageSwitch from '@/components/@shared/modal/PatchMyPage/PatchMyPageSwitch';
@@ -123,19 +125,12 @@ export default function PatchMyPageModal({
         />
 
         <div className="flex mt-6 gap-2">
-          <button
-            type="button"
-            className="min-w-36 py-3 px-[10px] border-cardActive border-2 font-semibold text-2xl/[34px] tracking-[-2.5%] text-buttonColor200 text-center rounded-2xl"
-            onClick={onClose}
-          >
+          <MainWhiteButton className="min-w-36" onClick={onClose}>
             취소하기
-          </button>
-          <button
-            type="submit"
-            className="w-full py-3 px-[10px] bg-mainBlue rounded-2xl font-semibold text-2xl/[34px] tracking-[-2.5%] text-white"
-          >
+          </MainWhiteButton>
+          <MainBlueButton type="submit" className="w-full">
             수정하기
-          </button>
+          </MainBlueButton>
         </div>
       </form>
     </Modal>

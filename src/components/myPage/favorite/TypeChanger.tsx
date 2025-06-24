@@ -20,7 +20,7 @@ export default function TypeChanger({
         <button
           key={option.value}
           type="button"
-          className={`text-[32px]/[42px] font-semibold tracking-[-2.5%] ${
+          className={`text-[32px]/[42px] font-semibold tracking-[-2.5%] duration-500 ease-in-out hover:text-white ${
             selectedType === option.value ? 'text-white' : 'text-grayFont'
           }`}
           onClick={() => setSelectedType(option.value)}

@@ -62,7 +62,9 @@ export default function GatheringDetailCard({
         <div className="relative h-[460px] w-[471px] rounded-[30px] bg-card p-5">
           <button
             type="button"
-            className="absolute right-5 top-20"
+            className={`absolute right-5 top-20 transition-transform duration-300 active:scale-90 ${
+              isLiked ? 'animate-pop' : ''
+            }`}
             onClick={() =>
               handleLikeButtonClick(isLiked ? 'UNLIKE_POST' : 'LIKE_POST')
             }

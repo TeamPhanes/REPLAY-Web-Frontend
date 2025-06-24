@@ -1,5 +1,6 @@
 import { useParams } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
+import MainBlueButton from '@/components/@shared/button/MainBlueButton';
 import { useGetGatheringMember } from '@/hooks/reactQuery/useGetGatheringMember';
 import { usePostGatheringMember } from '@/hooks/reactQuery/usePostGatheringMember';
 import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
@@ -25,20 +26,18 @@ export default function GatheringMemberButton({
     .map((user: any) => user.nickname === userInfo?.nickname)
     .find((check: boolean) => check === true);
   return !FindMember ? (
-    <button
-      type="button"
-      className="absolute bottom-5 w-[431px] rounded-2xl bg-mainBlue px-[10px] py-3 hover:bg-mainBlueHover"
+    <MainBlueButton
+      className="absolute bottom-5 w-[431px]"
       onClick={() => handleMemberButtonClick('POST')}
     >
       <p className="text-2xl font-semibold text-white">모임 참여하기</p>
-    </button>
+    </MainBlueButton>
   ) : (
-    <button
-      type="button"
-      className="absolute bottom-5 w-[431px] rounded-2xl bg-mainBlue px-[10px] py-3 hover:bg-mainBlueHover"
+    <MainBlueButton
+      className="absolute bottom-5 w-[431px]"
       onClick={() => handleMemberButtonClick('DELETE')}
     >
       <p className="text-2xl font-semibold text-white">참여 취소하기</p>
-    </button>
+    </MainBlueButton>
   );
 }
