@@ -2,6 +2,7 @@ import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
+import '@/styles/scrollbar.css';
 import GlobalNav from '@/components/@shared/gnb/GlobalNav';
 import AuthSessionLoader from '@/components/@shared/provider/AuthSessionLoader';
 import QueryProvider from '@/components/@shared/provider/QueryProvider';
@@ -42,7 +43,7 @@ export default function RootLayout({
           type="image/gif"
         />
       </head>
-      <body>
+      <body className="scrollbar-x-hidden default-scrollbar">
         <QueryProvider>
           <AuthSessionLoader />
           <GlobalNav />

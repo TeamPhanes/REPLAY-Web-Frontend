@@ -35,7 +35,3 @@
 html {
   font-family: 'Pretendard', sans-serif;
 }
-
-dialog::backdrop {
-  background: rgba(80, 80, 80, 0.5);
-}

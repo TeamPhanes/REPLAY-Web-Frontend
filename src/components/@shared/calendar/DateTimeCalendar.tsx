@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Calendar from 'react-calendar';
 import '@/styles/dateTimeCalendar.css';
 import ScrollTimePicker from '@/components/@shared/calendar/ScrollTimePicker';
@@ -34,6 +34,7 @@ export default function DateTimeCalendar({
   now.setMinutes(0);
   const tomorrow = new Date(now);
   tomorrow.setDate(tomorrow.getDate() + 1);
+  const initialSelectedDateRef = useRef(new Date(selectedDate));
 
   const [date, setDate] = useState(selectedDate);
   const [selectedHour, setSelectedHour] = useState(date.getHours());
@@ -57,10 +58,11 @@ export default function DateTimeCalendar({
   };
 
   const handleReset = () => {
-    setDate(date);
-    setSelectedHour(date.getHours());
-    setSelectedMinute(date.getMinutes());
-    onDateChange(date);
+    const resetDate = initialSelectedDateRef.current;
+    setDate(resetDate);
+    setSelectedHour(resetDate.getHours());
+    setSelectedMinute(resetDate.getMinutes());
+    onDateChange(resetDate);
     onClose();
   };
 
@@ -72,7 +74,7 @@ export default function DateTimeCalendar({
 
   return (
     <div
-      className={`${isOpen ? '' : 'hidden'} ${layout} border-2 absolute z-[80] flex flex-col rounded-[10px] border-grayFont bg-grayFont py-5 pl-6 pr-6 shadow-xl md:pr-0`}
+      className={`${isOpen ? 'animate-dropdownIn' : 'hidden'} ${layout} border-2 absolute z-[80] flex flex-col rounded-[10px] border-grayFont bg-grayFont py-5 pl-6 pr-6 shadow-xl md:pr-0`}
     >
       <div className="flex flex-col md:h-[332px] md:flex-row">
         <Calendar
