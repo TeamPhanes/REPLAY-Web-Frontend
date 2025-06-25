@@ -1,12 +1,27 @@
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import Image from 'next/image';
 import Dropdown from '@/components/@shared/dropdown/ValueDropdown';
 import { useOpen } from '@/hooks/useOpen';
+
+interface FormValues {
+  name: string;
+  themeId: number;
+  content: string;
+  isIndividual: string;
+  price: number;
+  dateTime: Date;
+  registrationStart: Date;
+  registrationEnd: Date;
+  capacity: number;
+}
 
 interface AddGatheringPriceProps {
   priceType: string;
   priceTypeChange: (value: string) => void;
   price: number;
   priceChange: (value: number) => void;
+  register: UseFormRegister<FormValues>;
+  errors: FieldErrors<FormValues>;
 }
 
 export default function AddGatheringPrice({
@@ -14,6 +29,8 @@ export default function AddGatheringPrice({
   priceTypeChange,
   price,
   priceChange,
+  register,
+  errors,
 }: AddGatheringPriceProps) {
   const priceTypeList = ['인당', '총액'];
   const { isOpen, toggleOpen } = useOpen();
@@ -66,14 +83,27 @@ export default function AddGatheringPrice({
         </div>
         <div className="relative">
           <input
+            type="hidden"
+            {...register('price', {
+              valueAsNumber: true,
+              validate: (value) => value !== 0 || '가격 입력은 필수입니다.',
+            })}
+            value={price}
+          />
+          <input
             type="text"
             value={price.toLocaleString()}
-            className="rounded-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont mt-3 max-w-[130px]"
+            className={`${errors.price ? 'border-error' : 'border-card'} rounded-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont mt-3 max-w-[130px] border-[1px]`}
             onChange={priceChangeHandler}
           />
           <p className="absolute font-normal text-xl tracking-[-2.5%] text-basefont right-4 top-5">
             원
           </p>
+          {errors.price && (
+            <p className="text-red-500 text-sm mt-1 absolute bottom--5 w-36">
+              {errors.price.message}
+            </p>
+          )}
         </div>
       </div>
     </div>

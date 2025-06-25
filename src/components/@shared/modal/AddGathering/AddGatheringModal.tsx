@@ -43,11 +43,19 @@ export default function AddGatheringModal({
           search={search}
           searchChange={setSearch}
           themeId={watch('themeId')}
-          themeIdChange={(themeId) => setValue('themeId', themeId)}
+          themeIdChange={(themeId) =>
+            setValue('themeId', themeId, { shouldValidate: true })
+          }
+          register={register}
+          errors={errors}
         />
         <AddGatheringNameInput
           name={watch('name')}
-          nameChange={(name) => setValue('name', name)}
+          nameChange={(name) =>
+            setValue('name', name, { shouldValidate: true })
+          }
+          register={register}
+          errors={errors}
         />
         <AddGatheringRecruitmentPeriod
           registrationStart={watch('registrationStart')}
@@ -71,15 +79,23 @@ export default function AddGatheringModal({
           <AddGatheringPrice
             priceType={watch('isIndividual')}
             priceTypeChange={(isIndividual) =>
-              setValue('isIndividual', isIndividual)
+              setValue('isIndividual', isIndividual, { shouldValidate: true })
             }
             price={watch('price')}
-            priceChange={(price) => setValue('price', price)}
+            priceChange={(price) =>
+              setValue('price', price, { shouldValidate: true })
+            }
+            register={register}
+            errors={errors}
           />
         </div>
         <AddGatheringWrite
           content={watch('content')}
-          contentChange={(content) => setValue('content', content)}
+          contentChange={(content) =>
+            setValue('content', content, { shouldValidate: true })
+          }
+          register={register}
+          errors={errors}
         />
         <AddGatheringButton onClose={onClose} />
       </form>

@@ -35,6 +35,7 @@ const config: Config = {
         progressBar: '#F0F0F0',
         comment: '#FEFEFE',
         commentButton: '#686868',
+        error: '#EF4444',
         social: {
           kakao: '#FEE500',
           google: '#FFFFFF',
