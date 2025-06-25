@@ -20,7 +20,7 @@ export default function ScrollTimePicker({
   return (
     <div className="flex w-[325px] flex-col rounded-md p-5 text-secondary-5 md:w-auto md:flex-row">
       <div className="flex flex-col gap-4 md:flex-row">
-        <div className="flex overflow-x-scroll border-y-[1px] border-solid border-grayFont py-4 md:flex-col md:overflow-y-scroll md:border-x-[1px] md:border-y-0 md:px-4 md:py-0">
+        <div className="dateTimeCalendar-custom flex overflow-x-scroll overflew-y-hidden border-y-[1px] border-solid border-grayFont py-4 md:flex-col md:overflow-x-hidden md:overflow-y-scroll md:border-x-[1px] md:border-y-0 md:px-4 md:py-0">
           {hours.map((hour) => (
             <button
               type="button"
@@ -35,7 +35,7 @@ export default function ScrollTimePicker({
           ))}
         </div>
 
-        <div className="flex overflow-x-scroll border-b-[1px] border-solid border-grayFont pb-4 md:flex-col md:overflow-y-scroll md:border-b-0 md:border-r-[1px] md:pb-0 md:pr-4">
+        <div className="flex overflow-x-scroll dateTimeCalendar-custom overflew-y-hidden border-b-[1px] border-solid border-grayFont pb-4 md:flex-col md:overflow-x-hidden md:overflow-y-scroll md:border-b-0 md:border-r-[1px] md:pb-0 md:pr-4">
           {minutes.map((minute) => (
             <button
               type="button"
