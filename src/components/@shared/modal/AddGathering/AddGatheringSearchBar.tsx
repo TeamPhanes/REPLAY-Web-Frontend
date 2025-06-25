@@ -1,16 +1,33 @@
 'use client';
 
+import { useEffect } from 'react';
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import Image from 'next/image';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import { useGetSearchTheme } from '@/hooks/reactQuery/useGetSearchTheme';
 import { useDebounce } from '@/hooks/useDebounce';
+import { useOpen } from '@/hooks/useOpen';
 import { RoomDTO } from '@/types/room/room.types';
+
+interface FormValues {
+  name: string;
+  themeId: number;
+  content: string;
+  isIndividual: string;
+  price: number;
+  dateTime: Date;
+  registrationStart: Date;
+  registrationEnd: Date;
+  capacity: number;
+}
 
 interface AddGatheringSearchBarProps {
   search: string;
   searchChange: (value: string) => void;
   themeId: number;
   themeIdChange: (value: number) => void;
+  register: UseFormRegister<FormValues>;
+  errors: FieldErrors<FormValues>;
 }
 
 export default function AddGatheringSearchBar({
@@ -18,9 +35,12 @@ export default function AddGatheringSearchBar({
   searchChange,
   themeId,
   themeIdChange,
+  register,
+  errors,
 }: AddGatheringSearchBarProps) {
   const { debouncedValue } = useDebounce(search, 500);
   const { largeDistrict, middleDistrict } = useQueryStringStore();
+  const { isOpen, openModal, closeModal } = useOpen();
 
   const { searchTheme } = useGetSearchTheme(
     debouncedValue,
@@ -28,17 +48,28 @@ export default function AddGatheringSearchBar({
     middleDistrict
   );
 
+  useEffect(() => {
+    if (search === '') openModal();
+  }, [themeId, search, openModal]);
+
   return (
     <div className="w-full h-[58px] relative">
-      <div className="flex h-full items-center justify-between py-[5px] px-6 z-20 relative bg-darkSearch rounded-full">
+      <div
+        className={`${errors.themeId ? 'border-error' : 'border-darkSearch'} flex h-full items-center border-2 justify-between py-[5px] px-6 z-20 relative bg-darkSearch rounded-full`}
+      >
+        <input
+          {...register('themeId', { required: '테마 검색은 필수입니다.' })}
+          type="hidden"
+          value={search}
+        />
         <input
           type="text"
-          placeholder="검색어를 입력하세요."
+          placeholder="테마명을 검색해주세요."
           className="w-full text-2xl/[34px] tracking-[-2.5%] placeholder:text-white text-white bg-darkSearch z-20"
           value={search}
           onChange={(e) => searchChange(e.target.value)}
         />
-        {themeId !== 0 ? (
+        {search !== '' ? (
           <Image
             src="/icons/search/white_exit.svg"
             alt="검색제거"
@@ -61,7 +92,7 @@ export default function AddGatheringSearchBar({
         )}
       </div>
       <div
-        className={`${search !== '' && themeId === 0 ? '' : 'hidden'} w-full absolute bg-grayFont top-8 p-4 z-10 flex flex-col gap-1 pt-8 rounded-b-3xl`}
+        className={`${isOpen ? '' : 'hidden'} w-full absolute bg-grayFont top-8 p-4 z-10 flex flex-col gap-1 pt-8 rounded-b-3xl`}
       >
         {searchTheme &&
           searchTheme
@@ -71,6 +102,7 @@ export default function AddGatheringSearchBar({
                 key={room.themeId}
                 className="text-xl flex gap-1"
                 onClick={() => {
+                  closeModal();
                   searchChange(room.themeName);
                   themeIdChange(room.themeId);
                 }}

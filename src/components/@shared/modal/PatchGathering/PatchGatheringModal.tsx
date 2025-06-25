@@ -60,7 +60,11 @@ export default function PatchGatheringModal({
       <form onSubmit={handleSubmit(onSubmit)}>
         <AddGatheringNameInput
           name={watch('name')}
-          nameChange={(name) => setValue('name', name)}
+          nameChange={(name) =>
+            setValue('name', name, { shouldValidate: true })
+          }
+          register={register}
+          errors={errors}
         />
         <AddGatheringRecruitmentPeriod
           registrationStart={watch('registrationStart')}
@@ -87,12 +91,20 @@ export default function PatchGatheringModal({
               setValue('isIndividual', isIndividual)
             }
             price={watch('price')}
-            priceChange={(price) => setValue('price', price)}
+            priceChange={(price) =>
+              setValue('price', price, { shouldValidate: true })
+            }
+            register={register}
+            errors={errors}
           />
         </div>
         <AddGatheringWrite
           content={watch('content')}
-          contentChange={(content) => setValue('content', content)}
+          contentChange={(content) =>
+            setValue('content', content, { shouldValidate: true })
+          }
+          register={register}
+          errors={errors}
         />
         <AddGatheringButton onClose={onClose} />
       </form>

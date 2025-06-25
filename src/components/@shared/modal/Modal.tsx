@@ -18,6 +18,22 @@ export default function Modal({
 }: ModalProps) {
   const modalContentRef = useRef<HTMLDivElement>(null);
 
+  const handleClickOutside = useCallback(
+    (e: MouseEvent) => {
+      if (!modalContentRef.current) return;
+      const target = e.target as HTMLElement;
+
+      if (target.tagName === 'HTML') {
+        return;
+      }
+
+      if (!modalContentRef.current.contains(target)) {
+        onClose();
+      }
+    },
+    [onClose]
+  );
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -28,15 +44,17 @@ export default function Modal({
   );
 
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [handleKeyDown]);
-
-  useEffect(() => {
     if (isOpen) {
       modalContentRef.current?.querySelector('input')?.focus();
+      window.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
     }
-  }, [isOpen]);
+
+    return () => {
+      window.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, handleClickOutside, handleKeyDown]);
 
   useEffect(() => {
     const scrollbarWidth =
@@ -54,10 +72,7 @@ export default function Modal({
   if (!isOpen) return null;
 
   return createPortal(
-    <div
-      className="fixed inset-0 z-50 bg-[#505050]/60 flex items-center justify-center"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-50 bg-[#505050]/60 flex items-center justify-center">
       <div
         ref={modalContentRef}
         className={`
