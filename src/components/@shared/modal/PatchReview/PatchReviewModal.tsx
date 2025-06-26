@@ -66,15 +66,15 @@ export default function PatchReviewModal({
     >
       <div className="pb-5 flex justify-center items-center relative">
         <p className="font-semibold text-2xl/[34px] tracking-[-2.5%] text-basefont">
-          리뷰 작성
+          리뷰 수정
         </p>
         <button
           type="button"
-          className={`${isReview ? 'right-5' : 'left-5'} absolute`}
+          className={`${isReview ? 'rotate-180 right-5' : 'rotate-0 left-5'} absolute`}
           onClick={() => setIsReview((prev) => !prev)}
         >
           <Image
-            src={isReview ? BlackChevronRight : BlackChevronLeft}
+            src={BlackChevronLeft}
             alt="다음 리뷰"
             width={36}
             height={36}
@@ -101,35 +101,45 @@ export default function PatchReviewModal({
           hint={watch('hint') ?? 0}
           setHint={(hint) => setValue('hint', hint)}
         />
-        <div className={isReview ? 'pb-12' : 'hidden'}>
-          <PostReviewRatingThemeLevelStory
-            rating={watch('rating') ?? 0}
-            setRating={(rating) => setValue('rating', rating)}
-            themeReview={watch('themeReview') ?? 'NORMAL'}
-            setThemeReview={(themeReview) =>
-              setValue('themeReview', themeReview)
-            }
-            levelReview={watch('levelReview') ?? 'NORMAL'}
-            setLevelReview={(levelReview) =>
-              setValue('levelReview', levelReview)
-            }
-            storyReview={watch('storyReview') ?? 'NORMAL'}
-            setStoryReview={(storyReview) =>
-              setValue('storyReview', storyReview)
-            }
-          />
-        </div>
-        <div className={isReview ? 'hidden' : ''}>
-          <PostReviewContent
-            content={watch('content') ?? ''}
-            contentChange={(content) => setValue('content', content)}
-          />
-          <PostReviewImageFile
-            previewUrl={previewUrl}
-            handleImageChange={handleImageChange}
-            handleImageReset={handleImageReset}
-          />
-          <PostReviewSubmitButton onClose={onClose} />
+
+        <div className="relative overflow-hidden w-full h-fit min-h-[350px]">
+          <div
+            className={`flex transition-transform duration-500 ease-in-out w-[200%] ${
+              isReview ? 'translate-x-0' : '-translate-x-1/2'
+            }`}
+          >
+            <div className="pb-12 w-1/2">
+              <PostReviewRatingThemeLevelStory
+                rating={watch('rating') ?? 0}
+                setRating={(rating) => setValue('rating', rating)}
+                themeReview={watch('themeReview') ?? 'NORMAL'}
+                setThemeReview={(themeReview) =>
+                  setValue('themeReview', themeReview)
+                }
+                levelReview={watch('levelReview') ?? 'NORMAL'}
+                setLevelReview={(levelReview) =>
+                  setValue('levelReview', levelReview)
+                }
+                storyReview={watch('storyReview') ?? 'NORMAL'}
+                setStoryReview={(storyReview) =>
+                  setValue('storyReview', storyReview)
+                }
+              />
+            </div>
+
+            <div className={`${isReview ? 'hidden' : ''} w-1/2`}>
+              <PostReviewContent
+                content={watch('content') ?? ''}
+                contentChange={(content) => setValue('content', content)}
+              />
+              <PostReviewImageFile
+                previewUrl={previewUrl}
+                handleImageChange={handleImageChange}
+                handleImageReset={handleImageReset}
+              />
+              <PostReviewSubmitButton onClose={onClose} />
+            </div>
+          </div>
         </div>
       </form>
     </Modal>

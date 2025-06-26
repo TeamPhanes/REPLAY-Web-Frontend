@@ -1,9 +1,13 @@
 import Image from 'next/image';
-import CheckList from '@/components/@shared/cardList/CheckList';
 import DeleteCheckModal from '@/components/@shared/modal/Delete/DeleteCheckModal';
 import PatchReviewModal from '@/components/@shared/modal/PatchReview/PatchReviewModal';
 import PostReviewModal from '@/components/@shared/modal/PostReview/PostReviewModal';
 import Rating from '@/components/@shared/rating/Rating';
+import {
+  levelReviewList,
+  storyReviewList,
+  themeReviewList,
+} from '@/constants/mypage/typeList';
 import { useDeleteReview } from '@/hooks/reactQuery/useDeleteReview';
 import { useOpen } from '@/hooks/useOpen';
 import { RoomDTO } from '@/types/room/room.types';
@@ -38,7 +42,7 @@ export default function ReviewRoomCardSection({
   );
   return (
     <>
-      <div className="absolute left-[630px] flex flex-col gap-1">
+      <div className="absolute left-[630px] flex flex-col gap-3">
         <div className="flex items-center gap-2">
           <p className="text-base font-normal tracking-[-2.5%] text-basefont">
             나의 리뷰
@@ -73,32 +77,14 @@ export default function ReviewRoomCardSection({
             </div>
           </div>
         </div>
-        <div className="flex items-center gap-3">
-          <CheckList
-            title="테마"
-            contentOne="좋아요"
-            contentTwo="보통"
-            contentThree="별로예요"
-            check={room.themeReview}
-          />
-          <CheckList
-            title="난이도"
-            contentOne="좋아요"
-            contentTwo="보통"
-            contentThree="별로예요"
-            check={room.levelReview}
-          />
-          <CheckList
-            title="스토리"
-            contentOne="좋아요"
-            contentTwo="보통"
-            contentThree="별로예요"
-            check={room.storyReview}
-          />
-        </div>
-        <div className="flex gap-1">
+        <div className="flex gap-2">
+          <div className="w-[503px] h-[118px] rounded-xl border-[1px] border-spot py-1 px-2">
+            <p className="font-medium text-sm/[18px] text-spot line-clamp-6">
+              {room.reviewComment ?? '최소 10자 이상 리뷰를 적어주세요.'}
+            </p>
+          </div>
           {room.reviewImage === null ? (
-            <div className="w-[156px] h-[156px] bg-ratingCard rounded-xl flex justify-center items-center">
+            <div className="w-[118px] h-[118px] bg-ratingCard rounded-xl flex justify-center items-center">
               <Image
                 src={ReviewDefaultImage}
                 alt="리뷰 이미지"
@@ -110,32 +96,62 @@ export default function ReviewRoomCardSection({
             <Image
               src={room.reviewImage}
               alt="리뷰 이미지"
-              width={156}
-              height={156}
-              className="w-[156px] h-[156px] rounded-xl bg-ratingCard"
+              width={118}
+              height={118}
+              className="w-[118px] h-[118px] rounded-xl bg-ratingCard"
             />
           )}
-          <div className="w-[352px] h-[156px] rounded-xl border-[1px] border-spot py-1 px-2">
-            <p className="font-medium text-base text-spot line-clamp-6">
-              {room.reviewComment ?? '최소 10자 이상 리뷰를 적어주세요.'}
+        </div>
+        <div className="flex items-center mt-2 gap-3">
+          <div className="flex items-center gap-2">
+            <p className="font-normal text-base tracking-[-2.5%] text-basefont">
+              난이도
+            </p>
+            <p
+              className={`${room.levelReview === null ? 'font-light text-spot' : 'font-semibold text-mainBlue'} text-base tracking-[-2.5%]`}
+            >
+              {levelReviewList.find((item) => item.value === room.levelReview)
+                ?.label ?? '리뷰쓰기'}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <p className="font-normal text-base tracking-[-2.5%] text-basefont">
+              스토리
+            </p>
+            <p
+              className={`${room.storyReview === null ? 'font-light text-spot' : 'font-semibold text-mainBlue'} text-base tracking-[-2.5%]`}
+            >
+              {storyReviewList.find((item) => item.value === room.storyReview)
+                ?.label ?? '리뷰쓰기'}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <p className="font-normal text-base tracking-[-2.5%] text-basefont">
+              테마
+            </p>
+            <p
+              className={`${room.themeReview === null ? 'font-light text-spot' : 'font-semibold text-mainBlue'} text-base tracking-[-2.5%]`}
+            >
+              {themeReviewList.find((item) => item.value === room.themeReview)
+                ?.label ?? '리뷰쓰기'}
             </p>
           </div>
         </div>
       </div>
-      <div className="flex flex-col absolute bottom-5 right-5 gap-1">
-        <button
-          type="button"
-          className="rounded-full border-2 border-mainBlue bg-white px-6 py-2 text-lg font-semibold tracking-[2.5%] text-grayFont"
-          onClick={room.reviewId === null ? openPostModal : openPatchModal}
-        >
-          {room.reviewId === null ? '리뷰쓰기' : '수정하기'}
-        </button>
+      <div className="flex absolute bottom-5 right-5 gap-1">
         <button
           type="button"
           className="rounded-full border-2 border-mainPink bg-white px-6 py-2 text-lg font-semibold tracking-[2.5%] text-grayFont"
           onClick={openDeleteModal}
         >
           삭제하기
+        </button>
+        <button
+          type="button"
+          className="rounded-full border-2 border-mainBlue bg-white px-6 py-2 text-lg font-semibold tracking-[2.5%] text-grayFont"
+          onClick={room.reviewId === null ? openPostModal : openPatchModal}
+        >
+          {room.reviewId === null ? '리뷰쓰기' : '수정하기'}
         </button>
       </div>
       <DeleteCheckModal
