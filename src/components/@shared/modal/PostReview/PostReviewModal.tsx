@@ -13,7 +13,6 @@ import { usePostReview } from '@/hooks/reactQuery/usePostReview';
 import useImagePreview from '@/hooks/useImagePreview';
 import { RoomDTO } from '@/types/room/room.types';
 import BlackChevronLeft from '@/public/icons/modal/black_chevron_left.svg';
-import BlackChevronRight from '@/public/icons/modal/black_chevron_right.svg';
 
 interface PostReviewModalProps {
   isOpen: boolean;
@@ -50,11 +49,11 @@ export default function PostReviewModal({
         </p>
         <button
           type="button"
-          className={`${isReview ? 'right-5' : 'left-5'} absolute`}
+          className={`${isReview ? 'rotate-180 right-5' : 'rotate-0 left-5'} absolute`}
           onClick={() => setIsReview((prev) => !prev)}
         >
           <Image
-            src={isReview ? BlackChevronRight : BlackChevronLeft}
+            src={BlackChevronLeft}
             alt="다음 리뷰"
             width={36}
             height={36}
@@ -81,35 +80,44 @@ export default function PostReviewModal({
           hint={watch('hint')}
           setHint={(hint) => setValue('hint', hint)}
         />
-        <div className={isReview ? 'pb-12' : 'hidden'}>
-          <PostReviewRatingThemeLevelStory
-            rating={watch('rating')}
-            setRating={(rating) => setValue('rating', rating)}
-            themeReview={watch('themeReview')}
-            setThemeReview={(themeReview) =>
-              setValue('themeReview', themeReview)
-            }
-            levelReview={watch('levelReview')}
-            setLevelReview={(levelReview) =>
-              setValue('levelReview', levelReview)
-            }
-            storyReview={watch('storyReview')}
-            setStoryReview={(storyReview) =>
-              setValue('storyReview', storyReview)
-            }
-          />
-        </div>
-        <div className={isReview ? 'hidden' : ''}>
-          <PostReviewContent
-            content={watch('content')}
-            contentChange={(content) => setValue('content', content)}
-          />
-          <PostReviewImageFile
-            previewUrl={previewUrl}
-            handleImageChange={handleImageChange}
-            handleImageReset={handleImageReset}
-          />
-          <PostReviewSubmitButton onClose={onClose} />
+        <div className="relative overflow-hidden w-full h-fit min-h-[350px]">
+          <div
+            className={`flex transition-transform duration-500 ease-in-out w-[200%] ${
+              isReview ? 'translate-x-0' : '-translate-x-1/2'
+            }`}
+          >
+            <div className="pb-12 w-1/2">
+              <PostReviewRatingThemeLevelStory
+                rating={watch('rating')}
+                setRating={(rating) => setValue('rating', rating)}
+                themeReview={watch('themeReview')}
+                setThemeReview={(themeReview) =>
+                  setValue('themeReview', themeReview)
+                }
+                levelReview={watch('levelReview')}
+                setLevelReview={(levelReview) =>
+                  setValue('levelReview', levelReview)
+                }
+                storyReview={watch('storyReview')}
+                setStoryReview={(storyReview) =>
+                  setValue('storyReview', storyReview)
+                }
+              />
+            </div>
+
+            <div className={`${isReview ? 'hidden' : ''} w-1/2`}>
+              <PostReviewContent
+                content={watch('content')}
+                contentChange={(content) => setValue('content', content)}
+              />
+              <PostReviewImageFile
+                previewUrl={previewUrl}
+                handleImageChange={handleImageChange}
+                handleImageReset={handleImageReset}
+              />
+              <PostReviewSubmitButton onClose={onClose} />
+            </div>
+          </div>
         </div>
       </form>
     </Modal>
