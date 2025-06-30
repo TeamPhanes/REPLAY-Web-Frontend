@@ -6,7 +6,7 @@ export interface CommentDTO {
     content: string;
     createdAt: string;
     reComments: {
-      reCommentsId: number;
+      reCommentId: number;
       nickname: string;
       image: string;
       content: string;

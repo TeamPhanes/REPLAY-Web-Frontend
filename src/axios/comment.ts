@@ -8,8 +8,8 @@ interface CommentProps {
 }
 
 interface PatchCommentProps {
-  CommentId: string | string[];
-  GatheringId: string | string[];
+  commentId: string | string[];
+  gatheringId: string | string[];
 }
 
 export const GetComment = async ({ id }: CommentProps) => {
@@ -48,15 +48,15 @@ export const PostComment = async (
 };
 
 export const PatchComment = async ({
-  CommentId,
-  GatheringId,
+  commentId,
+  gatheringId,
 }: PatchCommentProps) => {
   const body = {
     content: '댓글 수정 테스트 4',
   };
   try {
     await axiosInstance.patch(
-      `${API_PATH.comment.default}/${CommentId}?gatheringId=${GatheringId}`,
+      `${API_PATH.comment.default}/${commentId}?gatheringId=${gatheringId}`,
       body
     );
   } catch (error) {
@@ -66,12 +66,12 @@ export const PatchComment = async ({
 };
 
 export const DeleteComment = async ({
-  CommentId,
-  GatheringId,
+  commentId,
+  gatheringId,
 }: PatchCommentProps) => {
   try {
     await axiosInstance.delete(
-      `${API_PATH.comment.default}/${CommentId}?gatheringId=${GatheringId}`
+      `${API_PATH.comment.default}/${commentId}?gatheringId=${gatheringId}`
     );
   } catch (error) {
     toast.error('댓글 삭제 중 오류가 있습니다.');

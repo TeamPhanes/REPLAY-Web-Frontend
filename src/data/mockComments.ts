@@ -1,6 +1,6 @@
-import { CommentDTO, MyCommentDTO } from '@/types/comment/comment.type';
+import { MyCommentDTO } from '@/types/comment/comment.type';
 
-export const mockComments: CommentDTO['get'][] = [
+export const mockComments = [
   {
     commentId: 1,
     nickname: '종화',
