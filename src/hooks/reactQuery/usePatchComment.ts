@@ -5,18 +5,18 @@ import { AxiosError } from 'axios';
 import { PatchComment } from '@/axios/comment';
 
 interface PatchCommentProps {
-  CommentId: string | string[];
-  GatheringId: string | string[];
+  commentId: string | string[];
+  gatheringId: string | string[];
 }
 
 export const usePatchComment = ({
-  CommentId,
-  GatheringId,
+  commentId,
+  gatheringId,
 }: PatchCommentProps) => {
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: () => PatchComment({ CommentId, GatheringId }),
+    mutationFn: () => PatchComment({ commentId, gatheringId }),
     onSuccess: () => {
       toast.success(`댓글 수정이 완료되었습니다.`);
     },

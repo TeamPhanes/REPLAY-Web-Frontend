@@ -5,11 +5,15 @@ interface FormValues {
   parentId: number | null;
 }
 
-export default function usePostCommentForm(mutate: any) {
+export default function usePostCommentForm(
+  mutate: any,
+  commentId: number | null,
+  onClose?: () => void
+) {
   const methods = useForm<FormValues>({
     defaultValues: {
       content: '',
-      parentId: null,
+      parentId: commentId,
     },
   });
 
@@ -18,6 +22,7 @@ export default function usePostCommentForm(mutate: any) {
   const onSubmit = (data: FormValues) => {
     mutate(data, {
       onSuccess: () => {
+        onClose?.();
         reset();
       },
     });

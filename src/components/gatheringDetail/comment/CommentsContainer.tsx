@@ -24,21 +24,26 @@ export default function CommentsContainer({
       {comment.map((data: CommentDTO['get']) => (
         <div key={data.commentId}>
           <CommentCard
+            gatheringId={id}
             leaderCheck={leaderCheck}
             userImage={data.image}
             userNickname={data.nickname}
             content={data.content}
             createdAt={data.createdAt}
+            commentId={String(data.commentId)}
             type="comment"
           />
           {data.reComments.map((reComment) => (
-            <div key={reComment.reCommentsId}>
+            <div key={reComment.reCommentId}>
               <CommentCard
+                gatheringId={id}
                 leaderCheck={leaderCheck}
                 userImage={reComment.image}
                 userNickname={reComment.nickname}
                 content={reComment.content}
                 createdAt={reComment.createdAt}
+                commentId={String(data.commentId)}
+                reCommentId={String(reComment.reCommentId)}
                 type="reComment"
               />
             </div>

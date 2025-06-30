@@ -1,39 +1,46 @@
 import Image from 'next/image';
+import CommentInput from '@/components/gatheringDetail/comment/CommentInput';
 import { useDeleteComment } from '@/hooks/reactQuery/useDeleteComment';
 import { usePatchComment } from '@/hooks/reactQuery/usePatchComment';
+import { useOpen } from '@/hooks/useOpen';
 import { periodYearMonthDayHourTime } from '@/utils/dateChange';
 import UserDefaultImg from '@/public/icons/user/user_default.svg';
 
 interface CommentCardProps {
+  gatheringId: string | string[];
   leaderCheck: string;
   userImage: string;
   userNickname: string;
   content: string;
   createdAt: string;
+  commentId: string;
+  reCommentId?: string;
   type: 'comment' | 'reComment';
 }
 
 export default function CommentCard({
+  gatheringId,
   leaderCheck,
   userImage,
   userNickname,
   content,
   createdAt,
+  commentId,
+  reCommentId,
   type,
 }: CommentCardProps) {
-  const CommentId = '5';
-  const GatheringId = '1';
-  const { mutate: PatchComment } = usePatchComment({ CommentId, GatheringId });
+  const { mutate: PatchComment } = usePatchComment({ commentId, gatheringId });
   const { mutate: DeleteComment } = useDeleteComment({
-    CommentId,
-    GatheringId,
+    commentId: reCommentId ?? commentId,
+    gatheringId,
   });
+  const { isOpen: isReComment, toggleOpen: toggleReComment } = useOpen();
   return (
     <div
-      className={`${userNickname === leaderCheck ? 'bg-progressBar' : ''} border-b-[1px] border-spot pb-2 pt-5`}
+      className={`${userNickname === leaderCheck ? 'bg-progressBar' : ''} border-b-[1px] border-spot pt-5`}
     >
       <div
-        className={`flex gap-2 ${type === 'comment' ? 'pl-5' : 'pl-[60px]'}`}
+        className={`flex gap-2 pb-2 ${type === 'comment' ? 'pl-5' : 'pl-[60px]'}`}
       >
         <Image
           src={userImage || UserDefaultImg}
@@ -56,6 +63,7 @@ export default function CommentCard({
             <button
               type="button"
               className="text-xl font-normal tracking-[-2.5%] text-grayFont"
+              onClick={toggleReComment}
             >
               답글쓰기
             </button>
@@ -75,6 +83,11 @@ export default function CommentCard({
             </button>
           </div>
         </div>
+      </div>
+      <div
+        className={`${isReComment ? '' : 'hidden'} border-t-[1px] border-spot`}
+      >
+        <CommentInput parentId={commentId} onClose={() => toggleReComment()} />
       </div>
     </div>
   );
