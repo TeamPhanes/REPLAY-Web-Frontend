@@ -1,10 +1,12 @@
 import Image from 'next/image';
+import { useAuthStore } from '@/store/authStore';
 import MainBlueButton from '@/components/@shared/button/MainBlueButton';
 import MainPurpleButton from '@/components/@shared/button/MainPurpleButton';
 import Modal from '@/components/@shared/modal/Modal';
 import CommentPatchInput from '@/components/gatheringDetail/comment/CommentPatchInput';
 import CommentInput from '@/components/gatheringDetail/comment/CommentPostInput';
 import { useDeleteComment } from '@/hooks/reactQuery/useDeleteComment';
+import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
 import { useOpen } from '@/hooks/useOpen';
 import { periodYearMonthDayHourTime } from '@/utils/dateChange';
 import UserDefaultImg from '@/public/icons/user/user_default.svg';
@@ -32,6 +34,8 @@ export default function CommentCard({
   reCommentId,
   type,
 }: CommentCardProps) {
+  const { accessToken } = useAuthStore();
+  const { userInfo } = useUserInfo({ enabled: !!accessToken });
   const { mutate: DeleteComment } = useDeleteComment({
     commentId: reCommentId ?? commentId,
     gatheringId,
@@ -71,20 +75,24 @@ export default function CommentCard({
             >
               답글쓰기
             </button>
-            <button
-              type="button"
-              className="text-xl font-normal tracking-[-2.5%] text-grayFont"
-              onClick={togglePatchComment}
-            >
-              수정
-            </button>
-            <button
-              type="button"
-              className="text-xl font-normal tracking-[-2.5%] text-grayFont"
-              onClick={openModal}
-            >
-              삭제
-            </button>
+            {userInfo && userInfo.nickname === userNickname ? (
+              <>
+                <button
+                  type="button"
+                  className="text-xl font-normal tracking-[-2.5%] text-grayFont"
+                  onClick={togglePatchComment}
+                >
+                  수정
+                </button>
+                <button
+                  type="button"
+                  className="text-xl font-normal tracking-[-2.5%] text-grayFont"
+                  onClick={openModal}
+                >
+                  삭제
+                </button>
+              </>
+            ) : null}
           </div>
         </div>
       </div>
