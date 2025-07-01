@@ -1,7 +1,10 @@
 import Image from 'next/image';
-import CommentInput from '@/components/gatheringDetail/comment/CommentInput';
+import MainBlueButton from '@/components/@shared/button/MainBlueButton';
+import MainPurpleButton from '@/components/@shared/button/MainPurpleButton';
+import Modal from '@/components/@shared/modal/Modal';
+import CommentPatchInput from '@/components/gatheringDetail/comment/CommentPatchInput';
+import CommentInput from '@/components/gatheringDetail/comment/CommentPostInput';
 import { useDeleteComment } from '@/hooks/reactQuery/useDeleteComment';
-import { usePatchComment } from '@/hooks/reactQuery/usePatchComment';
 import { useOpen } from '@/hooks/useOpen';
 import { periodYearMonthDayHourTime } from '@/utils/dateChange';
 import UserDefaultImg from '@/public/icons/user/user_default.svg';
@@ -29,12 +32,13 @@ export default function CommentCard({
   reCommentId,
   type,
 }: CommentCardProps) {
-  const { mutate: PatchComment } = usePatchComment({ commentId, gatheringId });
   const { mutate: DeleteComment } = useDeleteComment({
     commentId: reCommentId ?? commentId,
     gatheringId,
   });
   const { isOpen: isReComment, toggleOpen: toggleReComment } = useOpen();
+  const { isOpen: isPatchComment, toggleOpen: togglePatchComment } = useOpen();
+  const { isOpen: isDeleteComment, openModal, closeModal } = useOpen();
   return (
     <div
       className={`${userNickname === leaderCheck ? 'bg-progressBar' : ''} border-b-[1px] border-spot pt-5`}
@@ -70,14 +74,14 @@ export default function CommentCard({
             <button
               type="button"
               className="text-xl font-normal tracking-[-2.5%] text-grayFont"
-              onClick={() => PatchComment()}
+              onClick={togglePatchComment}
             >
               수정
             </button>
             <button
               type="button"
               className="text-xl font-normal tracking-[-2.5%] text-grayFont"
-              onClick={() => DeleteComment()}
+              onClick={openModal}
             >
               삭제
             </button>
@@ -85,10 +89,40 @@ export default function CommentCard({
         </div>
       </div>
       <div
-        className={`${isReComment ? '' : 'hidden'} border-t-[1px] border-spot`}
+        className={`${isReComment ? 'animate-dropdownIn' : 'hidden'} border-t-[1px] border-spot`}
       >
         <CommentInput parentId={commentId} onClose={() => toggleReComment()} />
       </div>
+      <div
+        className={`${isPatchComment ? 'animate-dropdownIn' : 'hidden'} border-t-[1px] border-spot`}
+      >
+        <CommentPatchInput
+          reCommentId={type === 'comment' ? undefined : reCommentId}
+          parentId={commentId}
+          defaultValues={{
+            content,
+            parentId: Number(commentId),
+          }}
+          onClose={() => togglePatchComment()}
+        />
+      </div>
+      <Modal
+        isOpen={isDeleteComment}
+        onClose={closeModal}
+        className="bg-white rounded-[30px] px-10 py-5"
+      >
+        <p className="font-semibold text-2xl text-basefont">
+          댓글을 삭제하시겠습니까?
+        </p>
+        <div className="flex justify-between gap-2 mt-5">
+          <MainBlueButton className="w-full" onClick={() => DeleteComment()}>
+            확인
+          </MainBlueButton>
+          <MainPurpleButton className="w-full" onClick={closeModal}>
+            취소
+          </MainPurpleButton>
+        </div>
+      </Modal>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import Loading from '@/components/@shared/loading/Loading';
 import CommentCard from '@/components/gatheringDetail/comment/CommentCard';
-import CommentInput from '@/components/gatheringDetail/comment/CommentInput';
+import CommentInput from '@/components/gatheringDetail/comment/CommentPostInput';
 import CommentSortMenu from '@/components/gatheringDetail/comment/CommentSortMenu';
 import { useGetComment } from '@/hooks/reactQuery/useGetComment';
 import { CommentDTO } from '@/types/comment/comment.type';

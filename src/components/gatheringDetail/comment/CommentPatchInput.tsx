@@ -5,28 +5,44 @@ import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
 import MainBlueButton from '@/components/@shared/button/MainBlueButton';
-import usePostCommentForm from '@/hooks/form/usePostCommentForm';
-import { usePostComment } from '@/hooks/reactQuery/usePostComment';
+import usePatchCommentForm from '@/hooks/form/usePatchCommentForm';
+import { usePatchComment } from '@/hooks/reactQuery/usePatchComment';
 import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
 import UserDefaultImg from '@/public/icons/user/user_default.svg';
 
-interface CommentInputProps {
-  parentId?: string;
+interface FormValues {
+  content: string;
+  parentId: number | null;
+}
+
+interface CommentPatchInputProps {
+  reCommentId?: string;
+  parentId: string;
+  defaultValues: FormValues;
   onClose?: () => void;
 }
 
-export default function CommentInput({ parentId, onClose }: CommentInputProps) {
+export default function CommentPatchInput({
+  reCommentId,
+  parentId,
+  defaultValues,
+  onClose,
+}: CommentPatchInputProps) {
   const { id } = useParams();
   const { accessToken } = useAuthStore();
   const { userInfo } = useUserInfo({ enabled: !!accessToken });
-  const { mutate } = usePostComment(id);
+
+  const { mutate: PatchComment } = usePatchComment({
+    parentId: reCommentId ?? parentId,
+    gatheringId: id,
+  });
   const {
     register,
     handleSubmit,
     onSubmit,
     setValue,
     formState: { errors },
-  } = usePostCommentForm(mutate, parentId ? Number(parentId) : null, onClose);
+  } = usePatchCommentForm(PatchComment, defaultValues, onClose);
 
   useEffect(() => {
     if (parentId !== undefined) {
@@ -52,15 +68,10 @@ export default function CommentInput({ parentId, onClose }: CommentInputProps) {
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <textarea
-            {...register('content', {
-              required: '내용은 필수입니다.',
-            })}
+            {...register('content', { required: '내용 입력은 필수입니다.' })}
             className="mt-1 h-[70px] w-[960px] resize-none text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont focus:outline-none"
-            placeholder={
-              parentId === undefined
-                ? '댓글을 남겨보세요.'
-                : '답글을 남겨보세요.'
-            }
+            placeholder="수정 내용을 입력해주세요."
+            onChange={(e) => setValue('content', e.target.value)}
           />
           {errors.content && (
             <p className="text-red-500 text-sm mt-1">
