@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { UserDTO } from '@/types/user/user.types';
+import { OtherUserDTO } from '@/types/user/user.types';
 import userDefault from '@/public/icons/user/user_default.svg';
 import MainLogo from '@/public/images/Replay_Main_Logo.svg';
 
 interface IdCardFrontProps {
-  userData: UserDTO['get'];
+  userData: OtherUserDTO['get'];
 }
 
 export default function IdCardFront({ userData }: IdCardFrontProps) {

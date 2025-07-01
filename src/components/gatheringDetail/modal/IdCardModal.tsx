@@ -2,12 +2,12 @@ import Modal from '@/components/@shared/modal/Modal';
 import IdCardBack from '@/components/gatheringDetail/modal/IdCardBack';
 import IdCardFront from '@/components/gatheringDetail/modal/IdCardFront';
 import IdCardModalContainer from '@/components/gatheringDetail/modal/IdCardModalContainer';
-import { UserDTO } from '@/types/user/user.types';
+import { OtherUserDTO } from '@/types/user/user.types';
 
 interface IdCardModalProps {
   openModal: boolean;
   closeModal: () => void;
-  userData: UserDTO['get'];
+  userData: OtherUserDTO['get'];
 }
 
 export default function IdCardModal({
@@ -19,7 +19,7 @@ export default function IdCardModal({
     <Modal
       isOpen={openModal}
       onClose={closeModal}
-      className="perspective-1000 rounded-[30px] cursor-pointer"
+      className="perspective-1000 rounded-[30px] cursor-pointer scrollbar-x-hidden"
     >
       <IdCardModalContainer>
         <IdCardFront userData={userData} />

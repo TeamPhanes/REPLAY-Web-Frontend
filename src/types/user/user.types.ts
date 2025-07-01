@@ -17,3 +17,21 @@ export interface UserDTO {
     representAchievement: string[];
   };
 }
+
+export interface OtherUserDTO {
+  get: {
+    image: string;
+    nickname: string;
+    gender: string;
+    email: string;
+    comment: string;
+    totalGathering: number;
+    totalMakeGathering: number;
+    totalTheme: number;
+    successCount: number;
+    failCount: number;
+    createdAt: string;
+    updatedAt: string;
+    representAchievement: string[];
+  };
+}

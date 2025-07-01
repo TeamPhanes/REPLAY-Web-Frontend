@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { axiosInstance } from '@/libs/axiosInstance';
+import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
 
 export const GetUser = async () => {
@@ -8,6 +9,16 @@ export const GetUser = async () => {
     return res;
   } catch (error) {
     toast.error('유저정보 최신화 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
+export const GetOtherUser = async (nickname: string) => {
+  try {
+    const res = await axios.get(`${API_PATH.user.default}/${nickname}`);
+    return res;
+  } catch (error) {
+    toast.error('타인정보 최신화 중 오류가 있습니다.');
     throw error;
   }
 };

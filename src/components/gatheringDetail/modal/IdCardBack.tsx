@@ -2,11 +2,11 @@ import Image from 'next/image';
 import AchievementBadge from '@/components/gatheringDetail/AchievementBadge';
 import CardBottomDate from '@/components/myPage/home/CardBottomDate';
 import CardContentFont from '@/components/myPage/home/CardContentFont';
-import { UserDTO } from '@/types/user/user.types';
+import { OtherUserDTO } from '@/types/user/user.types';
 import MainLogo from '@/public/images/Replay_Main_Logo.svg';
 
 interface IdCardBackProps {
-  userData: UserDTO['get'];
+  userData: OtherUserDTO['get'];
 }
 
 export default function IdCardBack({ userData }: IdCardBackProps) {
