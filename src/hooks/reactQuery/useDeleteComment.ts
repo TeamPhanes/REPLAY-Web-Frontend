@@ -17,7 +17,7 @@ export const useDeleteComment = ({
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: () => DeleteComment({ commentId, gatheringId }),
+    mutationFn: () => DeleteComment(commentId, gatheringId),
     onSuccess: () => {
       queryclient.invalidateQueries({ queryKey: ['comment'] });
       toast.success(`댓글 삭제가 완료되었습니다.`);

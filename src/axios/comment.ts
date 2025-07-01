@@ -7,11 +7,6 @@ interface CommentProps {
   id: string | string[];
 }
 
-interface PatchCommentProps {
-  commentId: string | string[];
-  gatheringId: string | string[];
-}
-
 export const GetComment = async ({ id }: CommentProps) => {
   try {
     const res = await axios.get(
@@ -47,17 +42,18 @@ export const PostComment = async (
   }
 };
 
-export const PatchComment = async ({
-  commentId,
-  gatheringId,
-}: PatchCommentProps) => {
-  const body = {
-    content: '댓글 수정 테스트 4',
-  };
+export const PatchComment = async (
+  commentId: string | string[],
+  gatheringId: string | string[],
+  data: PostCommentData
+) => {
+  const formData = new FormData();
+  formData.append('content', data.content);
+  formData.append('parentId', String(data.parentId));
   try {
     await axiosInstance.patch(
       `${API_PATH.comment.default}/${commentId}?gatheringId=${gatheringId}`,
-      body
+      formData
     );
   } catch (error) {
     toast.error('댓글 수정 중 오류가 있습니다.');
@@ -65,10 +61,10 @@ export const PatchComment = async ({
   }
 };
 
-export const DeleteComment = async ({
-  commentId,
-  gatheringId,
-}: PatchCommentProps) => {
+export const DeleteComment = async (
+  commentId: string | string[],
+  gatheringId: string | string[]
+) => {
   try {
     await axiosInstance.delete(
       `${API_PATH.comment.default}/${commentId}?gatheringId=${gatheringId}`
