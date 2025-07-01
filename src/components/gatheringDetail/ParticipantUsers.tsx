@@ -1,5 +1,7 @@
 import Image from 'next/image';
+import Loading from '@/components/@shared/loading/Loading';
 import IdCardModal from '@/components/gatheringDetail/modal/IdCardModal';
+import { useGetOtherUser } from '@/hooks/reactQuery/useGetOtherUser';
 import { useOpen } from '@/hooks/useOpen';
 import { GatheringMemberDTO } from '@/types/participant/participant.type';
 import { periodYearMonthDay } from '@/utils/dateChange';
@@ -15,6 +17,8 @@ export default function ParticipantUsers({
   leaderCheck,
 }: ParticipantUsersProps) {
   const { isOpen, openModal, closeModal } = useOpen();
+  const { otherUser, showLoading, isLoading } = useGetOtherUser(list.nickname);
+  if (showLoading) return <Loading isLoading={isLoading} />;
 
   if (!list.nickname) return null;
   return (
@@ -62,7 +66,11 @@ export default function ParticipantUsers({
       <p className="line-clamp-3 h-20 w-[284px] text-base font-normal tracking-[-2.5%] text-basefont">
         {list.comment}
       </p>
-      {/* <IdCardModal openModal={isOpen} closeModal={closeModal} userData={list} /> */}
+      <IdCardModal
+        openModal={isOpen}
+        closeModal={closeModal}
+        userData={otherUser}
+      />
     </div>
   );
 }
