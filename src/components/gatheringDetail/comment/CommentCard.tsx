@@ -36,13 +36,16 @@ export default function CommentCard({
 }: CommentCardProps) {
   const { accessToken } = useAuthStore();
   const { userInfo } = useUserInfo({ enabled: !!accessToken });
+  const { isOpen: isReComment, toggleOpen: toggleReComment } = useOpen();
+  const { isOpen: isPatchComment, toggleOpen: togglePatchComment } = useOpen();
+  const { isOpen: isDeleteComment, toggleOpen: toggleDeleteComment } =
+    useOpen();
   const { mutate: DeleteComment } = useDeleteComment({
     commentId: reCommentId ?? commentId,
     gatheringId,
+    toggleOpen: toggleDeleteComment,
   });
-  const { isOpen: isReComment, toggleOpen: toggleReComment } = useOpen();
-  const { isOpen: isPatchComment, toggleOpen: togglePatchComment } = useOpen();
-  const { isOpen: isDeleteComment, openModal, closeModal } = useOpen();
+
   return (
     <div
       className={`${userNickname === leaderCheck ? 'bg-progressBar' : ''} border-b-[1px] border-spot pt-5`}
@@ -87,7 +90,7 @@ export default function CommentCard({
                 <button
                   type="button"
                   className="text-xl font-normal tracking-[-2.5%] text-grayFont"
-                  onClick={openModal}
+                  onClick={toggleDeleteComment}
                 >
                   삭제
                 </button>
@@ -116,7 +119,7 @@ export default function CommentCard({
       </div>
       <Modal
         isOpen={isDeleteComment}
-        onClose={closeModal}
+        onClose={toggleDeleteComment}
         className="bg-white rounded-[30px] px-10 py-5"
       >
         <p className="font-semibold text-2xl text-basefont">
@@ -126,7 +129,7 @@ export default function CommentCard({
           <MainBlueButton className="w-full" onClick={() => DeleteComment()}>
             확인
           </MainBlueButton>
-          <MainPurpleButton className="w-full" onClick={closeModal}>
+          <MainPurpleButton className="w-full" onClick={toggleDeleteComment}>
             취소
           </MainPurpleButton>
         </div>

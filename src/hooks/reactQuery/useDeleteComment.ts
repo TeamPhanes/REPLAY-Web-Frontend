@@ -7,11 +7,13 @@ import { DeleteComment } from '@/axios/comment';
 interface DeleteCommentProps {
   commentId: string | string[];
   gatheringId: string | string[];
+  toggleOpen: () => void;
 }
 
 export const useDeleteComment = ({
   commentId,
   gatheringId,
+  toggleOpen,
 }: DeleteCommentProps) => {
   const queryclient = useQueryClient();
   const router = useRouter();
@@ -19,6 +21,7 @@ export const useDeleteComment = ({
   const mutation = useMutation({
     mutationFn: () => DeleteComment(commentId, gatheringId),
     onSuccess: () => {
+      toggleOpen();
       queryclient.invalidateQueries({ queryKey: ['comment'] });
       toast.success(`댓글 삭제가 완료되었습니다.`);
     },

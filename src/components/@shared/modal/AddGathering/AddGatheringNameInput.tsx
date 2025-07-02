@@ -27,7 +27,7 @@ export default function AddGatheringNameInput({
   errors,
 }: AddGatheringNameInputProps) {
   return (
-    <>
+    <div className="relative">
       <div
         className={`${errors.name ? 'border-error' : 'border-tag'} flex gap-2 border-b-[1px] items-center mt-[30px]`}
       >
@@ -52,6 +52,6 @@ export default function AddGatheringNameInput({
           {errors.name.message}
         </p>
       )}
-    </>
+    </div>
   );
 }

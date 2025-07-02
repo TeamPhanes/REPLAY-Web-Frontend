@@ -77,7 +77,7 @@ export default function Modal({
         ref={modalContentRef}
         className={`
           max-h-[calc(100vh-40px)] max-w-[calc(100vw-20px)]
-          overflow-auto animate-modalIn z-50
+          overflow-auto animate-modalIn z-50 scrollbar-x-hidden 
           ${className}
         `}
         onClick={(e) => e.stopPropagation()}
