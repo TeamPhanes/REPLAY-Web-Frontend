@@ -40,7 +40,7 @@ export const GetSearchTheme = async (
 ) => {
   try {
     const res = await axios.get(
-      `${API_PATH.theme.search}?${keyword !== '' ? `&keyword=${keyword}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}${state !== '시.도' ? `&state=${state}` : ''}`
+      `${API_PATH.theme.search}?${keyword !== '' ? `&keyword=${keyword}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}${state !== '시.도' ? `&state=${state}` : ''}&limit=5&offset=0`
     );
     return res;
   } catch (error) {

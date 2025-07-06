@@ -3,7 +3,7 @@ import NotFound404 from '@/public/images/error/404.png';
 
 export default function NotFound() {
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
+    <div className="w-full mt-40 flex items-center justify-center">
       <Image
         src={NotFound404}
         alt="404 오류"

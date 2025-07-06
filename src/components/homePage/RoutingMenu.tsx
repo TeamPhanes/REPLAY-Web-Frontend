@@ -11,7 +11,7 @@ export default function RoutingMenu() {
   return (
     <div className="flex w-[912px] flex-col">
       <div className="mt-16 flex justify-between">
-        <Link href="/room">
+        <Link href="/theme">
           <div className="h-[248px] w-[450px] rounded-[28px] bg-homeCard p-8 relative transition-all hover:scale-[102%] hover:border-2 hover:border-white">
             <h2 className="text-5xl font-bold tracking-[-2.5%] text-white">
               방탈출

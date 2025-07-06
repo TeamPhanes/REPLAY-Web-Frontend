@@ -96,7 +96,9 @@ export const PatchReview = async (
         formData,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': data.image
+              ? 'multipart/form-data'
+              : 'application/json',
           },
         }
       );
