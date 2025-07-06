@@ -4,5 +4,7 @@ export interface RoomDetailDTO {
     themeId: number;
     detailImage: string;
     stroy: string;
+    minPlayer: number;
+    maxPlayer: number;
   };
 }
