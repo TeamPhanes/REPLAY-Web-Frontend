@@ -9,6 +9,8 @@ export const usePatchMyProfile = (onSuccess: () => void) => {
     mutationFn: PatchMyProfile,
     onSuccess: () => {
       queryclient.invalidateQueries({ queryKey: ['userInfo'] });
+      queryclient.invalidateQueries({ queryKey: ['gatheringMember'] });
+      queryclient.invalidateQueries({ queryKey: ['otherUser'] });
       onSuccess();
     },
     onError: (error) => {

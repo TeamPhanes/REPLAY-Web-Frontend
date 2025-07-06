@@ -6,7 +6,7 @@ export interface ListType {
 export const navLabelList: { [key: string]: ListType } = {
   room: {
     label: '방탈출',
-    value: '/room',
+    value: '/theme',
   },
   gathering: {
     label: '모임',

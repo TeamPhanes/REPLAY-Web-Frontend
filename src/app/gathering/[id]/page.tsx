@@ -56,7 +56,7 @@ export default function GatheringDetailPage() {
       representAchievement: [''],
     });
   }
-  if (gatheringDetail.gatheringId !== selectedGathering.gatheringId) {
+  if (gatheringDetail?.gatheringId !== selectedGathering.gatheringId) {
     router.replace('/not-found');
     return null;
   }

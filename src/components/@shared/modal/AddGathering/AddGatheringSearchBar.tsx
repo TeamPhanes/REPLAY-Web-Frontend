@@ -95,25 +95,23 @@ export default function AddGatheringSearchBar({
         className={`${isOpen ? '' : 'hidden'} w-full absolute bg-grayFont top-8 p-4 z-10 flex flex-col gap-1 pt-8 rounded-b-3xl`}
       >
         {searchTheme &&
-          searchTheme
-            .map((room: RoomDTO['get']) => (
-              <button
-                type="button"
-                key={room.themeId}
-                className="text-xl flex gap-1"
-                onClick={() => {
-                  closeModal();
-                  searchChange(room.themeName);
-                  themeIdChange(room.themeId);
-                }}
-              >
-                <p>
-                  [{room.cafe} {room.spot}]
-                </p>
-                <p>{room.themeName}</p>
-              </button>
-            ))
-            .slice(0, 5)}
+          searchTheme.map((room: RoomDTO['get']) => (
+            <button
+              type="button"
+              key={room.themeId}
+              className="text-xl flex gap-1"
+              onClick={() => {
+                closeModal();
+                searchChange(room.themeName);
+                themeIdChange(room.themeId);
+              }}
+            >
+              <p>
+                [{room.cafe} {room.spot}]
+              </p>
+              <p>{room.themeName}</p>
+            </button>
+          ))}
         {searchTheme && searchTheme.length === 0 && (
           <p className="text-xl">검색 결과가 없습니다.</p>
         )}

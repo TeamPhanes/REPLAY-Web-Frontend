@@ -12,7 +12,7 @@ export const GetGatheringMember = async ({
 }: GetGatheringMemberProps) => {
   try {
     const res = await axios.get(
-      `${API_PATH.gathering_member.default}/${gatheringId}`
+      `${API_PATH.gathering.default}/${gatheringId}/member`
     );
     return res;
   } catch (error) {
@@ -24,7 +24,7 @@ export const GetGatheringMember = async ({
 export const PostGatheringMember = async (gatheringId: number) => {
   try {
     await axiosInstance.post(
-      `${API_PATH.gathering_member.default}/${gatheringId}`
+      `${API_PATH.gathering.default}/${gatheringId}/member`
     );
   } catch (error) {
     toast.error('모임 참여 진행 중 오류가 있습니다.');
@@ -35,7 +35,7 @@ export const PostGatheringMember = async (gatheringId: number) => {
 export const DeleteGatheringMember = async (gatheringId: number) => {
   try {
     await axiosInstance.delete(
-      `${API_PATH.gathering_member.default}/${gatheringId}`
+      `${API_PATH.gathering.default}/${gatheringId}/member`
     );
   } catch (error) {
     toast.error('모임 참여 취소 중 오류가 있습니다.');

@@ -57,7 +57,7 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
 
   if (showLoading) return <Loading isLoading={isLoading} />;
 
-  if (themeDetail.themeId !== selectedTheme.themeId) {
+  if (themeDetail?.themeId !== selectedTheme.themeId) {
     router.replace('/not-found');
     return null;
   }
