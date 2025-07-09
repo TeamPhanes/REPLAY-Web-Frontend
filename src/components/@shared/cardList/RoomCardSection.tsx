@@ -101,7 +101,7 @@ export default function RoomCardSection({
         className="rounded-3xl w-[212px] h-[212px]"
       />
       <Link
-        href={`/room/${room.themeId}`}
+        href={`/theme/${room.themeId}`}
         onClick={() => setSelectedTheme(room)}
       >
         <div className="ml-5 flex h-[212px] w-[322px] flex-col justify-between">
