@@ -5,12 +5,13 @@ import { API_PATH } from '@/axios/path.config';
 
 interface CommentProps {
   id: string | string[];
+  sort: string;
 }
 
-export const GetComment = async ({ id }: CommentProps) => {
+export const GetComment = async ({ id, sort }: CommentProps) => {
   try {
     const res = await axios.get(
-      `${API_PATH.comment.default}?gatheringId=${id}&limit=10&offset=0`
+      `${API_PATH.comment.default}?gatheringId=${id}&sortBy=${sort}&limit=10&offset=0`
     );
     return res;
   } catch (error) {
