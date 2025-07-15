@@ -12,7 +12,7 @@ export default function AnotherGatherings({
 }: AnotherGatheringsProps) {
   return (
     <div className="mt-14">
-      <p className="ml-1 text-2xl font-semibold text-white">{title}</p>
+      <p className="ml-1 text-2xl font-semibold text-white mb-6">{title}</p>
       <div>
         <div className="flex justify-between">
           <GatheringCardContainer data={gatherings} />
