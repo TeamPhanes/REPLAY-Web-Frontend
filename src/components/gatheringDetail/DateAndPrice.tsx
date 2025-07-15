@@ -23,7 +23,7 @@ export default function DateAndPrice({
       <div className="flex items-center gap-14">
         <div className="flex gap-1">
           <Image
-            src={CalendarIcon}
+            src={CalendarTime}
             alt="캘린더 아이콘"
             width={24}
             height={24}
@@ -39,7 +39,7 @@ export default function DateAndPrice({
       </div>
       <div className="flex gap-1 items-center">
         <Image
-          src={CalendarTime}
+          src={CalendarIcon}
           alt="모집기간 아이콘"
           width={24}
           height={24}

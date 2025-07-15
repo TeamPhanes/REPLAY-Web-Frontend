@@ -23,7 +23,7 @@ export default function GatheringCardContainer({
             />
           ))}
       </div>
-      <div className="w-full mt-6">
+      <div className="w-full">
         {data && data.length === 0 && <EmptySearchResult />}
       </div>
     </>

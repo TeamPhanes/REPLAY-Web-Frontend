@@ -18,7 +18,7 @@ export default function CommentsContainer({
   const [sort, setSort] = useState('create');
   const { comment, isLoading, showLoading } = useGetComment(id, sort);
 
-  if (isLoading || showLoading) return <Loading isLoading={isLoading} />;
+  if (showLoading) return <Loading isLoading={isLoading} />;
 
   return (
     <div className="mt-5 w-full bg-comment">

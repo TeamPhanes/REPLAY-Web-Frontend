@@ -86,7 +86,7 @@ export default function PatchMyPageModal({
             )}
 
             <div className="flex items-center justify-between mt-12 w-72">
-              <p className="font-normal text-base tracking-[-2.5%] text-basefont">
+              {/* <p className="font-normal text-base tracking-[-2.5%] text-basefont">
                 성별을 소개카드에 표시 합니다.
               </p>
               <Controller
@@ -98,7 +98,7 @@ export default function PatchMyPageModal({
                     onChange={field.onChange}
                   />
                 )}
-              />
+              /> */}
             </div>
             <div className="flex items-center justify-between mt-6 w-72">
               <p className="font-normal text-base tracking-[-2.5%] text-basefont">

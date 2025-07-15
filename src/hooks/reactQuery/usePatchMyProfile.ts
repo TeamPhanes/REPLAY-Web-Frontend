@@ -11,6 +11,7 @@ export const usePatchMyProfile = (onSuccess: () => void) => {
       queryclient.invalidateQueries({ queryKey: ['userInfo'] });
       queryclient.invalidateQueries({ queryKey: ['gatheringMember'] });
       queryclient.invalidateQueries({ queryKey: ['otherUser'] });
+      toast.success(`프로필 수정이 완료되었습니다.`);
       onSuccess();
     },
     onError: (error) => {
