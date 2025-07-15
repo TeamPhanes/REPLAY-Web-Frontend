@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { GetComment } from '@/axios/comment';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
@@ -10,6 +10,7 @@ export const useGetComment = (gatheringId: string | string[], sort: string) => {
     queryFn: () => GetComment({ id: gatheringId, sort }),
     retry: false,
     staleTime: 1000 * 60 * 5,
+    placeholderData: keepPreviousData,
   });
 
   const comment = data?.data;

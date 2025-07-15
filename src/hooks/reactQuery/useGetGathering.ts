@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { GetGathering, GetGatheringDetail } from '@/axios/gathering';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
@@ -28,6 +28,7 @@ export const useGetGathering = (
       GetGathering({ accessToken, keyword, page, limit, sort, state, city }),
     retry: false,
     staleTime: 1000 * 60 * 5,
+    placeholderData: keepPreviousData,
   });
 
   const gathering = data?.data;

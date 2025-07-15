@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { GetTheme, GetThemeDetail } from '@/axios/theme';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
@@ -19,6 +19,7 @@ export const useGetTheme = (
       GetTheme({ accessToken, keyword, page, limit, sort, state, city }),
     retry: false,
     staleTime: 1000 * 60 * 5,
+    placeholderData: keepPreviousData,
   });
 
   const theme = data?.data;
