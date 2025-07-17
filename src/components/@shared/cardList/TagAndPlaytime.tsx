@@ -10,9 +10,9 @@ export default function TagAndPlaytime({ tag, playtime }: TagAndPlaytimeProps) {
   return (
     <div className="flex justify-between">
       <div className="flex gap-1">
-        {tag.map((genre) => (
+        {tag.map((genre, idx) => (
           <p
-            key={genre}
+            key={idx}
             className="flex gap-[2px] rounded-full bg-white px-2 py-1 text-base font-semibold text-tag"
           >
             <span>#</span>

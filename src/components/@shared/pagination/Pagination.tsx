@@ -50,7 +50,7 @@ export default function Pagination({
           </span>
         ) : (
           <button
-            key={item}
+            key={idx}
             type="button"
             onClick={() => onChange(Number(item))}
             className={`font-semibold text-2xl tracking-[-2.5%] ${currentPage === item ? 'text-card' : 'text-setfont hover:text-card'}`}
