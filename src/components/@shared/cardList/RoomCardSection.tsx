@@ -98,6 +98,7 @@ export default function RoomCardSection({
         width={212}
         height={212}
         quality={100}
+        unoptimized
         className="rounded-3xl w-[212px] h-[212px]"
       />
       <Link
