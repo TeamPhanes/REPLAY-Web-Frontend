@@ -5,14 +5,12 @@ import { useAuthStore } from '@/store/authStore';
 import MainBlueButton from '@/components/@shared/button/MainBlueButton';
 import UserInfo from '@/components/@shared/gnb/UserInfo';
 import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
-import { useHasHydrated } from '@/hooks/useHasHydrated';
 
 export default function AuthSection() {
-  const hasHydrated = useHasHydrated();
   const { accessToken } = useAuthStore();
   const { userInfo, isLoading } = useUserInfo({ enabled: !!accessToken });
 
-  if (!hasHydrated || isLoading) {
+  if (isLoading) {
     return (
       <div className="h-[58px] w-32 animate-pulse bg-loading rounded-2xl" />
     );
