@@ -5,6 +5,7 @@ import 'swiper/css/autoplay';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper/types';
+import DetailLinkButton from '@/components/homePage/DetailLinkButton';
 import { CarouselDTO } from '@/types/home/home.type';
 
 interface CarouselSwiperProps {
@@ -50,17 +51,10 @@ export default function CarouselSwiper({
               <p className="text-base font-normal tracking-[-2.5%] text-white">
                 {list.name}
               </p>
-              <Image
-                src={list.image}
-                alt={list.name}
-                width={imageWidth}
-                height={imageHeight}
-                unoptimized
-                quality={100}
-                style={{
-                  width: `${imageWidth}px`,
-                  height: `${imageHeight}px`,
-                }}
+              <DetailLinkButton
+                list={list}
+                imageWidth={imageWidth}
+                imageHeight={imageHeight}
               />
               <div className="flex justify-center gap-2">
                 {list.genres?.map((genre) => (
