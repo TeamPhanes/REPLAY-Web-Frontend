@@ -55,13 +55,12 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
     }
   }, [selectedTheme]);
 
-  console.log(selectedTheme);
   if (!selectedTheme || showLoading) return <Loading isLoading={isLoading} />;
 
-  // if (themeDetail?.themeId !== selectedTheme.themeId) {
-  //   router.replace('/not-found');
-  //   return null;
-  // }
+  if (themeDetail?.themeId !== selectedTheme.themeId) {
+    router.replace('/not-found');
+    return null;
+  }
   return (
     <div className="flex h-[460px] justify-between">
       <Image
