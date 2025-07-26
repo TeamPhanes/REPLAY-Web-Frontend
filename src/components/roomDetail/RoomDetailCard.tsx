@@ -127,6 +127,8 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
           <AddressAndLevel
             address={selectedTheme.address}
             level={selectedTheme.level}
+            minPlayer={detail.minPlayer}
+            maxPlayer={detail.maxPlayer}
           />
         </div>
         <RoomDetailStroy story={detail.story} />
