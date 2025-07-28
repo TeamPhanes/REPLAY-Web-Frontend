@@ -13,7 +13,7 @@ interface CarouselSwiperProps {
   imageWidth: number;
   imageHeight: number;
   delayTime: number;
-  perView?: number;
+  className?: string;
   type?: 'top';
   swiperRef: MutableRefObject<SwiperClass | undefined>;
   setActiveSwiper: React.Dispatch<React.SetStateAction<number>>;
@@ -25,15 +25,14 @@ export default function CarouselSwiper({
   imageWidth,
   imageHeight,
   delayTime,
-  perView,
+  className,
   type,
   setActiveSwiper,
 }: CarouselSwiperProps) {
   return (
     <Swiper
       modules={[Autoplay]}
-      slidesPerView={perView}
-      slidesPerGroup={perView}
+      slidesPerView="auto"
       spaceBetween={15}
       autoplay={{ delay: delayTime }}
       onSwiper={(swiper: SwiperType) => {
@@ -45,7 +44,7 @@ export default function CarouselSwiper({
       className="overflow-hidden rounded-[30px]"
     >
       {carouselList.map((list, index) => (
-        <SwiperSlide key={index}>
+        <SwiperSlide key={index} className={className}>
           {type === 'top' ? (
             <div className="mt-3 flex flex-col gap-3">
               <p className="text-base font-normal tracking-[-2.5%] text-white">
