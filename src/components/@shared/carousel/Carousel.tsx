@@ -12,6 +12,7 @@ export interface CarouselProps {
   imageWidth: number;
   imageHeight: number;
   buttonSize: number;
+  className?: string;
   delayTime?: number;
   perView?: number;
   type?: 'top';
@@ -23,6 +24,7 @@ export default function Carousel({
   imageWidth,
   imageHeight,
   buttonSize,
+  className,
   delayTime = 3000,
   perView = 1,
   type,
@@ -32,7 +34,7 @@ export default function Carousel({
   const listLength = carouselList.length;
 
   return (
-    <div className="relative" style={{ width: `${width}px` }}>
+    <div className="relative">
       <CarouselButton
         buttonSize={buttonSize}
         activeSwiper={activeSwiper}
@@ -45,7 +47,7 @@ export default function Carousel({
         imageWidth={imageWidth}
         imageHeight={imageHeight}
         delayTime={delayTime}
-        perView={perView}
+        className={className}
         type={type}
         swiperRef={swiperRef}
         setActiveSwiper={setActiveSwiper}
