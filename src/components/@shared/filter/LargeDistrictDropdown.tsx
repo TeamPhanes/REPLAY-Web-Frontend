@@ -9,12 +9,14 @@ interface LargeDistrictDropdownProps {
   largeDistrict: string;
   setLargeDistrict: (value: string) => void;
   list: string[];
+  align?: 'start' | 'center' | 'end';
 }
 
 export default function LargeDistrictDropdown({
   largeDistrict,
   setLargeDistrict,
   list,
+  align = 'start',
 }: LargeDistrictDropdownProps) {
   const { clearDistrict } = useQueryStringStore();
   const { isOpen, toggleOpen } = useOpen();
@@ -25,15 +27,15 @@ export default function LargeDistrictDropdown({
         isOpen={isOpen}
         onOpenChange={toggleOpen}
         onClickHandler={setLargeDistrict}
-        className="min-w-[412px] grid grid-cols-4 p-2"
+        className="md:min-w-[412px] grid grid-cols-3 md:grid-cols-4 p-2"
         marginTop={14}
-        align="start"
+        align={align}
       >
         <button
           type="button"
           className="flex items-center justify-center gap-1"
         >
-          <p className="text-base font-medium tracking-[-2.5%] text-basefont">
+          <p className="text-sm md:text-base font-medium tracking-[-2.5%] text-basefont">
             {largeDistrict}
           </p>
           {largeDistrict === '시.도' ? (

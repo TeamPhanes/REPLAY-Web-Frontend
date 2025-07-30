@@ -35,7 +35,7 @@ export default function AddGatheringModal({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      className="bg-white rounded-[30px] py-4 px-8 md:py-10 md:px-[72px] w-[726px]"
+      className="bg-white rounded-[30px] py-4 px-4 md:py-10 md:px-[72px] w-[726px]"
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <AddGatheringLocation />
