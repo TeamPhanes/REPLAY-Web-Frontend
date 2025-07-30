@@ -8,12 +8,14 @@ interface MiddleDistrictDropdownProps {
   middleDistrict: string;
   setMiddleDistrict: (value: string) => void;
   list: string[];
+  align?: 'start' | 'center' | 'end';
 }
 
 export default function MiddleDistrictDropdown({
   middleDistrict,
   setMiddleDistrict,
   list,
+  align = 'center',
 }: MiddleDistrictDropdownProps) {
   const { isOpen, toggleOpen } = useOpen();
   if (list.length === 0) return null;
@@ -26,7 +28,7 @@ export default function MiddleDistrictDropdown({
         onClickHandler={setMiddleDistrict}
         className={`${list.length === 2 ? 'grid-cols-2' : ''} ${list.length === 3 ? 'grid-cols-3' : ''} ${list.length >= 4 ? 'grid-cols-4' : ''} grid p-2`}
         marginTop={14}
-        align="center"
+        align={align}
       >
         <button
           type="button"

@@ -5,7 +5,11 @@ import LargeDistrictDropdown from '@/components/@shared/filter/LargeDistrictDrop
 import MiddleDistrictDropdown from '@/components/@shared/filter/MiddleDistrictDropdown';
 import { locationDetailList } from '@/constants/filter/locationList';
 
-export default function LocationFilter() {
+interface LocationFilterProps {
+  align: 'start' | 'center' | 'end';
+}
+
+export default function LocationFilter({ align }: LocationFilterProps) {
   const { largeDistrict, middleDistrict, setLargeDistrict, setMiddleDistrict } =
     useQueryStringStore();
   const largeDistrictList = Object.keys(locationDetailList);
@@ -17,12 +21,13 @@ export default function LocationFilter() {
         largeDistrict={largeDistrict}
         setLargeDistrict={setLargeDistrict}
         list={largeDistrictList}
-        align="center"
+        align={align}
       />
       <MiddleDistrictDropdown
         middleDistrict={middleDistrict}
         setMiddleDistrict={setMiddleDistrict}
         list={middleDistrictList}
+        align={align}
       />
     </div>
   );

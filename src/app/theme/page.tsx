@@ -47,7 +47,7 @@ export default function RoomPage() {
     <PageContainer>
       <SearchBar />
       <FilterContainer>
-        <LocationFilter />
+        <LocationFilter align="start" />
         <GenreFilter />
         <MapNavigation target="room" />
       </FilterContainer>

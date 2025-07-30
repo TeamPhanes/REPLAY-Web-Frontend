@@ -11,7 +11,7 @@ export default function SearchPage() {
     <PageContainer>
       <SearchBar />
       <FilterContainer>
-        <LocationFilter />
+        <LocationFilter align="start" />
         <GenreFilter />
       </FilterContainer>
       <Suspense>

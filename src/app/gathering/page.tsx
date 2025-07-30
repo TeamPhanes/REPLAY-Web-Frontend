@@ -48,7 +48,7 @@ export default function GatheringPage() {
     <PageContainer>
       <SearchBar />
       <FilterContainer>
-        <LocationFilter />
+        <LocationFilter align="start" />
         <GenreFilter />
         <MapNavigation target="gathering" />
       </FilterContainer>
