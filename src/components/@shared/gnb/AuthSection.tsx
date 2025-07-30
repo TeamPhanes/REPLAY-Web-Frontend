@@ -22,7 +22,7 @@ export default function AuthSection() {
 
   return (
     <Link href="/login">
-      <MainBlueButton className="w-32">로그인</MainBlueButton>
+      <MainBlueButton className="w-24 md:w-32">로그인</MainBlueButton>
     </Link>
   );
 }
