@@ -65,7 +65,7 @@ export default function AddGatheringSearchBar({
         <input
           type="text"
           placeholder="테마명을 검색해주세요."
-          className="w-full text-2xl/[34px] tracking-[-2.5%] placeholder:text-white text-white bg-darkSearch z-20"
+          className="w-full text-xl md:text-2xl/[34px] tracking-[-2.5%] placeholder:text-white text-white bg-darkSearch z-20"
           value={search}
           onChange={(e) => searchChange(e.target.value)}
         />
@@ -75,7 +75,7 @@ export default function AddGatheringSearchBar({
             alt="검색제거"
             width={48}
             height={48}
-            className="cursor-pointer"
+            className="w-9 h-9 md:w-12 md:h-12 cursor-pointer"
             onClick={() => {
               searchChange('');
               themeIdChange(0);
@@ -87,7 +87,7 @@ export default function AddGatheringSearchBar({
             alt="검색하기"
             width={48}
             height={48}
-            className="cursor-pointer"
+            className="w-9 h-9 md:w-12 md:h-12 cursor-pointer"
           />
         )}
       </div>
@@ -106,7 +106,7 @@ export default function AddGatheringSearchBar({
                 themeIdChange(room.themeId);
               }}
             >
-              <p>
+              <p className="hidden md:block">
                 [{room.cafe} {room.spot}]
               </p>
               <p>{room.themeName}</p>

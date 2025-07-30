@@ -42,7 +42,7 @@ export default function AddGatheringNameInput({
           {...register('name', { required: '제목 입력은 필수입니다.' })}
           type="text"
           placeholder="모임명을 입력해 주세요."
-          className="w-full py-1 font-normal text-2xl/[34px] tracking-[-2.5%] text-basefont"
+          className="w-full py-1 font-normal text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont"
           value={name}
           onChange={(e) => nameChange(e.target.value)}
         />

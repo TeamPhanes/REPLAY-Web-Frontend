@@ -49,7 +49,7 @@ export default function AddGatheringPrice({
 
   return (
     <div className="flex flex-col">
-      <p className="font-medium text-2xl/[34px] tracking-[-2.5%] text-basefont">
+      <p className="font-medium text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
         가격
       </p>
       <div className="flex items-centers gap-2">

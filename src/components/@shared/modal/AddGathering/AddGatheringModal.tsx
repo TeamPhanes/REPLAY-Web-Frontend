@@ -35,7 +35,7 @@ export default function AddGatheringModal({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      className="bg-white rounded-[30px] py-10 px-[72px] w-[726px]"
+      className="bg-white rounded-[30px] py-4 px-8 md:py-10 md:px-[72px] w-[726px]"
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <AddGatheringLocation />
@@ -67,27 +67,31 @@ export default function AddGatheringModal({
             setValue('registrationEnd', registrationEnd)
           }
         />
-        <div className="flex justify-between mt-8">
-          <AddGatheringSchedule
-            dateTime={watch('dateTime')}
-            dateTimeChange={(dateTime) => setValue('dateTime', dateTime)}
-          />
-          <AddGatheringCapacity
-            capacity={watch('capacity')}
-            capacityChange={(capacity) => setValue('capacity', capacity)}
-          />
-          <AddGatheringPrice
-            priceType={watch('isIndividual')}
-            priceTypeChange={(isIndividual) =>
-              setValue('isIndividual', isIndividual, { shouldValidate: true })
-            }
-            price={watch('price')}
-            priceChange={(price) =>
-              setValue('price', price, { shouldValidate: true })
-            }
-            register={register}
-            errors={errors}
-          />
+        <div className="md:flex md:gap-8">
+          <div className="flex gap-2 md:gap-8 mt-8">
+            <AddGatheringSchedule
+              dateTime={watch('dateTime')}
+              dateTimeChange={(dateTime) => setValue('dateTime', dateTime)}
+            />
+            <AddGatheringCapacity
+              capacity={watch('capacity')}
+              capacityChange={(capacity) => setValue('capacity', capacity)}
+            />
+          </div>
+          <div className="mt-8">
+            <AddGatheringPrice
+              priceType={watch('isIndividual')}
+              priceTypeChange={(isIndividual) =>
+                setValue('isIndividual', isIndividual, { shouldValidate: true })
+              }
+              price={watch('price')}
+              priceChange={(price) =>
+                setValue('price', price, { shouldValidate: true })
+              }
+              register={register}
+              errors={errors}
+            />
+          </div>
         </div>
         <AddGatheringWrite
           content={watch('content')}
