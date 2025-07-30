@@ -23,7 +23,7 @@ export default function UserInfo({ user }: UserInfoProps) {
         height={32}
         className="h-8 w-8 rounded-full border-2 border-mainBlue shadow-md"
       />
-      <p className="text-xl font-semibold tracking-[-2.5%]">
+      <p className="text-xl font-semibold tracking-[-2.5%] max-w-32 truncate">
         {user.nickname} 님
       </p>
       <UserInfoDropdown
@@ -42,7 +42,7 @@ export default function UserInfo({ user }: UserInfoProps) {
             alt="유저 정보 더보기"
             width={24}
             height={24}
-            className={`transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+            className={`transition-transform transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
           />
         </button>
       </UserInfoDropdown>

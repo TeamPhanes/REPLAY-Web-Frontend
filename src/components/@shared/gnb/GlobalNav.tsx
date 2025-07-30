@@ -19,10 +19,11 @@ export default function GlobalNav() {
             width={184}
             height={68}
             quality={100}
+            className="w-36 h-12 md:w-[184px] md:h-[68px]"
             priority
           />
         </Link>
-        <div className="flex items-center justify-center gap-6">
+        <div className="flex items-center justify-center gap-2 md:gap-6">
           {Object.keys(navLabelList).map((key) => {
             const list = navLabelList[key];
             return (
