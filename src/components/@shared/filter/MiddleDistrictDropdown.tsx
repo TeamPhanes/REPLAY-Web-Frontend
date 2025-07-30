@@ -18,7 +18,7 @@ export default function MiddleDistrictDropdown({
   const { isOpen, toggleOpen } = useOpen();
   if (list.length === 0) return null;
   return (
-    <div className="flex items-center justify-center rounded-full bg-card px-4 py-2 gap-1">
+    <div className="hidden md:flex items-center justify-center rounded-full bg-card px-4 py-2 gap-1">
       <ValueDropdown
         list={list}
         isOpen={isOpen}
@@ -32,7 +32,7 @@ export default function MiddleDistrictDropdown({
           type="button"
           className="flex items-center justify-center gap-1"
         >
-          <p className="text-base font-medium tracking-[-2.5%] text-basefont">
+          <p className="text-sm md:text-base font-medium tracking-[-2.5%] text-basefont">
             {middleDistrict}
           </p>
           {middleDistrict === '시.군.구' ? (

@@ -13,8 +13,8 @@ export default function BottomCarousel({
   delayTime,
 }: BottomCarouselProps) {
   return (
-    <div className="relative mt-16 flex flex-col gap-6">
-      <h2 className="text-[32px]/[42px] font-semibold tracking-[-2.5%] text-white">
+    <div className="relative mt-10 md:mt-16 flex flex-col gap-6">
+      <h2 className="text-3xl md:text-[32px]/[42px] font-semibold tracking-[-2.5%] text-white">
         {title}
       </h2>
       <Carousel

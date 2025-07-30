@@ -17,6 +17,7 @@ export default function LocationFilter() {
         largeDistrict={largeDistrict}
         setLargeDistrict={setLargeDistrict}
         list={largeDistrictList}
+        align="center"
       />
       <MiddleDistrictDropdown
         middleDistrict={middleDistrict}

@@ -18,7 +18,7 @@ export default function ScrollTimePicker({
   const minutes = Array.from({ length: 12 }, (_, i) => i * 5);
 
   return (
-    <div className="flex w-[325px] flex-col rounded-md p-5 text-secondary-5 md:w-auto md:flex-row">
+    <div className="flex w-[300px] flex-col rounded-md p-5 text-secondary-5 md:w-auto md:flex-row">
       <div className="flex flex-col gap-4 md:flex-row">
         <div className="dateTimeCalendar-custom flex overflow-x-scroll overflew-y-hidden border-y-[1px] border-solid border-grayFont py-4 md:flex-col md:overflow-x-hidden md:overflow-y-scroll md:border-x-[1px] md:border-y-0 md:px-4 md:py-0">
           {hours.map((hour) => (

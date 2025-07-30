@@ -74,7 +74,7 @@ export default function DateTimeCalendar({
 
   return (
     <div
-      className={`${isOpen ? 'animate-dropdownIn' : 'hidden'} ${layout} border-2 absolute z-[80] flex flex-col rounded-[10px] border-grayFont bg-grayFont py-5 pl-6 pr-6 shadow-xl md:pr-0`}
+      className={`${isOpen ? 'animate-dropdownIn' : 'hidden'} ${layout} border-2 absolute z-[80] flex flex-col rounded-[10px] border-grayFont bg-grayFont py-5 px-2 md:pl-6 shadow-xl md:pr-0`}
     >
       <div className="flex flex-col md:h-[332px] md:flex-row">
         <Calendar

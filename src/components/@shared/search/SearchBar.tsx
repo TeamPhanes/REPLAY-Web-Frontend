@@ -28,7 +28,7 @@ export default function SearchBar({ type = 'white' }: SearchBarProps) {
   };
   return (
     <div
-      className={`w-full rounded-full ${type === 'dark' ? 'h-[58px] bg-darkSearch' : 'h-20 bg-white'}`}
+      className={`w-full rounded-full ${type === 'dark' ? 'h-[58px] bg-darkSearch' : 'h-16 md:h-20 bg-white'}`}
     >
       <form
         onSubmit={handleSubmit}
@@ -37,7 +37,7 @@ export default function SearchBar({ type = 'white' }: SearchBarProps) {
         <input
           type="text"
           placeholder="검색어를 입력하세요."
-          className={`w-full ${type === 'dark' ? 'text-2xl/[34px] tracking-[-2.5%] placeholder:text-white text-white bg-darkSearch' : 'text-[28px]/[38px] text-basefont bg-white'}`}
+          className={`w-full ${type === 'dark' ? 'text-2xl/[34px] tracking-[-2.5%] placeholder:text-white text-white bg-darkSearch' : 'text-xl md:text-[28px]/[38px] text-basefont bg-white'}`}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
