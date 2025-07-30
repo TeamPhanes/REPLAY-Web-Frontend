@@ -14,7 +14,7 @@ export default function AddGatheringSchedule({
   const { isOpen, toggleOpen } = useOpen();
   return (
     <div className="flex flex-col relative">
-      <p className="font-medium text-2xl/[34px] tracking-[-2.5%] text-basefont">
+      <p className="font-medium text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
         모임 일정
       </p>
       <div

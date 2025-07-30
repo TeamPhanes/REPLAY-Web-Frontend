@@ -25,12 +25,12 @@ export default function AddGatheringRecruitmentPeriod({
   } = useOpen();
   return (
     <div className="flex flex-col mt-11">
-      <p className="font-medium text-2xl/[34px] tracking-[-2.5%] text-basefont">
+      <p className="font-medium text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
         모집 기간
       </p>
-      <div className="flex gap-1 mt-3 relative">
+      <div className="flex flex-col md:flex-row gap-1 mt-3 relative">
         <div
-          className="rounded-l-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont cursor-pointer"
+          className="rounded-t-full md:rounded-r-none md:rounded-l-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont cursor-pointer text-center"
           onClick={toggleRegistrationStartDate}
         >
           {yearMonthDayHourTime(String(registrationStart))}
@@ -43,7 +43,7 @@ export default function AddGatheringRecruitmentPeriod({
           layout="top-[52px] left-0"
         />
         <div
-          className="rounded-r-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont cursor-pointer"
+          className="rounded-b-full md:rounded-l-none md:rounded-r-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont cursor-pointer text-center"
           onClick={toggleRegistrationEndDate}
         >
           {yearMonthDayHourTime(String(registrationEnd))}

@@ -16,7 +16,7 @@ export default function AddGatheringCapacity({
 
   return (
     <div className="flex flex-col">
-      <p className="font-medium text-2xl/[34px] tracking-[-2.5%] text-basefont">
+      <p className="font-medium text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
         모임 인원
       </p>
       <div className="rounded-full bg-card py-2 px-4 mt-3 flex items-center justify-center gap-1">

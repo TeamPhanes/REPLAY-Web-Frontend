@@ -28,7 +28,7 @@ export default function AddGatheringWrite({
   return (
     <div className="flex flex-col mt-8">
       <div className="flex items-center gap-4">
-        <p className="font-medium text-2xl/[34px] tracking-[-2.5%] text-basefont">
+        <p className="font-medium text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
           모임 소개글
         </p>
         {errors.content && (
