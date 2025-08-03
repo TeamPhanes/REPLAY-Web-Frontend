@@ -4,7 +4,7 @@ import SearchNotFound from '@/public/images/error/search.png';
 export default function EmptySearchResult() {
   return (
     <div className="flex justify-center items-center flex-col border-2 border-card rounded-3xl pb-5">
-      <p className="font-normal text-[64px] tracking-[0.31em] mb-5">
+      <p className="text-center font-normal text-[64px] tracking-[0.31em] mb-5">
         NOT FOUND
       </p>
       <Image

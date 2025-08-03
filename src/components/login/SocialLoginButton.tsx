@@ -7,7 +7,7 @@ import { easyLoginIcons } from '@/constants/login/easyLoginIcons';
 export default function SocialLoginButton() {
   return (
     <ButtonContainer>
-      <p className="font-bold text-2xl/[34px] tracking-[-2.5%] text-basefont">
+      <p className="font-bold text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
         SNS 계정으로 로그인
       </p>
       <div className="mt-8 flex w-full justify-center gap-3 flex-col">
@@ -30,7 +30,7 @@ export default function SocialLoginButton() {
                   height={36}
                   className="absolute left-4"
                 />
-                <p className="font-semibold text-base tracking-[-2.5%] text-basefont">
+                <p className="ml-5 md:ml-0 font-semibold text-base tracking-[-2.5%] text-basefont">
                   {icon.label}로 로그인하기
                 </p>
               </button>
