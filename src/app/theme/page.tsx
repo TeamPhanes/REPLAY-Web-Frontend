@@ -47,7 +47,7 @@ export default function RoomPage() {
     <PageContainer>
       <SearchBar />
       <FilterContainer>
-        <LocationFilter />
+        <LocationFilter align="start" />
         <GenreFilter />
         <MapNavigation target="room" />
       </FilterContainer>
@@ -66,7 +66,10 @@ export default function RoomPage() {
               sortChange={setSort}
             />
           </SortContainer>
-          <RoomCardContainer data={theme.data} className="grid-cols-2" />
+          <RoomCardContainer
+            data={theme.data}
+            className="grid-cols-1 md:grid-cols-2"
+          />
         </>
       )}
       <Pagination
