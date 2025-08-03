@@ -99,13 +99,14 @@ export default function RoomCardSection({
         height={212}
         quality={100}
         unoptimized
-        className="rounded-3xl w-[212px] h-[212px]"
+        className="rounded-3xl w-[280px] h-[280px] md:w-[212px] md:h-[212px]"
       />
       <Link
         href={`/theme/${room.themeId}`}
         onClick={() => setSelectedTheme(room)}
+        className="w-full md:w-auto"
       >
-        <div className="ml-5 flex h-[212px] w-[322px] flex-col justify-between">
+        <div className="md:ml-5 mt-5 md:mt-0 flex h-[212px] md:w-[322px] flex-col justify-between">
           <div className="flex flex-col gap-3">
             <TagAndPlaytime tag={room.genres} playtime={room.playtime} />
             <TitleAndSpot
