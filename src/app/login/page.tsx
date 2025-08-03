@@ -29,7 +29,7 @@ export default function LoginPage() {
           height={206}
           quality={100}
           priority
-          className="w-[565px] h-[206px] mt-20"
+          className="w-[283px] h-[103px] md:w-[565px] md:h-[206px] mt-5 md:mt-20"
         />
         <SocialLoginButton />
       </div>
