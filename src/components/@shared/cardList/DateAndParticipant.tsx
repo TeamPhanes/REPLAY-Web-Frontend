@@ -22,7 +22,7 @@ export default function DateAndParticipant({
           {yearMonthDayHourTime(registrationEnd)}
         </p>
       </div>
-      <div className="absolute right-8 ml-5 flex gap-3">
+      <div className="absolute right-4 md:right-8 ml-5 flex gap-3">
         <Rating
           rating={participantCount}
           width={120}

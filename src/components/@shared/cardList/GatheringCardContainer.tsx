@@ -13,7 +13,7 @@ export default function GatheringCardContainer({
 }: GatheringCardContainerProps) {
   return (
     <>
-      <div className="grid grid-cols-2 gap-5 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
         {data &&
           data.map((gathering) => (
             <GatheringCard

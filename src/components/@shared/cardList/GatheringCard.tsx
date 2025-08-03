@@ -42,7 +42,7 @@ export default function GatheringCard({
   return (
     <div
       key={gathering.gatheringId}
-      className="h-[252px] relative flex w-[630px] items-start rounded-3xl bg-card p-5 transition-all hover:scale-[102%]"
+      className="md:h-[252px] relative flex md:flex-row flex-col md:w-[630px] items-start rounded-3xl bg-card p-5 transition-all hover:scale-[102%]"
     >
       <Image
         src={gathering.listImage}
@@ -50,7 +50,7 @@ export default function GatheringCard({
         width={212}
         height={212}
         quality={100}
-        className="rounded-3xl w-[212px] h-[212px]"
+        className="rounded-3xl w-[280px] h-[280px] md:w-[212px] md:h-[212px]"
       />
       <div className="absolute right-5 flex flex-col">
         <button
@@ -73,8 +73,9 @@ export default function GatheringCard({
       <Link
         href={`/gathering/${gathering.gatheringId}`}
         onClick={() => setSelectedGathering(gathering)}
+        className="w-full md:w-auto"
       >
-        <div className="ml-5 flex h-[212px] w-[322px] flex-col justify-between">
+        <div className="md:ml-5 mt-5 md:mt-0 flex h-[212px] md:w-[322px] flex-col justify-between">
           <div className="flex flex-col gap-3">
             <TagAndPlaytime
               tag={gathering.genres}
