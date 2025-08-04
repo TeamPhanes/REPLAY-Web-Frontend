@@ -62,17 +62,17 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
     return null;
   }
   return (
-    <div className="flex h-[460px] justify-between">
+    <div className="flex flex-col md:flex-row md:h-[460px] justify-between">
       <Image
         src={detail.detailImage}
         alt={selectedTheme.themeName}
         width={797}
         height={460}
         quality={100}
-        className="rounded-[30px]"
+        className="w-[360px] h-[360px] md:w-[797px] md:h-[460px] rounded-[30px]"
       />
-      <div className="relative h-[460px] w-[471px] rounded-[30px] bg-card p-5">
-        <div className="absolute right-5 flex">
+      <div className="relative md:h-[460px] md:w-[471px] rounded-[30px] bg-card p-5">
+        <div className="absolute top-[-340px] md:top-auto bg-card rounded-[30px] md:bg-none p-1 md:p-0 md:rounded-none right-5 flex">
           <button
             type="button"
             className={`transition-transform duration-300 active:scale-90 ${
@@ -106,7 +106,7 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
             />
           </button>
         </div>
-        <div className="w-[360px]">
+        <div className="md:w-[360px]">
           <TagAndPlaytime
             tag={selectedTheme.genres}
             playtime={selectedTheme.playtime}

@@ -11,7 +11,7 @@ export default function ThemeLevelStoryContainer({
   const { themeReview, levelReview, storyReview } = dataList;
 
   return (
-    <div className="flex justify-between mt-3">
+    <div className="flex flex-col md:flex-row gap-1 justify-between mt-3">
       <CheckList
         title="테마"
         contentOne="좋아요"

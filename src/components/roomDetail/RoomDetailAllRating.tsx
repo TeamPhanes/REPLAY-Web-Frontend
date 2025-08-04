@@ -12,7 +12,7 @@ export default function RoomDetailAllRating({ id }: RoomDetailAllRatingProps) {
 
   if (showLoading) return <Loading isLoading={isLoading} />;
   return (
-    <div className="mt-16 flex h-[177px] w-full items-center justify-between rounded-[30px] bg-ratingCard">
+    <div className="mt-16 flex p-5 md:p-0 flex-col md:flex-row md:h-[177px] w-full items-center justify-between rounded-[30px] bg-ratingCard">
       <div className="flex w-full flex-col items-center justify-center gap-3">
         <p className="text-5xl font-extrabold text-basefont">
           {reviewAllRating.averageScore.toFixed(1)}
@@ -24,8 +24,8 @@ export default function RoomDetailAllRating({ id }: RoomDetailAllRatingProps) {
           type="Review"
         />
       </div>
-      <div className="flex h-[126px] items-center justify-center border-l-[1px] border-grayFont pl-16">
-        <div className="flex flex-col gap-3 text-center">
+      <div className="flex flex-col md:flex-row md:h-[126px] items-center justify-center md:border-l-[1px] border-grayFont md:pl-16">
+        <div className="flex flex-row md:flex-col gap-3 text-center items-center">
           <p className="flex-shrink-0 whitespace-nowrap text-xl font-normal tracking-[-2.5%] text-basefont">
             총 리뷰갯수
           </p>
@@ -33,13 +33,13 @@ export default function RoomDetailAllRating({ id }: RoomDetailAllRatingProps) {
             {reviewAllRating.scoreCount}
           </p>
         </div>
-        <div className="flex flex-col px-16">
+        <div className="flex flex-col md:px-16">
           {reviewAllRating.scores.map((count: number, index: number) => (
             <div key={index} className="flex items-center gap-2">
               <p className="w-5 flex-shrink-0 text-xs/[18px] font-normal tracking-[-2.5%] text-tag">
                 {5 - index}점
               </p>
-              <div className="min-w-[389px]">
+              <div className="min-w-[260px] md:min-w-[389px]">
                 <ProgressBar value={count} max={reviewAllRating.scoreCount} />
               </div>
               <p className="flex-shrink-0 text-xs/[18px] font-normal tracking-[-2.5%] text-tag">
