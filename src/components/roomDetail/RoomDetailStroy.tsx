@@ -12,8 +12,11 @@ export default function RoomDetailStroy({ story }: RoomDetailStoryProps) {
   return (
     <>
       <StorySection story={story} />
-      <div className="mt-4 flex justify-between absolute bottom-5">
-        <MainBlueButton className="h-[58px] w-[431px]" onClick={openModal}>
+      <div className="mt-4 flex justify-between md:absolute bottom-5">
+        <MainBlueButton
+          className="h-[58px] w-full md:w-[431px]"
+          onClick={openModal}
+        >
           모임 만들기
         </MainBlueButton>
         <AddGatheringModal isOpen={isOpen} onClose={closeModal} />

@@ -25,29 +25,31 @@ export default function AddressAndLevel({
           {address}
         </p>
       </div>
-      <div className="flex items-center">
-        <Image
-          src={LevelIcon}
-          alt="난이도 아이콘"
-          width={24}
-          height={24}
-          className="mr-1"
-        />
-        <CheckList
-          title="난이도"
-          contentOne="쉬움"
-          contentTwo="보통"
-          contentThree="어려움"
-          check={level}
-        />
+      <div className="flex flex-col md:flex-row justify-start gap-2 md:gap-0">
+        <div className="flex items-center">
+          <Image
+            src={LevelIcon}
+            alt="난이도 아이콘"
+            width={24}
+            height={24}
+            className="mr-1"
+          />
+          <CheckList
+            title="난이도"
+            contentOne="쉬움"
+            contentTwo="보통"
+            contentThree="어려움"
+            check={level}
+          />
+        </div>
         {minPlayer ? (
-          <>
+          <div className="flex items-center">
             <Image
               src={UserIcon}
               alt="유저 아이콘"
               width={24}
               height={24}
-              className="ml-4"
+              className="md:ml-4"
             />
             <p className="font-normal text-base tracking-[-2.5%] text-basefont mx-1">
               인원
@@ -56,7 +58,7 @@ export default function AddressAndLevel({
               {String(minPlayer).padStart(2, '0')} ~{' '}
               {String(maxPlayer).padStart(2, '0')}
             </p>
-          </>
+          </div>
         ) : null}
       </div>
     </>

@@ -8,7 +8,7 @@ export default function StoryContainer({
   story,
 }: StoryContainerProps) {
   return (
-    <div className="cursor-pointer" onClick={openModal}>
+    <div className="cursor-pointer md:mb-0" onClick={openModal}>
       <div className="relative mt-6 flex items-center justify-center">
         <div className="w-full border-t border-black" />
         <p className="min-w-[90px] text-center text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
@@ -16,7 +16,7 @@ export default function StoryContainer({
         </p>
         <div className="w-full border-t border-black" />
       </div>
-      <p className="mx-auto line-clamp-3 w-[391px] text-base font-normal tracking-[-2.5%] text-basefont">
+      <p className="mx-auto line-clamp-3 text-base font-normal tracking-[-2.5%] text-basefont">
         {story}
       </p>
     </div>

@@ -17,7 +17,7 @@ export default function StroyModal({
       onClose={closeModal}
       className="bg-card rounded-[30px]"
     >
-      <div className="m-5 w-[655px]">
+      <div className="m-5 md:w-[655px]">
         <div className="relative my-6 flex items-center justify-center">
           <div className="w-[169px] border-t border-black" />
           <p className="min-w-[90px] text-center text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
