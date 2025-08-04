@@ -43,17 +43,17 @@ export default function CommentPostInput({
   return (
     <div className="flex h-[293px] items-center justify-center">
       <div
-        className={`${errors.content ? 'border-red-500' : 'border-grayFont'} relative h-[223px] w-[1000px] rounded-[30px] border-[1px]  bg-white p-5`}
+        className={`${errors.content ? 'border-red-500' : 'border-grayFont'} relative h-[223px] md:w-[1000px] rounded-[30px] border-[1px] bg-white p-5`}
       >
-        <div className="flex items-center gap-2">
+        <div className="max-w-[330px] md:max-w-full flex items-center gap-2">
           <Image
             src={userInfo ? userInfo.image : UserDefaultImg}
             alt="유저 이미지"
             width={60}
             height={60}
-            className="h-[60px] w-[60px] rounded-full border-2 border-mainBlue shadow-md"
+            className="w-8 h-8 md:h-[60px] md:w-[60px] rounded-full border-2 border-mainBlue shadow-md"
           />
-          <p className="text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
+          <p className="text-xl md:text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
             {userInfo ? userInfo.nickname : '로그인 후 이용 부탁드립니다.'}
           </p>
         </div>
@@ -62,7 +62,7 @@ export default function CommentPostInput({
             {...register('content', {
               required: '내용은 필수입니다.',
             })}
-            className="mt-1 h-[70px] w-[960px] resize-none text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont focus:outline-none"
+            className="mt-2 md:mt-1 h-[88px] md:h-[70px] w-full md:w-[960px] resize-none text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont focus:outline-none"
             placeholder={
               parentId === undefined
                 ? '댓글을 남겨보세요.'

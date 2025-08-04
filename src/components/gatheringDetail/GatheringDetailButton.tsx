@@ -38,13 +38,11 @@ export default function GatheringDetailButton({
   return (
     <div>
       {userInfo && userInfo.nickname === leader ? (
-        <div className="absolute bottom-5 grid grid-cols-2 w-[431px] gap-2">
+        <div className="mt-5 md:absolute bottom-5 grid grid-cols-2 md:w-[431px] gap-2">
           <MainBlueButton onClick={openPatchGathering}>
-            <p className="text-2xl font-semibold text-white">모임 수정하기</p>
+            모임 수정하기
           </MainBlueButton>
-          <MainPurpleButton onClick={openModal}>
-            <p className="text-2xl font-semibold text-white">모임 삭제하기</p>
-          </MainPurpleButton>
+          <MainPurpleButton onClick={openModal}>모임 삭제하기</MainPurpleButton>
         </div>
       ) : (
         <GatheringMemberButton gatheringId={detail.gatheringId} />

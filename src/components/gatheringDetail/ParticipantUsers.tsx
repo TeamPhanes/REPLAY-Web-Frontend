@@ -22,18 +22,18 @@ export default function ParticipantUsers({
 
   if (!list.nickname) return null;
   return (
-    <div className="flex cursor-pointer items-center" onClick={openModal}>
+    <div className="flex cursor-pointer md:items-center" onClick={openModal}>
       <Image
         src={list.image}
         alt={list.nickname}
         width={80}
         height={80}
         quality={100}
-        className={`h-20 w-20 rounded-full border-2 border-mainBlue shadow-md ${list.image ? '' : 'bg-setfont'}`}
+        className={`w-10 h-10 md:h-20 md:w-20 rounded-full border-2 border-mainBlue shadow-md ${list.image ? '' : 'bg-setfont'}`}
       />
       <div className="ml-3 flex flex-col gap-2">
-        <div className="flex w-[130px] items-center gap-1">
-          <p className="text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont truncate">
+        <div className="flex md:w-[130px] items-center gap-1">
+          <p className="text-xl md:text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont truncate">
             {list.nickname}
           </p>
           <Image
@@ -63,7 +63,7 @@ export default function ParticipantUsers({
           </div>
         </div>
       </div>
-      <p className="line-clamp-3 h-20 w-[284px] text-base font-normal tracking-[-2.5%] text-basefont">
+      <p className="hidden md:block line-clamp-3 h-20 w-[284px] text-base font-normal tracking-[-2.5%] text-basefont">
         {list.comment}
       </p>
       <IdCardModal
