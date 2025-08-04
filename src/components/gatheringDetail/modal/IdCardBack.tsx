@@ -25,7 +25,7 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
 
   return (
     <div className="absolute z-10 backface-hidden rotate-y-180">
-      <p className="line-clamp-5 h-[140px] w-[576px] text-xl font-normal tracking-[-2.5%] text-white">
+      <p className="line-clamp-5 h-[140px] w-[320px] md:w-[576px] text-xl font-normal tracking-[-2.5%] text-white">
         &quot;{comment}&quot;
       </p>
       <div className="mt-10 flex flex-col gap-6">
@@ -51,7 +51,7 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
       <AchievementBadge
         nickname={nickname}
         achievement={representAchievement}
-        absoluteLayout="gap-10 right-2 bottom-[-385px]"
+        absoluteLayout="gap-3 md:gap-10 left-0 right-0 md:right-2 bottom-[-385px]"
         type="mypage"
       />
     </div>

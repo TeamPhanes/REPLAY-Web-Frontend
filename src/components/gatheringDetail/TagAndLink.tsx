@@ -20,7 +20,7 @@ export default function TagAndLink({ tag }: TagAndLinkProps) {
           </p>
         ))}
       </div>
-      <Link href="/room">
+      <Link href="/room" className="hidden md:block">
         <button
           type="button"
           className="flex items-center gap-[2px] rounded-full bg-homeFont px-3 py-1"

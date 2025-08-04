@@ -10,11 +10,11 @@ export default function ParticipantList({
   gatheringMember,
 }: ParticipantListProps) {
   return (
-    <div className="absolute right-0 top-[480px] flex h-[712px] flex-col justify-between">
+    <div className="md:absolute right-0 top-[480px] flex h-[712px] flex-col justify-between">
       {gatheringMember.map((user: GatheringMemberDTO['get'], index: number) => (
         <div
           key={index}
-          className={`relative flex h-[112px] w-[702px] items-center rounded-3xl p-4 ${user.nickname ? 'bg-card' : 'bg-spot'}`}
+          className={`relative flex h-[112px] md:w-[702px] items-center rounded-3xl p-4 ${user.nickname ? 'bg-card' : 'bg-spot'}`}
         >
           <ParticipantUsers
             list={user}

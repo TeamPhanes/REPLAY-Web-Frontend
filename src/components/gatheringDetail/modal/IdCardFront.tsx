@@ -21,9 +21,9 @@ export default function IdCardFront({ userData }: IdCardFrontProps) {
         width={406}
         height={494}
         quality={100}
-        className="mt-5 h-[494px] w-[406px]"
+        className="mt-5 h-[380px] w-[320px] md:h-[494px] md:w-[406px]"
       />
-      <h2 className="mt-6 text-[32px]/[42px] font-semibold tracking-[-2.5%] text-basefont">
+      <h2 className="mt-10 md:mt-6 text-2xl md:text-[32px]/[42px] font-semibold tracking-[-2.5%] text-basefont">
         {nickname}
       </h2>
       <p className="mt-2 text-base font-normal tracking-[-2.5%] text-grayFont">
@@ -38,7 +38,7 @@ export default function IdCardFront({ userData }: IdCardFrontProps) {
         width={368}
         height={136}
         quality={100}
-        className="mt-[54px] h-[136px] w-[368px]"
+        className="absolute bottom-[-340px] md:bottom-[-240px] h-[136px] w-[368px]"
       />
     </div>
   );

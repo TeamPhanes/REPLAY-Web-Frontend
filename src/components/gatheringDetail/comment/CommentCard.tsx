@@ -58,22 +58,22 @@ export default function CommentCard({
           alt={userNickname}
           width={60}
           height={60}
-          className="h-[60px] w-[60px] rounded-full border-2 border-mainBlue shadow-md"
+          className="w-8 h-8 md:h-[60px] md:w-[60px] rounded-full border-2 border-mainBlue shadow-md"
         />
         <div className="flex flex-col">
-          <p className="text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
+          <p className="text-xl md:text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
             {userNickname}
           </p>
-          <p className="text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont">
+          <p className="text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont">
             {content}
           </p>
-          <div className="mt-2 flex gap-4">
-            <p className="text-xl font-normal tracking-[-2.5%] text-grayFont">
+          <div className="mt-2 flex gap-2 md:gap-4">
+            <p className="text-lg md:text-xl font-normal tracking-[-2.5%] text-grayFont">
               {periodYearMonthDayHourTime(createdAt)}
             </p>
             <button
               type="button"
-              className="text-xl font-normal tracking-[-2.5%] text-grayFont"
+              className="text-lg md:text-xl font-normal tracking-[-2.5%] text-grayFont"
               onClick={toggleReComment}
             >
               답글쓰기
@@ -82,14 +82,14 @@ export default function CommentCard({
               <>
                 <button
                   type="button"
-                  className="text-xl font-normal tracking-[-2.5%] text-grayFont"
+                  className="text-lg md:text-xl font-normal tracking-[-2.5%] text-grayFont"
                   onClick={togglePatchComment}
                 >
                   수정
                 </button>
                 <button
                   type="button"
-                  className="text-xl font-normal tracking-[-2.5%] text-grayFont"
+                  className="text-lg md:text-xl font-normal tracking-[-2.5%] text-grayFont"
                   onClick={toggleDeleteComment}
                 >
                   삭제
@@ -122,7 +122,7 @@ export default function CommentCard({
         onClose={toggleDeleteComment}
         className="bg-white rounded-[30px] px-10 py-5"
       >
-        <p className="font-semibold text-2xl text-basefont">
+        <p className="font-semibold text-xl md:text-2xl text-basefont">
           댓글을 삭제하시겠습니까?
         </p>
         <div className="flex justify-between gap-2 mt-5">

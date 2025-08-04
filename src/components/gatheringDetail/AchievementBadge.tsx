@@ -21,37 +21,23 @@ export default function AchievementBadge({
       {Array.from({ length: 3 }, (_, index) => (
         <div
           key={index}
-          style={
-            type === 'mypage'
-              ? { width: '160px', height: '160px' }
-              : { width: '44px', height: '44px' }
-          }
-          className="flex items-center justify-center rounded-full bg-card shadow-md"
+          className={`${type === 'mypage' ? 'w-[100px] h-[100px] md:w-40 md:h-40' : 'w-11 h-11'} flex items-center justify-center rounded-full bg-card shadow-md`}
         >
           {achievement[index] ? (
             <Image
               src={achievement[index]}
               alt="업적"
-              width={type === 'mypage' ? 160 : 44}
-              height={type === 'mypage' ? 160 : 44}
-              style={
-                type === 'mypage'
-                  ? { width: '160px', height: '160px' }
-                  : { width: '44px', height: '44px' }
-              }
-              className="rounded-full"
+              width={160}
+              height={160}
+              className={`${type === 'mypage' ? 'w-40 h-40' : 'w-11 h-11'} rounded-full`}
             />
           ) : (
             <Image
               src={AchievementDefault}
               alt="업적 기본 이미지"
-              width={type === 'mypage' ? 48 : 24}
-              height={type === 'mypage' ? 48 : 24}
-              style={
-                type === 'mypage'
-                  ? { width: '48px', height: '48px' }
-                  : { width: '24px', height: '24px' }
-              }
+              width={48}
+              height={48}
+              className={`${type === 'mypage' ? 'w-12 h-12' : 'w-6 h-6'}`}
             />
           )}
         </div>

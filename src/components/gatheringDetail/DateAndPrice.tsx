@@ -20,7 +20,7 @@ export default function DateAndPrice({
 }: DateAndPriceProps) {
   return (
     <>
-      <div className="flex items-center gap-14">
+      <div className="flex items-center gap-4 md:gap-14">
         <div className="flex gap-1">
           <Image
             src={CalendarTime}
@@ -37,7 +37,7 @@ export default function DateAndPrice({
           {price.toLocaleString()}원
         </p>
       </div>
-      <div className="flex gap-1 items-center">
+      <div className="flex gap-1 items-center min-w-[320px]">
         <Image
           src={CalendarIcon}
           alt="모집기간 아이콘"
