@@ -15,7 +15,7 @@ export default function CardContainer() {
   if (isGuardLoading) return <Loading isLoading={isLoading} />;
 
   return (
-    <div className="relative mt-5 h-[983px] w-full rounded-[30px] bg-cardActive p-10">
+    <div className="relative mt-5 h-[1240px] md:h-[983px] w-full rounded-[30px] bg-cardActive p-10">
       <MyPageModifyButton />
       <CardContentContainer user={userInfo} />
       <CardBottomDate
@@ -25,7 +25,7 @@ export default function CardContainer() {
       <AchievementBadge
         nickname={userInfo.nickname}
         achievement={userInfo.representAchievement}
-        absoluteLayout="mt-9 bottom-2 right-10 gap-10"
+        absoluteLayout="md:mt-9 bottom-2 left-1/2 transform -translate-x-1/2 md:transform-none md:left-auto md:right-10 gap-2 md:gap-10"
         type="mypage"
       />
     </div>
