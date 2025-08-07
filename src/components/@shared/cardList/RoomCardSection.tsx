@@ -92,15 +92,20 @@ export default function RoomCardSection({
           />
         </button>
       </div>
-      <Image
-        src={room.listImage}
-        alt={room.themeName}
-        width={212}
-        height={212}
-        quality={100}
-        unoptimized
-        className="rounded-3xl w-[280px] h-[280px] md:w-[212px] md:h-[212px]"
-      />
+      <Link
+        href={`/theme/${room.themeId}`}
+        onClick={() => setSelectedTheme(room)}
+      >
+        <Image
+          src={room.listImage}
+          alt={room.themeName}
+          width={212}
+          height={212}
+          quality={100}
+          unoptimized
+          className="rounded-3xl w-[280px] h-[280px] md:w-[212px] md:h-[212px]"
+        />
+      </Link>
       <Link
         href={`/theme/${room.themeId}`}
         onClick={() => setSelectedTheme(room)}
