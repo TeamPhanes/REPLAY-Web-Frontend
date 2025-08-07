@@ -46,10 +46,10 @@ export default function PatchMyPageModal({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      className="bg-white rounded-[30px] p-5 w-[648px]"
+      className="bg-white rounded-[30px] p-5 md:w-[648px]"
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex">
+        <div className="flex md:flex-row flex-col">
           <div className="relative">
             <Image
               src={previewUrl || (userInfo?.image ?? DefaultUser)}
@@ -63,7 +63,7 @@ export default function PatchMyPageModal({
             <PatchMyPageImage onImageChange={handleImageChange} />
           </div>
 
-          <div className="flex flex-col ml-5">
+          <div className="flex flex-col mt-5 md:mt-auto md:ml-5">
             <p className="font-normal text-base tracking-[-2.5%] text-basefont">
               닉네임 변경
             </p>
@@ -77,7 +77,7 @@ export default function PatchMyPageModal({
               })}
               type="text"
               placeholder="닉네임을 입력해 주세요. 최대 10글자 입니다."
-              className="w-[368px] h-10 px-2 py-[10px] border-b-[1px] border-setfont font-normal text-base tracking-[-2.5%] text-basefont outline-none"
+              className="md:w-[368px] h-10 px-2 py-[10px] border-b-[1px] border-setfont font-normal text-base tracking-[-2.5%] text-basefont outline-none"
             />
             {errors.nickname && (
               <p className="text-red-500 text-sm mt-1">

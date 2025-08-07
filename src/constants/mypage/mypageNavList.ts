@@ -4,27 +4,27 @@ export interface ListType {
 }
 
 export const mypageNavList: { [key: string]: ListType } = {
-  mypage: {
+  '/mypage': {
     label: '내 프로필',
     value: '/mypage',
   },
-  myschedule: {
+  '/mypage/schedule': {
     label: '나의 일정',
     value: '/mypage/schedule',
   },
-  myfavorite: {
+  '/mypage/favorite': {
     label: '찜한 목록',
     value: '/mypage/favorite',
   },
-  myreview: {
+  '/mypage/review': {
     label: '참여한 목록',
     value: '/mypage/review',
   },
-  mycomment: {
+  '/mypage/comment': {
     label: '내가 쓴 댓글',
     value: '/mypage/comment',
   },
-  allachievements: {
+  '/mypage/achievements': {
     label: '나의 업적',
     value: '/mypage/achievements',
   },
