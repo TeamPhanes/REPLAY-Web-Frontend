@@ -44,7 +44,7 @@ export default function PostReviewModal({
       className="bg-white p-5 w-[726px] rounded-[30px]"
     >
       <div className="pb-5 flex justify-center items-center relative">
-        <p className="font-semibold text-2xl/[34px] tracking-[-2.5%] text-basefont">
+        <p className="font-semibold text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
           리뷰 작성
         </p>
         <button
@@ -57,7 +57,7 @@ export default function PostReviewModal({
             alt="다음 리뷰"
             width={36}
             height={36}
-            className="w-9 h-9"
+            className="w-7 h-7 md:w-9 md:h-9"
           />
         </button>
       </div>

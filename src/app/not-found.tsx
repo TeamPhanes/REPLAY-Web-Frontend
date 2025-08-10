@@ -11,7 +11,7 @@ export default function NotFound() {
         height={399}
         quality={100}
         priority
-        className="w-[643px] h-[399px]"
+        className="pl-12 md:w-[643px] md:h-[399px]"
       />
     </div>
   );

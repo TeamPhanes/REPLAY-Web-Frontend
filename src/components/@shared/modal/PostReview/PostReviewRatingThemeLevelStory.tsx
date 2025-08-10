@@ -41,36 +41,36 @@ export default function PostReviewRatingThemeLevelStory({
         />
       </div>
       <div className="flex flex-col justify-center items-center mt-10 gap-2">
-        <p className="font-normal text-2xl/[34px] tracking-[-2.5%] text-basefont">
+        <p className="font-normal text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
           방탈출이 테마와 잘 맞았나요?
         </p>
         <OrderChanger
           options={themeReviewList}
           selectedType={themeReview}
           setSelectedType={setThemeReview}
-          gap="gap-10"
+          gap="gap-2 md:gap-10"
         />
       </div>
       <div className="flex flex-col justify-center items-center mt-10 gap-2">
-        <p className="font-normal text-2xl/[34px] tracking-[-2.5%] text-basefont">
+        <p className="font-normal text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
           방탈출의 난이도는 적절했나요?
         </p>
         <OrderChanger
           options={levelReviewList}
           selectedType={levelReview}
           setSelectedType={setLevelReview}
-          gap="gap-10"
+          gap="gap-2 md:gap-10"
         />
       </div>
       <div className="flex flex-col justify-center items-center mt-10 gap-2">
-        <p className="font-normal text-2xl/[34px] tracking-[-2.5%] text-basefont">
+        <p className="font-normal text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
           방탈출의 스토리는 잘 어울렸나요?
         </p>
         <OrderChanger
           options={storyReviewList}
           selectedType={storyReview}
           setSelectedType={setStoryReview}
-          gap="gap-10"
+          gap="gap-2 md:gap-10"
         />
       </div>
     </>
