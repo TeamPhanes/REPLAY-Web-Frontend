@@ -14,7 +14,7 @@ export default function CardContentContainer({
     <div className="flex justify-between md:flex-row flex-col">
       <div className="absolute left-0 top-[180px] md:top-[248px] h-[240px] md:h-[558px] w-full bg-white" />
       <div className="absolute md:hidden left-0 top-[640px] md:top-[248px] h-[380px] md:h-[558px] w-full bg-white" />
-      <div className="absolute left-0 top-[1000px] h-3 w-full bg-cardActive" />
+      <div className="absolute left-0 top-[1000px] md:top-[785px] h-3 w-full bg-cardActive" />
       <div className="z-10 md:ml-20 flex flex-col items-center">
         <p className="text-2xl md:text-[32px]/[42px] font-semibold tracking-[0.2em]">
           PLAY CARD
