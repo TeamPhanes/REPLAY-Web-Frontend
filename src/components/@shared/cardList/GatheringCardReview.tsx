@@ -32,7 +32,7 @@ export default function GatheringCardReview({
   return (
     <div
       key={gathering.gatheringId}
-      className="h-[352px] relative flex  w-[630px] items-start rounded-3xl bg-card p-5"
+      className="md:h-[352px] relative flex md:w-[630px] items-start rounded-3xl bg-card p-5 flex-col md:flex-row"
     >
       <Image
         src={gathering.listImage}
@@ -40,7 +40,7 @@ export default function GatheringCardReview({
         width={212}
         height={212}
         quality={100}
-        className="rounded-3xl w-[212px] h-[212px]"
+        className="rounded-3xl w-[280px] h-[280px] md:w-[212px] md:h-[212px]"
       />
       <div className="absolute right-5 flex flex-col">
         <button
@@ -66,7 +66,7 @@ export default function GatheringCardReview({
           })
         }
       >
-        <div className="ml-5 flex h-[212px] w-[322px] flex-col justify-between">
+        <div className="md:ml-5 mt-5 md:mt-auto mb-24 md:mb-auto flex h-[212px] w-[322px] flex-col justify-between">
           <div className="flex flex-col gap-3">
             <TagAndPlaytime
               tag={gathering.genres}
@@ -103,7 +103,7 @@ export default function GatheringCardReview({
               alt={user.name}
               width={60}
               height={60}
-              className="h-[60px] w-[60px] rounded-full border-2 border-mainBlue shadow-md"
+              className="w-11 h-11 md:h-[60px] md:w-[60px] rounded-full border-2 border-mainBlue shadow-md"
             />
           ))}
         </div>

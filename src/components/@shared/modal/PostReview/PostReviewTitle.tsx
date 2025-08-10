@@ -22,10 +22,10 @@ export default function PostReviewTitle({
         className="w-[99px] h-[99px] rounded-2xl"
       />
       <div className="flex flex-col">
-        <p className="font-semibold text-xl tracking-[-2.5%] text-basefont">
+        <p className="font-semibold text-base md:text-xl tracking-[-2.5%] text-basefont">
           {themeName}
         </p>
-        <p className="font-normal text-base tracking-[-2.5%] text-basefont">
+        <p className="font-normal text-sm md:text-base tracking-[-2.5%] text-basefont">
           {cafe} {spot}
         </p>
       </div>

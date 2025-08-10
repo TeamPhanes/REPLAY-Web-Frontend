@@ -10,8 +10,8 @@ export default function PostReviewHint({ hint, setHint }: PostReviewHintProps) {
   const hintList = [0, 1, 2, 3, 4, 5];
   const { isOpen, toggleOpen } = useOpen();
   return (
-    <div className="flex items-center mt-2">
-      <p className="font-normal text-2xl/[34px] tracking-[-2.5%] text-basefont w-44">
+    <div className="flex items-center mt-2 gap-5 md:gap-0">
+      <p className="font-normal text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont md:w-44">
         힌트 사용 횟수
       </p>
       <div className="rounded-full bg-card py-2 px-4 flex items-center justify-center gap-1">

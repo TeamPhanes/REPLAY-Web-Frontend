@@ -42,49 +42,58 @@ export default function ReviewRoomCardSection({
   );
   return (
     <>
-      <div className="absolute left-[630px] flex flex-col gap-3">
-        <div className="flex items-center gap-2">
-          <p className="text-base font-normal tracking-[-2.5%] text-basefont">
-            나의 리뷰
-          </p>
-          <Rating
-            rating={room.myRating ?? 0}
-            width={120}
-            height={24}
-            type="Review"
-          />
-          <p className="text-base font-normal tracking-[-2.5%] text-basefont">
-            {room.myRating?.toFixed(1) ?? '0.0'}
-          </p>
-          <p className="text-sm font-normal tracking-[-2.5%] text-tag">
-            사용힌트 : {room.hint ?? 0}
-          </p>
-          <p className="text-sm font-normal tracking-[-2.5%] text-tag">
-            플레이 인원 : {room.numberOfPlayer ?? 0}
-          </p>
-          <p className="text-sm font-normal tracking-[-2.5%] text-tag">
-            플레이 결과 : {room.success === true ? '성공' : '실패'}
-          </p>
-          <div className="flex items-center gap-1">
-            <p className="text-xs font-normal tracking-[-2.5%] text-basefont">
-              도움이 되요
+      <div className="md:absolute md:left-[630px] mt-5 md:mt-auto flex flex-col gap-3">
+        <div className="flex md:items-center gap-2 flex-col md:flex-row">
+          <div className="flex items-center gap-2">
+            <p className="text-base font-normal tracking-[-2.5%] text-basefont">
+              나의 리뷰
             </p>
-            <div className="flex gap-1 rounded-full bg-white px-2 py-[2px] items-center">
-              <Image src={LikeButtonLine} alt="좋아요" width={24} height={24} />
-              <p className="text-spot text-base font-normal tracking-[-2.5%]">
-                {room.totalLikes ?? 0}
+            <Rating
+              rating={room.myRating ?? 0}
+              width={120}
+              height={24}
+              type="Review"
+            />
+            <p className="text-base font-normal tracking-[-2.5%] text-basefont">
+              {room.myRating?.toFixed(1) ?? '0.0'}
+            </p>
+          </div>
+          <div className="flex items-center gap-1 md:gap-2">
+            <p className="text-sm font-normal tracking-[-2.5%] text-tag">
+              사용힌트 : {room.hint ?? 0}
+            </p>
+            <p className="text-sm font-normal tracking-[-2.5%] text-tag">
+              플레이 인원 : {room.numberOfPlayer ?? 0}
+            </p>
+            <p className="text-sm font-normal tracking-[-2.5%] text-tag">
+              플레이 결과 : {room.success === true ? '성공' : '실패'}
+            </p>
+            <div className="flex items-center gap-1">
+              <p className="hidden md:block text-xs font-normal tracking-[-2.5%] text-basefont">
+                도움이 되요
               </p>
+              <div className="flex gap-1 rounded-full bg-white px-2 py-[2px] items-center">
+                <Image
+                  src={LikeButtonLine}
+                  alt="좋아요"
+                  width={24}
+                  height={24}
+                />
+                <p className="text-spot text-base font-normal tracking-[-2.5%]">
+                  {room.totalLikes ?? 0}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex gap-2">
-          <div className="w-[503px] h-[118px] rounded-xl border-[1px] border-spot py-1 px-2">
+        <div className="flex gap-2 flex-col md:flex-row">
+          <div className="md:w-[503px] h-[118px] rounded-xl border-[1px] border-spot py-1 px-2">
             <p className="font-medium text-sm/[18px] text-spot line-clamp-6">
               {room.reviewComment ?? '최소 10자 이상 리뷰를 적어주세요.'}
             </p>
           </div>
           {room.reviewImage === null ? (
-            <div className="w-[118px] h-[118px] bg-ratingCard rounded-xl flex justify-center items-center">
+            <div className="w-[118px] h-[118px] bg-ratingCard rounded-xl flex justify-center items-center mb-16 md:mb-auto">
               <Image
                 src={ReviewDefaultImage}
                 alt="리뷰 이미지"
@@ -102,7 +111,7 @@ export default function ReviewRoomCardSection({
             />
           )}
         </div>
-        <div className="flex items-center mt-2 gap-3">
+        <div className="flex absolute right-20 bottom-24 md:static md:items-center mt-2 gap-3 flex-col md:flex-row">
           <div className="flex items-center gap-2">
             <p className="font-normal text-base tracking-[-2.5%] text-basefont">
               난이도

@@ -50,7 +50,7 @@ export default function PostReviewImageFile({
         <div className="flex items-center border-[1px] border-spot rounded-xl border-dashed relative h-[90px] justify-center">
           <label
             htmlFor="image"
-            className="cursor-pointer flex items-center gap-2 justify-center"
+            className="cursor-pointer flex items-center gap-2 justify-center flex-col md:flex-row"
           >
             <Image
               src={ImageIcon}
@@ -59,7 +59,7 @@ export default function PostReviewImageFile({
               height={24}
               className="w-6 h-6"
             />
-            <p className="font-semibold text-xl tracking-[-2.5%] text-basefont">
+            <p className="font-semibold text-lg md:text-xl tracking-[-2.5%] text-basefont">
               사진 수정하기
             </p>
             <input
@@ -74,7 +74,7 @@ export default function PostReviewImageFile({
         <div className="border-[1px] border-spot rounded-xl border-dashed relative h-[90px] flex items-center justify-center">
           <button
             type="button"
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 flex-col md:flex-row"
             onClick={handleImageReset}
           >
             <Image
@@ -84,7 +84,7 @@ export default function PostReviewImageFile({
               height={24}
               className="w-6 h-6"
             />
-            <p className="font-semibold text-xl tracking-[-2.5%] text-basefont">
+            <p className="font-semibold text-lg md:text-xl tracking-[-2.5%] text-basefont">
               사진 지우기
             </p>
           </button>
