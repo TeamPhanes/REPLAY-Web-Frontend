@@ -4,11 +4,11 @@ import ComingSoonShadow from '@/public/images/comingSoon/comingSoon_shadow.png';
 
 export default function ComingSoon() {
   return (
-    <div className="flex justify-between items-center flex-col h-[796px]">
-      <p className="font-normal text-[64px] tracking-[0.31em] mt-20 mb-20 max-w-[665px] animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white">
+    <div className="flex justify-between items-center flex-col h-[667px] md:h-[796px]">
+      <p className="font-normal text-2xl md:text-[64px] tracking-[0.31em] md:mt-20 md:mb-20 max-w-[250px] md:max-w-[665px] animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white">
         COMING SOON
       </p>
-      <div className="flex flex-col items-center absolute -bottom-32">
+      <div className="flex flex-col items-center absolute -bottom-9 md:-bottom-32">
         <Image
           src={ComingSoonDoor}
           alt="우리"
