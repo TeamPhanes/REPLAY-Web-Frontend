@@ -26,7 +26,7 @@ export default function ThemeLikedSection() {
       <RoomCardContainer
         data={userLikeTheme.data}
         favoriteCheck
-        className="grid-cols-2"
+        className="grid-cols-1 md:grid-cols-2"
       />
       <Pagination
         currentPage={page}

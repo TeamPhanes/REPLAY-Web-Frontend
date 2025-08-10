@@ -36,14 +36,14 @@ export default function CommentCardSection({ sort }: CommentCardSectionProps) {
       {Object.entries(MyComment.data as MyCommentDTO['get']).map(
         ([date, comments]) => (
           <div key={date} className="mt-8 flex flex-col gap-2">
-            <h2 className="text-2xl/[34px] font-normal tracking-[-2.5%] text-white">
+            <h2 className="text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] text-white">
               {periodFullYearMonthDay(date)}
             </h2>
-            <div className="grid grid-cols-3 gap-x-2 gap-y-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-x-2 gap-y-5">
               {comments.map((comment, index) => (
                 <div
                   key={index}
-                  className="flex h-[180px] w-[421px] flex-col gap-1 rounded-3xl bg-card p-5"
+                  className="flex md:h-[180px] md:w-[421px] flex-col gap-1 rounded-3xl bg-card p-5"
                 >
                   <div className="flex items-center justify-between">
                     <p className="text-base font-normal tracking-[-2.5%] text-basefont">
@@ -53,7 +53,7 @@ export default function CommentCardSection({ sort }: CommentCardSectionProps) {
                       {HourTime(comment.createdAt)}
                     </p>
                   </div>
-                  <p className="text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont">
+                  <p className="text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont">
                     {comment.content}
                   </p>
                 </div>

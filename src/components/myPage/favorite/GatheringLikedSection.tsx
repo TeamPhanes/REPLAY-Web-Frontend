@@ -17,7 +17,9 @@ export default function GatheringLikedSection() {
   const { totalPages } = usePagination(page, userLikeGathering?.totalCount);
 
   if (isGuardLoading || isLoading) {
-    return <CardSkeleton className="grid grid-cols-2 gap-4 mt-6" />;
+    return (
+      <CardSkeleton className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6" />
+    );
   }
 
   if (!userLikeGathering || userLikeGathering.data.length === 0) {
