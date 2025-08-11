@@ -6,10 +6,9 @@ interface ReviewContentProps {
 }
 
 export default function ReviewContent({ content, image }: ReviewContentProps) {
-  console.log(image);
   return (
     <div className="mt-3 flex items-center gap-3 justify-between">
-      <p className="line-clamp-6 h-[144px] text-base font-normal tracking-[-2.5%] text-basefont">
+      <p className="line-clamp-6 md:h-[144px] text-base font-normal tracking-[-2.5%] text-basefont">
         {content}
       </p>
       {image !== null && (

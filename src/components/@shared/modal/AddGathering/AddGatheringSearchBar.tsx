@@ -99,17 +99,17 @@ export default function AddGatheringSearchBar({
             <button
               type="button"
               key={room.themeId}
-              className="text-xl flex gap-1"
+              className="text-xl flex gap-1 flex-col hover:bg-darkSearch"
               onClick={() => {
                 closeModal();
                 searchChange(room.themeName);
                 themeIdChange(room.themeId);
               }}
             >
-              <p className="hidden md:block">
+              <p className="text-base">
                 [{room.cafe} {room.spot}]
               </p>
-              <p>{room.themeName}</p>
+              <p className="text-xl">{room.themeName}</p>
             </button>
           ))}
         {searchTheme && searchTheme.length === 0 && (
