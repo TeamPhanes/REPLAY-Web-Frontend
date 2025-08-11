@@ -15,13 +15,17 @@ import { usePostGathering } from '@/hooks/reactQuery/usePostGathering';
 interface AddGatheringModalProps {
   isOpen: boolean;
   onClose: () => void;
+  themeNameProps?: string;
+  themeIdProps?: number;
 }
 
 export default function AddGatheringModal({
   isOpen,
   onClose,
+  themeNameProps,
+  themeIdProps,
 }: AddGatheringModalProps) {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(themeNameProps ?? '');
   const { mutate } = usePostGathering();
   const {
     register,
@@ -42,7 +46,7 @@ export default function AddGatheringModal({
         <AddGatheringSearchBar
           search={search}
           searchChange={setSearch}
-          themeId={watch('themeId')}
+          themeId={themeIdProps ?? watch('themeId')}
           themeIdChange={(themeId) =>
             setValue('themeId', themeId, { shouldValidate: true })
           }

@@ -131,7 +131,15 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
             maxPlayer={detail.maxPlayer}
           />
         </div>
-        <RoomDetailStroy story={detail.story} />
+        <RoomDetailStroy
+          story={detail.story}
+          themeNameProps={
+            themeDetail.themeId !== selectedTheme.themeId
+              ? 0
+              : selectedTheme.themeName
+          }
+          themeIdProps={themeDetail.themeId}
+        />
       </div>
     </div>
   );

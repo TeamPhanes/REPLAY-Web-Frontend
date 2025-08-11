@@ -4,10 +4,16 @@ import StorySection from '@/components/roomDetail/StorySection';
 import { useOpen } from '@/hooks/useOpen';
 
 interface RoomDetailStoryProps {
+  themeNameProps: string;
+  themeIdProps: number;
   story: string;
 }
 
-export default function RoomDetailStroy({ story }: RoomDetailStoryProps) {
+export default function RoomDetailStroy({
+  story,
+  themeNameProps,
+  themeIdProps,
+}: RoomDetailStoryProps) {
   const { isOpen, openModal, closeModal } = useOpen();
   return (
     <>
@@ -19,7 +25,12 @@ export default function RoomDetailStroy({ story }: RoomDetailStoryProps) {
         >
           모임 만들기
         </MainBlueButton>
-        <AddGatheringModal isOpen={isOpen} onClose={closeModal} />
+        <AddGatheringModal
+          isOpen={isOpen}
+          onClose={closeModal}
+          themeNameProps={themeNameProps}
+          themeIdProps={themeIdProps}
+        />
       </div>
     </>
   );
