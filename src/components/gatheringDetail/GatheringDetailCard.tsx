@@ -50,14 +50,14 @@ export default function GatheringDetailCard({
 
   return (
     <>
-      <div className="flex flex-col md:flex-row md:h-[460px] justify-between">
+      <div className="flex flex-col md:flex-row md:h-[460px] justify-between gap-2">
         <Image
           src={detail.detailImage}
           alt={list.name}
           width={797}
           height={460}
           quality={100}
-          className="w-[360px] h-[360px] md:w-[797px] md:h-[460px] rounded-[30px]"
+          className="w-full h-[360px] md:w-[797px] md:h-[460px] rounded-[30px]"
         />
         <div className="relative md:h-[460px] md:w-[471px] rounded-[30px] bg-card p-5">
           <button

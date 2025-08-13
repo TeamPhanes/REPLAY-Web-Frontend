@@ -56,7 +56,7 @@ export default function RoomCardSection({
   return (
     <>
       <div
-        className={`${reviewCheck ? 'left-[580px]' : 'right-5'} absolute flex flex-col`}
+        className={`${reviewCheck ? 'top-10 right-10 md:top-auto md:right-auto md:left-[580px]' : 'top-10 right-10 md:top-auto md:right-5'} absolute bg-card rounded-[30px] flex md:flex-col p-1 md:p-0`}
       >
         <button
           type="button"
@@ -95,6 +95,7 @@ export default function RoomCardSection({
       <Link
         href={`/theme/${room.themeId}`}
         onClick={() => setSelectedTheme(room)}
+        className="w-full md:w-[212px]"
       >
         <Image
           src={room.listImage}
@@ -103,7 +104,7 @@ export default function RoomCardSection({
           height={212}
           quality={100}
           unoptimized
-          className="rounded-3xl w-[280px] h-[280px] md:w-[212px] md:h-[212px]"
+          className="rounded-3xl w-full h-[360px] md:w-[212px] md:h-[212px]"
         />
       </Link>
       <Link

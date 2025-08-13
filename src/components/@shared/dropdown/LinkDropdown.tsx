@@ -46,7 +46,7 @@ export default function LinkDropdown({
             <DropdownMenuItem asChild className="outline-none">
               <Link
                 href={data.value}
-                className={`${flexType === 'flex-col' ? 'w-[80%] my-2 px-5' : 'h-[80%] mx-2 px-2'} whitespace-nowrap flex items-center justify-center rounded-full text-2xl/[34px] font-normal tracking-[-2.5%] transition-colors duration-500 ease-in-out hover:bg-mainBlue`}
+                className={`${flexType === 'flex-col' ? 'w-[90%] my-2 px-5' : 'h-[90%] mx-2 px-2'} whitespace-nowrap flex items-center justify-center rounded-full text-2xl/[34px] font-normal tracking-[-2.5%] transition-colors duration-500 ease-in-out hover:bg-mainBlue`}
               >
                 {data.label}
               </Link>

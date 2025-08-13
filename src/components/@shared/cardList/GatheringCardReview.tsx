@@ -34,15 +34,26 @@ export default function GatheringCardReview({
       key={gathering.gatheringId}
       className="md:h-[352px] relative flex md:w-[630px] items-start rounded-3xl bg-card p-5 flex-col md:flex-row"
     >
-      <Image
-        src={gathering.listImage}
-        alt={gathering.name}
-        width={212}
-        height={212}
-        quality={100}
-        className="rounded-3xl w-[280px] h-[280px] md:w-[212px] md:h-[212px]"
-      />
-      <div className="absolute right-5 flex flex-col">
+      <Link
+        href={`/gathering/${gathering.gatheringId}`}
+        onClick={() =>
+          setSelectedGathering({
+            ...gathering,
+            participantCount: gathering.participants.length,
+          })
+        }
+        className="w-full md:w-auto"
+      >
+        <Image
+          src={gathering.listImage}
+          alt={gathering.name}
+          width={212}
+          height={212}
+          quality={100}
+          className="rounded-3xl w-full h-[360px] md:w-[212px] md:h-[212px]"
+        />
+      </Link>
+      <div className="absolute top-10 md:top-auto right-10 md:right-5 flex flex-col bg-card rounded-[30px] p-1 md:p-0">
         <button
           type="button"
           onClick={() =>
@@ -65,8 +76,9 @@ export default function GatheringCardReview({
             participantCount: gathering.participants.length,
           })
         }
+        className="w-full md:w-auto"
       >
-        <div className="md:ml-5 mt-5 md:mt-auto mb-24 md:mb-auto flex h-[212px] w-[322px] flex-col justify-between">
+        <div className="md:ml-5 mt-5 md:mt-auto mb-24 md:mb-auto flex h-[212px] md:w-[322px] flex-col justify-between">
           <div className="flex flex-col gap-3">
             <TagAndPlaytime
               tag={gathering.genres}
