@@ -42,7 +42,7 @@ export default function ReviewRoomCardSection({
   );
   return (
     <>
-      <div className="md:absolute md:left-[630px] mt-5 md:mt-auto flex flex-col gap-3">
+      <div className="md:absolute md:left-[630px] mt-5 md:mt-auto flex flex-col gap-3 w-full md:w-auto">
         <div className="flex md:items-center gap-2 flex-col md:flex-row">
           <div className="flex items-center gap-2">
             <p className="text-base font-normal tracking-[-2.5%] text-basefont">
@@ -58,7 +58,7 @@ export default function ReviewRoomCardSection({
               {room.myRating?.toFixed(1) ?? '0.0'}
             </p>
           </div>
-          <div className="flex items-center gap-1 md:gap-2">
+          <div className="flex items-center gap-1 md:gap-2 justify-between">
             <p className="text-sm font-normal tracking-[-2.5%] text-tag">
               사용힌트 : {room.hint ?? 0}
             </p>

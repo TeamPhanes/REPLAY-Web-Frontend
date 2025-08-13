@@ -47,6 +47,7 @@ export default function GatheringCard({
       <Link
         href={`/gathering/${gathering.gatheringId}`}
         onClick={() => setSelectedGathering(gathering)}
+        className="w-full md:w-[212px]"
       >
         <Image
           src={gathering.listImage}
@@ -54,10 +55,10 @@ export default function GatheringCard({
           width={212}
           height={212}
           quality={100}
-          className="rounded-3xl w-[280px] h-[280px] md:w-[212px] md:h-[212px]"
+          className="rounded-3xl w-full h-[360px] md:w-[212px] md:h-[212px]"
         />
       </Link>
-      <div className="absolute right-5 flex flex-col">
+      <div className="absolute top-10 md:top-auto right-10 md:right-5 flex flex-col bg-card rounded-[30px] p-1 md:p-0">
         <button
           type="button"
           className={`transition-transform duration-300 active:scale-90 ${

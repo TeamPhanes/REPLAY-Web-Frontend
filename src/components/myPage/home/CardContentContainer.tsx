@@ -41,7 +41,7 @@ export default function CardContentContainer({
           </p>
         ) : null}
       </div>
-      <div className="z-10 md:ml-9 absolute md:relative top-[432px] md:top-auto left-0 right-0 px-10 w-full">
+      <div className="z-10 md:ml-9 absolute md:relative top-[432px] md:top-auto left-0 right-0 px-10">
         <p className="line-clamp-6 md:line-clamp-5 h-[170px] md:h-[186px] md:w-[576px] text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] text-white">
           &quot;{user.comment}&quot;
         </p>
