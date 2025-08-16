@@ -19,7 +19,7 @@ export default function SearchResults() {
   const keyword = searchParams.get('keyword') || '';
   const { accessToken } = useAuthStore();
 
-  const { largeDistrict, middleDistrict } = useQueryStringStore();
+  const { largeDistrict, middleDistrict, genre } = useQueryStringStore();
 
   const { theme } = useGetTheme(
     accessToken,
@@ -28,7 +28,8 @@ export default function SearchResults() {
     10,
     'likes',
     largeDistrict,
-    middleDistrict
+    middleDistrict,
+    genre
   );
   const { gathering } = useGetGathering(
     accessToken,
@@ -37,7 +38,8 @@ export default function SearchResults() {
     10,
     'dateTime',
     largeDistrict,
-    middleDistrict
+    middleDistrict,
+    genre
   );
   return (
     <>

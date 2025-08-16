@@ -31,13 +31,13 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          rel="preload"
+          rel="prefetch"
           href="/images/loading/loading.gif"
           as="image"
           type="image/gif"
         />
         <link
-          rel="preload"
+          rel="prefetch"
           href="/images/loading/finish_loading.gif"
           as="image"
           type="image/gif"

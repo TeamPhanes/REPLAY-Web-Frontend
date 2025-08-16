@@ -30,7 +30,7 @@ export default function GatheringPage() {
     마감순: 'registrationEnd',
     참여순: 'participantCount',
   };
-  const { largeDistrict, middleDistrict } = useQueryStringStore();
+  const { largeDistrict, middleDistrict, genre } = useQueryStringStore();
 
   const { gathering } = useGetGathering(
     accessToken,
@@ -39,7 +39,8 @@ export default function GatheringPage() {
     10,
     sortLabels[sort],
     largeDistrict,
-    middleDistrict
+    middleDistrict,
+    genre
   );
   const totalItems = gathering ? gathering.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
