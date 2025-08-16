@@ -11,12 +11,23 @@ export const useGetTheme = (
   limit: number,
   sort: string,
   state: string,
-  city: string
+  city: string,
+  genre: string
 ) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['theme', accessToken, keyword, page, limit, sort, state, city],
+    queryKey: [
+      'theme',
+      accessToken,
+      keyword,
+      page,
+      limit,
+      sort,
+      state,
+      city,
+      genre,
+    ],
     queryFn: () =>
-      GetTheme({ accessToken, keyword, page, limit, sort, state, city }),
+      GetTheme({ accessToken, keyword, page, limit, sort, state, city, genre }),
     retry: false,
     staleTime: 1000 * 60 * 5,
     placeholderData: keepPreviousData,

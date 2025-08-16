@@ -12,6 +12,7 @@ interface GetGatheringProps {
   sort: string;
   state: string;
   city: string;
+  genre: string;
 }
 export const GetGathering = async ({
   accessToken,
@@ -21,10 +22,11 @@ export const GetGathering = async ({
   sort,
   state,
   city,
+  genre,
 }: GetGatheringProps) => {
   try {
     const res = await (accessToken === null ? axios : axiosInstance).get(
-      `${API_PATH.gathering.default}?sortBy=${sort}${keyword !== '' ? `&keyword=${keyword}` : ''}${state !== '시.도' ? `&state=${state}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}&limit=${limit}&offset=${page}`
+      `${API_PATH.gathering.default}?sortBy=${sort}${keyword !== '' ? `&keyword=${keyword}` : ''}${state !== '시.도' ? `&state=${state}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}${genre !== '전체' ? `&genre=${genre}` : ''}&limit=${limit}&offset=${page}`
     );
     return res;
   } catch (error) {

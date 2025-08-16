@@ -11,6 +11,7 @@ interface GetThemeProps {
   sort: string;
   state: string | null;
   city: string | null;
+  genre: string | null;
 }
 
 export const GetTheme = async ({
@@ -21,10 +22,11 @@ export const GetTheme = async ({
   sort,
   state,
   city,
+  genre,
 }: GetThemeProps) => {
   try {
     const res = await (accessToken === null ? axios : axiosInstance).get(
-      `${API_PATH.theme.default}?sortBy=${sort}${keyword !== '' ? `&keyword=${keyword}` : ''}${state !== '시.도' ? `&state=${state}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}&limit=${limit}&offset=${page}`
+      `${API_PATH.theme.default}?sortBy=${sort}${keyword !== '' ? `&keyword=${keyword}` : ''}${state !== '시.도' ? `&state=${state}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}${genre !== '전체' ? `&genre=${genre}` : ''}&limit=${limit}&offset=${page}`
     );
     return res;
   } catch (error) {

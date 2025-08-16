@@ -29,7 +29,7 @@ export default function RoomPage() {
     평점순: 'rating',
     리뷰순: 'reviews',
   };
-  const { largeDistrict, middleDistrict } = useQueryStringStore();
+  const { largeDistrict, middleDistrict, genre } = useQueryStringStore();
 
   const { theme } = useGetTheme(
     accessToken,
@@ -38,7 +38,8 @@ export default function RoomPage() {
     10,
     sortLabels[sort],
     largeDistrict,
-    middleDistrict
+    middleDistrict,
+    genre
   );
   const totalItems = theme ? theme.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
