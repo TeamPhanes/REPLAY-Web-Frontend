@@ -33,6 +33,7 @@ export default function DetailLinkButton({
         sort: 'likes',
         state: '시.도',
         city: '시.군.구',
+        genre: '전체',
       });
       const firstTheme = response.data.data[0];
       if (firstTheme) {
@@ -40,7 +41,6 @@ export default function DetailLinkButton({
         router.push(`/theme/${list.link}`);
       }
     } catch (error) {
-      console.error(error);
       setIsNavigating(false);
     }
   };
