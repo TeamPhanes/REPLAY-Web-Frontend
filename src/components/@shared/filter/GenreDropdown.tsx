@@ -27,7 +27,7 @@ export default function GenreDropdown({
         isOpen={isOpen}
         onOpenChange={toggleOpen}
         onClickHandler={setGenre}
-        className="grid grid-cols-2 md:grid-cols-4 p-2 max-h-80 overflow-y-scroll rounded-r-md"
+        className="grid grid-cols-2 md:grid-cols-4 p-2 max-h-80 overflow-y-scroll md:overflow-hidden rounded-r-md md:rounded-r-[20px]"
         marginTop={14}
         align={align}
       >
