@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddGatheringButton from '@/components/@shared/modal/AddGathering/AddGatheringButton';
 import AddGatheringCapacity from '@/components/@shared/modal/AddGathering/AddGatheringCapacity';
 import AddGatheringLocation from '@/components/@shared/modal/AddGathering/AddGatheringLocation';
@@ -35,6 +35,13 @@ export default function AddGatheringModal({
     setValue,
     formState: { errors },
   } = usePostGatheringForm(mutate, onClose);
+
+  useEffect(() => {
+    if (isOpen && themeIdProps) {
+      setValue('themeId', themeIdProps, { shouldValidate: true });
+    }
+  }, [isOpen, themeIdProps, setValue]);
+
   return (
     <Modal
       isOpen={isOpen}
@@ -46,9 +53,11 @@ export default function AddGatheringModal({
         <AddGatheringSearchBar
           search={search}
           searchChange={setSearch}
-          themeId={themeIdProps ?? watch('themeId')}
+          themeId={watch('themeId')}
           themeIdChange={(themeId) =>
-            setValue('themeId', themeId, { shouldValidate: true })
+            setValue('themeId', themeId, {
+              shouldValidate: true,
+            })
           }
           register={register}
           errors={errors}

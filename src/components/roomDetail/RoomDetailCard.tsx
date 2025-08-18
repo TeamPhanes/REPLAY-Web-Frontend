@@ -133,12 +133,8 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
         </div>
         <RoomDetailStroy
           story={detail.story}
-          themeNameProps={
-            themeDetail.themeId !== selectedTheme.themeId
-              ? 0
-              : selectedTheme.themeName
-          }
-          themeIdProps={themeDetail.themeId}
+          themeNameProps={selectedTheme.themeName}
+          themeIdProps={selectedTheme.themeId}
         />
       </div>
     </div>
