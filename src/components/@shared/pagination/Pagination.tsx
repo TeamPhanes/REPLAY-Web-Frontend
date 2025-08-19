@@ -31,7 +31,10 @@ export default function Pagination({
     <div className="flex items-center gap-1 justify-center my-20">
       <button
         type="button"
-        onClick={() => onChange(currentPage - 1)}
+        onClick={() => {
+          onChange(currentPage - 1);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         disabled={currentPage === 0}
         className="disabled:opacity-50 disabled:cursor-not-allowed"
       >
@@ -52,8 +55,11 @@ export default function Pagination({
           <button
             key={idx}
             type="button"
-            onClick={() => onChange(Number(item))}
-            className={`font-semibold text-2xl tracking-[-2.5%] ${currentPage === item ? 'text-card' : 'text-setfont hover:text-card'}`}
+            onClick={() => {
+              onChange(Number(item));
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className={`font-semibold text-2xl tracking-[-2.5%] ${currentPage === item ? 'text-card' : 'text-setfont md:hover:text-card'}`}
           >
             [{Number(item) + 1}]
           </button>
@@ -61,7 +67,10 @@ export default function Pagination({
       )}
       <button
         type="button"
-        onClick={() => onChange(currentPage + 1)}
+        onClick={() => {
+          onChange(currentPage + 1);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         disabled={currentPage >= totalPages - 1}
         className="disabled:opacity-50 disabled:cursor-not-allowed"
       >
