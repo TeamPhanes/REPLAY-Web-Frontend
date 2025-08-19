@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthStore } from '@/store/authStore';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
@@ -43,6 +43,10 @@ export default function RoomPage() {
   );
   const totalItems = theme ? theme.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
+
+  useEffect(() => {
+    setPage(0);
+  }, [largeDistrict, middleDistrict, genre]);
 
   return (
     <PageContainer>

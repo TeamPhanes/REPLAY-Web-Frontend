@@ -20,13 +20,13 @@ export default function MiddleDistrictDropdown({
   const { isOpen, toggleOpen } = useOpen();
   if (list.length === 0) return null;
   return (
-    <div className="hidden md:flex items-center justify-center rounded-full bg-card px-4 py-2 gap-1">
+    <div className="flex items-center justify-center rounded-full bg-card px-4 py-2 gap-1">
       <ValueDropdown
         list={list}
         isOpen={isOpen}
         onOpenChange={toggleOpen}
         onClickHandler={setMiddleDistrict}
-        className={`${list.length === 2 ? 'grid-cols-2' : ''} ${list.length === 3 ? 'grid-cols-3' : ''} ${list.length >= 4 ? 'grid-cols-4' : ''} grid p-2`}
+        className={`${list.length === 2 ? 'grid-cols-2' : ''} ${list.length === 3 ? 'grid-cols-2 md:grid-cols-3' : ''} ${list.length >= 4 ? 'grid-cols-2 md:grid-cols-4' : ''} max-h-80 overflow-y-scroll md:overflow-hidden rounded-r-md md:rounded-r-[20px] grid p-2`}
         marginTop={14}
         align={align}
       >
