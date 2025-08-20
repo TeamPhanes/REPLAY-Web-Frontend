@@ -10,6 +10,7 @@ export const useLogout = () => {
     mutationFn: PostLogout,
     onSuccess: () => {
       clearAccessToken();
+      window.location.href = '/';
     },
     onError: (error) => {
       toast.error(`로그아웃 진행 중 오류가 있습니다. : ${error}`);
