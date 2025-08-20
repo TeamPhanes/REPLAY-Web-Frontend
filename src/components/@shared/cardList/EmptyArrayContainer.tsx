@@ -45,7 +45,7 @@ export default function EmptyArrayContainer({
         {`${kind === '댓글' || kind === '방탈출' || kind === '모임' ? '이' : '(이/가)'} 아직 없어요.`}
       </p>
       {type === '작성한' ? (
-        <p className="font-semibold text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
+        <p className="font-semibold max-w-60 md:max-w-none text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
           {'참여하고 싶은 '}
           <Link
             href="/gathering"
@@ -64,7 +64,7 @@ export default function EmptyArrayContainer({
             height={32}
             className="w-7 h-7 md:w-8 md:h-8"
           />
-          <p className="font-semibold text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
+          <p className="font-semibold max-w-60 md:max-w-none text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
             {`${type === '찜한' ? '하트' : '북마크'} 버튼을 눌러 이 페이지에 기록해 보세요!`}
           </p>
         </div>

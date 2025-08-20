@@ -76,7 +76,7 @@ export default function Modal({
       <div
         ref={modalContentRef}
         className={`
-          max-h-[calc(100vh-40px)] max-w-[calc(100vw-20px)]
+          max-h-[calc(100vh-120px)] md:max-h-[calc(100vh-40px)] max-w-[calc(100vw-20px)]
           overflow-auto animate-modalIn z-50 scrollbar-x-hidden 
           ${className}
         `}
