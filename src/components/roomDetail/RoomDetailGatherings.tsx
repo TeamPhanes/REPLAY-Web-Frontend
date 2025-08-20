@@ -14,7 +14,7 @@ export default function RoomDetailGatherings({
     <>
       <div className="mt-6 flex justify-end">
         <Link href="/gathering" className="flex items-center gap-1">
-          <p className="text-2xl/[34px] font-normal tracking-[-2.5%] text-setfont">
+          <p className="text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] text-setfont">
             이 방탈출 모임 더 보기
           </p>
           <Image

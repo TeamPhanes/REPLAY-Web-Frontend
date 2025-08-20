@@ -27,14 +27,14 @@ export default function GatheringMemberButton({
     .find((check: boolean) => check === true);
   return !FindMember ? (
     <MainBlueButton
-      className="absolute bottom-5 w-[431px]"
+      className="mt-5 md:absolute bottom-5 w-full md:w-[431px]"
       onClick={() => handleMemberButtonClick('POST')}
     >
       <p className="text-2xl font-semibold text-white">모임 참여하기</p>
     </MainBlueButton>
   ) : (
     <MainBlueButton
-      className="absolute bottom-5 w-[431px]"
+      className="mt-5 md:absolute bottom-5 w-full md:w-[431px]"
       onClick={() => handleMemberButtonClick('DELETE')}
     >
       <p className="text-2xl font-semibold text-white">참여 취소하기</p>
