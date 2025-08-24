@@ -153,8 +153,8 @@ Re:Play는 **소셜 로그인(OAuth2)** 방식으로 인증을 처리하며, 자
   </thead>
   <tbody>
     <tr align="center">
-      <td style="width:150px; height:150px; text-align: center;"> <img src="./public/readme/KJongHwa.jpg" alt="김종화 프로필 사진" > </td>
-      <td style="width:150px; height:150px; text-align: center;"> <img src="./public/readme/rave189.png" alt="김재연 프로필 사진" > </td>
+      <td style="text-align: center;"> <img src="./public/readme/KJongHwa.jpg" alt="김종화 프로필 사진" style="width:150px; height:150px;" > </td>
+      <td style="text-align: center;"> <img src="./public/readme/rave189.png" alt="김재연 프로필 사진" style="width:150px; height:150px;" > </td>
     </tr>
     <tr align="center">
       <td style="text-align: center;">프론트엔드 개발자</td>
