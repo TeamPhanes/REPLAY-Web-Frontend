@@ -5,6 +5,8 @@
 
 - 전국 방탈출 정보와 사용자의 리뷰를 공유하고 마음이 맞는 사람들과 함께 방탈출을 즐기도록 모임을 만들 수 있는 서비스
 
+<br>
+
 ## ⚙️ 기술 스택
 
 <table>
@@ -68,6 +70,8 @@
   </tbody>
 </table>
 
+<br>
+
 ## 📐 폴더 구조
 
 ```
@@ -86,6 +90,8 @@ src/
  ├─ types/              # TypeScript 타입 정의
  └─ utils/              # 유틸리티 함수 (날짜, 숫자 포맷)
 ```
+
+<br>
 
 ## 🔐 로그인 인증(세션) 흐름
 
@@ -132,9 +138,11 @@ Re:Play는 **소셜 로그인(OAuth2)** 방식으로 인증을 처리하며, 자
 - `POST /auth/logout` API 호출
 - Zustand에서 `accessToken` 초기화 후 홈으로 리다이렉트
 
+<br>
+
 ## 👥 팀 소개
 
-<table>
+<table style="width:50%;">
   <thead>
     <tr>
       <th style="text-align: center;"> <a href="https://github.com/KJongHwa">김종화</a> </th>
