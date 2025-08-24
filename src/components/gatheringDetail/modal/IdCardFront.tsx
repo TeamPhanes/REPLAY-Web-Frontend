@@ -29,7 +29,7 @@ export default function IdCardFront({ userData }: IdCardFrontProps) {
       <p className="mt-2 text-base font-normal tracking-[-2.5%] text-grayFont">
         {gender}
       </p>
-      <p className="mt-2 text-base font-normal tracking-[-2.5%] text-grayFont">
+      <p className="mt-2 text-base font-normal tracking-[-2.5%] text-grayFont absolute -bottom-8">
         {email}
       </p>
       <Image

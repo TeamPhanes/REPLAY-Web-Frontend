@@ -63,7 +63,7 @@ export default function ParticipantUsers({
           </div>
         </div>
       </div>
-      <p className="hidden md:block line-clamp-3 h-20 w-[284px] text-base font-normal tracking-[-2.5%] text-basefont">
+      <p className="hidden md:block line-clamp-3 h-[72px] w-[284px] text-base font-normal tracking-[-2.5%] text-basefont">
         {list.comment}
       </p>
       <IdCardModal

@@ -10,7 +10,7 @@ export default function CommentSortMenu({
   setSort,
 }: CommentSortMenuProps) {
   return (
-    <div className="flex items-center gap-2 p-5">
+    <div className="flex items-center gap-2 px-5 pt-5">
       {[...commentTypeList].reverse().map((option) => (
         <button
           key={option.value}

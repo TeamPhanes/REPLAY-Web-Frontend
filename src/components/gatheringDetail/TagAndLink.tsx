@@ -20,7 +20,8 @@ export default function TagAndLink({ tag }: TagAndLinkProps) {
           </p>
         ))}
       </div>
-      <Link href="/room" className="hidden md:block">
+
+      {/* <Link href="/theme" className="hidden md:block">
         <button
           type="button"
           className="flex items-center gap-[2px] rounded-full bg-homeFont px-3 py-1"
@@ -35,7 +36,7 @@ export default function TagAndLink({ tag }: TagAndLinkProps) {
             height={20}
           />
         </button>
-      </Link>
+      </Link> */}
     </div>
   );
 }
