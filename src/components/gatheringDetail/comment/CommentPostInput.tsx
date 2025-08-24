@@ -41,7 +41,7 @@ export default function CommentPostInput({
     }
   }, [parentId, setValue]);
   return (
-    <div className="flex h-[293px] items-center justify-center">
+    <div className="md:h-[293px] px-2 py-5 md:flex md:items-center md: justify-center">
       <div
         className={`${errors.content ? 'border-red-500' : 'border-grayFont'} relative h-[223px] md:w-[1000px] rounded-[30px] border-[1px] bg-white p-5`}
       >
