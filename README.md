@@ -1,17 +1,17 @@
 <img style="width:100%" src="./public/images/Replay_Main_Logo.svg" alt="서비스 메인 로고" />
 <br>
 
-# Re:Play Web Frontend
+# 🎯 Re:Play Web Frontend
 
-- 전국 방탈출 정보와 사용자의 리뷰를 공유하고 마음이 맞는 사람들과 함께 방탈출을 즐기도록 모임을 만들 수 있는 서비스
+> 전국 방탈출 정보와 사용자의 리뷰를 공유하고 마음이 맞는 사람들과 함께 방탈출을 즐기도록 모임을 만들 수 있는 서비스
 
 <br>
 
 ## ⚙️ 기술 스택
 
-<table>
+<table align="center">
   <thead>
-    <tr>
+    <tr align="center">
       <th style="width: 20%; text-align: center;"> Framework </th>
       <th style="width: 20%; text-align: center;"> Language </th>
       <th style="width: 20%; text-align: center;"> State Management </th>
@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr align="center">
       <td style="text-align: center;">Next.js 14 (App Router)</td>
       <td style="text-align: center;">TypeScript</td>
       <td style="text-align: center;">TanStack Query (server)<br> Zustand (client)</td>
@@ -30,11 +30,13 @@
   </tbody>
 </table>
 
+<br>
+
 ## 🖥️ 페이지 구조
 
-<table>
+<table align="center">
   <thead>
-    <tr>
+    <tr align="center">
       <th style="width: 25%; text-align: center;"> 홈 페이지 </th>
       <th style="width: 25%; text-align: center;"> 로그인 페이지 </th>
       <th style="width: 25%; text-align: center;"> 검색 페이지 </th>
@@ -42,7 +44,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr align="center">
       <td style="text-align: center;"><img src="./public/readme/home.gif" alt="홈 페이지" /></td>
       <td style="text-align: center;"><img src="./public/readme/login.gif" alt="로그인 페이지" /></td>
       <td style="text-align: center;"><img src="./public/readme/search.gif" alt="검색 페이지" /></td>
@@ -53,7 +55,7 @@
 
 <table>
   <thead>
-    <tr>
+    <tr align="center">
       <th style="width: 25%; text-align: center;"> 방탈출 목록 페이지 </th>
       <th style="width: 25%; text-align: center;"> 방탈출 상세 페이지 </th>
       <th style="width: 25%; text-align: center;"> 모임 목록 페이지 </th>
@@ -61,7 +63,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr align="center">
       <td style="text-align: center;"><img src="./public/readme/theme.gif" alt="방탈출 목록 페이지" /></td>
       <td style="text-align: center;"><img src="./public/readme/detailTheme.gif" alt="방탈출 상세 페이지" /></td>
       <td style="text-align: center;"><img src="./public/readme/gathering.gif" alt="모임 목록 페이지" /></td>
@@ -142,19 +144,19 @@ Re:Play는 **소셜 로그인(OAuth2)** 방식으로 인증을 처리하며, 자
 
 ## 👥 팀 소개
 
-<table style="width:50%;">
+<table align="center">
   <thead>
-    <tr>
+    <tr align="center">
       <th style="text-align: center;"> <a href="https://github.com/KJongHwa">김종화</a> </th>
       <th style="text-align: center;"> <a href="https://github.com/rave189">김재연</a> </th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td style="width:150; height:150; text-align: center;"> <img src="./public/readme/KJongHwa.jpg" alt="김종화 프로필 사진" > </td>
-      <td style="width:150; height:150; text-align: center;"> <img src="./public/readme/rave189.png" alt="김재연 프로필 사진" > </td>
+    <tr align="center">
+      <td style="width:150px; height:150px; text-align: center;"> <img src="./public/readme/KJongHwa.jpg" alt="김종화 프로필 사진" > </td>
+      <td style="width:150px; height:150px; text-align: center;"> <img src="./public/readme/rave189.png" alt="김재연 프로필 사진" > </td>
     </tr>
-    <tr>
+    <tr align="center">
       <td style="text-align: center;">프론트엔드 개발자</td>
       <td style="text-align: center;">백엔드/서버 개발자</td>
     </tr>
