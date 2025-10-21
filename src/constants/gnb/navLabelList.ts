@@ -12,6 +12,14 @@ export const navLabelList: { [key: string]: ListType } = {
     label: '모임',
     value: '/gathering',
   },
+  ranking: {
+    label: '랭킹',
+    value: '/ranking',
+  },
+  notice: {
+    label: '공지사항',
+    value: '/notice',
+  },
 };
 
 export const navLoginDropdownList: ListType[] = [

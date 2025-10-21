@@ -1,11 +1,17 @@
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import type { Metadata } from 'next';
+import localFont from 'next/font/local';
 import '@/styles/globals.css';
 import '@/styles/scrollbar.css';
 import GlobalNav from '@/components/@shared/gnb/GlobalNav';
 import AuthSessionLoader from '@/components/@shared/provider/AuthSessionLoader';
 import QueryProvider from '@/components/@shared/provider/QueryProvider';
+
+export const pretendard = localFont({
+  src: '../../public/fonts/PretendardVariable.woff2',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'RE:PLAY',
@@ -24,13 +30,6 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <link
-          rel="preload"
-          href="/fonts/PretendardVariable.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
           rel="prefetch"
           href="/images/loading/loading.gif"
           as="image"
@@ -43,7 +42,9 @@ export default function RootLayout({
           type="image/gif"
         />
       </head>
-      <body className="scrollbar-x-hidden default-scrollbar">
+      <body
+        className={`${pretendard.className} antialiased scrollbar-x-hidden`}
+      >
         <QueryProvider>
           <AuthSessionLoader />
           <GlobalNav />

@@ -6,13 +6,5 @@ import RoutingMenu from '@/components/homePage/RoutingMenu';
 import TopCarouselContainer from '@/components/homePage/TopCarouselContainer';
 
 export default function HomePage() {
-  return (
-    <PageContainer>
-      <SearchBar />
-      <RoutingMenu />
-      <TopCarouselContainer />
-      <MiddleCarouselContainer />
-      <BottomCarouselContainer />
-    </PageContainer>
-  );
+  return <PageContainer>...</PageContainer>;
 }

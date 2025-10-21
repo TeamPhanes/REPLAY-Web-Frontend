@@ -14,7 +14,6 @@ import PageContainer from '@/components/@shared/layout/PageContainer';
 import SortContainer from '@/components/@shared/layout/SortContainer';
 import FixedAddGatheringButton from '@/components/@shared/modal/AddGathering/FixedAddGatheringButton';
 import Pagination from '@/components/@shared/pagination/Pagination';
-import SearchBar from '@/components/@shared/search/SearchBar';
 import CardSkeleton from '@/components/@shared/skeleton/CardSkeleton';
 import SortSkeleton from '@/components/@shared/skeleton/SortSkeleton';
 import { useGetGathering } from '@/hooks/reactQuery/useGetGathering';
@@ -47,7 +46,6 @@ export default function GatheringPage() {
 
   return (
     <PageContainer>
-      <SearchBar />
       <FilterContainer>
         <LocationFilter align="start" />
         <GenreFilter />
