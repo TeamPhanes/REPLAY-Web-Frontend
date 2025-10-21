@@ -13,7 +13,6 @@ import FilterContainer from '@/components/@shared/layout/FilterContainer';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import SortContainer from '@/components/@shared/layout/SortContainer';
 import Pagination from '@/components/@shared/pagination/Pagination';
-import SearchBar from '@/components/@shared/search/SearchBar';
 import CardSkeleton from '@/components/@shared/skeleton/CardSkeleton';
 import LineSkeleton from '@/components/@shared/skeleton/SortSkeleton';
 import { useGetTheme } from '@/hooks/reactQuery/useGetTheme';
@@ -50,7 +49,6 @@ export default function RoomPage() {
 
   return (
     <PageContainer>
-      <SearchBar />
       <FilterContainer>
         <LocationFilter align="start" />
         <GenreFilter />
