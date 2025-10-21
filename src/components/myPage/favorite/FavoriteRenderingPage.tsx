@@ -16,6 +16,7 @@ export default function FavoriteRenderingPage() {
   return (
     <>
       <TypeChanger
+        gap={24}
         options={favoriteTypeList}
         selectedType={selectedType}
         setSelectedType={setSelectedType}

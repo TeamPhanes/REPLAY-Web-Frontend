@@ -8,26 +8,28 @@ import { CarouselDTO } from '@/types/home/home.type';
 
 export interface CarouselProps {
   carouselList: CarouselDTO[];
-  width: number;
   imageWidth: number;
   imageHeight: number;
   buttonSize: number;
+  buttonPosition: number;
   className?: string;
   delayTime?: number;
   perView?: number;
-  type?: 'top';
+  loop?: boolean;
+  center?: boolean;
 }
 
 export default function Carousel({
   carouselList,
-  width,
   imageWidth,
   imageHeight,
   buttonSize,
+  buttonPosition,
   className,
   delayTime = 3000,
   perView = 1,
-  type,
+  loop = false,
+  center = false,
 }: CarouselProps) {
   const swiperRef = useRef<SwiperClass>();
   const [activeSwiper, setActiveSwiper] = useState(0);
@@ -41,6 +43,7 @@ export default function Carousel({
         listLength={listLength}
         perView={perView}
         swiperRef={swiperRef}
+        position={buttonPosition}
       />
       <CarouselSwiper
         carouselList={carouselList}
@@ -48,9 +51,10 @@ export default function Carousel({
         imageHeight={imageHeight}
         delayTime={delayTime}
         className={className}
-        type={type}
         swiperRef={swiperRef}
         setActiveSwiper={setActiveSwiper}
+        loop={loop}
+        center={center}
       />
     </div>
   );
