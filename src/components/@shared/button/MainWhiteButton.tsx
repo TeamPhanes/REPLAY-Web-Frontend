@@ -16,7 +16,7 @@ export default function MainWhiteButton({
   return (
     <button
       type={type === 'submit' ? 'submit' : 'button'}
-      className={`rounded-2xl px-[10px] py-3 duration-500 ease-in-out border-cardActive border-2 font-semibold text-xl md:text-2xl/[34px] tracking-[-2.5%] text-buttonColor200 text-center hover:bg-buttonColor200Hover ${className}`}
+      className={`rounded-[4px] px-4 py-3 duration-500 ease-in-out border-font-baseBlack border-[1px] font-semibold text-xs md:text-sm tracking-[-2.5%] text-font-baseBlack text-center bg-button-whiteDefault hover:bg-[#F2F2F2] hover:border-line-Gray z-50 ${className}`}
       onClick={onClick}
     >
       {children}

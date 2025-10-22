@@ -51,6 +51,10 @@ const config: Config = {
           darkGray: '#767676',
           secondDarkGray: '#505050',
         },
+        button: {
+          carousel: '#111111',
+          whiteDefault: '#FFFFFF',
+        },
         loading: '#333333',
         mainBlue: '#2227F7',
         mainBlueHover: '#060AAC',
