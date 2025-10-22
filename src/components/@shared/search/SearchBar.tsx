@@ -4,12 +4,14 @@ import { FormEvent, useEffect } from 'react';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSearchStore } from '@/store/useSearchStore';
+import WhiteSearchIcon from '@/public/icons/search/white_search.svg';
 
 interface SearchBarProps {
-  type?: 'dark' | 'white';
+  isFocus: boolean;
+  onFocus: (isFocus: boolean) => void;
 }
 
-export default function SearchBar({ type = 'white' }: SearchBarProps) {
+export default function SearchBar({ isFocus, onFocus }: SearchBarProps) {
   const { search, setSearch } = useSearchStore();
   const router = useRouter();
   const pathname = usePathname();
@@ -27,32 +29,27 @@ export default function SearchBar({ type = 'white' }: SearchBarProps) {
     }
   };
   return (
-    <div
-      className={`w-full rounded-full ${type === 'dark' ? 'h-[58px] bg-darkSearch' : 'h-16 md:h-20 bg-white'}`}
-    >
+    <div className="h-12 px-4 py-3 min-w-[440px] border-b-[1px] border-line-Gray shrink-0 relative">
       <form
         onSubmit={handleSubmit}
-        className={`flex h-full items-center justify-between ${type === 'dark' ? 'py-[5px] px-6' : 'px-8'}`}
+        className="flex h-full items-center justify-between"
       >
+        <Image
+          src={WhiteSearchIcon}
+          alt="검색하기"
+          width={24}
+          height={24}
+          className={`${isFocus ? 'absolute right-4' : 'mr-[6px]'}`}
+        />
         <input
           type="text"
-          placeholder="검색어를 입력하세요."
-          className={`w-full ${type === 'dark' ? 'text-2xl/[34px] tracking-[-2.5%] placeholder:text-white text-white bg-darkSearch' : 'text-xl md:text-[28px]/[38px] text-basefont bg-white'}`}
+          placeholder="내용을 입력해주세요"
+          onFocus={() => onFocus(true)}
+          onBlur={() => onFocus(false)}
+          className="w-full bg-brand-black text-base tracking-[-2.5%] font-normal text-font-baseWhite placeholder-font-disabled transition-all duration-300 focus:w-[850px]"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button type="submit">
-          <Image
-            src={
-              type === 'dark'
-                ? '/icons/search/dark_search.svg'
-                : '/icons/search/search.svg'
-            }
-            alt="검색하기"
-            width={48}
-            height={48}
-          />
-        </button>
       </form>
     </div>
   );
