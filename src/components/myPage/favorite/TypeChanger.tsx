@@ -4,7 +4,7 @@ interface Option {
 }
 
 interface TypeChangerProps {
-  gap: string;
+  gap?: string;
   options: Option[];
   selectedType: string;
   setSelectedType: (key: string) => void;
