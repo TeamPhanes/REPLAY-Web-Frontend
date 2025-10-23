@@ -84,7 +84,7 @@ export default function SearchBar({ isFocus, onFocus }: SearchBarProps) {
         <input
           type="text"
           placeholder="내용을 입력해주세요"
-          className={`${isFocus ? 'w-[850px] pr-8' : ''} w-full bg-brand-black text-base tracking-[-2.5%] font-normal text-font-baseWhite placeholder-font-disabled transition-all duration-300`}
+          className={`${isFocus ? 'w-[850px] pr-8' : 'w-full'} bg-brand-black text-base tracking-[-2.5%] font-normal text-font-baseWhite placeholder-font-disabled transition-all duration-300`}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onClick={() => onFocus(true)}
