@@ -9,10 +9,12 @@ import { reviewTypeList } from '@/constants/mypage/typeList';
 export default function ReviewRenderingPage() {
   const [selectedType, setSelectedType] = useState('room');
 
+  const list = ['임시', '임시2'];
+
   return (
     <>
       <TypeChanger
-        options={reviewTypeList}
+        list={list}
         selectedType={selectedType}
         setSelectedType={setSelectedType}
       />

@@ -1,53 +1,28 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { popularList } from '@/data/home/homeBottomCarouselList';
+import { useGenreStore } from '@/store/useGenreStore';
 import Carousel from '@/components/@shared/carousel/Carousel';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import BottomCarousel from '@/components/homePage/BottomCarousel';
 import TypeButtonChanger from '@/components/homePage/typeChanger/TypeButtonChanger';
 import TypeChanger from '@/components/myPage/favorite/TypeChanger';
-import {
-  defaultGenreList,
-  defaultLocationList,
-  defaultNewList,
-} from '@/constants/mypage/typeList';
-import { useOpen } from '@/hooks/useOpen';
-import offHeart from '@/public/icons/heart/off_annotation_heart.svg';
-import onHeart from '@/public/icons/heart/on_annotation_heart.svg';
+import { defaultLocationList, defaultNewList } from '@/constants/homepage/list';
 
 export default function HomePage() {
   const [selectedGenre, setSelectedGenre] = useState('전체');
   const [selectedLocation, setSelectedLocation] = useState('전체');
-  const { isOpen, toggleOpen } = useOpen();
+
+  const { genreList } = useGenreStore();
   return (
     <PageContainer>
-      <div className="flex justify-center my-12 items-center">
-        <TypeChanger
-          gap="gap-12"
-          options={defaultGenreList}
-          selectedType={selectedGenre}
-          setSelectedType={setSelectedGenre}
-        />
-        <button
-          type="button"
-          onClick={toggleOpen}
-          className="absolute flex items-center gap-2 right-0"
-        >
-          <p
-            className={`${isOpen ? '' : 'hidden'} text-sm text-font-baseWhite font-semibold`}
-          >
-            선호장르 다섯개를 선택해 주세요.
-          </p>
-          <Image
-            src={isOpen ? onHeart : offHeart}
-            alt="선호 장르 선택하기"
-            width={32}
-            height={32}
-          />
-        </button>
-      </div>
+      <TypeChanger
+        gap="gap-12"
+        list={genreList}
+        selectedType={selectedGenre}
+        setSelectedType={setSelectedGenre}
+      />
       <Carousel
         carouselList={popularList}
         imageWidth={1000}
