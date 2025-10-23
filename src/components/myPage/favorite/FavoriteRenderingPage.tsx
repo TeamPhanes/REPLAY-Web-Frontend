@@ -13,11 +13,13 @@ export default function FavoriteRenderingPage() {
     searchParams.get('type') === 'gathering' ? 'gathering' : 'room';
   const [selectedType, setSelectedType] = useState(homeRoutingType);
 
+  const list = ['임시', '임시2'];
+
   return (
     <>
       <TypeChanger
         gap="gap-6"
-        options={favoriteTypeList}
+        list={list}
         selectedType={selectedType}
         setSelectedType={setSelectedType}
       />
