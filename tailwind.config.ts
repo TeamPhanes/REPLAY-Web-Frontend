@@ -55,6 +55,9 @@ const config: Config = {
           carousel: '#111111',
           whiteDefault: '#FFFFFF',
         },
+        card: {
+          white: '#F3F3F3',
+        },
         loading: '#333333',
         mainBlue: '#2227F7',
         mainBlueHover: '#060AAC',
@@ -68,7 +71,6 @@ const config: Config = {
         detailButton: '#B9B9B9',
         tag: '#505050',
         homeCard: '#606060',
-        card: '#EAEAEA',
         cardActive: '#5357F9',
         cardHover: '#B5B7FC',
         ratingCard: '#D9D9D9',

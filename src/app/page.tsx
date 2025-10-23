@@ -63,13 +63,13 @@ export default function HomePage() {
 
       <div className="relative">
         <TypeButtonChanger
-          className="absolute gap-3 top-14"
+          className="absolute gap-3 top-12"
           options={defaultLocationList}
           selectedType={selectedLocation}
           setSelectedType={setSelectedLocation}
         />
         <BottomCarousel
-          margin="mt-8"
+          gap="gap-[72px]"
           title="지역별 방탈출"
           list={popularList}
           delayTime={10000}
@@ -78,13 +78,13 @@ export default function HomePage() {
 
       <div className="relative">
         <TypeButtonChanger
-          className="absolute gap-3 top-14"
+          className="absolute gap-3 top-12"
           options={defaultNewList}
           selectedType={selectedLocation}
           setSelectedType={setSelectedLocation}
         />
         <BottomCarousel
-          margin="mt-8"
+          gap="gap-[72px]"
           title="신규 방탈출 & 출시 예정 방탈출"
           list={popularList}
           delayTime={11000}
