@@ -42,6 +42,7 @@ const config: Config = {
           secondWhite: '#D9D9D9',
           thirdWhite: '#B3B3B3',
           disabled: '#999999',
+          baseGray: '#C0C0C0',
         },
         line: {
           white: '#FFFFFF',

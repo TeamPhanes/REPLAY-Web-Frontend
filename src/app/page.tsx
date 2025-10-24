@@ -65,6 +65,21 @@ export default function HomePage() {
           delayTime={11000}
         />
       </div>
+
+      <div className="relative mt-10 md:mt-24 flex flex-col gap-4">
+        <h2 className="text-xl md:text-2xl font-semibold tracking-[-2.5%] text-white">
+          HOT 매장 둘러보기
+        </h2>
+        <Carousel
+          carouselList={popularList}
+          imageWidth={525}
+          imageHeight={260}
+          buttonSize={24}
+          delayTime={12000}
+          className="!w-[525px] rounded-lg"
+          buttonPosition={-6}
+        />
+      </div>
     </PageContainer>
   );
 }

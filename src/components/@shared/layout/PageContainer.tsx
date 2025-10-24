@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import Footer from '@/components/@shared/footer/Footer';
 
 interface PageContainerProps {
   children: ReactNode;
@@ -6,8 +7,11 @@ interface PageContainerProps {
 
 export default function PageContainer({ children }: PageContainerProps) {
   return (
-    <main className="relative mx-auto mt-[188px] px-2 md:px-0 my-11 md:mb-[88px] h-full w-full md:w-xl">
-      {children}
-    </main>
+    <>
+      <main className="relative mx-auto mt-[188px] px-2 md:px-0 my-11 md:mb-[88px] min-h-screen h-full w-full md:w-xl">
+        {children}
+      </main>
+      <Footer />
+    </>
   );
 }
