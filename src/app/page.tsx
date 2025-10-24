@@ -34,6 +34,7 @@ export default function HomePage() {
         loop
         center
       />
+
       <BottomCarousel title="추천순" list={popularList} delayTime={9000} />
 
       <div className="relative">
@@ -44,7 +45,7 @@ export default function HomePage() {
           setSelectedType={setSelectedLocation}
         />
         <BottomCarousel
-          gap="gap-[72px]"
+          gap="gap-[68px]"
           title="지역별 방탈출"
           list={popularList}
           delayTime={10000}
@@ -59,7 +60,7 @@ export default function HomePage() {
           setSelectedType={setSelectedLocation}
         />
         <BottomCarousel
-          gap="gap-[72px]"
+          gap="gap-[68px]"
           title="신규 방탈출 & 출시 예정 방탈출"
           list={popularList}
           delayTime={11000}

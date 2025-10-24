@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useGenreStore } from '@/store/useGenreStore';
-import { defaultGenreList } from '@/constants/homepage/list';
+import { genreFilterList } from '@/constants/filter/genreList';
 import { useOpen } from '@/hooks/useOpen';
 import offHeart from '@/public/icons/heart/off_annotation_heart.svg';
 import onHeart from '@/public/icons/heart/on_annotation_heart.svg';
@@ -69,7 +69,7 @@ export default function TypeChanger({
           isOpen ? 'animate-dropdownIn' : 'hidden'
         } bg-card-white grid grid-cols-12 absolute w-full rounded-[10px] top-10 z-40`}
       >
-        {defaultGenreList.map((value, index) => {
+        {genreFilterList.map((value, index) => {
           const isFirstRow = index < 12;
           const isLastRow = index >= 12;
           const isFirstCol = index % 12 === 0;
