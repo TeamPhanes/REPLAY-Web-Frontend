@@ -19,7 +19,7 @@ export default function SearchResults() {
   const keyword = searchParams.get('keyword') || '';
   const { accessToken } = useAuthStore();
 
-  const { largeDistrict, middleDistrict, genre } = useQueryStringStore();
+  const { largeDistrict, middleDistrict } = useQueryStringStore();
 
   const { theme } = useGetTheme(
     accessToken,
@@ -29,7 +29,7 @@ export default function SearchResults() {
     'likes',
     largeDistrict,
     middleDistrict,
-    genre
+    '전체'
   );
   const { gathering } = useGetGathering(
     accessToken,
@@ -39,11 +39,11 @@ export default function SearchResults() {
     'dateTime',
     largeDistrict,
     middleDistrict,
-    genre
+    '전체'
   );
   return (
     <>
-      <h2 className="font-semibold text-3xl md:text-[32px]/[42px] tracking-[-2.5%] mt-[52px]">
+      <h2 className="font-semibold text-base md:text-lg tracking-[-2.5%] mt-[52px]">
         방탈출
       </h2>
       {theme && (
@@ -54,7 +54,7 @@ export default function SearchResults() {
         </div>
       )}
       {theme && theme.data.length === 0 && <EmptySearchResult />}
-      <h2 className="font-semibold text-3xl md:text-[32px]/[42px] tracking-[-2.5%] mt-[52px]">
+      <h2 className="font-semibold text-base md:text-lg tracking-[-2.5%] mt-[52px]">
         모임
       </h2>
       {gathering && (

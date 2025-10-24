@@ -8,7 +8,7 @@ export const dynamic = 'force-static';
 
 export default function NotFound() {
   return (
-    <div className="w-full mt-40 flex items-center flex-col justify-center">
+    <div className="w-full mt-80 flex items-center flex-col justify-center">
       <Image
         src={error}
         alt="error"
