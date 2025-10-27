@@ -19,16 +19,14 @@ export default function SearchResults() {
   const keyword = searchParams.get('keyword') || '';
   const { accessToken } = useAuthStore();
 
-  const { largeDistrict, middleDistrict } = useQueryStringStore();
-
   const { theme } = useGetTheme(
     accessToken,
     keyword,
     0,
     10,
     'likes',
-    largeDistrict,
-    middleDistrict,
+    '시.도',
+    '시.군.구',
     '전체'
   );
   const { gathering } = useGetGathering(
@@ -37,13 +35,13 @@ export default function SearchResults() {
     0,
     10,
     'dateTime',
-    largeDistrict,
-    middleDistrict,
+    '시.도',
+    '시.군.구',
     '전체'
   );
   return (
     <>
-      <h2 className="font-semibold text-base md:text-lg tracking-[-2.5%] mt-[52px]">
+      <h2 className="font-semibold text-base md:text-lg tracking-[-2.5%]">
         방탈출
       </h2>
       {theme && (

@@ -1,34 +1,90 @@
 'use client';
 
+import { useState } from 'react';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
-import LargeDistrictDropdown from '@/components/@shared/filter/LargeDistrictDropdown';
-import MiddleDistrictDropdown from '@/components/@shared/filter/MiddleDistrictDropdown';
 import { locationDetailList } from '@/constants/filter/locationList';
 
 interface LocationFilterProps {
-  align: 'start' | 'center' | 'end';
+  selectedType: string;
 }
 
-export default function LocationFilter({ align }: LocationFilterProps) {
-  const { largeDistrict, middleDistrict, setLargeDistrict, setMiddleDistrict } =
+export default function LocationFilter({ selectedType }: LocationFilterProps) {
+  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
+  const { districtList, addDistrictList, removeDistrictList } =
     useQueryStringStore();
-  const largeDistrictList = Object.keys(locationDetailList);
-  const middleDistrictList = locationDetailList[largeDistrict] ?? [];
-
   return (
-    <div className="flex gap-2">
-      <LargeDistrictDropdown
-        largeDistrict={largeDistrict}
-        setLargeDistrict={setLargeDistrict}
-        list={largeDistrictList}
-        align={align}
-      />
-      <MiddleDistrictDropdown
-        middleDistrict={middleDistrict}
-        setMiddleDistrict={setMiddleDistrict}
-        list={middleDistrictList}
-        align={align}
-      />
+    <div
+      className={`${selectedType === 'locate' ? 'animate-dropdownIn' : 'hidden'}`}
+    >
+      <div
+        className={`${selectedDistrict === null ? 'rounded-b-[10px]' : 'rounded-b-none'} bg-card-white grid grid-cols-[repeat(16,minmax(0,_1fr))] rounded-t-[10px] mt-3 z-40 text-center`}
+      >
+        {Object.entries(locationDetailList).map(([key], index) => {
+          const isFirstCol = index % 16 === 0;
+          const isLastCol = index % 16 === 15;
+
+          let roundedClass = '';
+
+          if (isFirstCol) roundedClass = 'rounded-tl-[10px]';
+          if (isFirstCol && selectedDistrict === null)
+            roundedClass = 'rounded-l-[10px]';
+          if (isLastCol) roundedClass = 'rounded-tr-[10px]';
+          if (isLastCol && selectedDistrict === null)
+            roundedClass = 'rounded-r-[10px]';
+
+          return (
+            <button
+              key={key}
+              type="button"
+              onClick={() => {
+                if (selectedDistrict !== null) setSelectedDistrict(null);
+                else setSelectedDistrict(key);
+              }}
+              className={`${roundedClass} ${selectedDistrict === key ? 'bg-brand-main400 text-font-baseWhite font-semibold' : ''} text-base tracking-[-2.5%] text-font-baseBlack font-normal py-2 hover:bg-brand-main400 hover:text-font-baseWhite hover:font-semibold duration-500`}
+            >
+              {key}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="bg-card-white grid grid-cols-12 rounded-b-[10px] z-40">
+        {Object.entries(locationDetailList).map(([key, value]) => {
+          return (
+            selectedDistrict === key &&
+            value.map((district, index) => {
+              const isLastRow =
+                index >= value.length - (value.length % 12 || 12);
+              const isFirstCol = index % 12 === 0;
+              const isLastCol = index % 12 === 11;
+
+              let roundedClass = '';
+
+              if (isLastRow) {
+                if (isFirstCol) roundedClass = 'rounded-bl-[10px]';
+                else if (isLastCol) roundedClass = 'rounded-br-[10px]';
+              }
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => {
+                    if (districtList.includes(`${key} ${district}`))
+                      removeDistrictList(`${key} ${district}`);
+                    else addDistrictList(`${key} ${district}`);
+                  }}
+                  className={`py-2 text-lg text-font-baseBlack font-normal hover:bg-brand-main200 hover:font-semibold duration-500   
+                    ${districtList.includes(`${key} ${district}`) ? 'bg-brand-main200 font-semibold' : ''} 
+                    ${roundedClass}
+                  `}
+                >
+                  {district}
+                </button>
+              );
+            })
+          );
+        })}
+      </div>
     </div>
   );
 }
