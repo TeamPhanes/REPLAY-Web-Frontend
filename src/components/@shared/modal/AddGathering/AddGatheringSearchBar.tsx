@@ -39,13 +39,12 @@ export default function AddGatheringSearchBar({
   errors,
 }: AddGatheringSearchBarProps) {
   const { debouncedValue } = useDebounce(search, 500);
-  const { largeDistrict, middleDistrict } = useQueryStringStore();
   const { isOpen, openModal, closeModal } = useOpen();
 
   const { searchTheme } = useGetSearchTheme(
     debouncedValue,
-    largeDistrict,
-    middleDistrict
+    '시.도',
+    '시.군.구'
   );
 
   useEffect(() => {

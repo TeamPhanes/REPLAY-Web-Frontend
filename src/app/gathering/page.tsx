@@ -29,7 +29,6 @@ export default function GatheringPage() {
     마감순: 'registrationEnd',
     참여순: 'participantCount',
   };
-  const { largeDistrict, middleDistrict } = useQueryStringStore();
 
   const { gathering } = useGetGathering(
     accessToken,
@@ -37,8 +36,8 @@ export default function GatheringPage() {
     page,
     10,
     sortLabels[sort],
-    largeDistrict,
-    middleDistrict,
+    '시.도',
+    '시.군.구',
     '전체'
   );
   const totalItems = gathering ? gathering.totalCount : 0;
@@ -46,10 +45,7 @@ export default function GatheringPage() {
 
   return (
     <PageContainer>
-      <FilterContainer>
-        <LocationFilter align="start" />
-        <MapNavigation target="gathering" />
-      </FilterContainer>
+      <FilterContainer />
       {!gathering ? (
         <>
           <SortSkeleton className="h-6 mt-6" />

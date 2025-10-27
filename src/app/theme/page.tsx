@@ -28,7 +28,6 @@ export default function RoomPage() {
     평점순: 'rating',
     리뷰순: 'reviews',
   };
-  const { largeDistrict, middleDistrict } = useQueryStringStore();
 
   const { theme } = useGetTheme(
     accessToken,
@@ -36,23 +35,16 @@ export default function RoomPage() {
     page,
     10,
     sortLabels[sort],
-    largeDistrict,
-    middleDistrict,
+    '시.도',
+    '시.군.구',
     '전체'
   );
   const totalItems = theme ? theme.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
 
-  useEffect(() => {
-    setPage(0);
-  }, [largeDistrict, middleDistrict]);
-
   return (
     <PageContainer>
-      <FilterContainer>
-        <LocationFilter align="start" />
-        <MapNavigation target="room" />
-      </FilterContainer>
+      <FilterContainer />
       {!theme ? (
         <>
           <LineSkeleton className="h-6 mt-6" />

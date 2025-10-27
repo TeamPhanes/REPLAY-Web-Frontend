@@ -1,14 +1,13 @@
 import { create } from 'zustand';
 
 interface State {
-  largeDistrict: string;
-  middleDistrict: string;
+  districtList: string[];
   genreList: string[];
 }
 
 interface Actions {
-  setLargeDistrict: (largeDistrict: string) => void;
-  setMiddleDistrict: (middleDistrict: string) => void;
+  addDistrictList: (district: string) => void;
+  removeDistrictList: (district: string) => void;
   addGenre: (genre: string) => void;
   removeGenre: (genre: string) => void;
   clearDistrict: () => void;
@@ -16,13 +15,22 @@ interface Actions {
 }
 
 export const useQueryStringStore = create<State & Actions>()((set, get) => ({
-  largeDistrict: '시.도',
-  middleDistrict: '시.군.구',
+  districtList: [],
   genreList: [],
-  setLargeDistrict: (largeDistrict) => set({ largeDistrict }),
-  setMiddleDistrict: (middleDistrict) => set({ middleDistrict }),
-  clearDistrict: () =>
-    set({ largeDistrict: '시.도', middleDistrict: '시.군.구' }),
+
+  addDistrictList: (district) => {
+    const prev = get().districtList;
+    const filtered = prev.filter((item) => item !== district);
+    const updated = [...filtered, district];
+    set({ districtList: updated });
+  },
+  removeDistrictList: (district) => {
+    const prev = get().districtList;
+
+    const filtered = prev.filter((item) => item !== district);
+    set({ districtList: filtered });
+  },
+  clearDistrict: () => set({ districtList: [] }),
 
   addGenre: (genre) => {
     const prev = get().genreList;

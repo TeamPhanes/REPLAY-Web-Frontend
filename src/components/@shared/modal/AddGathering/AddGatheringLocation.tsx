@@ -16,7 +16,6 @@ export default function AddGatheringLocation() {
           지역 설정
         </p>
       </div>
-      <LocationFilter align="center" />
     </div>
   );
 }
