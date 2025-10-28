@@ -1,6 +1,8 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+import { mockGatherings } from '@/data/mockGatherings';
+import { mockRooms } from '@/data/mockRooms';
 import { useAuthStore } from '@/store/authStore';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import 'swiper/css';
@@ -19,50 +21,54 @@ export default function SearchResults() {
   const keyword = searchParams.get('keyword') || '';
   const { accessToken } = useAuthStore();
 
-  const { theme } = useGetTheme(
-    accessToken,
-    keyword,
-    0,
-    10,
-    'likes',
-    '시.도',
-    '시.군.구',
-    '전체'
-  );
-  const { gathering } = useGetGathering(
-    accessToken,
-    keyword,
-    0,
-    10,
-    'dateTime',
-    '시.도',
-    '시.군.구',
-    '전체'
-  );
+  // const { theme } = useGetTheme(
+  //   accessToken,
+  //   keyword,
+  //   0,
+  //   10,
+  //   'likes',
+  //   '시.도',
+  //   '시.군.구',
+  //   '전체'
+  // );
+  // const { gathering } = useGetGathering(
+  //   accessToken,
+  //   keyword,
+  //   0,
+  //   10,
+  //   'dateTime',
+  //   '시.도',
+  //   '시.군.구',
+  //   '전체'
+  // );
   return (
     <>
       <h2 className="font-semibold text-base md:text-lg tracking-[-2.5%]">
         방탈출
       </h2>
-      {theme && (
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {theme.data.map((room: RoomDTO['get']) => (
+      {mockRooms && (
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
+          {mockRooms.data.map((room: RoomDTO['get']) => (
             <RoomCard room={room} key={room.themeId} />
           ))}
         </div>
       )}
-      {theme && theme.data.length === 0 && <EmptySearchResult />}
+      {mockRooms && mockRooms.data.length === 0 && <EmptySearchResult />}
       <h2 className="font-semibold text-base md:text-lg tracking-[-2.5%] mt-[52px]">
         모임
       </h2>
-      {gathering && (
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {gathering.data.map((data: GatheringDTO['get']['data'][number]) => (
-            <GatheringCard key={data.gatheringId} gathering={data} />
-          ))}
+      {mockGatherings && (
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
+          {mockGatherings.data.map(
+            (data: GatheringDTO['get']['data'][number]) => (
+              <GatheringCard key={data.gatheringId} gathering={data} />
+            )
+          )}
         </div>
       )}
-      {gathering && gathering.data.length === 0 && <EmptySearchResult />}
+      {mockGatherings && mockGatherings.data.length === 0 && (
+        <EmptySearchResult />
+      )}
     </>
   );
 }

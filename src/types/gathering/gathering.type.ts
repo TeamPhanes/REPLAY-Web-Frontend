@@ -19,7 +19,7 @@ export interface GatheringDTO {
       participantCount: number;
       participants: { name: string; image: string }[];
       address: string;
-      level: '쉬움' | '보통' | '어려움';
+      level: string;
     }[];
   };
 }

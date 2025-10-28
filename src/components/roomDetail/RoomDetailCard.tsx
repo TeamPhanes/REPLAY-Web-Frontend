@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useThemeStore } from '@/store/useThemeStore';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
-import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
+import TagAndPlaytime from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import Loading from '@/components/@shared/loading/Loading';
 import RoomDetailStroy from '@/components/roomDetail/RoomDetailStroy';

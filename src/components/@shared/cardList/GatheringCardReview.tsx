@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useGatheringStore } from '@/store/useGatheringStore';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import DateAndParticipant from '@/components/@shared/cardList/DateAndParticipant';
-import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
+import TagAndPlaytime from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import { usePostGatheringLike } from '@/hooks/reactQuery/usePostGatheringLike';
 import { GatheringDTO } from '@/types/gathering/gathering.type';
