@@ -32,6 +32,7 @@ export default function FilterContainer() {
 
       <LocationFilter selectedType={selectedType} />
       <GenreFilter selectedType={selectedType} />
+
       <div className="flex items-center gap-2 my-4">
         {districtList.map((value, index) => {
           return (
