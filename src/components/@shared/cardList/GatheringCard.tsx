@@ -45,7 +45,7 @@ export default function GatheringCard({
   return (
     <div
       key={gathering.gatheringId}
-      className="relative flex md:flex-row flex-col md:w-[630px] items-start rounded-3xl bg-card-white p-5 transition-all hover:scale-[102%]"
+      className="relative flex md:flex-row flex-col md:w-[630px] items-start rounded-[4px] bg-card-white p-5 transition-all hover:scale-[102%]"
     >
       <Link
         href={`/gathering/${gathering.gatheringId}`}
@@ -74,8 +74,8 @@ export default function GatheringCard({
           <Image
             src={isLiked ? HeartFull : HeartLine}
             alt="heart"
-            width={32}
-            height={32}
+            width={28}
+            height={28}
           />
         </button>
       </div>
