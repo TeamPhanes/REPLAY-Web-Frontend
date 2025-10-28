@@ -167,7 +167,7 @@ export default function RoomCardSection({
               <div className="flex items-center gap-[6px]">
                 <Image
                   src={ReviewIcon}
-                  alt="주소 아이콘"
+                  alt="리뷰 아이콘"
                   width={20}
                   height={20}
                 />

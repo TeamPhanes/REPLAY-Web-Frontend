@@ -8,7 +8,7 @@ interface TagProps {
 export default function Tag({ tag }: TagProps) {
   return (
     <div className="flex justify-between">
-      <div className="flex gap-1">
+      <div className="flex gap-2">
         {tag.map((genre, index) => (
           <p
             key={index}

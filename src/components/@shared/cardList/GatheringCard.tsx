@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useGatheringStore } from '@/store/useGatheringStore';
-import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
-import DateAndParticipant from '@/components/@shared/cardList/DateAndParticipant';
-import TagAndPlaytime from '@/components/@shared/cardList/Tag';
+import Tag from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import { usePostGatheringLike } from '@/hooks/reactQuery/usePostGatheringLike';
 import { GatheringDTO } from '@/types/gathering/gathering.type';
+import { yearMonthDayHourTime } from '@/utils/dateChange';
+import AddressIcon from '@/public/icons/cardList/address_icon.svg';
+import CalendarIcon from '@/public/icons/cardList/calendar_icon.svg';
 import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
+import LightbulbIcon from '@/public/icons/cardList/lightbulb_icon.svg';
+import UserIcon from '@/public/icons/cardList/user_icon.svg';
 
 interface GatheringCardProps {
   favoriteCheck?: boolean;
@@ -42,20 +45,20 @@ export default function GatheringCard({
   return (
     <div
       key={gathering.gatheringId}
-      className="md:h-[252px] relative flex md:flex-row flex-col md:w-[630px] items-start rounded-3xl bg-card p-5 transition-all hover:scale-[102%]"
+      className="relative flex md:flex-row flex-col md:w-[630px] items-start rounded-3xl bg-card-white p-5 transition-all hover:scale-[102%]"
     >
       <Link
         href={`/gathering/${gathering.gatheringId}`}
         onClick={() => setSelectedGathering(gathering)}
-        className="w-full md:w-[212px]"
+        className="w-full md:w-[145px]"
       >
         <Image
           src={gathering.listImage}
           alt={gathering.name}
-          width={212}
-          height={212}
+          width={145}
+          height={218}
           quality={100}
-          className="rounded-3xl w-full h-[360px] md:w-[212px] md:h-[212px]"
+          className="rounded-[4px] w-full h-[360px] md:w-[145px] md:h-[218px]"
         />
       </Link>
       <div className="absolute top-10 md:top-auto right-10 md:right-5 flex flex-col bg-card rounded-[30px] p-1 md:p-0">
@@ -83,10 +86,7 @@ export default function GatheringCard({
       >
         <div className="md:ml-5 mt-5 md:mt-0 flex h-[212px] md:w-[322px] flex-col justify-between">
           <div className="flex flex-col gap-3">
-            <TagAndPlaytime
-              tag={gathering.genres}
-              playtime={gathering.playtime}
-            />
+            <Tag tag={gathering.genres} />
             <TitleAndSpot
               themeName={gathering.name}
               cafe={gathering.cafe}
@@ -94,15 +94,62 @@ export default function GatheringCard({
             />
           </div>
           <div className="flex flex-col gap-2">
-            <DateAndParticipant
-              registrationEnd={gathering.dateTime}
-              capacity={gathering.capacity}
-              participantCount={gathering.participantCount}
-            />
-            <AddressAndLevel
-              address={gathering.address}
-              level={gathering.level}
-            />
+            <div className="flex items-center gap-9">
+              <div className="flex items-center gap-[6px]">
+                <Image
+                  src={CalendarIcon}
+                  alt="캘린더 아이콘"
+                  width={20}
+                  height={20}
+                />
+                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
+                  {yearMonthDayHourTime(gathering.registrationEnd)}
+                </p>
+              </div>
+              <div className="flex items-center gap-[6px]">
+                <Image
+                  src={UserIcon}
+                  alt="유저 아이콘"
+                  width={20}
+                  height={20}
+                />
+                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
+                  {gathering.participantCount}/{gathering.capacity}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-[6px]">
+              <Image
+                src={AddressIcon}
+                alt="주소 아이콘"
+                width={20}
+                height={20}
+              />
+              <p className="text-sm tracking-[2.5%] text-font-baseBlack font-normal">
+                {gathering.address}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-[6px]">
+              <Image
+                src={LightbulbIcon}
+                alt="전구 아이콘"
+                width={20}
+                height={20}
+              />
+              <div className="flex items-center gap-2">
+                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
+                  {gathering.playtime}분
+                </p>
+                <span className="text-sm tracking-[-2.5%] text-font-disabled font-normal">
+                  •
+                </span>
+                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
+                  {gathering.level}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </Link>
