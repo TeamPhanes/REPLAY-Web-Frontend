@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useThemeStore } from '@/store/useThemeStore';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import ReviewAndRating from '@/components/@shared/cardList/ReviewAndRating';
-import TagAndPlaytime from '@/components/@shared/cardList/TagAndPlaytime';
+import Tag from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import Loading from '@/components/@shared/loading/Loading';
 import RoomDetailStroy from '@/components/roomDetail/RoomDetailStroy';
@@ -107,10 +107,7 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
           </button>
         </div>
         <div className="md:w-[360px]">
-          <TagAndPlaytime
-            tag={selectedTheme.genres}
-            playtime={selectedTheme.playtime}
-          />
+          <Tag tag={selectedTheme.genres} />
         </div>
         <div className="mt-3">
           <TitleAndSpot

@@ -103,7 +103,7 @@ export default function ReviewRoomCardSection({
             </div>
           ) : (
             <Image
-              src={room.reviewImage}
+              src={room.reviewImage || ReviewDefaultImage}
               alt="리뷰 이미지"
               width={118}
               height={118}

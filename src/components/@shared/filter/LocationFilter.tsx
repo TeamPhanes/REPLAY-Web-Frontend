@@ -37,7 +37,7 @@ export default function LocationFilter({ selectedType }: LocationFilterProps) {
               key={key}
               type="button"
               onClick={() => {
-                if (selectedDistrict !== null) setSelectedDistrict(null);
+                if (selectedDistrict === key) setSelectedDistrict(null);
                 else setSelectedDistrict(key);
               }}
               className={`${roundedClass} ${selectedDistrict === key ? 'bg-brand-main400 text-font-baseWhite font-semibold' : ''} text-base tracking-[-2.5%] text-font-baseBlack font-normal py-2 hover:bg-brand-main400 hover:text-font-baseWhite hover:font-semibold duration-500`}

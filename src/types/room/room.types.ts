@@ -10,6 +10,8 @@ export interface RoomDTO {
     spot: string;
     reviewCount: number;
     rating: number;
+    minPlayer: number;
+    maxPlayer: number;
     address: string;
     isMarked?: boolean;
     isLiked?: boolean;
@@ -21,10 +23,10 @@ export interface RoomDTO {
     levelReview?: string;
     storyReview?: string;
     reviewComment?: string;
-    reviewImage: string | null;
+    reviewImage?: string | null;
     success?: boolean;
     totalLikes?: number;
-    level: '쉬움' | '보통' | '어려움';
+    level: string;
   };
 }
 

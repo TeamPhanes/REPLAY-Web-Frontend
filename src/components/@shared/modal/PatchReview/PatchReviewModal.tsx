@@ -14,6 +14,7 @@ import useImagePreview from '@/hooks/useImagePreview';
 import { RoomDTO } from '@/types/room/room.types';
 import BlackChevronLeft from '@/public/icons/modal/black_chevron_left.svg';
 import BlackChevronRight from '@/public/icons/modal/black_chevron_right.svg';
+import ReviewDefaultImage from '@/public/icons/modal/review_default_image.svg';
 
 interface FormValues {
   id?: number;
@@ -43,7 +44,7 @@ export default function PatchReviewModal({
 }: PatchReviewModalProps) {
   const [isReview, setIsReview] = useState(true);
   const { imageFile, previewUrl, handleImageChange, handleImageReset } =
-    useImagePreview(room.reviewImage);
+    useImagePreview(room.reviewImage || ReviewDefaultImage);
   const { mutate } = usePatchReview(room.reviewId, previewUrl);
   const {
     register,
