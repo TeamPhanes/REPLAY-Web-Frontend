@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useGatheringStore } from '@/store/useGatheringStore';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import DateAndParticipant from '@/components/@shared/cardList/DateAndParticipant';
-import TagAndPlaytime from '@/components/@shared/cardList/Tag';
+import Tag from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import { usePostGatheringLike } from '@/hooks/reactQuery/usePostGatheringLike';
 import { GatheringDTO } from '@/types/gathering/gathering.type';
@@ -80,10 +80,7 @@ export default function GatheringCardReview({
       >
         <div className="md:ml-5 mt-5 md:mt-auto mb-24 md:mb-auto flex h-[212px] md:w-[322px] flex-col justify-between">
           <div className="flex flex-col gap-3">
-            <TagAndPlaytime
-              tag={gathering.genres}
-              playtime={gathering.playtime}
-            />
+            <Tag tag={gathering.genres} />
             <TitleAndSpot
               themeName={gathering.name}
               cafe={gathering.cafe}
