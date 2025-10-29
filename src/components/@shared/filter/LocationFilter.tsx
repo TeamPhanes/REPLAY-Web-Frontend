@@ -25,12 +25,12 @@ export default function LocationFilter({ selectedType }: LocationFilterProps) {
 
           let roundedClass = '';
 
-          if (isFirstCol) roundedClass = 'rounded-tl-[10px]';
+          if (isFirstCol) roundedClass = 'rounded-tl-[8px]';
           if (isFirstCol && selectedDistrict === null)
-            roundedClass = 'rounded-l-[10px]';
-          if (isLastCol) roundedClass = 'rounded-tr-[10px]';
+            roundedClass = 'rounded-l-[8px]';
+          if (isLastCol) roundedClass = 'rounded-tr-[8px]';
           if (isLastCol && selectedDistrict === null)
-            roundedClass = 'rounded-r-[10px]';
+            roundedClass = 'rounded-r-[8px]';
 
           return (
             <button
@@ -61,8 +61,8 @@ export default function LocationFilter({ selectedType }: LocationFilterProps) {
               let roundedClass = '';
 
               if (isLastRow) {
-                if (isFirstCol) roundedClass = 'rounded-bl-[10px]';
-                else if (isLastCol) roundedClass = 'rounded-br-[10px]';
+                if (isFirstCol) roundedClass = 'rounded-bl-[8px]';
+                else if (isLastCol) roundedClass = 'rounded-br-[8px]';
               }
               return (
                 <button

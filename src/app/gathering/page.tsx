@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { mockGatherings } from '@/data/mockGatherings';
 import { useAuthStore } from '@/store/authStore';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
@@ -40,13 +41,13 @@ export default function GatheringPage() {
     '시.군.구',
     '전체'
   );
-  const totalItems = gathering ? gathering.totalCount : 0;
+  const totalItems = mockGatherings ? mockGatherings.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
 
   return (
     <PageContainer>
       <FilterContainer />
-      {!gathering ? (
+      {!mockGatherings ? (
         <>
           <SortSkeleton className="h-6 mt-6" />
           <CardSkeleton className="mt-6" />
@@ -60,8 +61,9 @@ export default function GatheringPage() {
               sortList={sortList}
               sortChange={setSort}
             />
+            <FixedAddGatheringButton />
           </SortContainer>
-          <GatheringCardContainer data={gathering.data} />
+          <GatheringCardContainer data={mockGatherings.data} />
         </>
       )}
       <Pagination
@@ -69,7 +71,6 @@ export default function GatheringPage() {
         totalPages={totalPages}
         onChange={setPage}
       />
-      <FixedAddGatheringButton />
     </PageContainer>
   );
 }
