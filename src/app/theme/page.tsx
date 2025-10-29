@@ -1,6 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { mockRooms } from '@/data/mockRooms';
 import { useAuthStore } from '@/store/authStore';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
@@ -17,6 +20,7 @@ import CardSkeleton from '@/components/@shared/skeleton/CardSkeleton';
 import LineSkeleton from '@/components/@shared/skeleton/SortSkeleton';
 import { useGetTheme } from '@/hooks/reactQuery/useGetTheme';
 import { usePagination } from '@/hooks/usePagination';
+import WhiteMapIcon from '@/public/icons/map/map_white_icon.svg';
 
 export default function RoomPage() {
   const { accessToken } = useAuthStore();
@@ -39,13 +43,13 @@ export default function RoomPage() {
     '시.군.구',
     '전체'
   );
-  const totalItems = theme ? theme.totalCount : 0;
+  const totalItems = mockRooms ? mockRooms.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
 
   return (
     <PageContainer>
       <FilterContainer />
-      {!theme ? (
+      {!mockRooms ? (
         <>
           <LineSkeleton className="h-6 mt-6" />
           <CardSkeleton className="mt-6" />
@@ -53,15 +57,26 @@ export default function RoomPage() {
       ) : (
         <>
           <SortContainer>
-            <CountListValue value={theme.totalCount} />
+            <CountListValue value={mockRooms.totalCount} />
             <SortDropdown
               sort={sort}
               sortList={sortList}
               sortChange={setSort}
             />
+            <Link
+              href="/theme-map"
+              className="rounded-full p-6 bg-brand-main500 absolute -right-24"
+            >
+              <Image
+                src={WhiteMapIcon}
+                alt="지도 아이콘"
+                width={32}
+                height={32}
+              />
+            </Link>
           </SortContainer>
           <RoomCardContainer
-            data={theme.data}
+            data={mockRooms.data}
             className="grid-cols-1 md:grid-cols-2"
           />
         </>

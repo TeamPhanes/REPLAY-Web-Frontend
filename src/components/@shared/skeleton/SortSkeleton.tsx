@@ -9,8 +9,8 @@ export default function SortSkeleton({ className }: SortSkeletonProps) {
         role="status"
         className="animate-pulse flex w-full h-full justify-between"
       >
-        <div className="bg-card w-16 rounded-3xl" />
-        <div className="bg-card w-16 rounded-3xl" />
+        <div className="bg-card-white w-16 rounded-3xl" />
+        <div className="bg-card-white w-16 rounded-3xl" />
         <span className="sr-only">Loading...</span>
       </div>
     </div>

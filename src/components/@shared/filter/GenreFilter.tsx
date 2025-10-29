@@ -24,13 +24,13 @@ export default function GenreFilter({ selectedType }: GenreFilterProps) {
         let roundedClass = '';
 
         if (isFirstRow) {
-          if (isFirstCol) roundedClass = 'rounded-tl-[10px]';
-          else if (isLastCol) roundedClass = 'rounded-tr-[10px]';
+          if (isFirstCol) roundedClass = 'rounded-tl-[8px]';
+          else if (isLastCol) roundedClass = 'rounded-tr-[8px]';
         }
 
         if (isLastRow) {
-          if (isFirstCol) roundedClass = 'rounded-bl-[10px]';
-          else if (isLastCol) roundedClass = 'rounded-br-[10px]';
+          if (isFirstCol) roundedClass = 'rounded-bl-[8px]';
+          else if (isLastCol) roundedClass = 'rounded-br-[8px]';
         }
 
         return (

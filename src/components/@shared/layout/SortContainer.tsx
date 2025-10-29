@@ -6,6 +6,8 @@ interface SortContainerProps {
 
 export default function SortContainer({ children }: SortContainerProps) {
   return (
-    <div className="mt-6 flex items-center justify-between">{children}</div>
+    <div className="mt-6 flex items-center justify-between relative">
+      {children}
+    </div>
   );
 }

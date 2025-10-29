@@ -28,8 +28,8 @@ export default function Pagination({
   }
 
   return range.length !== 0 ? (
-    <div className="flex items-center gap-1 justify-center my-20">
-      <button
+    <div className="flex items-center gap-1 justify-center my-32">
+      {/* <button
         type="button"
         onClick={() => {
           onChange(currentPage - 1);
@@ -45,7 +45,7 @@ export default function Pagination({
           height={32}
           className="w-8 h-8"
         />
-      </button>
+      </button> */}
       {range.map((item, idx) =>
         item === '...' ? (
           <span key={idx} className="px-2 text-xl text-setfont">
@@ -59,13 +59,13 @@ export default function Pagination({
               onChange(Number(item));
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className={`font-semibold text-2xl tracking-[-2.5%] ${currentPage === item ? 'text-card' : 'text-setfont md:hover:text-card'}`}
+            className={`font-normal text-base tracking-[-2.5%] w-9 h-9 ${currentPage === item ? 'text-font-baseWhite rounded-full bg-brand-main400' : 'text-font-thirdWhite hover:text-font-baseWhite hover:rounded-full hover:bg-brand-main400'}`}
           >
-            [{Number(item) + 1}]
+            {Number(item) + 1}
           </button>
         )
       )}
-      <button
+      {/* <button
         type="button"
         onClick={() => {
           onChange(currentPage + 1);
@@ -81,7 +81,7 @@ export default function Pagination({
           height={32}
           className="w-8 h-8"
         />
-      </button>
+      </button> */}
     </div>
   ) : null;
 }

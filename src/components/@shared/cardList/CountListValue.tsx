@@ -4,7 +4,7 @@ interface CountListValueProps {
 
 export default function CountListValue({ value }: CountListValueProps) {
   return (
-    <p className="text-base font-normal tracking-[-2.5%] text-setfont">
+    <p className="text-sm font-normal tracking-[-2.5%] text-font-baseWhite">
       전체 {value}개
     </p>
   );
