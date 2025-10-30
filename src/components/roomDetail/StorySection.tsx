@@ -10,9 +10,9 @@ export default function StorySection({ story }: StorySectionProps) {
   const { isOpen, openModal, closeModal } = useOpen();
 
   return (
-    <>
-      <StoryContainer openModal={openModal} story={story} />
+    <div className="max-w-[405px]">
+      <StoryContainer isOpen={isOpen} openModal={openModal} story={story} />
       <StroyModal isOpen={isOpen} closeModal={closeModal} story={story} />
-    </>
+    </div>
   );
 }

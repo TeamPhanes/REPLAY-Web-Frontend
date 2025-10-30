@@ -28,7 +28,7 @@ export default function Pagination({
   }
 
   return range.length !== 0 ? (
-    <div className="flex items-center gap-1 justify-center my-32">
+    <div className="flex items-center gap-1 justify-center mt-32">
       {/* <button
         type="button"
         onClick={() => {
