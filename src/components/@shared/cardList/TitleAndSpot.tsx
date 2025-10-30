@@ -2,19 +2,25 @@ interface TitleAndSpotProps {
   themeName: string;
   cafe: string;
   spot: string;
+  isDetail?: boolean;
 }
 
 export default function TitleAndSpot({
   themeName,
   cafe,
   spot,
+  isDetail,
 }: TitleAndSpotProps) {
   return (
-    <div className="flex flex-col gap-[2px]">
-      <h2 className="truncate text-2xl/[34px] font-semibold tracking-[-2.5%] text-font-baseBlack">
+    <div className={`${isDetail ? 'gap-1' : 'gap-[2px]'} flex flex-col`}>
+      <h2
+        className={`${isDetail ? 'text-4xl/[48px]' : 'text-2xl/[34px]'} truncate  font-semibold tracking-[-2.5%] text-font-baseBlack`}
+      >
         {themeName}
       </h2>
-      <p className="text-xs/[18px] font-normal tracking-[-2.5%] text-font-disabled">
+      <p
+        className={`${isDetail ? 'text-lg/[26px]' : 'text-xs/[18px]'} font-normal tracking-[-2.5%] text-font-disabled`}
+      >
         {cafe}
         <span className="pr-1" />
         {spot}

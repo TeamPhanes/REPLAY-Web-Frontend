@@ -1,6 +1,13 @@
 // 리뷰 목록 조회 Response
 export interface ReviewDTO {
   get: {
+    averageScore: number;
+    countGatherings: number;
+    scoreCount: number;
+    score: number[];
+    theme: string[];
+    level: string[];
+    story: string[];
     totalCount: number;
     currentPage: number;
     data: {

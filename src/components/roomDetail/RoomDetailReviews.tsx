@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { mockReviews } from '@/data/mockReviews';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
 import SortDropdown from '@/components/@shared/cardList/SortDropdown';
 import SortContainer from '@/components/@shared/layout/SortContainer';
 import Loading from '@/components/@shared/loading/Loading';
-import ReviewCard from '@/components/review/ReviewCard';
+import ReviewSection from '@/components/review/ReviewSection';
 import { useGetReview } from '@/hooks/reactQuery/useGetReview';
 
 interface RoomDetailReviewsProps {
@@ -15,16 +16,16 @@ export default function RoomDetailReviews({ id }: RoomDetailReviewsProps) {
   const sortList = ['인기순', '최신순'];
   const { review, isLoading, showLoading } = useGetReview(id);
 
-  if (showLoading) return <Loading isLoading={isLoading} />;
+  // if (showLoading) return <Loading isLoading={isLoading} />;
   return (
     <>
-      <SortContainer>
-        <CountListValue value={review.totalCount} />
-        <SortDropdown sort={sort} sortList={sortList} sortChange={setSort} />
-      </SortContainer>
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <ReviewCard data={review} />
+      <div className="flex items-center gap-2 mt-16">
+        <span className="w-1 h-[30px] bg-line-lightGray" />
+        <p className="text-[28px]/[38px] tracking-[-2.5%] text-font-baseWhite font-semibold">
+          리뷰
+        </p>
       </div>
+      <ReviewSection />
     </>
   );
 }
