@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import { mockParticipants } from '@/data/mockParticipants';
 import { useAuthStore } from '@/store/authStore';
 import { useGatheringStore } from '@/store/useGatheringStore';
 import PageContainer from '@/components/@shared/layout/PageContainer';
@@ -18,7 +19,7 @@ import {
 import { useGetGatheringMember } from '@/hooks/reactQuery/useGetGatheringMember';
 
 export default function GatheringDetailPage() {
-  const [host, setHost] = useState();
+  const [host, setHost] = useState('종화');
   const [dateTime, setDateTime] = useState();
   const { accessToken } = useAuthStore();
   const { id } = useParams();
@@ -35,49 +36,44 @@ export default function GatheringDetailPage() {
   );
 
   useEffect(() => {
-    if (gatheringMember && gatheringMember.length > 0) {
-      setHost(gatheringMember[0].nickname);
+    if (mockParticipants && mockParticipants.length > 0) {
+      setHost(mockParticipants[0].nickname);
     }
     if (gatheringDetail) {
       setDateTime(gatheringDetail.dateTime);
     }
-  }, [gatheringMember, gatheringDetail]);
+  }, [mockParticipants, gatheringDetail]);
 
-  if (showLoading) return <Loading isLoading={isLoading} />;
+  // if (showLoading) return <Loading isLoading={isLoading} />;
 
   const minLength = 6;
-  while (gatheringMember.length < minLength) {
-    gatheringMember.push({
+  while (mockParticipants.length < minLength) {
+    mockParticipants.push({
       image: '',
-      updatedAt: '',
-      createdAt: '',
       nickname: '',
+      email: '',
+      emailMark: false,
       comment: '',
-      representAchievement: [''],
     });
   }
-  if (gatheringDetail?.gatheringId !== selectedGathering.gatheringId) {
-    router.replace('/not-found');
-    return null;
-  }
+  // if (gatheringDetail?.gatheringId !== selectedGathering.gatheringId) {
+  //   router.replace('/not-found');
+  //   return null;
+  // }
 
   return (
     <PageContainer>
-      <GatheringDetailCard
-        list={selectedGathering}
-        detail={gatheringDetail}
-        leader={gatheringMember[0].nickname}
-      />
-      <ParticipantList gatheringMember={gatheringMember} />
-      <CommentsContainer id={id} leaderCheck={gatheringMember[0].nickName} />
-      <AnotherGatherings
+      <GatheringDetailCard leader={host} />
+      <ParticipantList gatheringMember={mockParticipants} leader={host} />
+      {/* <CommentsContainer id={id} leaderCheck={host} /> */}
+      {/* <AnotherGatherings
         title={`${gatheringMember[0].nickname}님이 만든 모임`}
         gatherings={hostGathering.data}
-      />
-      <AnotherGatherings
+      /> */}
+      {/* <AnotherGatherings
         title="똑같은 일정 다른 모임"
         gatherings={dateGathering.data}
-      />
+      /> */}
     </PageContainer>
   );
 }

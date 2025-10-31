@@ -85,8 +85,8 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
       <Image
         src={mockRoomsDetail.detailImage}
         alt={mockRoomsDetail.themeName}
-        width={797}
-        height={460}
+        width={413}
+        height={500}
         quality={100}
         className="w-full h-[360px] md:w-[413px] md:h-[500px] rounded-[6px]"
       />
@@ -126,9 +126,7 @@ export default function RoomDetailCard({ id }: RoomDetailCardProps) {
           </button>
           <button
             type="button"
-            className={`transition-transform duration-300 active:scale-90 ${
-              isMarked ? 'animate-pop' : ''
-            }`}
+            className="transition-transform duration-300 active:scale-90"
             onClick={handleShareButtonClick}
           >
             <Image src={ShareIcon} alt="share" width={40} height={40} />

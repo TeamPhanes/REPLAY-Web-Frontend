@@ -1,4 +1,5 @@
 import { useParams } from 'next/navigation';
+import { mockParticipants } from '@/data/mockParticipants';
 import { useAuthStore } from '@/store/authStore';
 import MainBlueButton from '@/components/@shared/button/MainBlueButton';
 import { useGetGatheringMember } from '@/hooks/reactQuery/useGetGatheringMember';
@@ -22,22 +23,26 @@ export default function GatheringMemberButton({
       userAction,
     });
   };
-  const FindMember = gatheringMember
+  const FindMember = mockParticipants
     .map((user: any) => user.nickname === userInfo?.nickname)
     .find((check: boolean) => check === true);
   return !FindMember ? (
     <MainBlueButton
-      className="mt-5 md:absolute bottom-5 w-full md:w-[431px]"
+      className="mt-5 md:absolute bottom-5 w-full md:w-[300px] right-5"
       onClick={() => handleMemberButtonClick('POST')}
     >
-      <p className="text-2xl font-semibold text-white">모임 참여하기</p>
+      <p className="text-base tracking-[-2.5%] font-semibold text-font-baseWhite">
+        모임 참여하기
+      </p>
     </MainBlueButton>
   ) : (
     <MainBlueButton
-      className="mt-5 md:absolute bottom-5 w-full md:w-[431px]"
+      className="mt-5 md:absolute bottom-5 w-full md:w-[300px] right-5"
       onClick={() => handleMemberButtonClick('DELETE')}
     >
-      <p className="text-2xl font-semibold text-white">참여 취소하기</p>
+      <p className="text-base tracking-[-2.5%] font-semibold text-font-baseWhite">
+        참여 취소하기
+      </p>
     </MainBlueButton>
   );
 }

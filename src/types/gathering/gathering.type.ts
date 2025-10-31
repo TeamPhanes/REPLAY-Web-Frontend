@@ -28,14 +28,18 @@ export interface GatheringDTO {
 export interface GatheringDetailDTO {
   get: {
     gatheringId: number;
-    name: string;
     detailImage: string;
-    capacity: number;
-    dateTime: string;
-    price: number;
+    genres: string[];
     registrationStart: string;
     registrationEnd: string;
+    name: string;
+    themeId: number;
+    themeName: string;
     content: string;
-    isIndividual: boolean;
+    dateTime: string;
+    price: number;
+    address: string;
+    participantCount: number;
+    capacity: number;
   };
 }

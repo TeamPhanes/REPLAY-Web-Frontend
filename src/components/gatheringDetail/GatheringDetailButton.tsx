@@ -7,23 +7,16 @@ import GatheringMemberButton from '@/components/gatheringDetail/GatheringMemberB
 import { useDeleteGathering } from '@/hooks/reactQuery/useDeleteGathering';
 import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
 import { useOpen } from '@/hooks/useOpen';
-import {
-  GatheringDTO,
-  GatheringDetailDTO,
-} from '@/types/gathering/gathering.type';
+import { GatheringDetailDTO } from '@/types/gathering/gathering.type';
 
 interface GatheringDetailButtonProps {
-  list: GatheringDTO['get']['data'][number];
-  detail: GatheringDetailDTO['get'];
+  list: GatheringDetailDTO['get'];
   leader: string;
-  gatheringId: number;
 }
 
 export default function GatheringDetailButton({
   list,
-  detail,
   leader,
-  gatheringId,
 }: GatheringDetailButtonProps) {
   const { accessToken } = useAuthStore();
   const { userInfo } = useUserInfo({ enabled: !!accessToken });
@@ -33,7 +26,7 @@ export default function GatheringDetailButton({
     openModal: openPatchGathering,
     closeModal: closePatchGathering,
   } = useOpen();
-  const { mutate } = useDeleteGathering(gatheringId);
+  const { mutate } = useDeleteGathering(list.gatheringId);
 
   return (
     <div>
@@ -45,7 +38,7 @@ export default function GatheringDetailButton({
           <MainPurpleButton onClick={openModal}>모임 삭제하기</MainPurpleButton>
         </div>
       ) : (
-        <GatheringMemberButton gatheringId={detail.gatheringId} />
+        <GatheringMemberButton gatheringId={list.gatheringId} />
       )}
 
       <Modal
@@ -70,19 +63,19 @@ export default function GatheringDetailButton({
         isOpen={isPatchGatheringOpen}
         onClose={closePatchGathering}
         defaultValues={{
-          name: detail.name,
+          name: list.name,
           themeId: list.themeId,
-          content: detail.content,
-          isIndividual: detail.isIndividual === true ? '인당' : '총액',
-          price: detail.price,
-          dateTime: detail.dateTime ? new Date(detail.dateTime) : new Date(),
-          registrationStart: detail.registrationStart
-            ? new Date(detail.registrationStart)
+          content: list.content,
+          isIndividual: '인당',
+          price: list.price,
+          dateTime: list.dateTime ? new Date(list.dateTime) : new Date(),
+          registrationStart: list.registrationStart
+            ? new Date(list.registrationStart)
             : new Date(),
-          registrationEnd: detail.registrationEnd
-            ? new Date(detail.registrationEnd)
+          registrationEnd: list.registrationEnd
+            ? new Date(list.registrationEnd)
             : new Date(),
-          capacity: detail.capacity,
+          capacity: list.capacity,
         }}
       />
     </div>
