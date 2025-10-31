@@ -1,32 +1,41 @@
-import AchievementBadge from '@/components/gatheringDetail/AchievementBadge';
 import ParticipantUsers from '@/components/gatheringDetail/ParticipantUsers';
 import { GatheringMemberDTO } from '@/types/participant/participant.type';
 
 interface ParticipantListProps {
   gatheringMember: GatheringMemberDTO['get'][];
+  leader: string;
 }
 
 export default function ParticipantList({
   gatheringMember,
+  leader,
 }: ParticipantListProps) {
   return (
-    <div className="md:absolute right-0 top-[480px] flex h-[712px] flex-col justify-between">
-      {gatheringMember.map((user: GatheringMemberDTO['get'], index: number) => (
-        <div
-          key={index}
-          className={`relative flex h-[112px] md:w-[702px] items-center rounded-3xl p-4 ${user.nickname ? 'bg-card' : 'bg-spot'}`}
-        >
-          <ParticipantUsers
-            list={user}
-            leaderCheck={gatheringMember[0].nickname}
-          />
-          <AchievementBadge
-            nickname={user.nickname}
-            achievement={user.representAchievement}
-            absoluteLayout="mt-9 bottom-5 right-5 gap-1"
-          />
-        </div>
-      ))}
+    <div className="flex flex-col mt-16">
+      <div className="flex items-center gap-2">
+        <span className="w-1 h-[30px] bg-line-lightGray" />
+        <p className="text-[28px]/[38px] tracking-[-2.5%] text-font-baseWhite font-semibold">
+          모임 참여자
+        </p>
+      </div>
+      <div className="flex items-center mt-6 justify-between">
+        {gatheringMember.map(
+          (user: GatheringMemberDTO['get'], index: number) => (
+            <div
+              key={index}
+              className={`relative min-w-[203px] min-h-[308px] flex flex-col items-center ${user.nickname ? 'bg-brand-main500' : 'bg-line-Gray'}`}
+            >
+              <div
+                className={`bg-line-white w-full h-[175px] absolute top-[75px] ${user.nickname ? '' : '!bg-line-Gray'}`}
+              />
+              <div
+                className={`bg-brand-sub300 w-full h-1 absolute top-[243px] ${user.nickname ? '' : '!bg-line-Gray'}`}
+              />
+              <ParticipantUsers list={user} leaderCheck={leader} />
+            </div>
+          )
+        )}
+      </div>
     </div>
   );
 }

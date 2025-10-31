@@ -3,9 +3,8 @@ export interface GatheringMemberDTO {
   get: {
     image: string;
     nickname: string;
-    updatedAt: string;
-    createdAt: string;
+    email: string;
+    emailMark: boolean;
     comment: string;
-    representAchievement: string[];
   };
 }

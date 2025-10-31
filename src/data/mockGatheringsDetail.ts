@@ -1,6 +1,17 @@
 export const mockGatheringsDetail = {
   gatheringId: 1,
   detailImage: 'https://xdungeon.net/file/theme/11/11_6145641280.jpg',
-  price: 24000,
+  genres: ['판타지', '드라마'],
+  registrationStart: '2025-03-24T15:00:00',
+  registrationEnd: '2025-03-25T15:00:00',
+  name: '1 같이 방탈출 하실 분 구합니다.',
+  themeId: 1,
+  themeName: '마음을 그려드립니다.',
   content: '저는 방린이 입니다. 함께 방탈출 해주실 분 구하고 있어요 !',
+  dateTime: '2025-03-26T15:00:00',
+  price: 24000,
+  address: '서울 강남구 강남대로 84길 33, 대우디오빌플러스 B1',
+  participantCount: 1,
+  capacity: 6,
+  isLiked: false,
 };

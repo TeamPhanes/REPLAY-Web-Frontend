@@ -10,7 +10,7 @@ export const mockComments = [
     createdAt: '2025-03-26T15:00:00',
     reComments: [
       {
-        reCommentsId: 1,
+        reCommentId: 1,
         nickname: '모르는 사람',
         image: '',
         content: '마그다 너무 많은 사람들이 해서 없을듯요??',

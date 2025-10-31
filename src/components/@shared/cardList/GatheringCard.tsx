@@ -84,7 +84,7 @@ export default function GatheringCard({
         onClick={() => setSelectedGathering(gathering)}
         className="w-full md:w-auto"
       >
-        <div className="md:ml-5 mt-5 md:mt-0 flex h-[212px] md:w-[322px] flex-col justify-between">
+        <div className="md:ml-5 mt-5 md:mt-0 flex min-h-[212px] min-w-[424px] flex-col justify-between">
           <div className="flex flex-col gap-3">
             <Tag tag={gathering.genres} />
             <TitleAndSpot

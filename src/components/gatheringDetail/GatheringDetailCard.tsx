@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
+import { mockGatheringsDetail } from '@/data/mockGatheringsDetail';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
+import Tag from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import Rating from '@/components/@shared/rating/Rating';
-import DateAndPrice from '@/components/gatheringDetail/DateAndPrice';
+import DateAndPriceAndAddress from '@/components/gatheringDetail/DateAndPriceAndAddress';
 import GatheringDetailButton from '@/components/gatheringDetail/GatheringDetailButton';
 import TagAndLink from '@/components/gatheringDetail/TagAndLink';
 import { useGetGatheringMember } from '@/hooks/reactQuery/useGetGatheringMember';
@@ -13,58 +16,59 @@ import {
   GatheringDTO,
   GatheringDetailDTO,
 } from '@/types/gathering/gathering.type';
+import { periodYearMonthDayHourTime } from '@/utils/dateChange';
 import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
+import ShareIcon from '@/public/icons/cardList/share_icon.svg';
 
 interface GatheringDetailCardProps {
-  list: GatheringDTO['get']['data'][number];
-  detail: GatheringDetailDTO['get'];
   leader: string;
 }
 
 export default function GatheringDetailCard({
-  list,
-  detail,
   leader,
 }: GatheringDetailCardProps) {
   const { id } = useParams();
   const { gatheringMember } = useGetGatheringMember(id);
-  const [isLiked, setIsLiked] = useState(list.isLiked);
+  const [isLiked, setIsLiked] = useState(mockGatheringsDetail.isLiked);
   const { likesMutation } = usePostGatheringLike();
 
-  const participantCount = gatheringMember.filter(
-    (user: any) => user.nickname
-  ).length;
+  // const participantCount = gatheringMember.filter(
+  //   (user: any) => user.nickname
+  // ).length;
 
   const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {
     setIsLiked(userAction === 'LIKE_POST');
     likesMutation.mutate({
-      gatheringId: detail.gatheringId,
+      gatheringId: mockGatheringsDetail.gatheringId,
       userAction,
     });
   };
 
+  const handleShareButtonClick = () => {
+    window.navigator.clipboard.writeText(window.location.href);
+    toast.info('주소 링크가 복사되었습니다.', { toastId: 'url-copy' });
+  };
+
   useEffect(() => {
-    setIsLiked(list.isLiked);
-  }, [list.isLiked]);
+    setIsLiked(mockGatheringsDetail.isLiked);
+  }, [mockGatheringsDetail.isLiked]);
 
   return (
-    <>
-      <div className="flex flex-col md:flex-row md:h-[460px] justify-between gap-2">
-        <Image
-          src={detail.detailImage}
-          alt={list.name}
-          width={797}
-          height={460}
-          quality={100}
-          className="w-full h-[360px] md:w-[797px] md:h-[460px] rounded-[30px]"
-        />
-        <div className="relative md:h-[460px] md:w-[471px] rounded-[30px] bg-card p-5">
+    <div className="flex flex-col md:flex-row justify-between gap-2">
+      <Image
+        src={mockGatheringsDetail.detailImage}
+        alt={mockGatheringsDetail.name}
+        width={413}
+        height={500}
+        quality={100}
+        className="w-full h-[360px] md:w-[413px] md:h-[500px] rounded-[6px]"
+      />
+      <div className="relative md:h-[500px] md:w-[849px] rounded-[6px] bg-card-white p-5">
+        <div className="absolute top-[-340px] md:top-auto rounded-[30px] p-1 md:p-0 md:rounded-none right-5 flex gap-[18px]">
           <button
             type="button"
-            className={`absolute right-5 top-[-340px] md:top-20 bg-card rounded-[30px] md:bg-none p-1 md:p-0 md:rounded-none transition-transform duration-300 active:scale-90 ${
-              isLiked ? 'animate-pop' : ''
-            }`}
+            className={`transition-transform duration-300 active:scale-90 ${isLiked ? 'animate-pop' : ''}`}
             onClick={() =>
               handleLikeButtonClick(isLiked ? 'UNLIKE_POST' : 'LIKE_POST')
             }
@@ -72,73 +76,73 @@ export default function GatheringDetailCard({
             <Image
               src={isLiked ? HeartFull : HeartLine}
               alt="heart"
-              width={32}
-              height={32}
+              width={40}
+              height={40}
             />
           </button>
-          <TagAndLink tag={list.genres} />
-          <div className="mt-7 md:w-[395px]">
-            <TitleAndSpot
-              themeName={detail.name}
-              cafe={list.cafe}
-              spot={list.spot}
-            />
-          </div>
-          <div className="mt-5 flex md:w-[395px] flex-col gap-3">
-            <DateAndPrice
-              registrationStart={detail.registrationStart}
-              registrationEnd={detail.registrationEnd}
-              dateTime={detail.dateTime}
-              isIndividual={detail.isIndividual}
-              price={detail.price}
-            />
-            <AddressAndLevel address={list.address} level={list.level} />
-          </div>
-          <div className="mt-5 flex items-center justify-center gap-2 md:gap-12">
-            <div className="hidden md:flex items-center">
-              <Rating
-                rating={participantCount}
-                maxRating={6}
-                width={288}
-                height={48}
-                type="User"
-                capacity={detail.capacity}
-              />
-            </div>
-            <div className="md:hidden flex items-center">
-              <Rating
-                rating={participantCount}
-                maxRating={6}
-                width={240}
-                height={34}
-                type="User"
-                capacity={detail.capacity}
-              />
-            </div>
-            <p className="text-2xl/[34px] font-normal tracking-[-2.5%] text-grayFont">
-              {participantCount}/{detail.capacity}
+          <button
+            type="button"
+            className="transition-transform duration-300 active:scale-90"
+            onClick={handleShareButtonClick}
+          >
+            <Image src={ShareIcon} alt="share" width={40} height={40} />
+          </button>
+        </div>
+
+        <Tag tag={mockGatheringsDetail.genres} isDetail />
+
+        <div className="gap-1 flex flex-col mt-8">
+          <p className="text-lg/[26px] font-normal tracking-[-2.5%] text-font-disabled">
+            {periodYearMonthDayHourTime(mockGatheringsDetail.registrationStart)}{' '}
+            ~ {periodYearMonthDayHourTime(mockGatheringsDetail.registrationEnd)}
+          </p>
+          <h2 className="text-4xl/[48px] truncate  font-semibold tracking-[-2.5%] text-font-baseBlack">
+            {mockGatheringsDetail.name}
+          </h2>
+          <p className="text-lg/[26px] font-normal tracking-[-2.5%] text-font-disabled">
+            {mockGatheringsDetail.themeName}
+          </p>
+        </div>
+
+        <div className="mt-10 flex justify-between">
+          <div className="flex flex-col gap-3 min-w-[385px] min-h-[230px]">
+            <p className="min-w-[90px] text-center text-xl font-normal tracking-[-2.5%] text-font-baseBlack">
+              소개
+            </p>
+            <p className="line-clamp-[8] text-[13px]/[18px] font-normal tracking-[-2.5%] text-font-baseBlack">
+              {mockGatheringsDetail.content}
             </p>
           </div>
-          <GatheringDetailButton
-            list={list}
-            detail={detail}
-            leader={leader}
-            gatheringId={detail.gatheringId}
-          />
+
+          <span className="bg-line-lightGray h-44 w-[1px]" />
+
+          <div className="flex flex-col gap-3 min-w-[385px] min-h-[230px]">
+            <DateAndPriceAndAddress
+              dateTime={mockGatheringsDetail.dateTime}
+              price={mockGatheringsDetail.price}
+              address={mockGatheringsDetail.address}
+            />
+            <div className="flex items-center justify-between mt-10">
+              <Rating
+                rating={mockGatheringsDetail.participantCount}
+                maxRating={6}
+                width={266}
+                height={36}
+                type="User"
+                capacity={mockGatheringsDetail.capacity}
+              />
+              <p className="text-xl font-normal tracking-[-2.5%] text-font-thirdBlack">
+                {mockGatheringsDetail.participantCount}/
+                {mockGatheringsDetail.capacity}
+              </p>
+            </div>
+            <GatheringDetailButton
+              list={mockGatheringsDetail}
+              leader={leader}
+            />
+          </div>
         </div>
       </div>
-      <div className="mt-5 mb-5 md:mb-auto md:h-[712px] md:w-[570px] rounded-[30px] bg-card p-5">
-        <div className="relative flex items-center justify-center">
-          <div className="w-[169px] border-t border-black" />
-          <p className="min-w-[90px] text-center text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
-            소개
-          </p>
-          <div className="w-[169px] border-t border-black" />
-        </div>
-        <p className="mt-5 text-base font-normal tracking-[-2.5%] text-basefont">
-          {detail.content}
-        </p>
-      </div>
-    </>
+    </div>
   );
 }
