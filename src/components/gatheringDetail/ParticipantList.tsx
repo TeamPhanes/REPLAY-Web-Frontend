@@ -11,7 +11,7 @@ export default function ParticipantList({
   leader,
 }: ParticipantListProps) {
   return (
-    <div className="flex flex-col mt-16">
+    <div className="flex flex-col mt-14">
       <div className="flex items-center gap-2">
         <span className="w-1 h-[30px] bg-line-lightGray" />
         <p className="text-[28px]/[38px] tracking-[-2.5%] text-font-baseWhite font-semibold">

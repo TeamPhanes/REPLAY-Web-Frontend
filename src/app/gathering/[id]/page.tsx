@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
+import { mockGatherings } from '@/data/mockGatherings';
 import { mockParticipants } from '@/data/mockParticipants';
 import { useAuthStore } from '@/store/authStore';
 import { useGatheringStore } from '@/store/useGatheringStore';
@@ -65,15 +66,15 @@ export default function GatheringDetailPage() {
     <PageContainer>
       <GatheringDetailCard leader={host} />
       <ParticipantList gatheringMember={mockParticipants} leader={host} />
-      {/* <CommentsContainer id={id} leaderCheck={host} /> */}
+      <CommentsContainer id={id} leaderCheck={host} />
       {/* <AnotherGatherings
         title={`${gatheringMember[0].nickname}님이 만든 모임`}
         gatherings={hostGathering.data}
       /> */}
-      {/* <AnotherGatherings
-        title="똑같은 일정 다른 모임"
-        gatherings={dateGathering.data}
-      /> */}
+      <AnotherGatherings
+        title="비슷한 일정 다른 모임"
+        gatherings={mockGatherings.data}
+      />
     </PageContainer>
   );
 }
