@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { mockComments } from '@/data/mockComments';
 import Loading from '@/components/@shared/loading/Loading';
 import CommentCard from '@/components/gatheringDetail/comment/CommentCard';
 import CommentInput from '@/components/gatheringDetail/comment/CommentPostInput';
@@ -18,12 +19,12 @@ export default function CommentsContainer({
   const [sort, setSort] = useState('create');
   const { comment, isLoading, showLoading } = useGetComment(id, sort);
 
-  if (showLoading) return <Loading isLoading={isLoading} />;
+  // if (showLoading) return <Loading isLoading={isLoading} />;
 
   return (
-    <div className="mt-5 w-full bg-comment">
+    <div className="mt-14 w-full bg-card-white rounded-lg">
       <CommentSortMenu sort={sort} setSort={setSort} />
-      {comment.map((data: CommentDTO['get']) => (
+      {mockComments.map((data: CommentDTO['get']) => (
         <div key={data.commentId}>
           <CommentCard
             gatheringId={id}

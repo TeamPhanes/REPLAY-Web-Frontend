@@ -43,9 +43,9 @@ export default function CommentPostInput({
   return (
     <div className="md:h-[293px] px-2 py-5 md:flex md:items-center md: justify-center">
       <div
-        className={`${errors.content ? 'border-red-500' : 'border-grayFont'} relative h-[223px] md:w-[1000px] rounded-[30px] border-[1px] bg-white p-5`}
+        className={`${errors.content ? 'border-red-500' : 'border-line-secondLightGray'} relative h-[223px] md:w-[1200px] rounded-lg border-[1px] bg-white p-5`}
       >
-        <div className="max-w-[330px] md:max-w-full flex items-center gap-2">
+        {/* <div className="max-w-[330px] md:max-w-full flex items-center gap-2">
           <Image
             src={userInfo ? userInfo.image : UserDefaultImg}
             alt="유저 이미지"
@@ -56,17 +56,17 @@ export default function CommentPostInput({
           <p className="text-xl md:text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
             {userInfo ? userInfo.nickname : '로그인 후 이용 부탁드립니다.'}
           </p>
-        </div>
+        </div> */}
         <form onSubmit={handleSubmit(onSubmit)}>
           <textarea
             {...register('content', {
               required: '내용은 필수입니다.',
             })}
-            className="mt-2 md:mt-1 h-[88px] md:h-[70px] w-full md:w-[960px] resize-none text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont focus:outline-none"
+            className="mt-2 md:mt-1 h-[88px] md:h-[95px] w-full resize-none text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont focus:outline-none"
             placeholder={
               parentId === undefined
-                ? '댓글을 남겨보세요.'
-                : '답글을 남겨보세요.'
+                ? '댓글을 달아보세요.'
+                : '답글을 달아보세요.'
             }
           />
           {errors.content && (
@@ -76,7 +76,7 @@ export default function CommentPostInput({
           )}
           <MainBlueButton
             type="submit"
-            className="absolute bottom-5 right-5 w-[74px] h-[42px] flex items-center justify-center"
+            className="absolute bottom-5 right-5 w-[100px] h-[44px] flex items-center justify-center !text-sm tracking-[-2.5%]"
           >
             등록
           </MainBlueButton>

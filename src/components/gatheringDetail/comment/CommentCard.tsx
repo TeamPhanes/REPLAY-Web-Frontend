@@ -48,54 +48,58 @@ export default function CommentCard({
 
   return (
     <div
-      className={`${userNickname === leaderCheck ? 'bg-progressBar' : ''} border-b-[1px] border-spot pt-5`}
+      className={`${userNickname === leaderCheck ? 'bg-progressBar' : ''} border-b-[1px] border-line-lightGray`}
     >
       <div
-        className={`flex gap-2 pb-2 ${type === 'comment' ? 'pl-5' : 'pl-[60px]'}`}
+        className={`flex gap-2 px-[20px] py-[30px] items-center ${type === 'comment' ? '' : 'pl-[60px]'}`}
       >
         <Image
           src={userImage || UserDefaultImg}
           alt={userNickname}
           width={60}
           height={60}
-          className="w-8 h-8 md:h-[60px] md:w-[60px] rounded-full border-2 border-mainBlue shadow-md"
+          className="w-8 h-8 md:h-[60px] md:w-[60px] rounded-full border-2 bg-line-Gray shadow-md"
         />
-        <div className="flex flex-col">
-          <p className="text-xl md:text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
-            {userNickname}
-          </p>
+        <div className="flex flex-col gap-[6px]">
           <p className="text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont">
             {content}
           </p>
-          <div className="mt-2 flex gap-2 md:gap-4">
-            <p className="text-lg md:text-xl font-normal tracking-[-2.5%] text-grayFont">
+          <div className="mt-2 flex gap-[6px] items-center">
+            <p className="text-base font-normal tracking-[-2.5%] text-font-thirdBlack">
+              {userNickname}
+            </p>
+            <span className="bg-line-darkGray w-[1px] h-4" />
+            <p className="text-base font-normal tracking-[-2.5%] text-font-thirdBlack">
               {periodYearMonthDayHourTime(createdAt)}
             </p>
-            <button
-              type="button"
-              className="text-lg md:text-xl font-normal tracking-[-2.5%] text-grayFont"
-              onClick={toggleReComment}
-            >
-              답글쓰기
-            </button>
-            {userInfo && userInfo.nickname === userNickname ? (
-              <>
-                <button
-                  type="button"
-                  className="text-lg md:text-xl font-normal tracking-[-2.5%] text-grayFont"
-                  onClick={togglePatchComment}
-                >
-                  수정
-                </button>
-                <button
-                  type="button"
-                  className="text-lg md:text-xl font-normal tracking-[-2.5%] text-grayFont"
-                  onClick={toggleDeleteComment}
-                >
-                  삭제
-                </button>
-              </>
-            ) : null}
+            <span className="bg-line-darkGray w-[1px] h-4" />
+            <div className="flex items-center gap-3 ml-2">
+              <button
+                type="button"
+                className="text-base font-normal tracking-[-2.5%] text-font-thirdBlack"
+                onClick={toggleReComment}
+              >
+                답글쓰기
+              </button>
+              {userInfo && userInfo.nickname === userNickname ? (
+                <>
+                  <button
+                    type="button"
+                    className="text-base font-normal tracking-[-2.5%] text-font-thirdBlack"
+                    onClick={togglePatchComment}
+                  >
+                    수정
+                  </button>
+                  <button
+                    type="button"
+                    className="text-base font-normal tracking-[-2.5%] text-font-thirdBlack"
+                    onClick={toggleDeleteComment}
+                  >
+                    삭제
+                  </button>
+                </>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>

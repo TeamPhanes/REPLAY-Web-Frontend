@@ -17,7 +17,7 @@ export const mockComments = [
         createdAt: '2025-03-27T12:00:00',
       },
       {
-        reCommentsId: 2,
+        reCommentId: 2,
         nickname: '종화',
         image:
           'https://i.namu.wiki/i/7gFiOE8l8aznKc3dDwpS1kF1FCBp_eAfGt8xc_CCkRiod_SpDvUdDHXZKltESAjPvLQkSKA-ECTn3zqCSGIZ5g.webp',
