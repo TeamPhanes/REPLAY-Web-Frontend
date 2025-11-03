@@ -12,6 +12,7 @@ interface ValueDropdownProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   onClickHandler: (value: any) => void;
+  selected: string;
   marginTop?: number;
   className?: string;
   align?: 'start' | 'center' | 'end';
@@ -36,6 +37,7 @@ export default function ValueDropdown({
   isOpen,
   onOpenChange,
   onClickHandler,
+  selected,
   marginTop,
   className,
   align = 'end',
@@ -49,17 +51,17 @@ export default function ValueDropdown({
       <DropdownMenuContent
         sideOffset={marginTop}
         align={align}
-        className={`${className} ${flexType === 'flex-col' ? 'flex-col' : 'flex-row'} z-50 flex rounded-[20px] bg-grayFont data-[state=open]:animate-dropdownIn data-[state=closed]:animate-dropdownOut`}
+        className={`${className} ${flexType === 'flex-col' ? 'flex-col' : 'flex-row'} z-50 flex bg-white shadow-md data-[state=open]:animate-dropdownIn data-[state=closed]:animate-dropdownOut`}
       >
         {list.map((value) => (
           <div
             key={value}
-            className={`${flexType === 'flex-col' ? 'flex-col' : 'flex-row'} flex items-center`}
+            className={`${flexType === 'flex-col' ? 'flex-col py-1 px-5' : 'flex-row'} flex items-center duration-500 ease-in-out hover:bg-brand-main100`}
           >
             <DropdownMenuItem asChild className="outline-none">
               <button
                 type="button"
-                className={`${flexType === 'flex-col' ? 'w-[80%] my-2 px-5' : 'h-[80%] mx-2 px-2'} whitespace-nowrap flex items-center justify-center rounded-full text-2xl/[34px] font-normal tracking-[-2.5%] transition-colors duration-500 ease-in-out hover:bg-mainBlue`}
+                className={`${selected === value ? '!text-brand-main500 !font-semibold' : ''} whitespace-nowrap flex items-center justify-center text-sm text-font-baseBlack font-normal tracking-[-2.5%] transition-colors`}
                 onClick={() => onClickHandler(value)}
               >
                 {value}

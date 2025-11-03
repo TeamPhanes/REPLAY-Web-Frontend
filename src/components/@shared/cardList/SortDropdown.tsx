@@ -23,7 +23,7 @@ export default function SortDropdown({
       isOpen={isOpen}
       onOpenChange={toggleOpen}
       onClickHandler={sortChange}
-      className="min-w-28"
+      selected={sort}
       marginTop={14}
     >
       <button
