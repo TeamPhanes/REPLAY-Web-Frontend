@@ -16,7 +16,7 @@ export default function GlobalNav() {
   return (
     <div className="relative">
       {isSearchFocus && <div className="fixed inset-0 bg-black/50 z-40" />}
-      <div className="fixed top-0 left-0 h-[140px] w-full p-2 md:p-0 bg-brand-black z-50">
+      <div className="fixed top-0 left-0 h-[100px] w-full p-2 md:p-0 bg-brand-black z-50">
         <div className="mx-auto flex h-full md:w-xl items-center gap-6 justify-between relative">
           <Link href="/" className="flex items-center justify-center">
             <Image
