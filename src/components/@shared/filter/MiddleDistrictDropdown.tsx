@@ -24,6 +24,7 @@ export default function MiddleDistrictDropdown({
       <ValueDropdown
         list={list}
         isOpen={isOpen}
+        selected={middleDistrict}
         onOpenChange={toggleOpen}
         onClickHandler={setMiddleDistrict}
         className={`${list.length === 2 ? 'grid-cols-2' : ''} ${list.length === 3 ? 'grid-cols-2 md:grid-cols-3' : ''} ${list.length >= 4 ? 'grid-cols-2 md:grid-cols-4' : ''} max-h-80 overflow-y-scroll md:overflow-hidden rounded-r-md md:rounded-r-[20px] grid p-2`}

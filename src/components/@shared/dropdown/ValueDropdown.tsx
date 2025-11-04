@@ -12,7 +12,7 @@ interface ValueDropdownProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   onClickHandler: (value: any) => void;
-  selected: string;
+  selected: string | number;
   marginTop?: number;
   className?: string;
   align?: 'start' | 'center' | 'end';

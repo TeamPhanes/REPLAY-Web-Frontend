@@ -60,6 +60,7 @@ export default function AddGatheringPrice({
           <Dropdown
             list={priceTypeList}
             isOpen={isOpen}
+            selected={priceType}
             onOpenChange={toggleOpen}
             onClickHandler={priceTypeChange}
             className="min-w-[124px]"
