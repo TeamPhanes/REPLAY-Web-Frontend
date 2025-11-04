@@ -26,6 +26,7 @@ export default function AddGatheringCapacity({
         <ValueDropdown
           list={capacityList}
           isOpen={isOpen}
+          selected={capacity}
           onOpenChange={toggleOpen}
           onClickHandler={capacityChange}
           className="min-w-[88px] absolute left-[-48px]"

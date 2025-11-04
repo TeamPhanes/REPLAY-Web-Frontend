@@ -34,9 +34,6 @@ export const defaultLocationList = [
   { value: '강남', label: '강남' },
   { value: '부천', label: '부천' },
   { value: '강원', label: '강원' },
-  { value: '수원', label: '수원' },
-  { value: '대구', label: '대구' },
-  { value: '더보기', label: '더보기' },
 ];
 
 export const defaultNewList = [

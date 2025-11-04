@@ -8,7 +8,7 @@ import PageContainer from '@/components/@shared/layout/PageContainer';
 import BottomCarousel from '@/components/homePage/BottomCarousel';
 import TypeButtonChanger from '@/components/homePage/typeChanger/TypeButtonChanger';
 import TypeChanger from '@/components/myPage/favorite/TypeChanger';
-import { defaultLocationList, defaultNewList } from '@/constants/homepage/list';
+import { defaultLocationList } from '@/constants/homepage/list';
 
 export default function HomePage() {
   const [selectedGenre, setSelectedGenre] = useState('전체');
@@ -37,6 +37,12 @@ export default function HomePage() {
 
       <BottomCarousel title="추천순" list={popularList} delayTime={9000} />
 
+      <BottomCarousel
+        title="새로 추가된 방탈출"
+        list={popularList}
+        delayTime={11000}
+      />
+
       <div className="relative">
         <TypeButtonChanger
           className="absolute gap-3 top-12"
@@ -46,24 +52,9 @@ export default function HomePage() {
         />
         <BottomCarousel
           gap="gap-[68px]"
-          title="지역별 방탈출"
+          title="플레이어가 가장 많이 찾는 지역"
           list={popularList}
           delayTime={10000}
-        />
-      </div>
-
-      <div className="relative">
-        <TypeButtonChanger
-          className="absolute gap-3 top-12"
-          options={defaultNewList}
-          selectedType={selectedLocation}
-          setSelectedType={setSelectedLocation}
-        />
-        <BottomCarousel
-          gap="gap-[68px]"
-          title="신규 방탈출 & 출시 예정 방탈출"
-          list={popularList}
-          delayTime={11000}
         />
       </div>
 

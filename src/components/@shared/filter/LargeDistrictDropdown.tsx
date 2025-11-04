@@ -26,6 +26,7 @@ export default function LargeDistrictDropdown({
         list={list}
         isOpen={isOpen}
         onOpenChange={toggleOpen}
+        selected={largeDistrict}
         onClickHandler={setLargeDistrict}
         className="md:min-w-[412px] grid grid-cols-3 md:grid-cols-4 p-2"
         marginTop={14}

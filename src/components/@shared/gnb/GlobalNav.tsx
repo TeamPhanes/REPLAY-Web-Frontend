@@ -30,7 +30,7 @@ export default function GlobalNav() {
             />
           </Link>
           <div
-            className={`shrink-0 flex items-center justify-center gap-2 md:gap-10 transition-all duration-300 left-[27%] absolute ${isSearchFocus ? 'opacity-0 pointer-events-none ' : 'opacity-100'}
+            className={`shrink-0 flex items-center justify-center gap-2 md:gap-10 transition-all duration-300 left-[25%] absolute ${isSearchFocus ? 'opacity-0 pointer-events-none ' : 'opacity-100'}
   `}
           >
             {Object.keys(navLabelList).map((key) => {

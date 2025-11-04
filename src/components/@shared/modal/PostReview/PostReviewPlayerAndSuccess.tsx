@@ -31,6 +31,7 @@ export default function PostReviewPlayerAndSuccess({
           <ValueDropdown
             list={numberOfPlayerList}
             isOpen={isOpen}
+            selected={numberOfPlayer}
             onOpenChange={toggleOpen}
             onClickHandler={setNumberOfPlayer}
             className="min-w-[88px] absolute left-[-48px]"

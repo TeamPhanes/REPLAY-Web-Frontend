@@ -3,35 +3,28 @@
 import Image from 'next/image';
 import UserInfoDropdown from '@/components/@shared/dropdown/UserInfoDropdown';
 import { useOpen } from '@/hooks/useOpen';
-import { UserDTO } from '@/types/user/user.types';
+import { GnvMeDTO } from '@/types/user/user.types';
 import chevronDown from '@/public/icons/user/chevron_down.svg';
 import userDefault from '@/public/icons/user/user_default.svg';
 
 interface UserInfoProps {
-  user: UserDTO['get'];
+  user: GnvMeDTO['get'];
 }
 
 export default function UserInfo({ user }: UserInfoProps) {
   const { isOpen, toggleOpen } = useOpen();
 
   return (
-    <div className="flex items-center justify-center gap-1">
+    <div className="flex items-center justify-center gap-[6px] shrink-0 max-w-40">
       <Image
         src={user.image || userDefault}
         alt="유저 프로필 이미지"
-        width={32}
-        height={32}
-        className="h-8 w-8 rounded-full border-2 border-mainBlue shadow-md"
+        width={24}
+        height={24}
+        className="h-6 w-6 rounded-full bg-line-Gray shadow-md"
       />
-      <p className="text-xl font-semibold tracking-[-2.5%] max-w-32 truncate">
-        {user.nickname} 님
-      </p>
-      <UserInfoDropdown
-        userImage={user.image}
-        nickname={user.nickname}
-        isOpen={isOpen}
-        onOpenChange={toggleOpen}
-      >
+      <p className="truncate">{user.nickname} 님</p>
+      <UserInfoDropdown isOpen={isOpen} onOpenChange={toggleOpen}>
         <button
           type="button"
           className="flex items-center"
@@ -40,8 +33,8 @@ export default function UserInfo({ user }: UserInfoProps) {
           <Image
             src={chevronDown}
             alt="유저 정보 더보기"
-            width={24}
-            height={24}
+            width={18}
+            height={18}
             className={`transition-transform transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
           />
         </button>

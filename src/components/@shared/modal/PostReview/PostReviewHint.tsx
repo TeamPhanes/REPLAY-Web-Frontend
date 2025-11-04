@@ -21,6 +21,7 @@ export default function PostReviewHint({ hint, setHint }: PostReviewHintProps) {
         <ValueDropdown
           list={hintList}
           isOpen={isOpen}
+          selected={hint}
           onOpenChange={toggleOpen}
           onClickHandler={setHint}
           className="min-w-[88px] absolute left-[-48px]"

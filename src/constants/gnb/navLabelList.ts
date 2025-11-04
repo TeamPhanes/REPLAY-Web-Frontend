@@ -23,6 +23,6 @@ export const navLabelList: { [key: string]: ListType } = {
 };
 
 export const navLoginDropdownList: ListType[] = [
-  { label: '마이 페이지', value: '/mypage' },
+  { label: '마이페이지', value: '/mypage' },
   { label: '1:1 문의', value: '/' },
 ];

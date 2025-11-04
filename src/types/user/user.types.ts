@@ -1,3 +1,10 @@
+export interface GnvMeDTO {
+  get: {
+    image: string;
+    nickname: string;
+  };
+}
+
 export interface UserDTO {
   get: {
     comment: string;

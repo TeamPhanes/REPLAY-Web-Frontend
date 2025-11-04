@@ -30,13 +30,13 @@ export default function DateAndPriceAndAddress({
             {yearMonthDayHourTime(dateTime)}
           </p>
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center group">
           <Image src={CoinIcon} alt="금액 아이콘" width={24} height={24} />
           <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
             {price.toLocaleString()}원
           </p>
           <div className="relative">
-            <p className="absolute min-w-[120px] left-1/2 -translate-x-1/2 -top-5 text-xs/[18px] tracking-[-2.5%] text-font-disabled font-normal">
+            <p className="absolute min-w-[134px] -top-12 -left-16 text-xs/[18px] tracking-[-2.5%] text-font-disabled font-normal bg-white p-[10px] duration-300 opacity-0 group-hover:opacity-100">
               일인당 결제금액 입니다.
             </p>
             <Image
