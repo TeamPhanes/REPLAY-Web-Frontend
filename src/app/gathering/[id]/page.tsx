@@ -67,10 +67,6 @@ export default function GatheringDetailPage() {
       <GatheringDetailCard leader={host} />
       <ParticipantList gatheringMember={mockParticipants} leader={host} />
       <CommentsContainer id={id} leaderCheck={host} />
-      {/* <AnotherGatherings
-        title={`${gatheringMember[0].nickname}님이 만든 모임`}
-        gatherings={hostGathering.data}
-      /> */}
       <AnotherGatherings
         title="비슷한 일정 다른 모임"
         gatherings={mockGatherings.data}
