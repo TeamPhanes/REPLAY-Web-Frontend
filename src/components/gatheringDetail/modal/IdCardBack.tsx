@@ -18,7 +18,7 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
     totalGathering,
     totalTheme,
     successCount,
-    failCount,
+    ranking,
     nickname,
     representAchievement,
   } = userData;
@@ -34,14 +34,21 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
         <CardContentFont title="내가 참여한 모임" content={totalGathering} />
         <CardContentFont title="플레이한 방탈출" content={totalTheme} />
         <CardContentFont title="성공한 방탈출" content={successCount} />
-        <CardContentFont title="실패한 방탈출" content={failCount} />
+        <div className="flex items-center">
+          <p className="md:w-72 w-full text-xl md:text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
+            현 분기 랭킹/과거 최고 랭킹
+          </p>
+          <p className="w-20 text-lg md:text-xl font-normal tracking-[-2.5%] text-basefont">
+            {ranking}
+          </p>
+        </div>
       </div>
       <Image
         src={MainLogo}
         alt="로고"
-        width={550}
-        height={320}
-        className="absolute bottom-[-230px] h-[320px] w-[550px] opacity-20"
+        width={406}
+        height={118}
+        className="absolute bottom-[-180px] h-[118px] w-[406px] opacity-20"
       />
       <CardBottomDate
         updatedAt={updatedAt}
@@ -51,7 +58,7 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
       <AchievementBadge
         nickname={nickname}
         achievement={representAchievement}
-        absoluteLayout="gap-3 md:gap-10 left-0 right-0 md:right-2 bottom-[-385px]"
+        absoluteLayout="gap-3 md:gap-10 left-0 right-0 bottom-[-365px]"
         type="mypage"
       />
     </div>

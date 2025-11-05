@@ -39,7 +39,11 @@ export default function UserInfoDropdown({
         {navLoginDropdownList.map((list) => (
           <DropdownMenuItem key={list.value} asChild className="outline-none">
             <div className="flex flex-col items-center duration-500 ease-in-out hover:bg-brand-main100 rounded-lg">
-              <Link href={list.value} className="border-setfont py-2 px-4">
+              <Link
+                href={list.value}
+                className="border-setfont py-2 px-4"
+                onClick={() => onOpenChange(false)}
+              >
                 <p className="flex items-center justify-center text-base font-semibold tracking-[-2.5%] text-font-baseBlack transition-colors">
                   {list.label}
                 </p>

@@ -1,5 +1,6 @@
 'use client';
 
+import { mockOtherUser } from '@/data/mockUser';
 import Loading from '@/components/@shared/loading/Loading';
 import AchievementBadge from '@/components/gatheringDetail/AchievementBadge';
 import CardBottomDate from '@/components/myPage/home/CardBottomDate';
@@ -15,16 +16,16 @@ export default function CardContainer() {
   if (isGuardLoading) return <Loading isLoading={isLoading} />;
 
   return (
-    <div className="relative mt-5 h-[1240px] md:h-[983px] w-full rounded-[30px] bg-cardActive p-10">
+    <div className="relative mt-[248px] h-[1240px] md:h-[860px] w-full rounded-2xl bg-brand-main500 p-10">
       <MyPageModifyButton />
-      <CardContentContainer user={userInfo} />
+      <CardContentContainer user={mockOtherUser} />
       <CardBottomDate
-        updatedAt={userInfo.updatedAt}
-        createdAt={userInfo.createdAt}
+        updatedAt={mockOtherUser.updatedAt}
+        createdAt={mockOtherUser.createdAt}
       />
       <AchievementBadge
-        nickname={userInfo.nickname}
-        achievement={userInfo.representAchievement}
+        nickname={mockOtherUser.nickname}
+        achievement={mockOtherUser.representAchievement}
         absoluteLayout="md:mt-9 bottom-2 left-1/2 transform -translate-x-1/2 md:transform-none md:left-auto md:right-10 gap-2 md:gap-10"
         type="mypage"
       />

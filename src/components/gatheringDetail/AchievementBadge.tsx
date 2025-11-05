@@ -17,19 +17,21 @@ export default function AchievementBadge({
   if (!nickname) return null;
 
   return (
-    <div className={`absolute flex ${absoluteLayout}`}>
+    <div
+      className={`absolute flex justify-center items-center ${absoluteLayout}`}
+    >
       {Array.from({ length: 3 }, (_, index) => (
         <div
           key={index}
-          className={`${type === 'mypage' ? 'w-[100px] h-[100px] md:w-40 md:h-40' : 'w-11 h-11'} flex items-center justify-center rounded-full bg-card shadow-md`}
+          className={`${type === 'mypage' ? 'w-[100px] h-[100px] md:w-[120px] md:h-[120px]' : 'w-11 h-11'} border-[3px] border-line-white flex items-center justify-center shadow-md`}
         >
           {achievement[index] ? (
             <Image
               src={achievement[index]}
               alt="업적"
-              width={160}
-              height={160}
-              className={`${type === 'mypage' ? 'w-40 h-40' : 'w-11 h-11'} rounded-full`}
+              width={100}
+              height={100}
+              className={`${type === 'mypage' ? 'w-[110px] h-[110px]' : 'w-11 h-11'}`}
             />
           ) : (
             <Image

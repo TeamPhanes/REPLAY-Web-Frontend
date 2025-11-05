@@ -29,16 +29,16 @@ export interface OtherUserDTO {
   get: {
     image: string;
     nickname: string;
-    gender: string;
+    emailMark: boolean;
     email: string;
     comment: string;
-    totalGathering: number;
-    totalMakeGathering: number;
-    totalTheme: number;
-    successCount: number;
-    failCount: number;
     createdAt: string;
     updatedAt: string;
+    totalMakeGathering: number;
+    totalGathering: number;
+    totalTheme: number;
+    successCount: number;
+    ranking: string;
     representAchievement: string[];
   };
 }

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { mockOtherUser } from '@/data/mockUser';
 import Loading from '@/components/@shared/loading/Loading';
 import IdCardModal from '@/components/gatheringDetail/modal/IdCardModal';
 import { useGetOtherUser } from '@/hooks/reactQuery/useGetOtherUser';
@@ -65,7 +66,7 @@ export default function ParticipantUsers({
       <IdCardModal
         openModal={isOpen}
         closeModal={closeModal}
-        userData={otherUser}
+        userData={mockOtherUser}
       />
     </div>
   );
