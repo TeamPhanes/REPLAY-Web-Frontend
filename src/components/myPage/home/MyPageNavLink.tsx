@@ -17,7 +17,7 @@ export default function MyPageNavLink({ pathname }: MyPageNavLinkProps) {
   const targetList = mypageNavList[pathname];
   const { isOpen, toggleOpen } = useOpen();
   return (
-    <>
+    <div className="flex mx-auto w-xl justify-between">
       {list.map((data) => {
         return (
           <div
@@ -26,7 +26,7 @@ export default function MyPageNavLink({ pathname }: MyPageNavLinkProps) {
           >
             <Link href={data.value}>
               <p
-                className={`rounded-full px-6 py-2 text-2xl/[34px] font-normal tracking-[-2.5%] text-white transition-colors duration-500 ease-in-out hover:bg-cardHover hover:text-basefont ${pathname === data.value ? 'bg-cardActive' : ''}`}
+                className={`px-16 py-4 text-base font-semibold tracking-[-2.5%] text-font-baseWhite transition-colors duration-500 ease-in-out hover:bg-brand-main100 hover:!text-basefont ${pathname === data.value ? 'border-line-white border-b-[1px]' : '!text-font-disabled'}`}
               >
                 {data.label}
               </p>
@@ -48,6 +48,6 @@ export default function MyPageNavLink({ pathname }: MyPageNavLinkProps) {
           <Image src={RowsSvg} alt="링크 더 보기" width={24} height={24} />
         </LinkDropdown>
       </div>
-    </>
+    </div>
   );
 }
