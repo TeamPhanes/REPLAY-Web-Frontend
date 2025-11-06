@@ -38,7 +38,7 @@ export default function EmptyArrayContainer({
   }
 
   return (
-    <div className="flex flex-col gap-4 justify-center items-center w-full h-[346px] rounded-[30px] bg-card mt-6">
+    <div className="flex flex-col gap-4 justify-center items-center w-full h-[346px] rounded-[30px] bg-card-white mt-6">
       <p className="font-semibold text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
         {`내가 ${type} `}
         {kindDisplayElement}

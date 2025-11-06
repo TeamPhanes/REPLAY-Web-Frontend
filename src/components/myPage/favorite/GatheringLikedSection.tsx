@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { mockLikedGatherings } from '@/data/mockGatherings';
 import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
 import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
 import Pagination from '@/components/@shared/pagination/Pagination';
@@ -14,7 +15,7 @@ export default function GatheringLikedSection() {
     10
   );
   const { isGuardLoading } = useAuthGuard(showLoading);
-  const { totalPages } = usePagination(page, userLikeGathering?.totalCount);
+  const { totalPages } = usePagination(page, mockLikedGatherings?.totalCount);
 
   if (isGuardLoading || isLoading) {
     return (
@@ -22,12 +23,12 @@ export default function GatheringLikedSection() {
     );
   }
 
-  if (!userLikeGathering || userLikeGathering.data.length === 0) {
+  if (!mockLikedGatherings || mockLikedGatherings.data.length === 0) {
     return <EmptyArrayContainer type="찜한" kind="모임" />;
   }
   return (
     <>
-      <GatheringCardContainer data={userLikeGathering.data} favoriteCheck />
+      <GatheringCardContainer data={mockLikedGatherings.data} favoriteCheck />
       <Pagination
         currentPage={page}
         totalPages={totalPages}
