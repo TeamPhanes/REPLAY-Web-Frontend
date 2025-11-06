@@ -17,21 +17,16 @@ export default function MyPageNavLink({ pathname }: MyPageNavLinkProps) {
   const targetList = mypageNavList[pathname];
   const { isOpen, toggleOpen } = useOpen();
   return (
-    <div className="flex mx-auto w-xl justify-between">
+    <div className="grid grid-cols-6 gap-4 mx-auto w-xl justify-between">
       {list.map((data) => {
         return (
-          <div
-            key={data.value}
-            className="items-center justify-center hidden md:flex"
-          >
-            <Link href={data.value}>
-              <p
-                className={`px-16 py-4 text-base font-semibold tracking-[-2.5%] text-font-baseWhite transition-colors duration-500 ease-in-out hover:bg-brand-main100 hover:!text-basefont ${pathname === data.value ? 'border-line-white border-b-[1px]' : '!text-font-disabled'}`}
-              >
-                {data.label}
-              </p>
-            </Link>
-          </div>
+          <Link key={data.value} href={data.value}>
+            <p
+              className={`text-center py-4 text-base font-semibold tracking-[-2.5%] text-font-baseWhite transition-colors duration-500 ease-in-out hover:bg-brand-main100 hover:!text-basefont ${pathname === data.value ? 'border-line-white border-b-[1px]' : '!text-font-disabled'}`}
+            >
+              {data.label}
+            </p>
+          </Link>
         );
       })}
       <div className="items-center flex md:hidden gap-20">
