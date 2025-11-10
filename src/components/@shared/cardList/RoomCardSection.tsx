@@ -19,16 +19,14 @@ import ReviewIcon from '@/public/icons/cardList/review_message.svg';
 interface RoomCardSectionProps {
   room: RoomDTO['get'];
   favoriteCheck?: boolean;
-  reviewCheck?: boolean;
 }
 
 export default function RoomCardSection({
   room,
   favoriteCheck,
-  reviewCheck,
 }: RoomCardSectionProps) {
-  const [isLiked, setIsLiked] = useState(favoriteCheck ? true : room.isLiked);
-  const [isMarked, setIsMarked] = useState(reviewCheck ? true : room.isMarked);
+  const [isLiked, setIsLiked] = useState(room.isLiked);
+  const [isMarked, setIsMarked] = useState(room.isMarked);
   const { setSelectedTheme } = useThemeStore();
   const { likesMutation } = usePostThemeLike();
   const { marksMutation } = usePostThemeMark();
@@ -57,9 +55,7 @@ export default function RoomCardSection({
 
   return (
     <>
-      <div
-        className={`${reviewCheck ? 'top-10 right-10 md:top-auto md:right-auto md:left-[580px]' : 'top-10 right-10 md:top-auto md:right-5'} absolute rounded-[30px] flex p-1 gap-3 md:p-0`}
-      >
+      <div className="top-10 right-10 md:top-auto md:right-5 absolute rounded-[30px] flex p-1 gap-3 md:p-0">
         <button
           type="button"
           className={`transition-transform duration-300 active:scale-90 ${

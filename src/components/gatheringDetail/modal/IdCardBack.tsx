@@ -3,7 +3,7 @@ import AchievementBadge from '@/components/gatheringDetail/AchievementBadge';
 import CardBottomDate from '@/components/myPage/home/CardBottomDate';
 import CardContentFont from '@/components/myPage/home/CardContentFont';
 import { OtherUserDTO } from '@/types/user/user.types';
-import MainLogo from '@/public/images/Replay_Main_Logo.svg';
+import MainLogo from '@/public/images/Replay_Main_Logo2.svg';
 
 interface IdCardBackProps {
   userData: OtherUserDTO['get'];
@@ -48,7 +48,7 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
         alt="로고"
         width={406}
         height={118}
-        className="absolute bottom-[-180px] h-[118px] w-[406px] opacity-20"
+        className="absolute bottom-[-180px] h-[118px] w-[406px] opacity-[92%]"
       />
       <CardBottomDate
         updatedAt={updatedAt}

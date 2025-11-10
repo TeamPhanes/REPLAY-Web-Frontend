@@ -7,7 +7,7 @@ import { easyLoginIcons } from '@/constants/login/easyLoginIcons';
 export default function SocialLoginButton() {
   return (
     <ButtonContainer>
-      <p className="font-bold text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
+      <p className="font-bold text-xl md:text-2xl/[34px] tracking-[-2.5%] text-font-baseBlack">
         SNS 계정으로 로그인
       </p>
       <div className="mt-8 flex w-full justify-center gap-3 flex-col">
