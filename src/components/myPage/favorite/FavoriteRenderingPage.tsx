@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import GatheringLikedSection from '@/components/myPage/favorite/GatheringLikedSection';
-import MypageTypeChanger from '@/components/myPage/favorite/MyPageTypeChanger';
+import MypageTypeChanger from '@/components/myPage/favorite/MypageTypeChanger';
 import ThemeLikedSection from '@/components/myPage/favorite/ThemeLikedSection';
 
 export default function FavoriteRenderingPage() {
