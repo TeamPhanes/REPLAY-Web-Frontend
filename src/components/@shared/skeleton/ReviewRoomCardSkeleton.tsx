@@ -13,7 +13,7 @@ export default function ReviewRoomCardSkeleton({
         <div
           key={index}
           role="status"
-          className="animate-pulse flex rounded-3xl md:h-[252px] p-5 bg-card flex-col md:flex-row"
+          className="animate-pulse flex rounded-3xl md:h-[252px] p-5 bg-card-white flex-col md:flex-row"
         >
           <div className="flex items-center justify-center w-[212px] h-[212px] bg-white rounded-3xl shrink-0">
             <svg
