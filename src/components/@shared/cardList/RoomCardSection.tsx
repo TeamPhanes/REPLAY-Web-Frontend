@@ -7,6 +7,7 @@ import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import { usePostThemeLike } from '@/hooks/reactQuery/usePostThemeLike';
 import { usePostThemeMark } from '@/hooks/reactQuery/usePostThemeMark';
 import { RoomDTO } from '@/types/room/room.types';
+import { ThemeListDTO } from '@/types/theme/theme.types';
 import AddressIcon from '@/public/icons/cardList/address_icon.svg';
 import BookmarkFull from '@/public/icons/cardList/bookmark_full.svg';
 import BookmarkLine from '@/public/icons/cardList/bookmark_line.svg';
@@ -15,9 +16,10 @@ import HeartLine from '@/public/icons/cardList/heart_line.svg';
 import LightbulbIcon from '@/public/icons/cardList/lightbulb_icon.svg';
 import StarIcon from '@/public/icons/cardList/rating_star_full.svg';
 import ReviewIcon from '@/public/icons/cardList/review_message.svg';
+import DefaultImage from '@/public/icons/modal/review_default_image.svg';
 
 interface RoomCardSectionProps {
-  room: RoomDTO['get'];
+  room: ThemeListDTO['get'];
   favoriteCheck?: boolean;
 }
 
@@ -26,15 +28,14 @@ export default function RoomCardSection({
   favoriteCheck,
 }: RoomCardSectionProps) {
   const [isLiked, setIsLiked] = useState(room.isLiked);
-  const [isMarked, setIsMarked] = useState(room.isMarked);
-  const { setSelectedTheme } = useThemeStore();
+  const [isMarked, setIsMarked] = useState(room.isVisited);
   const { likesMutation } = usePostThemeLike();
   const { marksMutation } = usePostThemeMark();
 
   const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {
     setIsLiked(userAction === 'LIKE_POST');
     likesMutation.mutate({
-      themeId: room.themeId,
+      themeId: room.id,
       userAction,
     });
   };
@@ -42,7 +43,7 @@ export default function RoomCardSection({
   const handleMarkButtonClick = (userAction: 'MARK_POST' | 'UNMARK_POST') => {
     setIsMarked(userAction === 'MARK_POST');
     marksMutation.mutate({
-      themeId: room.themeId,
+      themeId: room.id,
       userAction,
     });
   };
@@ -90,14 +91,10 @@ export default function RoomCardSection({
         </button>
       </div>
 
-      <Link
-        href={`/theme/${room.themeId}`}
-        onClick={() => setSelectedTheme(room)}
-        className="w-full md:w-[145px]"
-      >
+      <Link href={`/theme/${room.id}`} className="w-full md:w-[145px]">
         <Image
-          src={room.listImage}
-          alt={room.themeName}
+          src={room.image === null ? DefaultImage : room.image}
+          alt={room.title}
           width={145}
           height={218}
           quality={100}
@@ -106,18 +103,14 @@ export default function RoomCardSection({
         />
       </Link>
 
-      <Link
-        href={`/theme/${room.themeId}`}
-        onClick={() => setSelectedTheme(room)}
-        className="w-full md:w-auto"
-      >
+      <Link href={`/theme/${room.id}`} className="w-full md:w-auto">
         <div className="md:ml-5 mt-5 md:mt-0 flex min-h-[212px] min-w-[424px] flex-col justify-between">
           <div className="flex flex-col gap-3">
             <Tag tag={room.genres} />
             <TitleAndSpot
-              themeName={room.themeName}
-              cafe={room.cafe}
-              spot={room.spot}
+              themeName={room.title}
+              cafe={room.cafeName}
+              spot={room.spotName}
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -179,7 +172,7 @@ export default function RoomCardSection({
                   height={20}
                 />
                 <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
-                  {room.rating?.toFixed(1)}
+                  {room.avgScore?.toFixed(1)}
                 </p>
               </div>
             </div>

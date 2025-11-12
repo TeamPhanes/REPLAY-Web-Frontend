@@ -5,28 +5,24 @@ import { API_PATH } from '@/axios/path.config';
 
 interface GetThemeProps {
   accessToken: string | null;
-  keyword: string;
+  state: string[];
+  city: string[];
+  genres: string[];
   page: number;
-  limit: number;
-  sort: string;
-  state: string | null;
-  city: string | null;
-  genre: string | null;
+  size: number;
 }
 
 export const GetTheme = async ({
   accessToken,
-  keyword,
-  page,
-  limit,
-  sort,
   state,
   city,
-  genre,
+  genres,
+  page,
+  size,
 }: GetThemeProps) => {
   try {
     const res = await (accessToken === null ? axios : axiosInstance).get(
-      `${API_PATH.theme.default}?sortBy=${sort}${keyword !== '' ? `&keyword=${keyword}` : ''}${state !== '시.도' ? `&state=${state}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}${genre !== '전체' ? `&genre=${genre}` : ''}&limit=${limit}&offset=${page}`
+      `${API_PATH.theme.default}?${state.length !== 0 ? `&state=${state}` : ''}${city.length !== 0 ? `&city=${city}` : ''}${genres.length !== 0 ? `&genres=${genres}` : ''}&size=${size}&page=${page}`
     );
     return res;
   } catch (error) {
