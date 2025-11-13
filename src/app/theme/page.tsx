@@ -1,17 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { mockRooms } from '@/data/mockRooms';
 import { useAuthStore } from '@/store/authStore';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import CountListValue from '@/components/@shared/cardList/CountListValue';
 import RoomCardContainer from '@/components/@shared/cardList/RoomCardContainer';
-import SortDropdown from '@/components/@shared/cardList/SortDropdown';
-import GenreFilter from '@/components/@shared/filter/GenreFilter';
-import LocationFilter from '@/components/@shared/filter/LocationFilter';
-import MapNavigation from '@/components/@shared/filter/MapNavigation';
 import FilterContainer from '@/components/@shared/layout/FilterContainer';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import SortContainer from '@/components/@shared/layout/SortContainer';
@@ -27,15 +22,13 @@ export default function RoomPage() {
   const [page, setPage] = useState(0);
   const { genreList, districtList } = useQueryStringStore();
 
-  const { theme } = useGetTheme(accessToken, [], [], genreList, page, 12);
+  const { theme } = useGetTheme(accessToken, districtList, genreList, page, 12);
   const totalItems = theme ? theme.totalElements : 0;
   const { totalPages } = usePagination(page, totalItems, 12);
 
-  console.log(theme);
-
   return (
     <PageContainer>
-      <FilterContainer />
+      <FilterContainer setPage={setPage} />
       {!theme ? (
         <>
           <LineSkeleton className="h-6 mt-6" />

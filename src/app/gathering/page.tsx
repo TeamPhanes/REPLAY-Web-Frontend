@@ -46,7 +46,7 @@ export default function GatheringPage() {
 
   return (
     <PageContainer>
-      <FilterContainer />
+      <FilterContainer setPage={setPage} />
       {!mockGatherings ? (
         <>
           <SortSkeleton className="h-6 mt-6" />
