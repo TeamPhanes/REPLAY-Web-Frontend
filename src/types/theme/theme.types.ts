@@ -7,7 +7,7 @@ export interface ThemeListDTO {
     image: string; // 테마 이미지
     minPlayer: number; // 최소 인원
     maxPlayer: number; // 최대 인원
-    note: string; // 비고
+    note: string | null; // 비고
     cafeName: string; // 방탈출 카페
     spotName: string; // 지점
     address: string; // 주소

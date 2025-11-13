@@ -22,43 +22,43 @@ export default function DetailLinkButton({
   const { setSelectedTheme } = useThemeStore();
   const [isNavigating, setIsNavigating] = useState(false);
 
-  const handleClick = async () => {
-    setIsNavigating(true);
-    try {
-      const response = await GetTheme({
-        accessToken,
-        keyword: list.name,
-        page: 0,
-        limit: 1,
-        sort: 'likes',
-        state: '시.도',
-        city: '시.군.구',
-        genre: '전체',
-      });
-      const firstTheme = response.data.data[0];
-      if (firstTheme) {
-        setSelectedTheme(firstTheme);
-        router.push(`/theme/${list.link}`);
-      }
-    } catch (error) {
-      setIsNavigating(false);
-    }
-  };
+  // const handleClick = async () => {
+  //   setIsNavigating(true);
+  //   try {
+  //     const response = await GetTheme({
+  //       accessToken,
+  //       keyword: list.name,
+  //       page: 0,
+  //       limit: 1,
+  //       sort: 'likes',
+  //       state: '시.도',
+  //       city: '시.군.구',
+  //       genre: '전체',
+  //     });
+  //     const firstTheme = response.data.data[0];
+  //     if (firstTheme) {
+  //       setSelectedTheme(firstTheme);
+  //       router.push(`/theme/${list.link}`);
+  //     }
+  //   } catch (error) {
+  //     setIsNavigating(false);
+  //   }
+  // };
 
-  return (
-    <button type="button" onClick={handleClick} disabled={isNavigating}>
-      <Image
-        src={list.image}
-        alt={list.name}
-        width={imageWidth}
-        height={imageHeight}
-        unoptimized
-        quality={100}
-        style={{
-          width: `${imageWidth}px`,
-          height: `${imageHeight}px`,
-        }}
-      />
-    </button>
-  );
+  // return (
+  //   <button type="button" onClick={handleClick} disabled={isNavigating}>
+  //     <Image
+  //       src={list.image}
+  //       alt={list.name}
+  //       width={imageWidth}
+  //       height={imageHeight}
+  //       unoptimized
+  //       quality={100}
+  //       style={{
+  //         width: `${imageWidth}px`,
+  //         height: `${imageHeight}px`,
+  //       }}
+  //     />
+  //   </button>
+  // );
 }

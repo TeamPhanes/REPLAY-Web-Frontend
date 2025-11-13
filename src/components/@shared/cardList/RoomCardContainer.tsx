@@ -1,6 +1,5 @@
 import RoomCard from '@/components/@shared/cardList/RoomCard';
 import EmptySearchResult from '@/components/search/EmptySearchResult';
-import { RoomDTO } from '@/types/room/room.types';
 import { ThemeListDTO } from '@/types/theme/theme.types';
 
 interface RoomCardContainerProps {

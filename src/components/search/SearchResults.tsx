@@ -17,6 +17,7 @@ import { useGetGathering } from '@/hooks/reactQuery/useGetGathering';
 import { useGetTheme } from '@/hooks/reactQuery/useGetTheme';
 import { GatheringDTO } from '@/types/gathering/gathering.type';
 import { RoomDTO } from '@/types/room/room.types';
+import { ThemeListDTO } from '@/types/theme/theme.types';
 import ChevronRight from '@/public/icons/arrow/chevron_right.svg';
 
 export default function SearchResults() {
@@ -66,8 +67,8 @@ export default function SearchResults() {
 
       {mockRooms && (
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {mockRooms.data.map((room: RoomDTO['get']) => (
-            <RoomCard room={room} key={room.themeId} />
+          {mockRooms.data.map((room: ThemeListDTO['get']) => (
+            <RoomCard room={room} key={room.id} />
           ))}
         </div>
       )}
