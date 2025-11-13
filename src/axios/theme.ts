@@ -6,7 +6,6 @@ import { API_PATH } from '@/axios/path.config';
 interface GetThemeProps {
   accessToken: string | null;
   state: string[];
-  city: string[];
   genres: string[];
   page: number;
   size: number;
@@ -15,14 +14,13 @@ interface GetThemeProps {
 export const GetTheme = async ({
   accessToken,
   state,
-  city,
   genres,
   page,
   size,
 }: GetThemeProps) => {
   try {
     const res = await (accessToken === null ? axios : axiosInstance).get(
-      `${API_PATH.theme.default}?${state.length !== 0 ? `&state=${state}` : ''}${city.length !== 0 ? `&city=${city}` : ''}${genres.length !== 0 ? `&genres=${genres}` : ''}&size=${size}&page=${page}`
+      `${API_PATH.theme.default}?${state.length !== 0 ? `&state=${state}` : ''}${genres.length !== 0 ? `&genres=${genres}` : ''}&size=${size}&page=${page}`
     );
     return res;
   } catch (error) {

@@ -1,5 +1,6 @@
 export const locationDetailList: { [key: string]: string[] } = {
   서울: [
+    '전체',
     '종로구',
     '중구',
     '용산구',
@@ -27,6 +28,7 @@ export const locationDetailList: { [key: string]: string[] } = {
     '강동구',
   ],
   경기: [
+    '전체',
     '수원시',
     '성남시',
     '의정부시',
@@ -60,6 +62,7 @@ export const locationDetailList: { [key: string]: string[] } = {
     '양평군',
   ],
   인천: [
+    '전체',
     '중구',
     '동구',
     '미추홀구',
@@ -72,6 +75,7 @@ export const locationDetailList: { [key: string]: string[] } = {
     '옹진군',
   ],
   강원: [
+    '전체',
     '춘천시',
     '원주시',
     '강릉시',
@@ -91,9 +95,10 @@ export const locationDetailList: { [key: string]: string[] } = {
     '고성군',
     '양양군',
   ],
-  대전: ['동구', '중구', '서구', '유성구', '대덕구'],
-  울산: ['중구', '남구', '동구', '북구', '울주군'],
+  대전: ['전체', '동구', '중구', '서구', '유성구', '대덕구'],
+  울산: ['전체', '중구', '남구', '동구', '북구', '울주군'],
   대구: [
+    '전체',
     '중구',
     '동구',
     '서구',
@@ -104,8 +109,9 @@ export const locationDetailList: { [key: string]: string[] } = {
     '달성군',
     '군위군',
   ],
-  광주: ['동구', '서구', '남구', '북구', '광산구'],
+  광주: ['전체', '동구', '서구', '남구', '북구', '광산구'],
   부산: [
+    '전체',
     '중구',
     '서구',
     '동구',
@@ -123,8 +129,9 @@ export const locationDetailList: { [key: string]: string[] } = {
     '사상구',
     '기장군',
   ],
-  제주: ['제주시', '서귀포시'],
+  제주: ['전체', '제주시', '서귀포시'],
   충북: [
+    '전체',
     '청주시',
     '충주시',
     '제천시',
@@ -138,6 +145,7 @@ export const locationDetailList: { [key: string]: string[] } = {
     '단양군',
   ],
   충남: [
+    '전체',
     '천안시',
     '공주시',
     '보령시',
@@ -155,6 +163,7 @@ export const locationDetailList: { [key: string]: string[] } = {
     '태안군',
   ],
   경북: [
+    '전체',
     '포항시',
     '경주시',
     '김천시',
@@ -179,6 +188,7 @@ export const locationDetailList: { [key: string]: string[] } = {
     '울릉군',
   ],
   경남: [
+    '전체',
     '창원시',
     '진주시',
     '통영시',
@@ -199,6 +209,7 @@ export const locationDetailList: { [key: string]: string[] } = {
     '합천군',
   ],
   전북: [
+    '전체',
     '전주시',
     '군산시',
     '익산시',
@@ -215,6 +226,7 @@ export const locationDetailList: { [key: string]: string[] } = {
     '부안군',
   ],
   전남: [
+    '전체',
     '목포시',
     '여수시',
     '순천시',

@@ -21,7 +21,7 @@ export const useQueryStringStore = create<State & Actions>()((set, get) => ({
   addDistrictList: (district) => {
     const prev = get().districtList;
     const filtered = prev.filter((item) => item !== district);
-    const updated = [...filtered, district];
+    const updated = [...filtered.slice(0, 2), district];
     set({ districtList: updated });
   },
   removeDistrictList: (district) => {
@@ -35,7 +35,7 @@ export const useQueryStringStore = create<State & Actions>()((set, get) => ({
   addGenre: (genre) => {
     const prev = get().genreList;
     const filtered = prev.filter((item) => item !== genre);
-    const updated = [...filtered, genre];
+    const updated = [...filtered.slice(0, 2), genre];
     set({ genreList: updated });
   },
   removeGenre: (genre) => {
