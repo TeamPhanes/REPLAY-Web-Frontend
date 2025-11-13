@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useThemeStore } from '@/store/useThemeStore';
 import Tag from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import { usePostThemeLike } from '@/hooks/reactQuery/usePostThemeLike';
 import { usePostThemeMark } from '@/hooks/reactQuery/usePostThemeMark';
-import { RoomDTO } from '@/types/room/room.types';
 import { ThemeListDTO } from '@/types/theme/theme.types';
 import AddressIcon from '@/public/icons/cardList/address_icon.svg';
 import BookmarkFull from '@/public/icons/cardList/bookmark_full.svg';
@@ -28,9 +26,14 @@ export default function RoomCardSection({
   favoriteCheck,
 }: RoomCardSectionProps) {
   const [isLiked, setIsLiked] = useState(room.isLiked);
-  const [isMarked, setIsMarked] = useState(room.isVisited);
+  const [isVisited, setIsVisited] = useState(room.isVisited);
   const { likesMutation } = usePostThemeLike();
   const { marksMutation } = usePostThemeMark();
+  const levelList = {
+    Hard: '어려움',
+    Normal: '보통',
+    Easy: '쉬움',
+  };
 
   const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {
     setIsLiked(userAction === 'LIKE_POST');
@@ -41,7 +44,7 @@ export default function RoomCardSection({
   };
 
   const handleMarkButtonClick = (userAction: 'MARK_POST' | 'UNMARK_POST') => {
-    setIsMarked(userAction === 'MARK_POST');
+    setIsVisited(userAction === 'MARK_POST');
     marksMutation.mutate({
       themeId: room.id,
       userAction,
@@ -76,14 +79,14 @@ export default function RoomCardSection({
         <button
           type="button"
           className={`transition-transform duration-300 active:scale-90 ${
-            isMarked ? 'animate-pop' : ''
+            isVisited ? 'animate-pop' : ''
           }`}
           onClick={() =>
-            handleMarkButtonClick(isMarked ? 'UNMARK_POST' : 'MARK_POST')
+            handleMarkButtonClick(isVisited ? 'UNMARK_POST' : 'MARK_POST')
           }
         >
           <Image
-            src={isMarked ? BookmarkFull : BookmarkLine}
+            src={isVisited ? BookmarkFull : BookmarkLine}
             alt="bookmark"
             width={28}
             height={28}
@@ -135,7 +138,7 @@ export default function RoomCardSection({
                   •
                 </span>
                 <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
-                  {room.level}
+                  {levelList[room.level as keyof typeof levelList]}
                 </p>
               </div>
             </div>
