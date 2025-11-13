@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import MainWhiteButton from '@/components/@shared/button/MainWhiteButton';
@@ -8,7 +8,11 @@ import GenreFilter from '@/components/@shared/filter/GenreFilter';
 import LocationFilter from '@/components/@shared/filter/LocationFilter';
 import BlackDelete from '@/public/icons/delete/black_delete.svg';
 
-export default function FilterContainer() {
+interface FilterContainerProps {
+  setPage?: (value: number) => void;
+}
+
+export default function FilterContainer({ setPage }: FilterContainerProps) {
   const [selectedType, setSelectedType] = useState('locate');
   const {
     genreList,
@@ -18,6 +22,12 @@ export default function FilterContainer() {
     removeDistrictList,
     clearDistrict,
   } = useQueryStringStore();
+
+  useEffect(() => {
+    if (setPage) {
+      setPage(0);
+    }
+  }, [setPage, genreList, districtList]);
 
   return (
     <>
