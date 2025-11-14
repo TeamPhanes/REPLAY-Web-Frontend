@@ -30,9 +30,9 @@ export default function RoomCardSection({
   const { likesMutation } = usePostThemeLike();
   const { marksMutation } = usePostThemeMark();
   const levelList = {
-    Hard: '어려움',
-    Normal: '보통',
-    Easy: '쉬움',
+    HARD: '어려움',
+    NORMAL: '보통',
+    EASY: '쉬움',
   };
 
   const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {

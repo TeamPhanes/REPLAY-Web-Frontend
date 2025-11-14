@@ -6,18 +6,24 @@ import { useShowLoading } from '@/hooks/useShowLoading';
 
 export const useGetTheme = (
   accessToken: string | null,
-  state: string[],
+  locations: string[],
   genres: string[],
   page: number,
   size: number
 ) => {
-  const filteredState = state.map((item) =>
+  const filteredLocations = locations.map((item) =>
     item.endsWith(' 전체') ? item.replace(' 전체', '') : item
   );
   const { data, isLoading, error } = useQuery({
-    queryKey: ['theme', accessToken, state, genres, page, size],
+    queryKey: ['theme', accessToken, filteredLocations, genres, page, size],
     queryFn: () =>
-      GetTheme({ accessToken, state: filteredState, genres, page, size }),
+      GetTheme({
+        accessToken,
+        locations: filteredLocations,
+        genres,
+        page,
+        size,
+      }),
     retry: false,
     staleTime: 1000 * 60 * 5,
     placeholderData: keepPreviousData,
