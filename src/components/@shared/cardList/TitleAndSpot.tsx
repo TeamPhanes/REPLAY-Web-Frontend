@@ -1,7 +1,7 @@
 interface TitleAndSpotProps {
   themeName: string;
   cafe: string;
-  spot: string;
+  spot?: string;
   isDetail?: boolean;
 }
 
