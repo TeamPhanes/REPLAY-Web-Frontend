@@ -1,15 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { mockGatherings } from '@/data/mockGatherings';
-import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
+import OtherGatheringCard from '@/components/@shared/cardList/OtherGatheringCard';
+import EmptySearchResult from '@/components/search/EmptySearchResult';
+import { OtherGatheringDTO } from '@/types/gathering/gathering.type';
 import ChevronRight from '@/public/icons/arrow/chevron_right.svg';
 
 interface RoomDetailGatheringsProps {
-  id: string | string[];
+  data: OtherGatheringDTO['get']['data'];
 }
 
 export default function RoomDetailGatherings({
-  id,
+  data,
 }: RoomDetailGatheringsProps) {
   return (
     <>
@@ -32,7 +33,15 @@ export default function RoomDetailGatherings({
           />
         </Link>
       </div>
-      <GatheringCardContainer data={mockGatherings.data.slice(0, 2)} />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
+        {data &&
+          data.map((gathering) => (
+            <OtherGatheringCard key={gathering.id} gathering={gathering} />
+          ))}
+      </div>
+      <div className="w-full">
+        {data && data.length === 0 && <EmptySearchResult />}
+      </div>
     </>
   );
 }
