@@ -9,7 +9,7 @@ export const useGetOtherGathering = (
   id: string | string[]
 ) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['otherGathering', id],
+    queryKey: ['otherGathering', accessToken, id],
     queryFn: () => GetOtherGathering(accessToken, id),
     retry: false,
     staleTime: 1000 * 60 * 5,

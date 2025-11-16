@@ -11,7 +11,7 @@ export const useGetReview = (
   size: number
 ) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['review', themeId],
+    queryKey: ['review', accessToken, themeId],
     queryFn: () => GetReview(accessToken, themeId, page, size),
     retry: false,
     staleTime: 1000 * 60 * 5,
