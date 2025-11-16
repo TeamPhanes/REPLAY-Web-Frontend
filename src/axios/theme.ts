@@ -45,9 +45,14 @@ export const GetSearchTheme = async (
   }
 };
 
-export const GetThemeDetail = async (id: string | string[]) => {
+export const GetThemeDetail = async (
+  accessToken: string | null,
+  id: string | string[]
+) => {
   try {
-    const res = await axios.get(`${API_PATH.theme.default}/${id}`);
+    const res = await (accessToken === null ? axios : axiosInstance).get(
+      `${API_PATH.theme.default}/${id}`
+    );
     return res;
   } catch (error) {
     toast.error('방탈출 상세 정보 최신화 중 오류가 있습니다.');

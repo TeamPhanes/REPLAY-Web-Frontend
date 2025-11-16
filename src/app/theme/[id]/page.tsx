@@ -17,7 +17,10 @@ export default function RoomDetailPage() {
   const [page, setPage] = useState(0);
   const { id } = useParams();
   const { accessToken } = useAuthStore();
-  const { themeDetail, isLoading: themeDetailLoading } = useGetThemeDetail(id);
+  const { themeDetail, isLoading: themeDetailLoading } = useGetThemeDetail(
+    accessToken,
+    id
+  );
   const { otherGathering, isLoading: otherGatheringLoading } =
     useGetOtherGathering(accessToken, id);
   const { review, isLoading: reviewLoading } = useGetReview(
