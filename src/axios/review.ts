@@ -3,14 +3,15 @@ import { axiosInstance } from '@/libs/axiosInstance';
 import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
 
-interface GetReviewProps {
-  id: string | string[];
-}
-
-export const GetReview = async ({ id }: GetReviewProps) => {
+export const GetReview = async (
+  accessToken: string | null,
+  themeId: string | string[],
+  page: number,
+  size: number
+) => {
   try {
-    const res = await axios.get(
-      `${API_PATH.review.default}?themeId=${id}&limit=10&offset=0`
+    const res = await (accessToken === null ? axios : axiosInstance).get(
+      `${API_PATH.review.default}/${themeId}?size=${size}&page=${page}`
     );
     return res;
   } catch (error) {
@@ -19,7 +20,7 @@ export const GetReview = async ({ id }: GetReviewProps) => {
   }
 };
 
-export const GetReviewAllRating = async ({ id }: GetReviewProps) => {
+export const GetReviewAllRating = async (id: string) => {
   try {
     const res = await axios.get(`${API_PATH.review.rating}?themeId=${id}`);
     return res;
@@ -130,7 +131,7 @@ export const DeleteReview = async (
 
 export const PostLikeReview = async (reviewId: number) => {
   try {
-    await axiosInstance.post(`${API_PATH.review.default}/${reviewId}/like`);
+    await axiosInstance.post(`${API_PATH.review.default}/like/${reviewId}`);
   } catch (error) {
     toast.error('리뷰 좋아요 진행 중 오류가 있습니다.');
     throw error;
@@ -139,7 +140,7 @@ export const PostLikeReview = async (reviewId: number) => {
 
 export const DeleteLikeReview = async (reviewId: number) => {
   try {
-    await axiosInstance.delete(`${API_PATH.review.default}/${reviewId}/like`);
+    await axiosInstance.delete(`${API_PATH.review.default}/like/${reviewId}`);
   } catch (error) {
     toast.error('리뷰 좋아요 취소 중 오류가 있습니다.');
     throw error;

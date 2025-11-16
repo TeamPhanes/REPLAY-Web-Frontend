@@ -1,14 +1,9 @@
-import { useState } from 'react';
 import Image from 'next/image';
-import { mockReviews } from '@/data/mockReviews';
 import Pagination from '@/components/@shared/pagination/Pagination';
 import ProgressBar from '@/components/@shared/progressBar/ProgressBar';
 import Rating from '@/components/@shared/rating/Rating';
 import ReviewContent from '@/components/review/ReviewContent';
 import ReviewLikeButton from '@/components/review/ReviewLikeButton';
-import ReviewUser from '@/components/review/ReviewUser';
-import ThemeLevelStoryContainer from '@/components/review/ThemeLevelStoryContainer';
-import { usePagination } from '@/hooks/usePagination';
 import { ReviewDTO } from '@/types/review/review.type';
 import { periodFullYearMonthDay } from '@/utils/dateChange';
 import LightbulbIcon from '@/public/icons/cardList/lightbulb_gray_icon.svg';
@@ -16,12 +11,30 @@ import TrophyIcon from '@/public/icons/cardList/trophy_gray_icon.svg';
 import UsersIcon from '@/public/icons/cardList/users_gray_icon.svg';
 import SearchIcon from '@/public/icons/search/dark_search.svg';
 
-export default function ReviewSection() {
-  const [page, setPage] = useState(0);
-  const totalItems = mockReviews ? mockReviews.totalCount : 0;
-  const { totalPages } = usePagination(page, totalItems);
+interface ReviewSectionProps {
+  data: ReviewDTO['get'];
+  page: number;
+  totalPages: number;
+  setPage: (value: number) => void;
+}
 
-  if (mockReviews.data.length === 0)
+export default function ReviewSection({
+  data,
+  page,
+  totalPages,
+  setPage,
+}: ReviewSectionProps) {
+  const themeAndLevelList = {
+    LIKE: '적절함',
+    NORMAL: '보통',
+    DISLIKE: '부적절함',
+  };
+  const StoryList = {
+    LIKE: '좋음',
+    NORMAL: '보통',
+    DISLIKE: '아쉬움',
+  };
+  if (data.contents.length === 0)
     return (
       <div className="flex flex-col justify-center items-center md:w-xl h-[364px] rounded-lg bg-card-white gap-4 mt-6">
         <Image src={SearchIcon} alt="검색 아이콘" width={80} height={80} />
@@ -39,10 +52,10 @@ export default function ReviewSection() {
           </p>
           <div className="flex flex-col gap-3">
             <p className="text-5xl/[62px] tracking-[-2.5%] text-font-baseBlack font-semibold">
-              {mockReviews.averageScore}
+              {data.avgScore}
             </p>
             <Rating
-              rating={mockReviews.averageScore}
+              rating={data.avgScore}
               width={272}
               height={48}
               type="Review"
@@ -55,7 +68,7 @@ export default function ReviewSection() {
             생성된 모임
           </p>
           <p className="text-5xl/[62px] tracking-[-2.5%] text-font-baseBlack font-semibold py-10">
-            {mockReviews.countGatherings}개
+            {data.createdGatheringCount}개
           </p>
         </div>
         <span className="w-[1px] h-[120px] bg-line-secondLightGray" />
@@ -64,14 +77,20 @@ export default function ReviewSection() {
             리뷰 평점 수치
           </p>
           <div className="flex gap-1">
-            {mockReviews.score.map((count: number, index: number) => (
-              <div key={index} className="flex items-center gap-2 flex-col">
+            {[...data.reviewCountSummary.counts].reverse().map((count) => (
+              <div
+                key={count.score}
+                className="flex items-center gap-2 flex-col"
+              >
                 <p className="flex-shrink-0 text-xs/[18px] font-normal tracking-[-2.5%] text-font-secondBlack">
-                  {count.toLocaleString()}개
+                  {count.count}개
                 </p>
-                <ProgressBar value={count} max={mockReviews.scoreCount} />
+                <ProgressBar
+                  value={count.count}
+                  max={data.reviewCountSummary.total}
+                />
                 <p className="flex-shrink-0 text-xs/[18px] font-normal tracking-[-2.5%] text-font-secondBlack">
-                  {5 - index}점
+                  {count.score}점
                 </p>
               </div>
             ))}
@@ -86,54 +105,57 @@ export default function ReviewSection() {
             <p className="text-sm tracking-[-2.5%] text-font-thirdBlack font-semibold px-[6px]">
               테마
             </p>
-            {mockReviews.theme.map((data) => {
-              return (
-                <p
-                  key={data}
-                  className="text-base tracking-[-2.5%] text-brand-main500 font-normal"
-                >
-                  {data}
-                </p>
-              );
-            })}
+            <p className="text-base tracking-[-2.5%] text-brand-main500 font-normal">
+              {
+                themeAndLevelList[
+                  data.userEvaluation.theme
+                    .label as keyof typeof themeAndLevelList
+                ]
+              }
+            </p>
+            <p className="text-base tracking-[-2.5%] text-brand-main500 font-normal">
+              {data.userEvaluation.theme.percent.toFixed()}%
+            </p>
           </div>
           <div className="flex items-center justify-between">
             <p className="text-sm tracking-[-2.5%] text-font-thirdBlack font-semibold">
               난이도
             </p>
-            {mockReviews.level.map((data) => {
-              return (
-                <p
-                  key={data}
-                  className="text-base tracking-[-2.5%] text-brand-main500 font-normal"
-                >
-                  {data}
-                </p>
-              );
-            })}
+            <p className="text-base tracking-[-2.5%] text-brand-main500 font-normal">
+              {
+                themeAndLevelList[
+                  data.userEvaluation.level
+                    .label as keyof typeof themeAndLevelList
+                ]
+              }
+            </p>
+            <p className="text-base tracking-[-2.5%] text-brand-main500 font-normal">
+              {data.userEvaluation.level.percent.toFixed()}%
+            </p>
           </div>
           <div className="flex items-center justify-between">
             <p className="text-sm tracking-[-2.5%] text-font-thirdBlack font-semibold">
               스토리
             </p>
-            {mockReviews.story.map((data) => {
-              return (
-                <p
-                  key={data}
-                  className="text-base tracking-[-2.5%] text-brand-main500 font-normal"
-                >
-                  {data}
-                </p>
-              );
-            })}
+            <p className="text-base tracking-[-2.5%] text-brand-main500 font-normal">
+              {
+                StoryList[
+                  data.userEvaluation.story
+                    .label as keyof typeof themeAndLevelList
+                ]
+              }
+            </p>
+            <p className="text-base tracking-[-2.5%] text-brand-main500 font-normal">
+              {data.userEvaluation.story.percent.toFixed()}%
+            </p>
           </div>
         </div>
       </div>
-      {mockReviews.data.map((review, index) => (
+      {data.contents.map((review, index) => (
         <div key={index} className="relative p-10">
           <div className="flex flex-row items-center relative">
             <Image
-              src={review.user.image}
+              src={review.profileImage}
               alt="유저 이미지"
               width={60}
               height={60}
@@ -141,14 +163,14 @@ export default function ReviewSection() {
             />
             <div className="flex flex-col gap-3 ml-5">
               <Rating
-                rating={review.rating}
+                rating={review.score}
                 width={120}
                 height={24}
                 type="Review"
               />
               <div className="flex items-center gap-2">
                 <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
-                  {review.user.name}
+                  {review.nickname}
                 </p>
                 <span className="w-[1px] h-3 bg-font-baseBlack" />
                 <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
@@ -164,7 +186,7 @@ export default function ReviewSection() {
               </div>
             </div>
             <ReviewLikeButton
-              totalLikes={review.totalLikes}
+              totalLikes={review.likeCount}
               isLiked={review.isLiked}
               id={review.id}
             />
@@ -177,7 +199,11 @@ export default function ReviewSection() {
                   테마
                 </p>
                 <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
-                  {review.themeReview}
+                  {
+                    themeAndLevelList[
+                      review.themeReview as keyof typeof themeAndLevelList
+                    ]
+                  }
                 </p>
               </div>
               <div className="flex items-center gap-2">
@@ -185,7 +211,11 @@ export default function ReviewSection() {
                   난이도
                 </p>
                 <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
-                  {review.levelReview}
+                  {
+                    themeAndLevelList[
+                      review.levelReview as keyof typeof themeAndLevelList
+                    ]
+                  }
                 </p>
               </div>
               <div className="flex items-center gap-2">
@@ -193,7 +223,7 @@ export default function ReviewSection() {
                   스토리
                 </p>
                 <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
-                  {review.storyReview}
+                  {StoryList[review.storyReview as keyof typeof StoryList]}
                 </p>
               </div>
             </div>
@@ -217,7 +247,7 @@ export default function ReviewSection() {
                   height={24}
                 />
                 <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
-                  {review.playUser}
+                  {review.numberOfPlayer}
                 </p>
               </div>
               <div className="flex items-center gap-2">
@@ -228,7 +258,7 @@ export default function ReviewSection() {
                   height={24}
                 />
                 <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
-                  {review.success ? '성공' : '실패'}
+                  {review.isSuccess ? '성공' : '실패'}
                 </p>
               </div>
             </div>
