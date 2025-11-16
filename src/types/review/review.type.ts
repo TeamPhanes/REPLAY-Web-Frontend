@@ -1,33 +1,45 @@
 // 리뷰 목록 조회 Response
 export interface ReviewDTO {
   get: {
-    averageScore: number;
-    countGatherings: number;
-    scoreCount: number;
-    score: number[];
-    theme: string[];
-    level: string[];
-    story: string[];
-    totalCount: number;
-    currentPage: number;
-    data: {
-      id: number;
-      user: {
-        name: string;
-        image: string;
+    avgScore: number;
+    createdGatheringCount: number;
+    reviewCountSummary: {
+      total: number;
+      counts: {
+        score: number;
+        count: number;
+      }[];
+    };
+    userEvaluation: {
+      theme: {
+        label: string;
+        percent: number;
       };
+      level: {
+        label: string;
+        percent: number;
+      };
+      story: {
+        label: string;
+        percent: number;
+      };
+    };
+    contents: {
       content: string;
-      image: string;
-      rating: number;
-      success: boolean;
-      themeReview: string;
-      levelReview: string;
-      storyReview: string;
-      hint: number;
       createdAt: string;
-      playUser: number;
-      totalLikes: number;
-      isLiked?: boolean;
+      hint: number;
+      id: number;
+      image: string | null;
+      isLiked: boolean;
+      isSuccess: boolean;
+      levelReview: string;
+      likeCount: number;
+      nickname: string;
+      numberOfPlayer: number;
+      profileImage: string;
+      score: number;
+      storyReview: string;
+      themeReview: string;
     }[];
   };
 }

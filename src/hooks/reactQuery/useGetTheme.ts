@@ -40,10 +40,13 @@ export const useGetTheme = (
   };
 };
 
-export const useGetThemeDetail = (id: string | string[]) => {
+export const useGetThemeDetail = (
+  accessToken: string | null,
+  id: string | string[]
+) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['themeDetail', id],
-    queryFn: () => GetThemeDetail(id),
+    queryKey: ['themeDetail', accessToken, id],
+    queryFn: () => GetThemeDetail(accessToken, id),
     retry: false,
     staleTime: 1000 * 60 * 5,
   });

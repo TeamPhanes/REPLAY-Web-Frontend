@@ -45,9 +45,14 @@ export const GetSearchTheme = async (
   }
 };
 
-export const GetThemeDetail = async (id: string | string[]) => {
+export const GetThemeDetail = async (
+  accessToken: string | null,
+  id: string | string[]
+) => {
   try {
-    const res = await axios.get(`${API_PATH.theme.default}/${id}`);
+    const res = await (accessToken === null ? axios : axiosInstance).get(
+      `${API_PATH.theme.default}/${id}`
+    );
     return res;
   } catch (error) {
     toast.error('방탈출 상세 정보 최신화 중 오류가 있습니다.');
@@ -57,7 +62,7 @@ export const GetThemeDetail = async (id: string | string[]) => {
 
 export const PostLikeTheme = async (themeId: number) => {
   try {
-    await axiosInstance.post(`${API_PATH.theme.default}/${themeId}/like`);
+    await axiosInstance.post(`${API_PATH.theme.default}/like/${themeId}`);
   } catch (error) {
     toast.error('찜하기 진행 중 오류가 있습니다.');
     throw error;
@@ -66,7 +71,7 @@ export const PostLikeTheme = async (themeId: number) => {
 
 export const DeleteLikeTheme = async (themeId: number) => {
   try {
-    await axiosInstance.delete(`${API_PATH.theme.default}/${themeId}/like`);
+    await axiosInstance.delete(`${API_PATH.theme.default}/like/${themeId}`);
   } catch (error) {
     toast.error('찜하기 취소 중 오류가 있습니다.');
     throw error;
@@ -75,7 +80,7 @@ export const DeleteLikeTheme = async (themeId: number) => {
 
 export const PostMarkTheme = async (themeId: number) => {
   try {
-    await axiosInstance.post(`${API_PATH.theme.default}/${themeId}/visit`);
+    await axiosInstance.post(`${API_PATH.theme.default}/visit/${themeId}`);
   } catch (error) {
     toast.error('참여 목록 추가 중 오류가 있습니다.');
     throw error;
@@ -84,7 +89,7 @@ export const PostMarkTheme = async (themeId: number) => {
 
 export const DeleteMarkTheme = async (themeId: number) => {
   try {
-    await axiosInstance.delete(`${API_PATH.theme.default}/${themeId}/visit`);
+    await axiosInstance.delete(`${API_PATH.theme.default}/visit/${themeId}`);
   } catch (error) {
     toast.error('참여 목록 취소 중 오류가 있습니다.');
     throw error;

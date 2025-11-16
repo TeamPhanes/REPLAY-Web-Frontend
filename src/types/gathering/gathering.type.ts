@@ -24,6 +24,27 @@ export interface GatheringDTO {
   };
 }
 
+export interface OtherGatheringDTO {
+  get: {
+    totalPages: number;
+    number: number;
+    data: {
+      id: number;
+      name: string;
+      image: string;
+      date: string;
+      title: string;
+      address: string;
+      genres: string[];
+      playtime: number;
+      level: string;
+      participantCount: number;
+      capacity: number;
+      isLiked: boolean;
+    }[];
+  };
+}
+
 // 모임 상세 조회 Response
 export interface GatheringDetailDTO {
   get: {

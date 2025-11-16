@@ -77,6 +77,21 @@ export const GetDateGathering = async (
   }
 };
 
+export const GetOtherGathering = async (
+  accessToken: string | null,
+  themeId: string | string[]
+) => {
+  try {
+    const res = await (accessToken === null ? axios : axiosInstance).get(
+      `${API_PATH.gathering.default}/${themeId}`
+    );
+    return res;
+  } catch (error) {
+    toast.error('다른 모임 최신화 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
 interface PostGatheringData {
   name: string;
   themeId: number;
@@ -158,7 +173,7 @@ export const DeleteGathering = async (gatheringId: number) => {
 export const PostLikeGathering = async (gatheringId: number) => {
   try {
     await axiosInstance.post(
-      `${API_PATH.gathering.default}/${gatheringId}/like`
+      `${API_PATH.gathering.default}/like/${gatheringId}`
     );
   } catch (error) {
     toast.error('찜하기 진행 중 오류가 있습니다.');
@@ -169,7 +184,7 @@ export const PostLikeGathering = async (gatheringId: number) => {
 export const DeleteLikeGathering = async (gatheringId: number) => {
   try {
     await axiosInstance.delete(
-      `${API_PATH.gathering.default}/${gatheringId}/like`
+      `${API_PATH.gathering.default}/like/${gatheringId}`
     );
   } catch (error) {
     toast.error('찜하기 취소 중 오류가 있습니다.');

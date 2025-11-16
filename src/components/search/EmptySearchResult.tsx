@@ -1,6 +1,6 @@
 export default function EmptySearchResult() {
   return (
-    <div className="flex justify-center items-center flex-col p-32">
+    <div className="flex justify-center items-center flex-col px-32 py-16">
       <p className="text-center hidden md:block font-normal text-[64px] tracking-[0.31em]">
         NOT FOUND
       </p>
