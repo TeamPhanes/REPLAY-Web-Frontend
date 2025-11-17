@@ -6,27 +6,21 @@ import { toKSTString } from '@/utils/dateChange';
 
 interface GetGatheringProps {
   accessToken: string | null;
-  keyword: string;
+  locations: string[];
+  genres: string[];
   page: number;
-  limit: number;
-  sort: string;
-  state: string;
-  city: string;
-  genre: string;
+  size: number;
 }
 export const GetGathering = async ({
   accessToken,
-  keyword,
+  locations,
+  genres,
   page,
-  limit,
-  sort,
-  state,
-  city,
-  genre,
+  size,
 }: GetGatheringProps) => {
   try {
     const res = await (accessToken === null ? axios : axiosInstance).get(
-      `${API_PATH.gathering.default}?sortBy=${sort}${keyword !== '' ? `&keyword=${keyword}` : ''}${state !== '시.도' ? `&state=${state}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}${genre !== '전체' ? `&genre=${genre}` : ''}&limit=${limit}&offset=${page}`
+      `${API_PATH.gathering.default}?${locations.length !== 0 ? `&locations=${locations}` : ''}${genres.length !== 0 ? `&genres=${genres}` : ''}&size=${size}&page=${page}`
     );
     return res;
   } catch (error) {

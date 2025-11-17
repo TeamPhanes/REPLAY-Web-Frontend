@@ -1,26 +1,18 @@
 // 모임 목록 조회 Response
 export interface GatheringDTO {
   get: {
-    totalCount: number;
-    currentPage: number;
-    data: {
-      gatheringId: number;
-      isLiked?: boolean;
-      listImage: string;
-      genres: string[];
-      playtime: number;
-      name: string;
-      cafe: string;
-      spot: string;
-      themeId: number;
-      dateTime: string;
-      registrationEnd: string;
-      capacity: number;
-      participantCount: number;
-      participants: { name: string; image: string }[];
-      address: string;
-      level: string;
-    }[];
+    id: number;
+    name: string;
+    image: string;
+    date: string;
+    participantCount: number;
+    capacity: number;
+    title: string;
+    address: string;
+    genres: string[];
+    playtime: number;
+    level: string;
+    isLiked: boolean;
   };
 }
 
