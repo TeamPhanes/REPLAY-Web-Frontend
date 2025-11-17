@@ -1,8 +1,6 @@
-import { useParams } from 'next/navigation';
 import { mockParticipants } from '@/data/mockParticipants';
 import { useAuthStore } from '@/store/authStore';
 import MainBlueButton from '@/components/@shared/button/MainBlueButton';
-import { useGetGatheringMember } from '@/hooks/reactQuery/useGetGatheringMember';
 import { usePostGatheringMember } from '@/hooks/reactQuery/usePostGatheringMember';
 import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
 
@@ -11,8 +9,6 @@ export default function GatheringMemberButton({
 }: {
   gatheringId: number;
 }) {
-  const { id } = useParams();
-  const { gatheringMember } = useGetGatheringMember(id);
   const { accessToken } = useAuthStore();
   const { userInfo } = useUserInfo({ enabled: !!accessToken });
   const { memberMutation } = usePostGatheringMember();

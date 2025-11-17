@@ -29,9 +29,14 @@ export const GetGathering = async ({
   }
 };
 
-export const GetGatheringDetail = async (id: string | string[]) => {
+export const GetGatheringDetail = async (
+  accessToken: string | null,
+  id: string | string[]
+) => {
   try {
-    const res = await axios.get(`${API_PATH.gathering.default}/${id}`);
+    const res = await (accessToken === null ? axios : axiosInstance).get(
+      `${API_PATH.gathering.default}/${id}`
+    );
     return res;
   } catch (error) {
     toast.error('모임 상세 정보 최신화 중 오류가 있습니다.');
@@ -57,12 +62,11 @@ export const GetHostGathering = async (
 
 export const GetDateGathering = async (
   accessToken: string | null,
-  dateTime: string,
-  gatheringId: number
+  dateTime: string
 ) => {
   try {
     const res = await (accessToken === null ? axios : axiosInstance).get(
-      `${API_PATH.gathering.date}?dateTime=${dateTime}&gatheringId=${gatheringId}`
+      `${API_PATH.gathering.date}?date=${dateTime}`
     );
     return res;
   } catch (error) {
