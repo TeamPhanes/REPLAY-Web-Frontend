@@ -79,11 +79,12 @@ export const GetDateGathering = async (
 
 export const GetOtherGathering = async (
   accessToken: string | null,
-  themeId: string | string[]
+  themeId: string | string[],
+  size: number
 ) => {
   try {
     const res = await (accessToken === null ? axios : axiosInstance).get(
-      `${API_PATH.gathering.default}/${themeId}`
+      `${API_PATH.gathering.default}?themeId=${themeId}&size=${size}`
     );
     return res;
   } catch (error) {

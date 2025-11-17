@@ -22,7 +22,7 @@ export default function RoomDetailPage() {
     id
   );
   const { otherGathering, isLoading: otherGatheringLoading } =
-    useGetOtherGathering(accessToken, id);
+    useGetOtherGathering(accessToken, id, 2);
   const { review, isLoading: reviewLoading } = useGetReview(
     accessToken,
     id,
