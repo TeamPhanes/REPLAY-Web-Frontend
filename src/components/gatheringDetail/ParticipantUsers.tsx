@@ -11,7 +11,7 @@ import Logo from '@/public/images/Replay_Main_Logo.svg';
 
 interface ParticipantUsersProps {
   list: GatheringMemberDTO['get'];
-  leaderCheck: string;
+  leaderCheck?: string | null;
 }
 
 export default function ParticipantUsers({
@@ -19,7 +19,7 @@ export default function ParticipantUsers({
   leaderCheck,
 }: ParticipantUsersProps) {
   const { isOpen, openModal, closeModal } = useOpen();
-  const { otherUser, showLoading, isLoading } = useGetOtherUser(list.nickname);
+  // const { otherUser, showLoading, isLoading } = useGetOtherUser(list.nickname);
   // if (showLoading) return <Loading isLoading={isLoading} />;
 
   if (!list.nickname) return null;
@@ -32,7 +32,7 @@ export default function ParticipantUsers({
         PLAY CARD
       </p>
       <Image
-        src={list.image}
+        src={list.profileImage}
         alt={list.nickname}
         width={127}
         height={155}
@@ -51,7 +51,7 @@ export default function ParticipantUsers({
           {list.nickname}
         </p>
       </div>
-      {list.emailMark ? (
+      {list.email !== '' ? (
         <p className="text-[5px]/[8px] tracking-[-2.5%] text-font-thirdBlack font-normal mt-1">
           {list.email}
         </p>
