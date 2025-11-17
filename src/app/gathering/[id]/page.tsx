@@ -1,11 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import { mockGatherings } from '@/data/mockGatherings';
-import { mockParticipants } from '@/data/mockParticipants';
+import { useParams } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
-import { useGatheringStore } from '@/store/useGatheringStore';
 import PageContainer from '@/components/@shared/layout/PageContainer';
 import Loading from '@/components/@shared/loading/Loading';
 import AnotherGatherings from '@/components/gatheringDetail/AnotherGatherings';
@@ -15,61 +11,40 @@ import CommentsContainer from '@/components/gatheringDetail/comment/CommentsCont
 import {
   useGetDateGathering,
   useGetGatheringDetail,
-  useGetHostGathering,
 } from '@/hooks/reactQuery/useGetGatheringDetail';
-import { useGetGatheringMember } from '@/hooks/reactQuery/useGetGatheringMember';
 
 export default function GatheringDetailPage() {
-  const [host, setHost] = useState('종화');
-  const [dateTime, setDateTime] = useState();
-  const { accessToken } = useAuthStore();
   const { id } = useParams();
-  const router = useRouter();
-
-  const { gatheringMember } = useGetGatheringMember(id);
-  const { selectedGathering } = useGatheringStore();
-  const { gatheringDetail, isLoading, showLoading } = useGetGatheringDetail(id);
-  const { hostGathering } = useGetHostGathering(accessToken, host ?? '', id);
-  const { dateGathering } = useGetDateGathering(
-    accessToken,
-    dateTime ?? '',
-    id
-  );
-
-  useEffect(() => {
-    if (mockParticipants && mockParticipants.length > 0) {
-      setHost(mockParticipants[0].nickname);
-    }
-    if (gatheringDetail) {
-      setDateTime(gatheringDetail.dateTime);
-    }
-  }, [mockParticipants, gatheringDetail]);
-
-  // if (showLoading) return <Loading isLoading={isLoading} />;
-
-  const minLength = 6;
-  while (mockParticipants.length < minLength) {
-    mockParticipants.push({
-      image: '',
-      nickname: '',
-      email: '',
-      emailMark: false,
-      comment: '',
+  const { accessToken } = useAuthStore();
+  const { gatheringDetail, isLoading: gatheringDetailLoading } =
+    useGetGatheringDetail(accessToken, id);
+  const { dateGathering, isLoading: dateGatheringLoading } =
+    useGetDateGathering(accessToken, gatheringDetail?.date, {
+      enabled: !!gatheringDetail,
     });
-  }
-  // if (gatheringDetail?.gatheringId !== selectedGathering.gatheringId) {
-  //   router.replace('/not-found');
-  //   return null;
-  // }
+
+  if (
+    gatheringDetailLoading ||
+    dateGatheringLoading ||
+    !gatheringDetail ||
+    !dateGathering
+  )
+    return <Loading isLoading={gatheringDetailLoading} />;
 
   return (
     <PageContainer>
-      <GatheringDetailCard leader={host} />
-      <ParticipantList gatheringMember={mockParticipants} leader={host} />
-      <CommentsContainer id={id} leaderCheck={host} />
+      <GatheringDetailCard data={gatheringDetail} />
+      <ParticipantList
+        capacity={gatheringDetail.capacity}
+        gatheringMember={gatheringDetail.participants}
+      />
+      <CommentsContainer
+        id={id}
+        gatheringMember={gatheringDetail.participants}
+      />
       <AnotherGatherings
         title="비슷한 일정 다른 모임"
-        gatherings={mockGatherings.data}
+        data={dateGathering.content}
       />
     </PageContainer>
   );
