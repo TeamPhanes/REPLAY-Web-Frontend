@@ -13,7 +13,7 @@ import UserDefaultImg from '@/public/icons/user/user_default.svg';
 
 interface CommentCardProps {
   gatheringId: string | string[];
-  leaderCheck: string;
+  leaderCheck?: string | null;
   userImage: string;
   userNickname: string;
   content: string;

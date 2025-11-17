@@ -1,16 +1,22 @@
 export interface CommentDTO {
   get: {
-    commentId: number;
-    nickname: string;
-    image: string;
+    id: number;
+    userId: number;
     content: string;
     createdAt: string;
-    reComments: {
-      reCommentId: number;
-      nickname: string;
-      image: string;
+    updatedAt: string;
+    nickname: string;
+    profileImage: string;
+    email: string;
+    comments: {
+      id: number;
+      userId: number;
       content: string;
       createdAt: string;
+      updatedAt: string;
+      nickname: string;
+      profileImage: string;
+      email: string;
     }[];
   };
 }
