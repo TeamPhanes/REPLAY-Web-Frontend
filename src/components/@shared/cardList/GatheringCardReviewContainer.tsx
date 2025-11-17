@@ -2,7 +2,7 @@ import GatheringCardReview from '@/components/@shared/cardList/GatheringCardRevi
 import { GatheringDTO } from '@/types/gathering/gathering.type';
 
 interface GatheringCardContainerProps {
-  data: GatheringDTO['get']['data'];
+  data: GatheringDTO['get'][];
 }
 
 export default function GatheringCardReviewContainer({
@@ -11,10 +11,7 @@ export default function GatheringCardReviewContainer({
   return (
     <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
       {data.map((gathering) => (
-        <GatheringCardReview
-          key={gathering.gatheringId}
-          gathering={gathering}
-        />
+        <GatheringCardReview key={gathering.id} gathering={gathering} />
       ))}
     </div>
   );
