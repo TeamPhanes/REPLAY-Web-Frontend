@@ -1,26 +1,18 @@
 // 모임 목록 조회 Response
 export interface GatheringDTO {
   get: {
-    totalCount: number;
-    currentPage: number;
-    data: {
-      gatheringId: number;
-      isLiked?: boolean;
-      listImage: string;
-      genres: string[];
-      playtime: number;
-      name: string;
-      cafe: string;
-      spot: string;
-      themeId: number;
-      dateTime: string;
-      registrationEnd: string;
-      capacity: number;
-      participantCount: number;
-      participants: { name: string; image: string }[];
-      address: string;
-      level: string;
-    }[];
+    id: number;
+    name: string;
+    image: string;
+    date: string;
+    participantCount: number;
+    capacity: number;
+    title: string;
+    address: string;
+    genres: string[];
+    playtime: number;
+    level: string;
+    isLiked: boolean;
   };
 }
 
@@ -48,19 +40,30 @@ export interface OtherGatheringDTO {
 // 모임 상세 조회 Response
 export interface GatheringDetailDTO {
   get: {
-    gatheringId: number;
-    detailImage: string;
-    genres: string[];
+    id: number;
+    name: string;
+    capacity: number;
+    date: string;
+    address: string;
     registrationStart: string;
     registrationEnd: string;
-    name: string;
-    themeId: number;
-    themeName: string;
     content: string;
-    dateTime: string;
+    image: string;
     price: number;
-    address: string;
+    isIndividual: boolean; // 총액, 인당 결정 boolean
     participantCount: number;
-    capacity: number;
+    participants: [
+      {
+        id: number | null;
+        profileImage: string;
+        nickname: string;
+        email: string;
+        role: string;
+      },
+    ];
+    themeId: number;
+    title: string;
+    genres: string[];
+    isLiked: boolean;
   };
 }

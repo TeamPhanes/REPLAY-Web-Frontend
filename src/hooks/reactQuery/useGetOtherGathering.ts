@@ -6,11 +6,12 @@ import { useShowLoading } from '@/hooks/useShowLoading';
 
 export const useGetOtherGathering = (
   accessToken: string | null,
-  id: string | string[]
+  id: string | string[],
+  size: number
 ) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['otherGathering', accessToken, id],
-    queryFn: () => GetOtherGathering(accessToken, id),
+    queryKey: ['otherGathering', accessToken, id, size],
+    queryFn: () => GetOtherGathering(accessToken, id, size),
     retry: false,
     staleTime: 1000 * 60 * 5,
     placeholderData: keepPreviousData,

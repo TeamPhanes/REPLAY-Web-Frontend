@@ -1,17 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useAuthStore } from '@/store/authStore';
 import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
+import Loading from '@/components/@shared/loading/Loading';
+import { useGetDateGathering } from '@/hooks/reactQuery/useGetGatheringDetail';
 import { GatheringDTO } from '@/types/gathering/gathering.type';
 import ArrowIcon from '@/public/icons/arrow/chevron_right.svg';
 
 interface AnotherGatheringsProps {
   title: string;
-  gatherings: GatheringDTO['get']['data'];
+  data: GatheringDTO['get'][];
 }
 
 export default function AnotherGatherings({
   title,
-  gatherings,
+  data,
 }: AnotherGatheringsProps) {
   return (
     <div className="mt-14">
@@ -31,7 +34,7 @@ export default function AnotherGatherings({
         </Link>
       </div>
       <div>
-        <GatheringCardContainer data={gatherings} />
+        <GatheringCardContainer data={data} />
       </div>
     </div>
   );

@@ -1,20 +1,29 @@
 import { useState } from 'react';
 import { mockLikedGatherings } from '@/data/mockGatherings';
+import { useAuthStore } from '@/store/authStore';
+import { useQueryStringStore } from '@/store/useQueryStringStore';
 import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
 import GatheringCardContainer from '@/components/@shared/cardList/GatheringCardContainer';
 import Pagination from '@/components/@shared/pagination/Pagination';
 import CardSkeleton from '@/components/@shared/skeleton/CardSkeleton';
+import { useGetGathering } from '@/hooks/reactQuery/useGetGathering';
 import { useLikeGathering } from '@/hooks/reactQuery/useLikeGathering';
 import { useAuthGuard } from '@/hooks/useAuthGuard';
 import { usePagination } from '@/hooks/usePagination';
 
 export default function GatheringLikedSection() {
+  const { accessToken } = useAuthStore();
   const [page, setPage] = useState(0);
-  const { userLikeGathering, isLoading, showLoading } = useLikeGathering(
+  const { genreList, districtList } = useQueryStringStore();
+
+  const { gathering, isLoading } = useGetGathering(
+    accessToken,
+    districtList,
+    genreList,
     page,
-    10
+    12
   );
-  const { isGuardLoading } = useAuthGuard(showLoading);
+  const { isGuardLoading } = useAuthGuard(isLoading);
   const { totalPages } = usePagination(page, mockLikedGatherings?.totalCount);
 
   if (isGuardLoading || isLoading) {
@@ -23,12 +32,12 @@ export default function GatheringLikedSection() {
     );
   }
 
-  if (!mockLikedGatherings || mockLikedGatherings.data.length === 0) {
-    return <EmptyArrayContainer type="찜한" kind="모임" />;
-  }
+  // if (!mockLikedGatherings || mockLikedGatherings.data.length === 0) {
+  //   return <EmptyArrayContainer type="찜한" kind="모임" />;
+  // }
   return (
     <>
-      <GatheringCardContainer data={mockLikedGatherings.data} favoriteCheck />
+      <GatheringCardContainer data={gathering.content} favoriteCheck />
       <Pagination
         currentPage={page}
         totalPages={totalPages}

@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { GetOtherUser } from '@/axios/user';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
-export const useGetOtherUser = (nickname: string) => {
+export const useGetOtherUser = (nickname: string | null) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['otherUser', nickname],
     queryFn: () => GetOtherUser(nickname),

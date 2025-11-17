@@ -26,7 +26,7 @@ export const API_PATH = {
     rating: `${BASE_URL}/review/rating`,
   },
   comment: {
-    default: `${BASE_URL}/comment`,
+    default: `${BASE_URL}/gathering/comment`,
   },
   user: {
     default: `${BASE_URL}/user`,

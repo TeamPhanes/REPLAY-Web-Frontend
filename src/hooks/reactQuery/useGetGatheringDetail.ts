@@ -1,15 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
-import {
-  GetDateGathering,
-  GetGatheringDetail,
-  GetHostGathering,
-} from '@/axios/gathering';
+import { GetDateGathering, GetGatheringDetail } from '@/axios/gathering';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
-export const useGetGatheringDetail = (id: string | string[]) => {
+export const useGetGatheringDetail = (
+  accessToken: string | null,
+  id: string | string[]
+) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['gatheringDetail', id],
-    queryFn: () => GetGatheringDetail(id),
+    queryKey: ['gatheringDetail', accessToken, id],
+    queryFn: () => GetGatheringDetail(accessToken, id),
     retry: false,
     staleTime: 1000 * 60 * 5,
   });
@@ -19,32 +18,15 @@ export const useGetGatheringDetail = (id: string | string[]) => {
   return { gatheringDetail, isLoading, showLoading, error };
 };
 
-export const useGetHostGathering = (
-  accessToken: string | null,
-  hostName: string,
-  id: string | string[]
-) => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['hostGathering', hostName],
-    queryFn: () => GetHostGathering(accessToken, hostName, Number(id)),
-    enabled: !!hostName,
-    staleTime: 1000 * 60 * 5,
-  });
-
-  const hostGathering = data?.data;
-  const showLoading = useShowLoading(isLoading);
-  return { hostGathering, isLoading, showLoading, error };
-};
-
 export const useGetDateGathering = (
   accessToken: string | null,
   dateTime: string,
-  id: string | string[]
+  options?: { enabled?: boolean }
 ) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['dateGathering', dateTime],
-    queryFn: () => GetDateGathering(accessToken, dateTime, Number(id)),
-    enabled: !!dateTime,
+    queryKey: ['dateGathering', accessToken, dateTime],
+    queryFn: () => GetDateGathering(accessToken, dateTime),
+    enabled: !!dateTime && options?.enabled,
     staleTime: 1000 * 60 * 5,
   });
 

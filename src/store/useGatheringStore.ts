@@ -8,7 +8,7 @@ interface State {
 
 interface Actions {
   setSelectedGathering: (
-    selectedGathering: GatheringDTO['get']['data'][number]
+    selectedGathering: GatheringDTO['get'][][number]
   ) => void;
 }
 

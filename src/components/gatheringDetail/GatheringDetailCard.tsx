@@ -1,46 +1,34 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
-import { mockGatheringsDetail } from '@/data/mockGatheringsDetail';
-import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import Tag from '@/components/@shared/cardList/Tag';
-import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import Rating from '@/components/@shared/rating/Rating';
 import DateAndPriceAndAddress from '@/components/gatheringDetail/DateAndPriceAndAddress';
 import GatheringDetailButton from '@/components/gatheringDetail/GatheringDetailButton';
-import TagAndLink from '@/components/gatheringDetail/TagAndLink';
-import { useGetGatheringMember } from '@/hooks/reactQuery/useGetGatheringMember';
 import { usePostGatheringLike } from '@/hooks/reactQuery/usePostGatheringLike';
-import {
-  GatheringDTO,
-  GatheringDetailDTO,
-} from '@/types/gathering/gathering.type';
+import { GatheringDetailDTO } from '@/types/gathering/gathering.type';
 import { periodYearMonthDayHourTime } from '@/utils/dateChange';
 import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
 import ShareIcon from '@/public/icons/cardList/share_icon.svg';
 
 interface GatheringDetailCardProps {
-  leader: string;
+  data: GatheringDetailDTO['get'];
 }
 
 export default function GatheringDetailCard({
-  leader,
+  data,
 }: GatheringDetailCardProps) {
-  const { id } = useParams();
-  const { gatheringMember } = useGetGatheringMember(id);
-  const [isLiked, setIsLiked] = useState(mockGatheringsDetail.isLiked);
+  const [isLiked, setIsLiked] = useState(data.isLiked);
   const { likesMutation } = usePostGatheringLike();
-
-  // const participantCount = gatheringMember.filter(
-  //   (user: any) => user.nickname
-  // ).length;
+  const findHostName = data.participants.find(
+    ({ role }) => role === 'HOST'
+  )?.nickname;
 
   const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {
     setIsLiked(userAction === 'LIKE_POST');
     likesMutation.mutate({
-      gatheringId: mockGatheringsDetail.gatheringId,
+      gatheringId: data.id,
       userAction,
     });
   };
@@ -51,14 +39,14 @@ export default function GatheringDetailCard({
   };
 
   useEffect(() => {
-    setIsLiked(mockGatheringsDetail.isLiked);
-  }, [mockGatheringsDetail.isLiked]);
+    setIsLiked(data.isLiked);
+  }, [data.isLiked]);
 
   return (
     <div className="flex flex-col md:flex-row justify-between gap-2">
       <Image
-        src={mockGatheringsDetail.detailImage}
-        alt={mockGatheringsDetail.name}
+        src={data.image}
+        alt={data.title}
         width={413}
         height={500}
         quality={100}
@@ -89,18 +77,18 @@ export default function GatheringDetailCard({
           </button>
         </div>
 
-        <Tag tag={mockGatheringsDetail.genres} isDetail />
+        <Tag tag={data.genres} isDetail />
 
         <div className="gap-1 flex flex-col mt-8">
           <p className="text-lg/[26px] font-normal tracking-[-2.5%] text-font-disabled">
-            {periodYearMonthDayHourTime(mockGatheringsDetail.registrationStart)}{' '}
-            ~ {periodYearMonthDayHourTime(mockGatheringsDetail.registrationEnd)}
+            {periodYearMonthDayHourTime(data.registrationStart)} ~{' '}
+            {periodYearMonthDayHourTime(data.registrationEnd)}
           </p>
           <h2 className="text-4xl/[48px] truncate  font-semibold tracking-[-2.5%] text-font-baseBlack">
-            {mockGatheringsDetail.name}
+            {data.name}
           </h2>
           <p className="text-lg/[26px] font-normal tracking-[-2.5%] text-font-disabled">
-            {mockGatheringsDetail.themeName}
+            {data.title}
           </p>
         </div>
 
@@ -110,7 +98,7 @@ export default function GatheringDetailCard({
               소개
             </p>
             <p className="line-clamp-[8] text-[13px]/[18px] font-normal tracking-[-2.5%] text-font-baseBlack">
-              {mockGatheringsDetail.content}
+              {data.content}
             </p>
           </div>
 
@@ -118,28 +106,24 @@ export default function GatheringDetailCard({
 
           <div className="flex flex-col gap-3 min-w-[385px] min-h-[230px]">
             <DateAndPriceAndAddress
-              dateTime={mockGatheringsDetail.dateTime}
-              price={mockGatheringsDetail.price}
-              address={mockGatheringsDetail.address}
+              dateTime={data.date}
+              price={data.price}
+              address={data.address}
             />
             <div className="flex items-center justify-between mt-10">
               <Rating
-                rating={mockGatheringsDetail.participantCount}
+                rating={data.participantCount}
                 maxRating={6}
                 width={266}
                 height={36}
                 type="User"
-                capacity={mockGatheringsDetail.capacity}
+                capacity={data.capacity}
               />
               <p className="text-xl font-normal tracking-[-2.5%] text-font-thirdBlack">
-                {mockGatheringsDetail.participantCount}/
-                {mockGatheringsDetail.capacity}
+                {data.participantCount}/{data.capacity}
               </p>
             </div>
-            <GatheringDetailButton
-              list={mockGatheringsDetail}
-              leader={leader}
-            />
+            <GatheringDetailButton data={data} leader={findHostName} />
           </div>
         </div>
       </div>

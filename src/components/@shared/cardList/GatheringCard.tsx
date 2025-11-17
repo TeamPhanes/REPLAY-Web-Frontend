@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useGatheringStore } from '@/store/useGatheringStore';
 import Tag from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import { usePostGatheringLike } from '@/hooks/reactQuery/usePostGatheringLike';
@@ -16,7 +15,7 @@ import UserIcon from '@/public/icons/cardList/user_icon.svg';
 
 interface GatheringCardProps {
   favoriteCheck?: boolean;
-  gathering: GatheringDTO['get']['data'][number];
+  gathering: GatheringDTO['get'];
 }
 
 export default function GatheringCard({
@@ -26,13 +25,16 @@ export default function GatheringCard({
   const [isLiked, setIsLiked] = useState(
     favoriteCheck ? true : gathering.isLiked
   );
-  const { setSelectedGathering } = useGatheringStore();
   const { likesMutation } = usePostGatheringLike();
-
+  const levelList = {
+    HARD: '어려움',
+    NORMAL: '보통',
+    EASY: '쉬움',
+  };
   const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {
     setIsLiked(userAction === 'LIKE_POST');
     likesMutation.mutate({
-      gatheringId: gathering.gatheringId,
+      gatheringId: gathering.id,
       userAction,
     });
   };
@@ -44,17 +46,13 @@ export default function GatheringCard({
   }, [gathering.isLiked, favoriteCheck]);
   return (
     <div
-      key={gathering.gatheringId}
+      key={gathering.id}
       className="relative flex md:flex-row flex-col md:w-[630px] items-start rounded-[4px] bg-card-white p-5 transition-all hover:scale-[102%]"
     >
-      <Link
-        href={`/gathering/${gathering.gatheringId}`}
-        onClick={() => setSelectedGathering(gathering)}
-        className="w-full md:w-[145px]"
-      >
+      <Link href={`/gathering/${gathering.id}`} className="w-full md:w-[145px]">
         <Image
-          src={gathering.listImage}
-          alt={gathering.name}
+          src={gathering.image}
+          alt={gathering.title}
           width={145}
           height={218}
           quality={100}
@@ -79,19 +77,11 @@ export default function GatheringCard({
           />
         </button>
       </div>
-      <Link
-        href={`/gathering/${gathering.gatheringId}`}
-        onClick={() => setSelectedGathering(gathering)}
-        className="w-full md:w-auto"
-      >
+      <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
         <div className="md:ml-5 mt-5 md:mt-0 flex min-h-[212px] min-w-[424px] flex-col justify-between">
           <div className="flex flex-col gap-3">
             <Tag tag={gathering.genres} />
-            <TitleAndSpot
-              themeName={gathering.name}
-              cafe={gathering.cafe}
-              spot={gathering.spot}
-            />
+            <TitleAndSpot themeName={gathering.name} cafe={gathering.title} />
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-9">
@@ -103,7 +93,7 @@ export default function GatheringCard({
                   height={20}
                 />
                 <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
-                  {yearMonthDayHourTime(gathering.registrationEnd)}
+                  {yearMonthDayHourTime(gathering.date)}
                 </p>
               </div>
               <div className="flex items-center gap-[6px]">
@@ -146,7 +136,7 @@ export default function GatheringCard({
                   •
                 </span>
                 <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
-                  {gathering.level}
+                  {levelList[gathering.level as keyof typeof levelList]}
                 </p>
               </div>
             </div>

@@ -13,7 +13,7 @@ export const GetUser = async () => {
   }
 };
 
-export const GetOtherUser = async (nickname: string) => {
+export const GetOtherUser = async (nickname: string | null) => {
   try {
     const res = await axios.get(`${API_PATH.user.default}/${nickname}`);
     return res;

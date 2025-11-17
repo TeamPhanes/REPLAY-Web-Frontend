@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useGatheringStore } from '@/store/useGatheringStore';
 import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
 import DateAndParticipant from '@/components/@shared/cardList/DateAndParticipant';
 import Tag from '@/components/@shared/cardList/Tag';
@@ -12,40 +11,30 @@ import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
 
 interface GatheringCardReviewProps {
-  gathering: GatheringDTO['get']['data'][number];
+  gathering: GatheringDTO['get'][][number];
 }
 
 export default function GatheringCardReview({
   gathering,
 }: GatheringCardReviewProps) {
   const [isLiked, setIsLiked] = useState(gathering.isLiked);
-  const { setSelectedGathering } = useGatheringStore();
   const { likesMutation } = usePostGatheringLike();
 
   const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {
     setIsLiked(userAction === 'LIKE_POST');
     likesMutation.mutate({
-      gatheringId: gathering.gatheringId,
+      gatheringId: gathering.id,
       userAction,
     });
   };
   return (
     <div
-      key={gathering.gatheringId}
+      key={gathering.id}
       className="md:h-[352px] relative flex md:w-[630px] items-start rounded-3xl bg-card p-5 flex-col md:flex-row"
     >
-      <Link
-        href={`/gathering/${gathering.gatheringId}`}
-        onClick={() =>
-          setSelectedGathering({
-            ...gathering,
-            participantCount: gathering.participants.length,
-          })
-        }
-        className="w-full md:w-auto"
-      >
+      <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
         <Image
-          src={gathering.listImage}
+          src={gathering.image}
           alt={gathering.name}
           width={212}
           height={212}
@@ -68,30 +57,17 @@ export default function GatheringCardReview({
           />
         </button>
       </div>
-      <Link
-        href={`/gathering/${gathering.gatheringId}`}
-        onClick={() =>
-          setSelectedGathering({
-            ...gathering,
-            participantCount: gathering.participants.length,
-          })
-        }
-        className="w-full md:w-auto"
-      >
+      <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
         <div className="md:ml-5 mt-5 md:mt-auto mb-24 md:mb-auto flex h-[212px] md:w-[322px] flex-col justify-between">
           <div className="flex flex-col gap-3">
             <Tag tag={gathering.genres} />
-            <TitleAndSpot
-              themeName={gathering.name}
-              cafe={gathering.cafe}
-              spot={gathering.spot}
-            />
+            <TitleAndSpot themeName={gathering.name} cafe={gathering.title} />
           </div>
           <div className="flex flex-col gap-2">
             <DateAndParticipant
-              registrationEnd={gathering.registrationEnd}
+              registrationEnd={gathering.date}
               capacity={gathering.capacity}
-              participantCount={gathering.participants.length}
+              participantCount={gathering.participantCount}
             />
             <AddressAndLevel
               address={gathering.address}
@@ -104,7 +80,7 @@ export default function GatheringCardReview({
         <p className="text-base font-semibold tracking-[-2.5%] text-basefont">
           참여한 분들
         </p>
-        <div className="flex gap-2">
+        {/* <div className="flex gap-2">
           {gathering.participants.map((user) => (
             <Image
               key={user.name}
@@ -115,7 +91,7 @@ export default function GatheringCardReview({
               className="w-11 h-11 md:h-[60px] md:w-[60px] rounded-full border-2 border-mainBlue shadow-md"
             />
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

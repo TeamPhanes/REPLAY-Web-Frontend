@@ -1,6 +1,4 @@
-import ReviewRoomCardSection from '@/components/@shared/cardList/ReviewRoomCardSection';
 import RoomCardSection from '@/components/@shared/cardList/RoomCardSection';
-import { RoomDTO } from '@/types/room/room.types';
 import { ThemeListDTO } from '@/types/theme/theme.types';
 
 interface RoomCardProps {

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -24,6 +25,16 @@ export default function SearchResults() {
   const searchParams = useSearchParams();
   const keyword = searchParams.get('keyword') || '';
   const { accessToken } = useAuthStore();
+  const [page, setPage] = useState(0);
+  const { genreList, districtList } = useQueryStringStore();
+
+  const { gathering } = useGetGathering(
+    accessToken,
+    districtList,
+    genreList,
+    page,
+    12
+  );
 
   // const { theme } = useGetTheme(
   //   accessToken,
@@ -91,13 +102,11 @@ export default function SearchResults() {
         </button>
       </div>
 
-      {mockGatherings && (
+      {gathering && (
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {mockGatherings.data.map(
-            (data: GatheringDTO['get']['data'][number]) => (
-              <GatheringCard key={data.gatheringId} gathering={data} />
-            )
-          )}
+          {gathering.content.map((data: GatheringDTO['get'][][number]) => (
+            <GatheringCard key={data.id} gathering={data} />
+          ))}
         </div>
       )}
       {mockGatherings && mockGatherings.data.length === 0 && (

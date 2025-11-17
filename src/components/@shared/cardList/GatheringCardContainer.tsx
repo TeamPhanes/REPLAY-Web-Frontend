@@ -3,7 +3,7 @@ import EmptySearchResult from '@/components/search/EmptySearchResult';
 import { GatheringDTO } from '@/types/gathering/gathering.type';
 
 interface GatheringCardContainerProps {
-  data: GatheringDTO['get']['data'];
+  data: GatheringDTO['get'][];
   favoriteCheck?: boolean;
 }
 
@@ -17,7 +17,7 @@ export default function GatheringCardContainer({
         {data &&
           data.map((gathering) => (
             <GatheringCard
-              key={gathering.gatheringId}
+              key={gathering.id}
               gathering={gathering}
               favoriteCheck={favoriteCheck}
             />
