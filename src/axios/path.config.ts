@@ -11,6 +11,7 @@ export const API_PATH = {
   },
   theme: {
     default: `${BASE_URL}/theme`,
+    like: `${BASE_URL}/theme/like`,
     search: `${BASE_URL}/theme/search`,
   },
   gathering: {
@@ -31,6 +32,7 @@ export const API_PATH = {
   user: {
     default: `${BASE_URL}/user`,
     me: `${BASE_URL}/user/me`,
+    myProfile: `${BASE_URL}/user/me/profile`,
     reviewTheme: `${BASE_URL}/user/me/theme`,
     likeTheme: `${BASE_URL}/user/me/theme/like`,
     reviewGathering: `${BASE_URL}/user/me/gathering`,

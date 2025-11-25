@@ -23,6 +23,16 @@ export const GetOtherUser = async (nickname: string | null) => {
   }
 };
 
+export const GetMyProfile = async () => {
+  try {
+    const res = await axiosInstance.get(API_PATH.user.myProfile);
+    return res;
+  } catch (error) {
+    toast.error('내 정보를 불러오는 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
 interface PatchMyPageData {
   nickname: string;
   comment: string;
@@ -46,22 +56,6 @@ export const PatchMyProfile = async (data: PatchMyPageData) => {
       'Content-Type': data.image ? 'multipart/form-data' : 'application/json',
     },
   });
-};
-
-interface GetLikeThemeProps {
-  page: number;
-  limit: number;
-}
-export const GetLikeTheme = async ({ page, limit }: GetLikeThemeProps) => {
-  try {
-    const res = await axiosInstance.get(
-      `${API_PATH.user.likeTheme}?limit=${limit}&offset=${page}`
-    );
-    return res;
-  } catch (error) {
-    toast.error('찜한 방탈출 최신화 중 오류가 있습니다.');
-    throw error;
-  }
 };
 
 interface GetLikeGatheringProps {
