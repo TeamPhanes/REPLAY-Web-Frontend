@@ -25,6 +25,27 @@ export interface UserDTO {
   };
 }
 
+export interface MyProfileDTO {
+  get: {
+    achievements: {
+      id: number;
+      progress: number;
+      isRepresentative: boolean;
+      completedAt: string;
+    }[];
+    createGatheringCount: number;
+    createdAt: string;
+    email: string;
+    nickname: string;
+    profileComment: string;
+    profileImage: string;
+    successThemeCount: number;
+    updatedAt: string;
+    visitGatheringCount: number;
+    visitThemeCount: number;
+  };
+}
+
 export interface OtherUserDTO {
   get: {
     image: string;
