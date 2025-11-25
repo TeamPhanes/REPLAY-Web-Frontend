@@ -41,7 +41,7 @@ export default function NoticeDetailSection() {
       <div className="w-full mt-20">
         <Link
           href={`/notice/${data.nextPage.id}`}
-          className={`${data.nextPage === null ? 'hidden' : ''} border-t-[1px] border-b-[1px] py-6 border-line-secondDarkGray flex items-center`}
+          className={`${data.nextPage === null ? 'hidden' : ''} border-y-[1px] py-6 border-line-secondDarkGray flex items-center`}
         >
           <Image
             src={chevronWhite}
@@ -58,7 +58,7 @@ export default function NoticeDetailSection() {
         </Link>
         <Link
           href={`/notice/${data.previousPage.id}`}
-          className={`${data.previousPage === null ? 'hidden' : ''} border-t-[1px] border-b-[1px] py-6 border-line-secondDarkGray flex items-center`}
+          className={`${data.previousPage === null ? 'hidden' : ''} ${data.nextPage === null ? 'border-t-[1px]' : ''} border-b-[1px] py-6 border-line-secondDarkGray flex items-center`}
         >
           <Image
             src={chevronWhite}
