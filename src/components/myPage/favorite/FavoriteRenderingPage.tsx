@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import FilterContainer from '@/components/@shared/layout/FilterContainer';
 import GatheringLikedSection from '@/components/myPage/favorite/GatheringLikedSection';
 import MypageTypeChanger from '@/components/myPage/favorite/MypageTypeChanger';
 import ThemeLikedSection from '@/components/myPage/favorite/ThemeLikedSection';
@@ -11,6 +12,7 @@ export default function FavoriteRenderingPage() {
   // const homeRoutingType =
   //   searchParams.get('type') === 'gathering' ? 'gathering' : 'room';
   const [selectedType, setSelectedType] = useState('room');
+  const [page, setPage] = useState(0);
 
   return (
     <div className="mt-[248px]">
@@ -18,8 +20,9 @@ export default function FavoriteRenderingPage() {
         selectedType={selectedType}
         setSelectedType={setSelectedType}
       />
+      <FilterContainer setPage={setPage} />
       {selectedType === 'room' ? (
-        <ThemeLikedSection />
+        <ThemeLikedSection page={page} setPage={setPage} />
       ) : (
         <GatheringLikedSection />
       )}

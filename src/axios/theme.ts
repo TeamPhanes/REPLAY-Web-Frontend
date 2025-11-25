@@ -29,6 +29,24 @@ export const GetTheme = async ({
   }
 };
 
+export const GetLikeTheme = async ({
+  accessToken,
+  locations,
+  genres,
+  page,
+  size,
+}: GetThemeProps) => {
+  try {
+    const res = await axiosInstance.get(
+      `${API_PATH.theme.like}?${locations.length !== 0 ? `&locations=${locations}` : ''}${genres.length !== 0 ? `&genres=${genres}` : ''}&size=${size}&page=${page}`
+    );
+    return res;
+  } catch (error) {
+    toast.error('찜한 방탈출 최신화 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
 export const GetSearchTheme = async (
   keyword: string,
   state: string,
