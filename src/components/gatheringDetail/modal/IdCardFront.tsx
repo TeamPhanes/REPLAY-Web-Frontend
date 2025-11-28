@@ -8,7 +8,7 @@ interface IdCardFrontProps {
 }
 
 export default function IdCardFront({ userData }: IdCardFrontProps) {
-  const { image, nickname, emailMark, email } = userData;
+  const { profileImage, nickname, email } = userData;
 
   return (
     <div className="absolute z-20 flex flex-col items-center backface-hidden">
@@ -16,7 +16,7 @@ export default function IdCardFront({ userData }: IdCardFrontProps) {
         REPLAYER
       </p>
       <Image
-        src={image === '' ? userDefault : image}
+        src={profileImage === '' ? userDefault : profileImage}
         alt="유저 이미지"
         width={406}
         height={494}
@@ -24,12 +24,12 @@ export default function IdCardFront({ userData }: IdCardFrontProps) {
         className="mt-5 h-[380px] w-[320px] md:h-[494px] md:w-[406px]"
       />
       <h2
-        className={`${emailMark ? 'mt-10 md:mt-6' : 'md:mt-10'}  text-2xl md:text-[32px]/[42px] font-semibold tracking-[-2.5%] text-basefont`}
+        className={`${email !== '' ? 'mt-10 md:mt-6' : 'md:mt-10'}  text-2xl md:text-[32px]/[42px] font-semibold tracking-[-2.5%] text-basefont`}
       >
         {nickname}
       </h2>
       <p
-        className={`${emailMark ? '' : 'hidden'} mt-2 text-base font-normal tracking-[-2.5%] text-grayFont absolute -bottom-8`}
+        className={`${email !== '' ? '' : 'hidden'} mt-2 text-base font-normal tracking-[-2.5%] text-grayFont absolute -bottom-8`}
       >
         {email}
       </p>
@@ -39,7 +39,7 @@ export default function IdCardFront({ userData }: IdCardFrontProps) {
         width={458}
         height={118}
         quality={100}
-        className={`${emailMark ? 'md:bottom-[-240px]' : 'md:bottom-[-224px]'} absolute bottom-[-340px] h-[118px] w-[458px]`}
+        className={`${email !== '' ? 'md:bottom-[-240px]' : 'md:bottom-[-224px]'} absolute bottom-[-340px] h-[118px] w-[458px]`}
       />
     </div>
   );

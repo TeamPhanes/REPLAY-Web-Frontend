@@ -1,11 +1,8 @@
 import Image from 'next/image';
-import { mockOtherUser } from '@/data/mockUser';
-import Loading from '@/components/@shared/loading/Loading';
 import IdCardModal from '@/components/gatheringDetail/modal/IdCardModal';
 import { useGetOtherUser } from '@/hooks/reactQuery/useGetOtherUser';
 import { useOpen } from '@/hooks/useOpen';
 import { GatheringMemberDTO } from '@/types/participant/participant.type';
-import { periodYearMonthDay } from '@/utils/dateChange';
 import LeaderBadge from '@/public/icons/detail/leader_badge.svg';
 import Logo from '@/public/images/Replay_Main_Logo.svg';
 
@@ -19,8 +16,7 @@ export default function ParticipantUsers({
   leaderCheck,
 }: ParticipantUsersProps) {
   const { isOpen, openModal, closeModal } = useOpen();
-  // const { otherUser, showLoading, isLoading } = useGetOtherUser(list.nickname);
-  // if (showLoading) return <Loading isLoading={isLoading} />;
+  const { otherUser } = useGetOtherUser(list.id);
 
   if (!list.nickname) return null;
   return (
@@ -66,7 +62,7 @@ export default function ParticipantUsers({
       <IdCardModal
         openModal={isOpen}
         closeModal={closeModal}
-        userData={mockOtherUser}
+        userData={otherUser}
       />
     </div>
   );

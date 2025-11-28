@@ -48,18 +48,16 @@ export interface MyProfileDTO {
 
 export interface OtherUserDTO {
   get: {
-    image: string;
-    nickname: string;
-    emailMark: boolean;
-    email: string;
-    comment: string;
+    achievements: string[];
+    createGatheringCount: number;
     createdAt: string;
+    email: string;
+    nickname: string;
+    profileComment: string;
+    profileImage: string;
+    successThemeCount: number;
     updatedAt: string;
-    totalMakeGathering: number;
-    totalGathering: number;
-    totalTheme: number;
-    successCount: number;
-    ranking: string;
-    representAchievement: string[];
+    visitGatheringCount: number;
+    visitThemeCount: number;
   };
 }

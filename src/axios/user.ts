@@ -13,9 +13,9 @@ export const GetUser = async () => {
   }
 };
 
-export const GetOtherUser = async (nickname: string | null) => {
+export const GetOtherUser = async (id: number | null) => {
   try {
-    const res = await axios.get(`${API_PATH.user.default}/${nickname}`);
+    const res = await axios.get(`${API_PATH.user.default}/${id}`);
     return res;
   } catch (error) {
     toast.error('타인정보 최신화 중 오류가 있습니다.');
@@ -73,22 +73,6 @@ export const GetLikeGathering = async ({
     return res;
   } catch (error) {
     toast.error('찜한 모임 최신화 중 오류가 있습니다.');
-    throw error;
-  }
-};
-
-interface GetReviewThemeProps {
-  page: number;
-  limit: number;
-}
-export const GetReviewTheme = async ({ page, limit }: GetReviewThemeProps) => {
-  try {
-    const res = await axiosInstance.get(
-      `${API_PATH.user.reviewTheme}?limit=${limit}&offset=${page}`
-    );
-    return res;
-  } catch (error) {
-    toast.error('참여한 방탈출 최신화 중 오류가 있습니다.');
     throw error;
   }
 };
