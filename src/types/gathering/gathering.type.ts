@@ -16,6 +16,29 @@ export interface GatheringDTO {
   };
 }
 
+export interface VisitGatheringDTO {
+  get: {
+    id: number;
+    name: string;
+    image: string;
+    date: string;
+    capacity: number;
+    title: string;
+    address: string;
+    genres: string[];
+    playtime: number;
+    level: string;
+    isLiked: boolean;
+    participants: {
+      email: null;
+      id: null;
+      nickname: string;
+      profileImage: string;
+      role: null;
+    }[];
+  };
+}
+
 export interface OtherGatheringDTO {
   get: {
     totalPages: number;

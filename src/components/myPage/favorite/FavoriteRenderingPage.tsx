@@ -24,7 +24,7 @@ export default function FavoriteRenderingPage() {
       {selectedType === 'room' ? (
         <ThemeLikedSection page={page} setPage={setPage} />
       ) : (
-        <GatheringLikedSection />
+        <GatheringLikedSection page={page} setPage={setPage} />
       )}
     </div>
   );

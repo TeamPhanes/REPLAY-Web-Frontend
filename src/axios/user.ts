@@ -58,44 +58,6 @@ export const PatchMyProfile = async (data: PatchMyPageData) => {
   });
 };
 
-interface GetLikeGatheringProps {
-  page: number;
-  limit: number;
-}
-export const GetLikeGathering = async ({
-  page,
-  limit,
-}: GetLikeGatheringProps) => {
-  try {
-    const res = await axiosInstance.get(
-      `${API_PATH.user.likeGathering}?limit=${limit}&offset=${page}`
-    );
-    return res;
-  } catch (error) {
-    toast.error('찜한 모임 최신화 중 오류가 있습니다.');
-    throw error;
-  }
-};
-
-interface GetReviewGatheringProps {
-  page: number;
-  limit: number;
-}
-export const GetReviewGathering = async ({
-  page,
-  limit,
-}: GetReviewGatheringProps) => {
-  try {
-    const res = await axiosInstance.get(
-      `${API_PATH.user.reviewGathering}?limit=${limit}&offset=${page}`
-    );
-    return res;
-  } catch (error) {
-    toast.error('참여한 모임 최신화 중 오류가 있습니다.');
-    throw error;
-  }
-};
-
 interface GetMyCommentProps {
   sort: string;
   page: number;

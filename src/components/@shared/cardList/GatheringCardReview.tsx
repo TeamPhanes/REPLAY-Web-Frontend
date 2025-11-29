@@ -6,12 +6,12 @@ import DateAndParticipant from '@/components/@shared/cardList/DateAndParticipant
 import Tag from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import { usePostGatheringLike } from '@/hooks/reactQuery/usePostGatheringLike';
-import { GatheringDTO } from '@/types/gathering/gathering.type';
+import { VisitGatheringDTO } from '@/types/gathering/gathering.type';
 import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
 
 interface GatheringCardReviewProps {
-  gathering: GatheringDTO['get'][][number];
+  gathering: VisitGatheringDTO['get'];
 }
 
 export default function GatheringCardReview({
@@ -30,7 +30,7 @@ export default function GatheringCardReview({
   return (
     <div
       key={gathering.id}
-      className="md:h-[352px] relative flex md:w-[630px] items-start rounded-3xl bg-card p-5 flex-col md:flex-row"
+      className="md:h-[352px] relative flex md:w-[630px] items-start rounded-3xl bg-card-white p-5 flex-col md:flex-row"
     >
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
         <Image
@@ -67,7 +67,7 @@ export default function GatheringCardReview({
             <DateAndParticipant
               registrationEnd={gathering.date}
               capacity={gathering.capacity}
-              participantCount={gathering.participantCount}
+              participantCount={gathering.participants.length}
             />
             <AddressAndLevel
               address={gathering.address}
@@ -80,18 +80,18 @@ export default function GatheringCardReview({
         <p className="text-base font-semibold tracking-[-2.5%] text-basefont">
           참여한 분들
         </p>
-        {/* <div className="flex gap-2">
+        <div className="flex gap-2">
           {gathering.participants.map((user) => (
             <Image
-              key={user.name}
-              src={user.image}
-              alt={user.name}
+              key={user.nickname}
+              src={user.profileImage}
+              alt={user.nickname}
               width={60}
               height={60}
               className="w-11 h-11 md:h-[60px] md:w-[60px] rounded-full border-2 border-mainBlue shadow-md"
             />
           ))}
-        </div> */}
+        </div>
       </div>
     </div>
   );
