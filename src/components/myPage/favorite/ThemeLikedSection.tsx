@@ -19,7 +19,7 @@ export default function ThemeLikedSection({
 }: ThemeLikedSectionProps) {
   const { accessToken } = useAuthStore();
   const { genreList, districtList } = useQueryStringStore();
-  const { likeTheme, isLoading, showLoading } = useLikeTheme(
+  const { userLikeTheme, isLoading, showLoading } = useLikeTheme(
     accessToken,
     districtList,
     genreList,
@@ -27,14 +27,14 @@ export default function ThemeLikedSection({
     12
   );
   const { isGuardLoading } = useAuthGuard(showLoading);
-  const totalItems = likeTheme ? likeTheme.totalElements : 0;
+  const totalItems = userLikeTheme ? userLikeTheme.numberOfElements : 0;
   const { totalPages } = usePagination(page, totalItems);
 
   if (isGuardLoading || isLoading) {
     return <CardSkeleton className="mt-6" />;
   }
 
-  if (!likeTheme || likeTheme.content.length === 0) {
+  if (!userLikeTheme || userLikeTheme.content.length === 0) {
     return <EmptyArrayContainer type="찜한" kind="방탈출" />;
   }
 
@@ -44,7 +44,7 @@ export default function ThemeLikedSection({
         전체 {totalItems}개
       </p>
       <RoomCardContainer
-        data={likeTheme.content}
+        data={userLikeTheme.content}
         favoriteCheck
         className="grid-cols-1 md:grid-cols-2"
       />

@@ -1,8 +1,8 @@
 import GatheringCardReview from '@/components/@shared/cardList/GatheringCardReview';
-import { GatheringDTO } from '@/types/gathering/gathering.type';
+import { VisitGatheringDTO } from '@/types/gathering/gathering.type';
 
 interface GatheringCardContainerProps {
-  data: GatheringDTO['get'][];
+  data: VisitGatheringDTO['get'][];
 }
 
 export default function GatheringCardReviewContainer({

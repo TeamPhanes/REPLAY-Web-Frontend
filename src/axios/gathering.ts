@@ -29,6 +29,40 @@ export const GetGathering = async ({
   }
 };
 
+export const GetLikeGathering = async ({
+  locations,
+  genres,
+  page,
+  size,
+}: GetGatheringProps) => {
+  try {
+    const res = await axiosInstance.get(
+      `${API_PATH.gathering.likeGathering}?${locations.length !== 0 ? `&locations=${locations}` : ''}${genres.length !== 0 ? `&genres=${genres}` : ''}&size=${size}&page=${page}`
+    );
+    return res;
+  } catch (error) {
+    toast.error('찜한 모임 최신화 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
+export const GetReviewGathering = async ({
+  locations,
+  genres,
+  page,
+  size,
+}: GetGatheringProps) => {
+  try {
+    const res = await axiosInstance.get(
+      `${API_PATH.user.reviewGathering}?${locations.length !== 0 ? `&locations=${locations}` : ''}${genres.length !== 0 ? `&genres=${genres}` : ''}&size=${size}&page=${page}`
+    );
+    return res;
+  } catch (error) {
+    toast.error('참여한 모임 최신화 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
 export const GetGatheringDetail = async (
   accessToken: string | null,
   id: string | string[]

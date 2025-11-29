@@ -17,6 +17,7 @@ export const API_PATH = {
   },
   gathering: {
     default: `${BASE_URL}/gathering`,
+    likeGathering: `${BASE_URL}/gathering/like`,
     host: `${BASE_URL}/gathering/host`,
     date: `${BASE_URL}/gathering/date`,
   },
@@ -34,10 +35,9 @@ export const API_PATH = {
     default: `${BASE_URL}/user`,
     me: `${BASE_URL}/user/me`,
     myProfile: `${BASE_URL}/user/me/profile`,
-    reviewTheme: `${BASE_URL}/user/me/theme`,
+    reviewTheme: `${BASE_URL}/user/me/theme/visit`,
     likeTheme: `${BASE_URL}/user/me/theme/like`,
-    reviewGathering: `${BASE_URL}/user/me/gathering`,
-    likeGathering: `${BASE_URL}/user/me/gathering/like`,
+    reviewGathering: `${BASE_URL}/user/me/gathering/visit`,
     myComment: `${BASE_URL}/user/me/comment`,
   },
 };

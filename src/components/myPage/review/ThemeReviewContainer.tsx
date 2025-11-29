@@ -19,6 +19,16 @@ export default function ThemeReviewContainer({
 }: ThemeReviewContainerProps) {
   const [isPatchModal, setPatchModal] = useState(false);
   const [isPostModal, setPostModal] = useState(false);
+  const themeAndLevelList = {
+    LIKE: '적절함',
+    NORMAL: '보통',
+    DISLIKE: '부적절함',
+  };
+  const StoryList = {
+    LIKE: '좋음',
+    NORMAL: '보통',
+    DISLIKE: '아쉬움',
+  };
   return (
     <div className="mt-6 grid gap-5">
       {data.map((theme) => {
@@ -54,7 +64,11 @@ export default function ThemeReviewContainer({
                       테마
                     </p>
                     <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
-                      {theme.themeReview}
+                      {
+                        themeAndLevelList[
+                          theme.themeReview as keyof typeof themeAndLevelList
+                        ]
+                      }
                     </p>
                   </div>
                   <div className="flex gap-2">
@@ -62,7 +76,11 @@ export default function ThemeReviewContainer({
                       난이도
                     </p>
                     <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
-                      {theme.levelReview}
+                      {
+                        themeAndLevelList[
+                          theme.levelReview as keyof typeof themeAndLevelList
+                        ]
+                      }
                     </p>
                   </div>
                   <div className="flex gap-2">
@@ -70,7 +88,11 @@ export default function ThemeReviewContainer({
                       스토리
                     </p>
                     <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
-                      {theme.storyReview}
+                      {
+                        StoryList[
+                          theme.storyReview as keyof typeof themeAndLevelList
+                        ]
+                      }
                     </p>
                   </div>
                 </div>
