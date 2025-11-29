@@ -29,7 +29,16 @@ export default function GatheringDetailPage() {
     !gatheringDetail ||
     !dateGathering
   )
-    return <Loading isLoading={gatheringDetailLoading} />;
+    return (
+      <Loading
+        isLoading={
+          gatheringDetailLoading ||
+          dateGatheringLoading ||
+          !gatheringDetail ||
+          !dateGathering
+        }
+      />
+    );
 
   return (
     <PageContainer>

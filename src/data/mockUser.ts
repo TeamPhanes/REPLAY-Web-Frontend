@@ -1,6 +1,4 @@
-import { OtherUserDTO } from '@/types/user/user.types';
-
-export const mockOtherUser: OtherUserDTO['get'] = {
+export const mockOtherUser = {
   image:
     'http://k.kakaocdn.net/dn/bOHz9A/btsGfxJohYQ/kq0p7J3z3DcGGRjYAIVKx1/img_110x110.jpg',
   nickname: '종화',

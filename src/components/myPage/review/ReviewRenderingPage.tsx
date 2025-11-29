@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import FilterContainer from '@/components/@shared/layout/FilterContainer';
 import MypageTypeChanger from '@/components/myPage/favorite/MypageTypeChanger';
-import TypeChanger from '@/components/myPage/favorite/TypeChanger';
 import GatheringReviewSection from '@/components/myPage/review/GatheringReviewSection';
 import ThemeReviewSection from '@/components/myPage/review/ThemeReviewSection';
-import { reviewTypeList } from '@/constants/mypage/typeList';
 
 export default function ReviewRenderingPage() {
   const [selectedType, setSelectedType] = useState('room');
+  const [page, setPage] = useState(0);
 
   return (
     <div className="mt-[248px]">
@@ -16,8 +16,9 @@ export default function ReviewRenderingPage() {
         selectedType={selectedType}
         setSelectedType={setSelectedType}
       />
+      <FilterContainer setPage={setPage} />
       {selectedType === 'room' ? (
-        <ThemeReviewSection />
+        <ThemeReviewSection page={page} setPage={setPage} />
       ) : (
         <GatheringReviewSection />
       )}
