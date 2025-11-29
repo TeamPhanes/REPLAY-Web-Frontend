@@ -15,7 +15,14 @@ export const useLikeTheme = (
     item.endsWith(' 전체') ? item.replace(' 전체', '') : item
   );
   const { data, isLoading, error } = useQuery({
-    queryKey: ['likeTheme', accessToken, filteredLocations, genres, page, size],
+    queryKey: [
+      'userLikeTheme',
+      accessToken,
+      filteredLocations,
+      genres,
+      page,
+      size,
+    ],
     queryFn: () =>
       GetLikeTheme({
         accessToken,
@@ -29,11 +36,11 @@ export const useLikeTheme = (
     placeholderData: keepPreviousData,
   });
 
-  const likeTheme = data?.data;
+  const userLikeTheme = data?.data;
   const showLoading = useShowLoading(isLoading);
 
   return {
-    likeTheme,
+    userLikeTheme,
     isLoading,
     showLoading,
     error,

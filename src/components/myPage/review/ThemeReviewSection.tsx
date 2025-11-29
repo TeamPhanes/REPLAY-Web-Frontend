@@ -1,5 +1,7 @@
 import { useAuthStore } from '@/store/authStore';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
+import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
+import Pagination from '@/components/@shared/pagination/Pagination';
 import ReviewRoomCardSkeleton from '@/components/@shared/skeleton/ReviewRoomCardSkeleton';
 import ThemeReviewContainer from '@/components/myPage/review/ThemeReviewContainer';
 import { useReviewTheme } from '@/hooks/reactQuery/useReviewTheme';
@@ -32,9 +34,18 @@ export default function ThemeReviewSection({
     return <ReviewRoomCardSkeleton count={6} className="mt-6" />;
   }
 
-  // if (!userReviewTheme || userReviewTheme.data.length === 0) {
-  //   return <EmptyArrayContainer type="참여한" kind="방탈출" />;
-  // }
+  if (!userReviewTheme || userReviewTheme.content.length === 0) {
+    return <EmptyArrayContainer type="참여한" kind="방탈출" />;
+  }
 
-  return <ThemeReviewContainer data={userReviewTheme.contents} />;
+  return (
+    <>
+      <ThemeReviewContainer data={userReviewTheme.content} />
+      <Pagination
+        currentPage={page}
+        totalPages={totalPages}
+        onChange={setPage}
+      />
+    </>
+  );
 }

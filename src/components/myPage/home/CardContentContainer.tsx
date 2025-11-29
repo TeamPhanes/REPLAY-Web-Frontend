@@ -36,14 +36,15 @@ export default function CardContentContainer({
             {user.email}
           </p>
         ) : null}
+        <Image
+          src={Logo}
+          alt="REPLAY 로고"
+          width={458}
+          height={118}
+          className="absolute bottom-2"
+        />
       </div>
-      <Image
-        src={Logo}
-        alt="REPLAY 로고"
-        width={458}
-        height={118}
-        className="absolute bottom-2 left-[68px]"
-      />
+
       <div className="z-10 md:ml-9 absolute md:relative top-[432px] md:top-auto left-0 right-0 px-10">
         <p className="line-clamp-4 h-[120px] md:w-[576px] text-xl font-normal tracking-[-2.5%] text-font-baseWhite">
           &quot;{user.profileComment}&quot;

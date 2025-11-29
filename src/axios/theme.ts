@@ -30,7 +30,6 @@ export const GetTheme = async ({
 };
 
 export const GetLikeTheme = async ({
-  accessToken,
   locations,
   genres,
   page,
@@ -48,7 +47,6 @@ export const GetLikeTheme = async ({
 };
 
 export const GetReviewTheme = async ({
-  accessToken,
   locations,
   genres,
   page,
@@ -56,7 +54,7 @@ export const GetReviewTheme = async ({
 }: GetThemeProps) => {
   try {
     const res = await axiosInstance.get(
-      `${API_PATH.theme.visit}?${locations.length !== 0 ? `&locations=${locations}` : ''}${genres.length !== 0 ? `&genres=${genres}` : ''}&size=${size}&page=${page}`
+      `${API_PATH.user.reviewTheme}?${locations.length !== 0 ? `&locations=${locations}` : ''}${genres.length !== 0 ? `&genres=${genres}` : ''}&size=${size}&page=${page}`
     );
     return res;
   } catch (error) {
