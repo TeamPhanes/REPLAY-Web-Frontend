@@ -4,14 +4,15 @@ import Link from 'next/link';
 import Tag from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import Rating from '@/components/@shared/rating/Rating';
-import { ReviewDTO } from '@/types/review/review.type';
+import { VisitThemeListDTO } from '@/types/theme/theme.types';
+import { yearMonthDay } from '@/utils/dateChange';
 import LightbulbIcon from '@/public/icons/cardList/lightbulb_gray_icon.svg';
 import TrophyIcon from '@/public/icons/cardList/trophy_gray_icon.svg';
 import UsersIcon from '@/public/icons/cardList/users_gray_icon.svg';
 import ReviewDefaultImage from '@/public/icons/modal/review_default_image.svg';
 
 interface ThemeReviewContainerProps {
-  data: ReviewDTO['get']['contents'];
+  data: VisitThemeListDTO['get'][];
 }
 
 export default function ThemeReviewContainer({
@@ -45,13 +46,12 @@ export default function ThemeReviewContainer({
               className="w-[145px] h-[218px] rounded-[4px]"
             />
             <Link href={`/theme/${theme.id}`} className="w-[338px] h-full">
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 relative">
                 <Tag tag={theme.genres} />
-                <TitleAndSpot
-                  themeName={theme.title}
-                  cafe={theme.cafeName}
-                  spot={theme.spotName}
-                />
+                <p className="absolute top-1 right-0 text-base text-font-baseBlack font-normal tracking-[-2.5%]">
+                  {yearMonthDay(theme.visitDate)}
+                </p>
+                <TitleAndSpot themeName={theme.title} cafe={theme.cafeName} />
                 <Rating
                   rating={theme.score}
                   width={120}
