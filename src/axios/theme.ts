@@ -63,6 +63,23 @@ export const GetReviewTheme = async ({
   }
 };
 
+export const GetPreviewTheme = async (
+  page: number,
+  size: number,
+  genre: string,
+  sort?: string[]
+) => {
+  try {
+    const res = await axiosInstance.get(
+      `${API_PATH.theme.preview}?${sort?.length !== 0 ? `&sort=${sort}` : ''}${genre !== '전체' ? `&genre=${genre}` : ''}&size=${size}&page=${page}`
+    );
+    return res;
+  } catch (error) {
+    toast.error('홈페이지 방탈출 최신화 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
 export const GetSearchTheme = async (
   keyword: string,
   state: string,

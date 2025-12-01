@@ -51,7 +51,11 @@ export default function ThemeReviewContainer({
                 <p className="absolute top-1 right-0 text-base text-font-baseBlack font-normal tracking-[-2.5%]">
                   {yearMonthDay(theme.visitDate)}
                 </p>
-                <TitleAndSpot themeName={theme.title} cafe={theme.cafeName} />
+                <TitleAndSpot
+                  themeName={theme.title}
+                  cafe={theme.cafeName}
+                  spot={theme.spotName}
+                />
                 <Rating
                   rating={theme.score}
                   width={120}

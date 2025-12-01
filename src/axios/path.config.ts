@@ -14,6 +14,7 @@ export const API_PATH = {
     like: `${BASE_URL}/theme/like`,
     visit: `${BASE_URL}/theme/visit`,
     search: `${BASE_URL}/theme/search`,
+    preview: `${BASE_URL}/theme/preview`,
   },
   gathering: {
     default: `${BASE_URL}/gathering`,

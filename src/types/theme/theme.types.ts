@@ -32,9 +32,18 @@ export interface VisitThemeListDTO {
     reviewImage: string;
     score: number;
     cafeName: string;
+    spotName: string;
     storyReview: string;
     themeReview: string;
     title: string;
     visitDate: string;
+  };
+}
+
+export interface PreviewThemeListDTO {
+  get: {
+    id: number;
+    image: string;
+    title: string;
   };
 }
