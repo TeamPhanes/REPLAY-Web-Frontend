@@ -1,18 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { popularList } from '@/data/home/homeBottomCarouselList';
 import { useGenreStore } from '@/store/useGenreStore';
 import Carousel from '@/components/@shared/carousel/Carousel';
 import PageContainer from '@/components/@shared/layout/PageContainer';
+import CarouselSkeleton from '@/components/@shared/skeleton/CarouselSkeleton';
 import BottomCarousel from '@/components/homePage/BottomCarousel';
 import TypeButtonChanger from '@/components/homePage/typeChanger/TypeButtonChanger';
 import TypeChanger from '@/components/myPage/favorite/TypeChanger';
 import { defaultLocationList } from '@/constants/homepage/list';
+import { useGetPreviewTheme } from '@/hooks/reactQuery/useGetPreviewTheme';
 
 export default function HomePage() {
   const [selectedGenre, setSelectedGenre] = useState('전체');
   const [selectedLocation, setSelectedLocation] = useState('전체');
+  const { previewTheme: likePreviewTheme } = useGetPreviewTheme(
+    0,
+    12,
+    selectedGenre,
+    ['like', 'desc']
+  );
+  const { previewTheme: newPreviewTheme } = useGetPreviewTheme(
+    0,
+    12,
+    selectedGenre,
+    ['new', 'desc']
+  );
 
   const { genreList } = useGenreStore();
   return (
@@ -34,14 +48,25 @@ export default function HomePage() {
         loop
         center
       />
+      {!likePreviewTheme ? (
+        <CarouselSkeleton />
+      ) : (
+        <BottomCarousel
+          title="추천순"
+          list={likePreviewTheme.content}
+          delayTime={9000}
+        />
+      )}
 
-      <BottomCarousel title="추천순" list={popularList} delayTime={9000} />
-
-      <BottomCarousel
-        title="새로 추가된 방탈출"
-        list={popularList}
-        delayTime={11000}
-      />
+      {!newPreviewTheme ? (
+        <CarouselSkeleton />
+      ) : (
+        <BottomCarousel
+          title="새로 추가된 방탈출"
+          list={newPreviewTheme.content}
+          delayTime={11000}
+        />
+      )}
 
       <div className="relative">
         <TypeButtonChanger

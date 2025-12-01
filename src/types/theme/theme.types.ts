@@ -18,3 +18,32 @@ export interface ThemeListDTO {
     isLiked: boolean; // 좋아요 여부
   };
 }
+
+export interface VisitThemeListDTO {
+  get: {
+    content: string;
+    genres: string[];
+    hint: number;
+    id: number;
+    image: string;
+    isSuccess: true;
+    levelReview: string;
+    numberOfPlayer: number;
+    reviewImage: string;
+    score: number;
+    cafeName: string;
+    spotName: string;
+    storyReview: string;
+    themeReview: string;
+    title: string;
+    visitDate: string;
+  };
+}
+
+export interface PreviewThemeListDTO {
+  get: {
+    id: number;
+    image: string;
+    title: string;
+  };
+}

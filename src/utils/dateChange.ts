@@ -11,6 +11,12 @@ const parseDate = (dateString: string) => {
   return { fullYear, shortYear, month, day, hours, minutes };
 };
 
+// Ex) 2025-04-01
+export const yearMonthDay = (dateString: string) => {
+  const { fullYear, month, day } = parseDate(dateString);
+  return `${fullYear}-${month}-${day}`;
+};
+
 // Ex) 2025-04-01 13:00
 export const yearMonthDayHourTime = (dateString: string) => {
   const { fullYear, month, day, hours, minutes } = parseDate(dateString);

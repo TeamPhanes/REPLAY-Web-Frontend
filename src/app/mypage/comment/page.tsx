@@ -15,12 +15,12 @@ export default function MyCommentPage() {
     <MyPageContainer>
       <MyPageNav />
       <CommentTitleContainer />
-      <OrderChanger
+      {/* <OrderChanger
         options={commentTypeList}
         selectedType={selectedType}
         setSelectedType={setSelectedType}
         gap="gap-2"
-      />
+      /> */}
       <CommentCardSection sort={selectedType} />
     </MyPageContainer>
   );

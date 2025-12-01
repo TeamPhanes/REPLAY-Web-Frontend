@@ -29,6 +29,7 @@ export interface MyCommentDTO {
       dateTime: string;
       content: string;
       createdAt: string;
+      nickName: string;
     }[];
   };
 }
