@@ -29,7 +29,7 @@ export interface VisitThemeListDTO {
     isSuccess: true;
     levelReview: string;
     numberOfPlayer: number;
-    reviewImage: string;
+    reviewImages: string[];
     score: number;
     cafeName: string;
     spotName: string;
