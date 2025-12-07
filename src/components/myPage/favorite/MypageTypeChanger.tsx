@@ -20,7 +20,7 @@ export default function MypageTypeChanger({
             key={list.value}
             type="button"
             onClick={() => setSelectedType(list.value)}
-            className={`${selectedType === list.value ? 'border-brand-sub500 text-brand-sub500' : 'border-line-darkGray text-font-secondBlack'} text-2xl tracking-[-2.5%] font-semibold bg-white py-2 px-5 border-2`}
+            className={`${selectedType === list.value ? 'border-brand-sub500 text-brand-sub500' : 'border-line-darkGray text-font-secondBlack'} rounded-[4px] text-2xl tracking-[-2.5%] font-semibold bg-white py-2 px-5 border-2`}
           >
             {list.label}
           </button>

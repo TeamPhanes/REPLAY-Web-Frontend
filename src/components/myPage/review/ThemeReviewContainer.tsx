@@ -48,9 +48,11 @@ export default function ThemeReviewContainer({
             <Link href={`/theme/${theme.id}`} className="w-[338px] h-full">
               <div className="flex flex-col gap-3 relative">
                 <Tag tag={theme.genres} />
-                <p className="absolute top-1 right-0 text-base text-font-baseBlack font-normal tracking-[-2.5%]">
-                  {yearMonthDay(theme.visitDate)}
-                </p>
+                {theme.visitDate !== null ? (
+                  <p className="absolute top-1 right-0 text-base text-font-baseBlack font-normal tracking-[-2.5%]">
+                    {yearMonthDay(theme.visitDate)}
+                  </p>
+                ) : null}
                 <TitleAndSpot
                   themeName={theme.title}
                   cafe={theme.cafeName}
@@ -67,37 +69,55 @@ export default function ThemeReviewContainer({
                     <p className="px-2 text-sm/6 tracking-[-2.5%] text-font-disabled font-semibold">
                       테마
                     </p>
-                    <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
-                      {
-                        themeAndLevelList[
-                          theme.themeReview as keyof typeof themeAndLevelList
-                        ]
-                      }
-                    </p>
+                    {theme.themeReview === null ? (
+                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                        미확인
+                      </p>
+                    ) : (
+                      <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
+                        {
+                          themeAndLevelList[
+                            theme.themeReview as keyof typeof themeAndLevelList
+                          ]
+                        }
+                      </p>
+                    )}
                   </div>
                   <div className="flex gap-2">
                     <p className="px-2 text-sm/6 tracking-[-2.5%] text-font-disabled font-semibold">
                       난이도
                     </p>
-                    <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
-                      {
-                        themeAndLevelList[
-                          theme.levelReview as keyof typeof themeAndLevelList
-                        ]
-                      }
-                    </p>
+                    {theme.levelReview === null ? (
+                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                        미확인
+                      </p>
+                    ) : (
+                      <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
+                        {
+                          themeAndLevelList[
+                            theme.levelReview as keyof typeof themeAndLevelList
+                          ]
+                        }
+                      </p>
+                    )}
                   </div>
                   <div className="flex gap-2">
                     <p className="px-2 text-sm/6 tracking-[-2.5%] text-font-disabled font-semibold">
                       스토리
                     </p>
-                    <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
-                      {
-                        StoryList[
-                          theme.storyReview as keyof typeof themeAndLevelList
-                        ]
-                      }
-                    </p>
+                    {theme.storyReview === null ? (
+                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                        미확인
+                      </p>
+                    ) : (
+                      <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
+                        {
+                          StoryList[
+                            theme.storyReview as keyof typeof themeAndLevelList
+                          ]
+                        }
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="flex items-center justify-between">
@@ -108,9 +128,15 @@ export default function ThemeReviewContainer({
                       width={24}
                       height={24}
                     />
-                    <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
-                      {theme.hint}
-                    </p>
+                    {theme.hint === null ? (
+                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                        0
+                      </p>
+                    ) : (
+                      <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
+                        {theme.hint}
+                      </p>
+                    )}
                   </div>
                   <div className="flex items-center gap-4">
                     <Image
@@ -119,9 +145,15 @@ export default function ThemeReviewContainer({
                       width={24}
                       height={24}
                     />
-                    <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
-                      {theme.numberOfPlayer}
-                    </p>
+                    {theme.numberOfPlayer === null ? (
+                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                        0
+                      </p>
+                    ) : (
+                      <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
+                        {theme.numberOfPlayer}
+                      </p>
+                    )}
                   </div>
                   <div className="flex items-center gap-4">
                     <Image
@@ -130,31 +162,44 @@ export default function ThemeReviewContainer({
                       width={24}
                       height={24}
                     />
-                    <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
-                      {theme.isSuccess ? '성공' : '실패'}
-                    </p>
+                    {theme.isSuccess === null ? (
+                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                        미확인
+                      </p>
+                    ) : (
+                      <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
+                        {theme.isSuccess ? '성공' : '실패'}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
             </Link>
             <div className="p-4 rounded-lg w-[537px] h-[218px] border-[1px] border-line-Gray">
-              <p className="line-clamp-[8] text-base tracking-[-2.5%] text-font-baseBlack font-normal">
-                {theme.content}
-              </p>
+              {theme.content === null ? (
+                <p className="text-base tracking-[-2.5%] text-font-disabled font-normal">
+                  리뷰를 작성해 주세요.
+                </p>
+              ) : (
+                <p className="line-clamp-[8] text-base tracking-[-2.5%] text-font-baseBlack font-normal">
+                  {theme.content}
+                </p>
+              )}
             </div>
             <div className="flex flex-col gap-3">
-              {theme.reviewImage === null ? (
+              {theme.reviewImages.length === 0 ? (
                 <div className="w-[160px] h-[152px] bg-line-lightGray rounded-[4px] flex justify-center items-center mb-16 md:mb-auto">
                   <Image
                     src={ReviewDefaultImage}
                     alt="리뷰 이미지"
                     width={24}
                     height={24}
+                    className="w-6 h-6"
                   />
                 </div>
               ) : (
                 <Image
-                  src={theme.reviewImage || ReviewDefaultImage}
+                  src={theme.reviewImages[0] || ReviewDefaultImage}
                   alt="리뷰 이미지"
                   width={118}
                   height={118}
@@ -165,14 +210,14 @@ export default function ThemeReviewContainer({
                 type="button"
                 className="w-full rounded-[4px] border-[1px] border-brand-main500 px-10 py-[14px] text-base tracking-[-2.5%] text-brand-main500 font-semibold"
                 onClick={() => {
-                  if (theme.id === null) {
+                  if (theme.visitDate === null) {
                     setPostModal(true);
                   } else {
                     setPatchModal(true);
                   }
                 }}
               >
-                {theme.id === null ? '리뷰쓰기' : '수정하기'}
+                {theme.visitDate === null ? '리뷰쓰기' : '수정하기'}
               </button>
             </div>
           </div>

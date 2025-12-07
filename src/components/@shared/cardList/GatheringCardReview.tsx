@@ -1,14 +1,17 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import AddressAndLevel from '@/components/@shared/cardList/AddressAndLevel';
-import DateAndParticipant from '@/components/@shared/cardList/DateAndParticipant';
 import Tag from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
 import { usePostGatheringLike } from '@/hooks/reactQuery/usePostGatheringLike';
 import { VisitGatheringDTO } from '@/types/gathering/gathering.type';
+import { yearMonthDayHourTime } from '@/utils/dateChange';
+import AddressIcon from '@/public/icons/cardList/address_icon.svg';
+import CalendarIcon from '@/public/icons/cardList/calendar_icon.svg';
 import HeartFull from '@/public/icons/cardList/heart_full.svg';
 import HeartLine from '@/public/icons/cardList/heart_line.svg';
+import LightbulbIcon from '@/public/icons/cardList/lightbulb_icon.svg';
+import UserIcon from '@/public/icons/cardList/user_icon.svg';
 
 interface GatheringCardReviewProps {
   gathering: VisitGatheringDTO['get'];
@@ -19,6 +22,11 @@ export default function GatheringCardReview({
 }: GatheringCardReviewProps) {
   const [isLiked, setIsLiked] = useState(gathering.isLiked);
   const { likesMutation } = usePostGatheringLike();
+  const levelList = {
+    HARD: '어려움',
+    NORMAL: '보통',
+    EASY: '쉬움',
+  };
 
   const handleLikeButtonClick = (userAction: 'LIKE_POST' | 'UNLIKE_POST') => {
     setIsLiked(userAction === 'LIKE_POST');
@@ -30,7 +38,7 @@ export default function GatheringCardReview({
   return (
     <div
       key={gathering.id}
-      className="md:h-[352px] relative flex md:w-[630px] items-start rounded-3xl bg-card-white p-5 flex-col md:flex-row"
+      className="md:h-[352px] relative flex md:w-[630px] items-start rounded-[4px] bg-card-white p-5 flex-col md:flex-row"
     >
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
         <Image
@@ -39,10 +47,10 @@ export default function GatheringCardReview({
           width={212}
           height={212}
           quality={100}
-          className="rounded-3xl w-full h-[360px] md:w-[212px] md:h-[212px]"
+          className="rounded-[4px] w-full h-[360px] md:w-[212px] md:h-[212px]"
         />
       </Link>
-      <div className="absolute top-10 md:top-auto right-10 md:right-5 flex flex-col bg-card rounded-[30px] p-1 md:p-0">
+      <div className="absolute top-10 md:top-auto right-10 md:right-5 flex flex-col bg-card rounded-[4px] p-1 md:p-0">
         <button
           type="button"
           onClick={() =>
@@ -58,21 +66,68 @@ export default function GatheringCardReview({
         </button>
       </div>
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
-        <div className="md:ml-5 mt-5 md:mt-auto mb-24 md:mb-auto flex h-[212px] md:w-[322px] flex-col justify-between">
+        <div className="md:ml-5 mt-5 md:mt-0 flex min-h-[212px] min-w-[424px] flex-col justify-between">
           <div className="flex flex-col gap-3">
             <Tag tag={gathering.genres} />
             <TitleAndSpot themeName={gathering.name} cafe={gathering.title} />
           </div>
           <div className="flex flex-col gap-2">
-            <DateAndParticipant
-              registrationEnd={gathering.date}
-              capacity={gathering.capacity}
-              participantCount={gathering.participants.length}
-            />
-            <AddressAndLevel
-              address={gathering.address}
-              level={gathering.level}
-            />
+            <div className="flex items-center gap-9">
+              <div className="flex items-center gap-[6px]">
+                <Image
+                  src={CalendarIcon}
+                  alt="캘린더 아이콘"
+                  width={20}
+                  height={20}
+                />
+                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
+                  {yearMonthDayHourTime(gathering.date)}
+                </p>
+              </div>
+              <div className="flex items-center gap-[6px]">
+                <Image
+                  src={UserIcon}
+                  alt="유저 아이콘"
+                  width={20}
+                  height={20}
+                />
+                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
+                  {gathering.participants.length}/{gathering.capacity}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-[6px]">
+              <Image
+                src={AddressIcon}
+                alt="주소 아이콘"
+                width={20}
+                height={20}
+              />
+              <p className="text-sm tracking-[2.5%] text-font-baseBlack font-normal">
+                {gathering.address}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-[6px]">
+              <Image
+                src={LightbulbIcon}
+                alt="전구 아이콘"
+                width={20}
+                height={20}
+              />
+              <div className="flex items-center gap-2">
+                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
+                  {gathering.playtime}분
+                </p>
+                <span className="text-sm tracking-[-2.5%] text-font-disabled font-normal">
+                  •
+                </span>
+                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
+                  {levelList[gathering.level as keyof typeof levelList]}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </Link>
