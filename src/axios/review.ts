@@ -20,9 +20,9 @@ export const GetReview = async (
   }
 };
 
-export const GetReviewAllRating = async (id: string) => {
+export const GetReviewSummary = async (themeId: string | string[]) => {
   try {
-    const res = await axios.get(`${API_PATH.review.rating}?themeId=${id}`);
+    const res = await axios.get(`${API_PATH.review.summary}/${themeId}`);
     return res;
   } catch (error) {
     toast.error('총 리뷰갯수 정보 최신화 중 오류가 있습니다.');

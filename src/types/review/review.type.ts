@@ -1,36 +1,13 @@
 // 리뷰 목록 조회 Response
 export interface ReviewDTO {
   get: {
-    avgScore: number;
-    createdGatheringCount: number;
-    reviewCountSummary: {
-      total: number;
-      counts: {
-        score: number;
-        count: number;
-      }[];
-    };
-    userEvaluation: {
-      theme: {
-        label: string;
-        percent: number;
-      };
-      level: {
-        label: string;
-        percent: number;
-      };
-      story: {
-        label: string;
-        percent: number;
-      };
-    };
-    contents: {
+    content: {
       content: string;
       createdAt: string;
       hint: number;
       id: number;
       title: string;
-      image: string;
+      images: string[];
       genres: string[];
       isLiked: boolean;
       isSuccess: boolean;
@@ -50,11 +27,33 @@ export interface ReviewDTO {
   };
 }
 
-// 리뷰 총 평점 조회 Response
-export interface ReviewAllRatingDTO {
+// 리뷰 요약 정보 조회 Response
+export interface ReviewSummaryDTO {
   get: {
-    scoreCount: number;
-    averageScore: number;
-    score: number[];
+    avgScore: number;
+    createdGatheringCount: number;
+    reviewCountSummary: {
+      total: number;
+      counts: [
+        {
+          score: number;
+          count: number;
+        },
+      ];
+    };
+    userEvaluation: {
+      theme: {
+        label: string;
+        percent: number;
+      };
+      level: {
+        label: string;
+        percent: number;
+      };
+      story: {
+        label: string;
+        percent: number;
+      };
+    };
   };
 }

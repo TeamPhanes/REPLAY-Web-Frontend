@@ -10,6 +10,7 @@ import RoomDetailCard from '@/components/roomDetail/RoomDetailCard';
 import RoomDetailGatherings from '@/components/roomDetail/RoomDetailGatherings';
 import { useGetOtherGathering } from '@/hooks/reactQuery/useGetOtherGathering';
 import { useGetReview } from '@/hooks/reactQuery/useGetReview';
+import { useGetReviewSummary } from '@/hooks/reactQuery/useGetReviewSummary';
 import { useGetThemeDetail } from '@/hooks/reactQuery/useGetTheme';
 import { usePagination } from '@/hooks/usePagination';
 
@@ -29,6 +30,8 @@ export default function RoomDetailPage() {
     page,
     10
   );
+
+  const { reviewSummary } = useGetReviewSummary(id);
   const totalItems = review ? review.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
 
@@ -57,7 +60,8 @@ export default function RoomDetailPage() {
         </p>
       </div>
       <ReviewSection
-        data={review}
+        review={review}
+        reviewSummary={reviewSummary}
         page={page}
         totalPages={totalPages}
         setPage={setPage}
