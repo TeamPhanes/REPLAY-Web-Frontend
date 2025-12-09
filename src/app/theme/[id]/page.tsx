@@ -31,7 +31,8 @@ export default function RoomDetailPage() {
     10
   );
 
-  const { reviewSummary } = useGetReviewSummary(id);
+  const { reviewSummary, isLoading: reviewSummaryLoading } =
+    useGetReviewSummary(id);
   const totalItems = review ? review.totalCount : 0;
   const { totalPages } = usePagination(page, totalItems);
 
@@ -41,11 +42,17 @@ export default function RoomDetailPage() {
     reviewLoading ||
     !themeDetail ||
     !otherGathering ||
-    !review
+    !review ||
+    !reviewSummary
   )
     return (
       <Loading
-        isLoading={themeDetailLoading || otherGatheringLoading || reviewLoading}
+        isLoading={
+          themeDetailLoading ||
+          otherGatheringLoading ||
+          reviewLoading ||
+          reviewSummaryLoading
+        }
       />
     );
 

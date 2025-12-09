@@ -104,7 +104,7 @@ export default function GatheringDetailCard({
 
           <span className="bg-line-lightGray h-44 w-[1px]" />
 
-          <div className="flex flex-col gap-3 min-w-[385px] min-h-[230px]">
+          <div className="flex flex-col gap-3 w-[385px] min-h-[230px]">
             <DateAndPriceAndAddress
               dateTime={data.date}
               price={data.price}

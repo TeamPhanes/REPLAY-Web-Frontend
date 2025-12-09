@@ -47,3 +47,11 @@ export interface PreviewThemeListDTO {
     title: string;
   };
 }
+
+export interface SearchThemeListDTO {
+  get: {
+    id: number;
+    spotName: string;
+    title: string;
+  };
+}

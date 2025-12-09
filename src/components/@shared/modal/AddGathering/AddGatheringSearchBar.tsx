@@ -3,11 +3,10 @@
 import { useEffect } from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import Image from 'next/image';
-import { useQueryStringStore } from '@/store/useQueryStringStore';
 import { useGetSearchTheme } from '@/hooks/reactQuery/useGetSearchTheme';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useOpen } from '@/hooks/useOpen';
-import { RoomDTO } from '@/types/room/room.types';
+import { SearchThemeListDTO } from '@/types/theme/theme.types';
 
 interface FormValues {
   name: string;
@@ -41,40 +40,37 @@ export default function AddGatheringSearchBar({
   const { debouncedValue } = useDebounce(search, 500);
   const { isOpen, openModal, closeModal } = useOpen();
 
-  const { searchTheme } = useGetSearchTheme(
-    debouncedValue,
-    '시.도',
-    '시.군.구'
-  );
+  const { searchTheme } = useGetSearchTheme(debouncedValue, 5);
 
   useEffect(() => {
-    if (search === '') openModal();
-  }, [themeId, search, openModal]);
+    if (search && themeId === 0 && !isOpen) {
+      openModal();
+    }
+  }, [search, isOpen, themeId, openModal]);
+
+  useEffect(() => {
+    if (search === '' && themeId !== 0) {
+      themeIdChange(0);
+    }
+  }, [search, themeId, themeIdChange]);
 
   return (
-    <div className="w-full h-[58px] relative">
+    <div className="w-full relative">
       <div
-        className={`${errors.themeId ? 'border-error' : 'border-darkSearch'} flex h-full items-center border-2 justify-between py-[5px] px-6 z-20 relative bg-darkSearch rounded-full`}
+        className={`${errors.themeId ? 'border-error' : 'border-line-Gray'} flex h-full items-center border-b-[1px] justify-between p-4 z-20 relative`}
       >
         <input
           {...register('themeId', { required: '테마 검색은 필수입니다.' })}
           type="hidden"
           value={search}
         />
-        <input
-          type="text"
-          placeholder="테마명을 검색해주세요."
-          className="w-full text-xl md:text-2xl/[34px] tracking-[-2.5%] placeholder:text-white text-white bg-darkSearch z-20"
-          value={search}
-          onChange={(e) => searchChange(e.target.value)}
-        />
         {search !== '' ? (
           <Image
-            src="/icons/search/white_exit.svg"
+            src="/icons/search/dark_exit.svg"
             alt="검색제거"
-            width={48}
-            height={48}
-            className="w-9 h-9 md:w-12 md:h-12 cursor-pointer"
+            width={24}
+            height={24}
+            className="cursor-pointer"
             onClick={() => {
               searchChange('');
               themeIdChange(0);
@@ -84,31 +80,41 @@ export default function AddGatheringSearchBar({
           <Image
             src="/icons/search/dark_search.svg"
             alt="검색하기"
-            width={48}
-            height={48}
-            className="w-9 h-9 md:w-12 md:h-12 cursor-pointer"
+            width={24}
+            height={24}
+            className="cursor-pointer"
           />
+        )}
+        <input
+          type="text"
+          placeholder="방탈출을 검색해 주세요."
+          className="w-full text-base tracking-[-2.5%] placeholder:text-font-disabled text-font-baseBlack bg-[#F7F7FB] z-20 ml-[6px]"
+          value={search}
+          onChange={(e) => searchChange(e.target.value)}
+        />
+        {errors.themeId && (
+          <p className="text-red-500 text-sm mt-1 ml-5 absolute left-0 -bottom-6">
+            {errors.themeId.message}
+          </p>
         )}
       </div>
       <div
-        className={`${isOpen ? '' : 'hidden'} w-full absolute bg-grayFont top-8 p-4 z-10 flex flex-col gap-1 pt-8 rounded-b-3xl`}
+        className={`${isOpen ? '' : 'hidden'} w-full absolute bg-card-white top-16 p-4 z-30 flex flex-col gap-1 shadow-lg`}
       >
         {searchTheme &&
-          searchTheme.map((room: RoomDTO['get']) => (
+          searchTheme.contents.map((room: SearchThemeListDTO['get']) => (
             <button
               type="button"
-              key={room.themeId}
-              className="text-xl flex gap-1 flex-col hover:bg-darkSearch"
+              key={room.id}
+              className="text-xl text-font-baseBlack flex gap-1 flex-col hover:bg-darkSearch hover:text-font-baseWhite duration-300"
               onClick={() => {
                 closeModal();
-                searchChange(room.themeName);
-                themeIdChange(room.themeId);
+                searchChange(room.title);
+                themeIdChange(room.id);
               }}
             >
-              <p className="text-base">
-                [{room.cafe} {room.spot}]
-              </p>
-              <p className="text-xl">{room.themeName}</p>
+              <p className="text-base">[{room.spotName}]</p>
+              <p className="text-xl">{room.title}</p>
             </button>
           ))}
         {searchTheme && searchTheme.length === 0 && (

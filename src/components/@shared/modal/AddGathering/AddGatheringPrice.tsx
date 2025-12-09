@@ -49,12 +49,12 @@ export default function AddGatheringPrice({
 
   return (
     <div className="flex flex-col">
-      <p className="font-medium text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
-        가격
+      <p className="text-base text-font-baseBlack font-normal tracking-[-2.5%]">
+        모임 가격
       </p>
       <div className="flex items-centers gap-2">
-        <div className="rounded-full bg-card py-2 px-4 mt-3 flex items-center justify-center gap-1">
-          <p className="font-normal text-xl tracking-[-2.5%] text-basefont">
+        <div className="py-[6px] px-1 flex items-center justify-center gap-1 border-b-[1px] border-line-secondDarkGray">
+          <p className="font-normal text-base tracking-[-2.5%] text-font-baseBlack">
             {priceType}
           </p>
           <Dropdown
@@ -63,9 +63,9 @@ export default function AddGatheringPrice({
             selected={priceType}
             onOpenChange={toggleOpen}
             onClickHandler={priceTypeChange}
-            className="min-w-[124px]"
+            className="min-w-[60px] absolute left-[-40px]"
             marginTop={14}
-            align="center"
+            align="start"
           >
             <button
               type="button"
@@ -75,14 +75,16 @@ export default function AddGatheringPrice({
               <Image
                 src="/icons/modal/black_chevron_down.svg"
                 alt="가격 버튼"
-                width={20}
-                height={20}
+                width={18}
+                height={18}
                 className={`transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
               />
             </button>
           </Dropdown>
         </div>
-        <div className="relative">
+        <div
+          className={`${errors.price ? 'border-error' : 'border-line-secondDarkGray'} relative flex items-center gap-[6px] py-[6px] px-4 border-b-[1px]`}
+        >
           <input
             type="hidden"
             {...register('price', {
@@ -91,17 +93,24 @@ export default function AddGatheringPrice({
             })}
             value={price}
           />
+          <Image
+            src="/icons/pencil/dark_pencil.svg"
+            alt="연필 아이콘"
+            width={20}
+            height={20}
+          />
           <input
             type="text"
-            value={price.toLocaleString()}
-            className={`${errors.price ? 'border-error' : 'border-card'} rounded-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont mt-3 max-w-[130px] border-[1px]`}
+            placeholder="가격을 입력해 주세요."
+            value={price.toLocaleString() === '0' ? '' : price.toLocaleString()}
+            className="placeholder:text-font-disabled bg-[#F7F7FB] text-base text-font-baseBlack font-normal"
             onChange={priceChangeHandler}
           />
-          <p className="absolute font-normal text-xl tracking-[-2.5%] text-basefont right-4 top-5">
+          <p className="absolute text-base text-font-baseBlack font-normal right-4 top-[6px]">
             원
           </p>
           {errors.price && (
-            <p className="text-red-500 text-sm mt-1 absolute bottom--5 w-36">
+            <p className="text-red-500 text-sm mt-1 absolute -bottom-6 w-36">
               {errors.price.message}
             </p>
           )}
