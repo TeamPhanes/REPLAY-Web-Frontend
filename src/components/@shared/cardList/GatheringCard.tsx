@@ -50,14 +50,18 @@ export default function GatheringCard({
       className="relative flex md:flex-row flex-col md:w-[630px] items-start rounded-[4px] bg-card-white p-5 transition-all hover:scale-[102%]"
     >
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-[145px]">
-        <Image
-          src={gathering.image}
-          alt={gathering.title}
-          width={145}
-          height={218}
-          quality={100}
-          className="rounded-[4px] w-full h-[360px] md:w-[145px] md:h-[218px]"
-        />
+        {gathering.image !== null ? (
+          <Image
+            src={gathering.image}
+            alt={gathering.title}
+            width={145}
+            height={218}
+            quality={100}
+            className="rounded-[4px] w-full h-[360px] md:w-[145px] md:h-[218px]"
+          />
+        ) : (
+          <div className="rounded-[4px] w-[145px] h-[218px] bg-gray-300" />
+        )}
       </Link>
       <div className="absolute top-10 md:top-auto right-10 md:right-5 flex flex-col bg-card rounded-[30px] p-1 md:p-0">
         <button
