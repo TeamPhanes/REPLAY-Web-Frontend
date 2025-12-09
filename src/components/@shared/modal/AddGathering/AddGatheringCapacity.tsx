@@ -16,12 +16,12 @@ export default function AddGatheringCapacity({
 
   return (
     <div className="flex flex-col">
-      <p className="font-medium text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
+      <p className="text-base text-font-baseBlack font-normal tracking-[-2.5%] text-center">
         모임 인원
       </p>
-      <div className="rounded-full bg-card py-2 px-4 mt-3 flex items-center justify-center gap-1">
-        <p className="font-normal text-xl tracking-[-2.5%] text-basefont">
-          {String(capacity).padStart(2, '0')}
+      <div className="py-[6px] px-1 flex items-center justify-center gap-1 border-b-[1px] border-line-secondDarkGray">
+        <p className="font-normal text-base tracking-[-2.5%] text-font-baseBlack">
+          {String(capacity).padStart(2, '0')} 명
         </p>
         <ValueDropdown
           list={capacityList}
@@ -29,7 +29,7 @@ export default function AddGatheringCapacity({
           selected={capacity}
           onOpenChange={toggleOpen}
           onClickHandler={capacityChange}
-          className="min-w-[88px] absolute left-[-48px]"
+          className="min-w-[70px] absolute left-[-48px]"
           marginTop={14}
           align="start"
         >
@@ -41,8 +41,8 @@ export default function AddGatheringCapacity({
             <Image
               src="/icons/modal/black_chevron_down.svg"
               alt="모임 인원 버튼"
-              width={20}
-              height={20}
+              width={18}
+              height={18}
               className={`transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
             />
           </button>

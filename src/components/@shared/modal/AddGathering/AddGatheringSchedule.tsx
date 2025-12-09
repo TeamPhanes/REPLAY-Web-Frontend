@@ -13,22 +13,23 @@ export default function AddGatheringSchedule({
 }: AddGatheringScheduleProps) {
   const { isOpen, toggleOpen } = useOpen();
   return (
-    <div className="flex flex-col relative">
-      <p className="font-medium text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
+    <div className="relative">
+      <p className="text-base text-font-baseBlack font-normal tracking-[-2.5%]">
         모임 일정
       </p>
-      <div
-        className="rounded-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont mt-3 cursor-pointer"
+      <button
+        type="button"
+        className="px-4 py-2 bg-brand-main100 rounded-[4px] text-base text-font-baseBlack font-normal tracking-[-2.5%] mt-1"
         onClick={toggleOpen}
       >
         {yearMonthDayHourTime(String(dateTime))}
-      </div>
+      </button>
       <DateTimeCalendar
         isOpen={isOpen}
         selectedDate={dateTime}
         onClose={toggleOpen}
         onDateChange={dateTimeChange}
-        layout="top-[100px] left-0"
+        layout="top-[72px] left-0"
       />
     </div>
   );

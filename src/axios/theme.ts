@@ -80,14 +80,10 @@ export const GetPreviewTheme = async (
   }
 };
 
-export const GetSearchTheme = async (
-  keyword: string,
-  state: string,
-  city: string
-) => {
+export const GetSearchTheme = async (keyword: string, size: number) => {
   try {
     const res = await axios.get(
-      `${API_PATH.theme.search}?${keyword !== '' ? `&keyword=${keyword}` : ''}${city !== '시.군.구' ? `&city=${city}` : ''}${state !== '시.도' ? `&state=${state}` : ''}&limit=5&offset=0`
+      `${API_PATH.theme.search}?${keyword !== '' ? `&keyword=${keyword}` : ''}&size=${size}`
     );
     return res;
   } catch (error) {

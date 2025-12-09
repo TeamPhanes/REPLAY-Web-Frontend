@@ -146,7 +146,7 @@ export const PostGathering = async (data: PostGatheringData) => {
     data.isIndividual === '인당' ? 'true' : 'false'
   );
   formData.append('price', String(data.price));
-  formData.append('dateTime', String(toKSTString(data.dateTime)));
+  formData.append('date', String(toKSTString(data.dateTime)));
   formData.append(
     'registrationStart',
     String(toKSTString(data.registrationStart))
@@ -175,7 +175,7 @@ export const PatchGathering = async (
     data.isIndividual === '인당' ? 'true' : 'false'
   );
   formData.append('price', String(data.price));
-  formData.append('dateTime', String(toKSTString(data.dateTime)));
+  formData.append('date', String(toKSTString(data.dateTime)));
   formData.append(
     'registrationStart',
     String(toKSTString(data.registrationStart))

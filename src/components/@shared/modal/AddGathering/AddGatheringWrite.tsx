@@ -26,9 +26,9 @@ export default function AddGatheringWrite({
   errors,
 }: AddGatheringWriteProps) {
   return (
-    <div className="flex flex-col mt-8">
+    <div className="flex flex-col gap-5 w-[480px]">
       <div className="flex items-center gap-4">
-        <p className="font-medium text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
+        <p className="text-2xl/[34px] text-font-baseBlack font-normal tracking-[-2.5%]">
           모임 소개글
         </p>
         {errors.content && (
@@ -42,7 +42,7 @@ export default function AddGatheringWrite({
 
 모임에 대한 변동 가격을 써주면 모임 참여시 많은 도움이 되요.
 ex) 인당 18,000원, 인당 20,000원이 예상됩니다.`}
-        className={`${errors.content ? 'border-error' : 'border-spot'} rounded-[30px] border-[1px] bg-card w-full h-96 p-5 outline-none text-basefont resize-none mt-3`}
+        className={`${errors.content ? 'border-error' : 'border-line-secondLightGray'} w-[454px] text-base rounded-[4px] border-[1px] bg-card-white h-60 p-4 outline-none text-font-baseBlack resize-none`}
         value={content}
         onChange={(e) => contentChange(e.target.value)}
       />

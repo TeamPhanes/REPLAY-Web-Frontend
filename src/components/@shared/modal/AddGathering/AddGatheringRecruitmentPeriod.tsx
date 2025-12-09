@@ -24,39 +24,46 @@ export default function AddGatheringRecruitmentPeriod({
     toggleOpen: toggleRegistrationEndDate,
   } = useOpen();
   return (
-    <div className="flex flex-col mt-11">
-      <p className="font-medium text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
-        모집 기간
-      </p>
-      <div className="flex flex-col md:flex-row gap-1 mt-3 md:relative">
-        <div
-          className="rounded-t-full md:rounded-r-none md:rounded-l-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont cursor-pointer text-center"
+    <div className="flex items-center gap-2">
+      <div className="flex flex-col relative gap-1">
+        <p className="text-base text-font-baseBlack font-normal tracking-[-2.5%]">
+          모집 시작일
+        </p>
+        <button
+          type="button"
+          className="px-4 py-2 bg-brand-main100 rounded-[4px] text-base text-font-baseBlack font-normal tracking-[-2.5%]"
           onClick={toggleRegistrationStartDate}
         >
           {yearMonthDayHourTime(String(registrationStart))}
-        </div>
+        </button>
         <div className="relative md:static">
           <DateTimeCalendar
             isOpen={isRegistrationStartDate}
             selectedDate={registrationStart}
             onClose={toggleRegistrationStartDate}
             onDateChange={registrationStartChange}
-            layout="md:top-[52px] md:left-0"
+            layout="md:top-[72px] md:left-0"
           />
         </div>
-        <div
-          className="rounded-b-full md:rounded-l-none md:rounded-r-full bg-card py-2 px-4 font-normal text-xl tracking-[-2.5%] text-basefont cursor-pointer text-center"
+      </div>
+      <div className="flex flex-col relative gap-1">
+        <p className="text-base text-font-baseBlack font-normal tracking-[-2.5%] text-end">
+          모집 마감일
+        </p>
+        <button
+          type="button"
+          className="px-4 py-2 bg-brand-main100 rounded-[4px] text-base text-font-baseBlack font-normal tracking-[-2.5%]"
           onClick={toggleRegistrationEndDate}
         >
           {yearMonthDayHourTime(String(registrationEnd))}
-        </div>
+        </button>
         <div className="relative md:static">
           <DateTimeCalendar
             isOpen={isRegistrationEndDate}
             selectedDate={registrationEnd}
             onClose={toggleRegistrationEndDate}
             onDateChange={registrationEndChange}
-            layout="md:top-[52px] md:left-0"
+            layout="md:top-[72px] md:left-0"
           />
         </div>
       </div>

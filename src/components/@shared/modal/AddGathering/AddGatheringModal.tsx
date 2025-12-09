@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import AddGatheringButton from '@/components/@shared/modal/AddGathering/AddGatheringButton';
 import AddGatheringCapacity from '@/components/@shared/modal/AddGathering/AddGatheringCapacity';
-import AddGatheringLocation from '@/components/@shared/modal/AddGathering/AddGatheringLocation';
 import AddGatheringNameInput from '@/components/@shared/modal/AddGathering/AddGatheringNameInput';
 import AddGatheringPrice from '@/components/@shared/modal/AddGathering/AddGatheringPrice';
 import AddGatheringRecruitmentPeriod from '@/components/@shared/modal/AddGathering/AddGatheringRecruitmentPeriod';
@@ -46,74 +45,96 @@ export default function AddGatheringModal({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      className="bg-white rounded-[30px] py-4 px-4 md:py-10 md:px-[72px] w-[726px]"
+      className="bg-[#F7F7FB] rounded-lg p-8 w-[1064px]"
     >
+      <h2 className="text-[28px]/[38px] text-font-baseBlack font-semibold tracking-[-2.5%] text-center mt-7 mb-[60px]">
+        모임 생성
+      </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <AddGatheringLocation />
-        <AddGatheringSearchBar
-          search={search}
-          searchChange={setSearch}
-          themeId={watch('themeId')}
-          themeIdChange={(themeId) =>
-            setValue('themeId', themeId, {
-              shouldValidate: true,
-            })
-          }
-          register={register}
-          errors={errors}
-        />
-        <AddGatheringNameInput
-          name={watch('name')}
-          nameChange={(name) =>
-            setValue('name', name, { shouldValidate: true })
-          }
-          register={register}
-          errors={errors}
-        />
-        <AddGatheringRecruitmentPeriod
-          registrationStart={watch('registrationStart')}
-          registrationStartChange={(registrationStart) =>
-            setValue('registrationStart', registrationStart)
-          }
-          registrationEnd={watch('registrationEnd')}
-          registrationEndChange={(registrationEnd) =>
-            setValue('registrationEnd', registrationEnd)
-          }
-        />
-        <div className="md:flex md:gap-8">
-          <div className="flex gap-2 md:gap-8 mt-8">
-            <AddGatheringSchedule
-              dateTime={watch('dateTime')}
-              dateTimeChange={(dateTime) => setValue('dateTime', dateTime)}
-            />
-            <AddGatheringCapacity
-              capacity={watch('capacity')}
-              capacityChange={(capacity) => setValue('capacity', capacity)}
-            />
-          </div>
-          <div className="mt-8">
-            <AddGatheringPrice
-              priceType={watch('isIndividual')}
-              priceTypeChange={(isIndividual) =>
-                setValue('isIndividual', isIndividual, { shouldValidate: true })
+        <div className="flex justify-between">
+          <div className="flex flex-col gap-2 w-[454px]">
+            <p className="text-2xl/[34px] text-font-baseBlack font-normal tracking-[-2.5%]">
+              모임 정보
+            </p>
+            <AddGatheringSearchBar
+              search={search}
+              searchChange={setSearch}
+              themeId={watch('themeId')}
+              themeIdChange={(themeId) =>
+                setValue('themeId', themeId, {
+                  shouldValidate: true,
+                })
               }
-              price={watch('price')}
-              priceChange={(price) =>
-                setValue('price', price, { shouldValidate: true })
+              register={register}
+              errors={errors}
+            />
+            <AddGatheringNameInput
+              name={watch('name')}
+              nameChange={(name) =>
+                setValue('name', name, { shouldValidate: true })
               }
               register={register}
               errors={errors}
             />
           </div>
+
+          <div className="flex flex-col gap-5 w-[480px]">
+            <p className="text-2xl/[34px] text-font-baseBlack font-normal tracking-[-2.5%]">
+              모임 상세
+            </p>
+            <div className="flex justify-between">
+              <AddGatheringCapacity
+                capacity={watch('capacity')}
+                capacityChange={(capacity) => setValue('capacity', capacity)}
+              />
+              <AddGatheringPrice
+                priceType={watch('isIndividual')}
+                priceTypeChange={(isIndividual) =>
+                  setValue('isIndividual', isIndividual, {
+                    shouldValidate: true,
+                  })
+                }
+                price={watch('price')}
+                priceChange={(price) =>
+                  setValue('price', price, { shouldValidate: true })
+                }
+                register={register}
+                errors={errors}
+              />
+            </div>
+          </div>
         </div>
-        <AddGatheringWrite
-          content={watch('content')}
-          contentChange={(content) =>
-            setValue('content', content, { shouldValidate: true })
-          }
-          register={register}
-          errors={errors}
-        />
+
+        <div className="flex justify-between mt-20">
+          <div className="flex flex-col gap-5 w-[454px]">
+            <p className="text-2xl/[34px] text-font-baseBlack font-normal tracking-[-2.5%]">
+              일정 선택
+            </p>
+            <AddGatheringRecruitmentPeriod
+              registrationStart={watch('registrationStart')}
+              registrationStartChange={(registrationStart) =>
+                setValue('registrationStart', registrationStart)
+              }
+              registrationEnd={watch('registrationEnd')}
+              registrationEndChange={(registrationEnd) =>
+                setValue('registrationEnd', registrationEnd)
+              }
+            />
+            <AddGatheringSchedule
+              dateTime={watch('dateTime')}
+              dateTimeChange={(dateTime) => setValue('dateTime', dateTime)}
+            />
+          </div>
+          <AddGatheringWrite
+            content={watch('content')}
+            contentChange={(content) =>
+              setValue('content', content, { shouldValidate: true })
+            }
+            register={register}
+            errors={errors}
+          />
+        </div>
+
         <AddGatheringButton onClose={onClose} />
       </form>
     </Modal>
