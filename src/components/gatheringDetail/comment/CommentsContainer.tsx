@@ -24,7 +24,7 @@ export default function CommentsContainer({
   const [page, setPage] = useState(0);
   const { comment, isLoading } = useGetComment(id, page, 10, sort);
   const totalItems = comment ? comment.totalElements : 0;
-  const { totalPages } = usePagination(page, totalItems);
+  const { totalPages } = usePagination(page, totalItems, 10);
 
   if (!comment || isLoading) return <Loading isLoading={isLoading} />;
 

@@ -30,7 +30,7 @@ export default function GatheringReviewSection({
   const totalItems = userReviewGathering
     ? userReviewGathering.totalElements
     : 0;
-  const { totalPages } = usePagination(page, totalItems);
+  const { totalPages } = usePagination(page, totalItems, 12);
 
   if (isGuardLoading || isLoading) {
     return <ReviewGatheringCardSkeleton count={6} className="mt-6" />;

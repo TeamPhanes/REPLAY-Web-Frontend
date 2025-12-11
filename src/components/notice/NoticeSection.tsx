@@ -12,7 +12,7 @@ import ViewIcon from '@/public/icons/cardList/view.svg';
 export default function NoticeSection() {
   const [page, setPage] = useState(0);
   const totalItems = mockNotices ? mockNotices.totalCount : 0;
-  const { totalPages } = usePagination(page, totalItems);
+  const { totalPages } = usePagination(page, totalItems, 10);
   return (
     <>
       {mockNotices.data.map((notice) => {

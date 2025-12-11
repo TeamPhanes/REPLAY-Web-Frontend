@@ -28,7 +28,7 @@ export default function GatheringPage() {
     12
   );
   const totalItems = gathering ? gathering.totalElements : 0;
-  const { totalPages } = usePagination(page, totalItems);
+  const { totalPages } = usePagination(page, totalItems, 12);
 
   return (
     <PageContainer>

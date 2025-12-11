@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 export function usePagination(
   page: number,
   totalItems: number,
-  itemsPerPage = 10
+  itemsPerPage: number
 ) {
   const totalPages = useMemo(
     () => Math.ceil(totalItems / itemsPerPage),

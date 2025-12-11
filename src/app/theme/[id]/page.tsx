@@ -34,7 +34,7 @@ export default function RoomDetailPage() {
   const { reviewSummary, isLoading: reviewSummaryLoading } =
     useGetReviewSummary(id);
   const totalItems = review ? review.totalCount : 0;
-  const { totalPages } = usePagination(page, totalItems);
+  const { totalPages } = usePagination(page, totalItems, 10);
 
   if (
     themeDetailLoading ||

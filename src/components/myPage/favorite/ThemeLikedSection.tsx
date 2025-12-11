@@ -28,7 +28,7 @@ export default function ThemeLikedSection({
   );
   const { isGuardLoading } = useAuthGuard(showLoading);
   const totalItems = userLikeTheme ? userLikeTheme.numberOfElements : 0;
-  const { totalPages } = usePagination(page, totalItems);
+  const { totalPages } = usePagination(page, totalItems, 12);
 
   if (isGuardLoading || isLoading) {
     return <CardSkeleton className="mt-6" />;
