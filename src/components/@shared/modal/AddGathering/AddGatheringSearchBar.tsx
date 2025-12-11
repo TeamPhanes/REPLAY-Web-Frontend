@@ -27,6 +27,7 @@ interface AddGatheringSearchBarProps {
   themeIdChange: (value: number) => void;
   register: UseFormRegister<FormValues>;
   errors: FieldErrors<FormValues>;
+  disabled?: boolean;
 }
 
 export default function AddGatheringSearchBar({
@@ -36,17 +37,20 @@ export default function AddGatheringSearchBar({
   themeIdChange,
   register,
   errors,
+  disabled,
 }: AddGatheringSearchBarProps) {
   const { debouncedValue } = useDebounce(search, 500);
   const { isOpen, openModal, closeModal } = useOpen();
 
-  const { searchTheme } = useGetSearchTheme(debouncedValue, 5);
+  const { searchTheme } = useGetSearchTheme(debouncedValue, 5, {
+    enabled: !disabled,
+  });
 
   useEffect(() => {
-    if (search && themeId === 0 && !isOpen) {
+    if (!disabled && search && themeId === 0 && !isOpen) {
       openModal();
     }
-  }, [search, isOpen, themeId, openModal]);
+  }, [search, isOpen, themeId, openModal, disabled]);
 
   useEffect(() => {
     if (search === '' && themeId !== 0) {
@@ -55,7 +59,9 @@ export default function AddGatheringSearchBar({
   }, [search, themeId, themeIdChange]);
 
   return (
-    <div className="w-full relative">
+    <div
+      className={`w-full relative ${disabled ? 'bg-line-lightGray pointer-events-none' : ''}`}
+    >
       <div
         className={`${errors.themeId ? 'border-error' : 'border-line-Gray'} flex h-full items-center border-b-[1px] justify-between p-4 z-20 relative`}
       >
@@ -88,7 +94,7 @@ export default function AddGatheringSearchBar({
         <input
           type="text"
           placeholder="방탈출을 검색해 주세요."
-          className="w-full text-base tracking-[-2.5%] placeholder:text-font-disabled text-font-baseBlack bg-[#F7F7FB] z-20 ml-[6px]"
+          className={`${disabled ? 'bg-line-lightGray' : 'bg-card-modal'} w-full text-base tracking-[-2.5%] placeholder:text-font-disabled text-font-baseBlack z-20 ml-[6px]`}
           value={search}
           onChange={(e) => searchChange(e.target.value)}
         />

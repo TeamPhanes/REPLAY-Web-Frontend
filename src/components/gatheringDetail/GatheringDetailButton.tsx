@@ -47,30 +47,28 @@ export default function GatheringDetailButton({
       <Modal
         isOpen={isOpen}
         onClose={closeModal}
-        className="bg-white rounded-[30px] px-10 py-5"
+        className="bg-card-modal rounded-[4px] px-10 py-5"
       >
         <p className="font-semibold text-2xl text-basefont">
           모임을 삭제하시겠습니까?
         </p>
-        <div className="flex justify-between gap-2 mt-5">
-          <MainBlueButton className="w-full" onClick={() => mutate()}>
+        <div className="grid grid-cols-2 gap-2 mt-5">
+          <MainBlueButton className="!text-base" onClick={() => mutate()}>
             확인
           </MainBlueButton>
-          <MainPurpleButton className="w-full" onClick={closeModal}>
+          <MainWhiteButton className="!text-base" onClick={closeModal}>
             취소
-          </MainPurpleButton>
+          </MainWhiteButton>
         </div>
       </Modal>
 
       <PatchGatheringModal
         isOpen={isPatchGatheringOpen}
         onClose={closePatchGathering}
+        themeNameProps={data.title}
         defaultValues={{
           name: data.name,
-          themeId: data.themeId,
-          content: data.content,
-          isIndividual: data.isIndividual ? '인당' : '총액',
-          price: data.price,
+          capacity: data.capacity,
           dateTime: data.date ? new Date(data.date) : new Date(),
           registrationStart: data.registrationStart
             ? new Date(data.registrationStart)
@@ -78,7 +76,10 @@ export default function GatheringDetailButton({
           registrationEnd: data.registrationEnd
             ? new Date(data.registrationEnd)
             : new Date(),
-          capacity: data.capacity,
+          content: data.content,
+          isIndividual: data.isIndividual ? '인당' : '총액',
+          price: data.price,
+          themeId: data.themeId,
         }}
       />
     </div>
