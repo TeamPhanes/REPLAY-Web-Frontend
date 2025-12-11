@@ -184,7 +184,7 @@ export const PatchGathering = async (
   formData.append('capacity', String(data.capacity));
 
   try {
-    await axiosInstance.patch(
+    await axiosInstance.put(
       `${API_PATH.gathering.default}/${gatheringId}`,
       formData
     );

@@ -4,12 +4,16 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { GetSearchTheme } from '@/axios/theme';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
-export const useGetSearchTheme = (keyword: string, size: number) => {
+export const useGetSearchTheme = (
+  keyword: string,
+  size: number,
+  options?: { enabled?: boolean }
+) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['searchTheme', keyword, size],
     queryFn: () => GetSearchTheme(keyword, size),
     placeholderData: keepPreviousData,
-    enabled: keyword !== '',
+    enabled: keyword !== '' && (options?.enabled ?? true),
     retry: false,
     staleTime: 1000 * 60 * 5,
   });
