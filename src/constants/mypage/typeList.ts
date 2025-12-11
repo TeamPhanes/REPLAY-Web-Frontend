@@ -24,19 +24,19 @@ export const successTypeList = [
 ];
 
 export const themeReviewList = [
-  { value: 'GOOD', label: '좋았어요' },
-  { value: 'NORMAL', label: '보통이에요' },
-  { value: 'BAD', label: '별로예요' },
+  { value: 'LIKE', label: '적절함' },
+  { value: 'NORMAL', label: '보통' },
+  { value: 'DISLIKE', label: '부적절함' },
 ];
 
 export const levelReviewList = [
-  { value: 'GOOD', label: '좋았어요' },
-  { value: 'NORMAL', label: '보통이에요' },
-  { value: 'BAD', label: '별로예요' },
+  { value: 'LIKE', label: '적절함' },
+  { value: 'NORMAL', label: '보통' },
+  { value: 'DISLIKE', label: '부적절함' },
 ];
 
 export const storyReviewList = [
-  { value: 'GOOD', label: '좋았어요' },
-  { value: 'NORMAL', label: '보통이에요' },
-  { value: 'BAD', label: '별로예요' },
+  { value: 'LIKE', label: '좋음' },
+  { value: 'NORMAL', label: '보통' },
+  { value: 'DISLIKE', label: '아쉬움' },
 ];

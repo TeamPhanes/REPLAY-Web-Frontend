@@ -6,7 +6,6 @@ import PostReviewHint from '@/components/@shared/modal/PostReview/PostReviewHint
 import PostReviewImageFile from '@/components/@shared/modal/PostReview/PostReviewImageFile';
 import PostReviewPlayerAndSuccess from '@/components/@shared/modal/PostReview/PostReviewPlayerAndSuccess';
 import PostReviewRatingThemeLevelStory from '@/components/@shared/modal/PostReview/PostReviewRatingThemeLevelStory';
-import PostReviewSubmitButton from '@/components/@shared/modal/PostReview/PostReviewSubmitButton';
 import PostReviewTitle from '@/components/@shared/modal/PostReview/PostReviewTitle';
 import usePatchReviewForm from '@/hooks/form/usePatchReviewForm';
 import { usePatchReview } from '@/hooks/reactQuery/usePatchReview';
@@ -43,22 +42,22 @@ export default function PatchReviewModal({
   defaultValues,
 }: PatchReviewModalProps) {
   const [isReview, setIsReview] = useState(true);
-  const { imageFile, previewUrl, handleImageChange, handleImageReset } =
+  const { imageFiles, previewUrls, handleImageChange, handleImageReset } =
     useImagePreview(room.reviewImage || ReviewDefaultImage);
-  const { mutate } = usePatchReview(room.reviewId, previewUrl);
-  const {
-    register,
-    handleSubmit,
-    watch,
-    setValue,
-    reset,
-    onSubmit,
-    formState: { errors },
-  } = usePatchReviewForm(mutate, onClose, defaultValues);
+  // const { mutate } = usePatchReview(room.reviewId, previewUrls);
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   watch,
+  //   setValue,
+  //   reset,
+  //   onSubmit,
+  //   formState: { errors },
+  // } = usePatchReviewForm(mutate, onClose, defaultValues);
 
-  useEffect(() => {
-    reset(defaultValues);
-  }, [defaultValues, reset]);
+  // useEffect(() => {
+  //   reset(defaultValues);
+  // }, [defaultValues, reset]);
   return (
     <Modal
       isOpen={isOpen}
@@ -83,7 +82,7 @@ export default function PatchReviewModal({
           />
         </button>
       </div>
-      <form onSubmit={handleSubmit((data) => onSubmit(data, imageFile))}>
+      {/* <form onSubmit={handleSubmit((data) => onSubmit(data, imageFile))}>
         <PostReviewTitle
           listImage={room.listImage}
           themeName={room.themeName}
@@ -142,7 +141,7 @@ export default function PatchReviewModal({
             </div>
           </div>
         </div>
-      </form>
+      </form> */}
     </Modal>
   );
 }

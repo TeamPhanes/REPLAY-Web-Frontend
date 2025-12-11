@@ -1,22 +1,21 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useRef, useState } from 'react';
 import Calendar from 'react-calendar';
-import '@/styles/customCalendar.css';
-import { yearMonthDayHourTime } from '@/utils/dateChange';
+import '@/styles/dateTimeCalendar.css';
 
 type CalendarValue = Date | null | [Date | null, Date | null];
 
 interface CustomCalendarProps {
   isOpen: boolean;
-  selectedDate: string | undefined;
+  selectedDate: Date;
   onClose(): void;
-  onDateChange(date: string): void;
+  onDateChange(date: Date): void;
   layout?: string;
 }
 
 /**
- * 공통 Calendar 컴포넌트
+ * 공통 DateTime Calendar 컴포넌트
  * @param isOpen 캘린더의 열린 상태 (true), 닫힌 상태 (false)를 가지는 boolean state
  * @param onClose 캘린더의 닫는 기능을 실행하는 함수
  * @param onDateChange 캘린더의 값을 교환하는 함수
@@ -30,64 +29,71 @@ export default function CustomCalendar({
   onDateChange,
   layout,
 }: CustomCalendarProps) {
-  const [date, setDate] = useState<string | undefined>(selectedDate);
+  const now = new Date();
+  now.setMinutes(0);
+  const tomorrow = new Date(now);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const initialSelectedDateRef = useRef(new Date(selectedDate));
+
+  const [date, setDate] = useState(selectedDate);
 
   const handleDateChange = (newDate: CalendarValue) => {
-    setDate(yearMonthDayHourTime(String(newDate)));
+    if (Array.isArray(newDate)) {
+      if (newDate[0] instanceof Date) {
+        setDate(newDate[0]);
+      }
+    } else if (newDate instanceof Date) {
+      setDate(newDate);
+    }
+  };
+
+  const getFinalDate = () => {
+    const updatedDate = new Date(date);
+    return updatedDate;
   };
 
   const handleReset = () => {
-    setDate('');
-    onDateChange('');
+    const resetDate = initialSelectedDateRef.current;
+    setDate(resetDate);
+    onDateChange(resetDate);
     onClose();
   };
 
   const handleSubmit = () => {
-    if (date) {
-      onDateChange(date);
-    }
+    const finalDate = getFinalDate();
+    onDateChange(finalDate);
     onClose();
   };
 
-  // ESC 키 입력 시 캘린더 닫기 처리
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (isOpen && e.key === 'Escape') {
-        onClose();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
-
   return (
     <div
-      className={`${isOpen ? '' : 'hidden'} ${layout} border-1 absolute z-100 flex h-[326px] w-[336px] flex-col rounded-lg border-gray-200 bg-white px-6 py-[10px] text-black shadow-xl`}
+      className={`${isOpen ? 'animate-dropdownIn' : 'hidden'} ${layout} border-2 absolute z-[80] flex flex-col rounded-[10px] border-grayFont bg-grayFont py-5 px-2 md:pl-6 shadow-xl md:pr-0`}
     >
-      <Calendar
-        onChange={handleDateChange}
-        value={date}
-        calendarType="gregory"
-        locale="en-us"
-        className="custom-calendar"
-        next2Label={null}
-        prev2Label={null}
-        minDetail="year"
-      />
+      <div className="flex flex-col md:h-[332px] md:flex-row">
+        <Calendar
+          onChange={handleDateChange}
+          value={date}
+          calendarType="gregory"
+          locale="en-us"
+          next2Label={null}
+          prev2Label={null}
+          minDetail="year"
+          className="date-time-calendar"
+        />
+      </div>
+
       <div className="mx-auto flex w-[250px] items-center justify-between">
         <button
           type="button"
-          className="w-[122px]"
+          className="w-[122px] border-cardActive border-2 py-3 px-[10px] text-buttonColor200 rounded-2xl bg-white font-semibold hover:bg-buttonColor200Hover"
           onClick={handleReset}
-          disabled={date === ''}
         >
           초기화
         </button>
         <button
           type="button"
-          className="w-[122px]"
+          className="w-[122px] bg-mainBlue rounded-2xl font-semibold py-3 px-[10px] hover:bg-mainBlueHover"
           onClick={handleSubmit}
-          disabled={date === ''}
         >
           적용
         </button>

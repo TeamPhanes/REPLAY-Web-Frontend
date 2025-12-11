@@ -28,19 +28,19 @@ export default function PatchMyPageModal({
   isOpen,
   onClose,
 }: PatchMyPageModalProps) {
-  const { imageFile, previewUrl, handleImageChange } = useImagePreview(null);
-  const { mutate } = usePatchMyProfile(onClose);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    control,
-    userInfo,
-  } = usePatchMyPageForm();
+  // const { imageFile, previewUrl, handleImageChange } = useImagePreview(null);
+  // const { mutate } = usePatchMyProfile(onClose);
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  //   control,
+  //   userInfo,
+  // } = usePatchMyPageForm();
 
-  const onSubmit = (data: FormValues) => {
-    mutate({ ...data, image: imageFile });
-  };
+  // const onSubmit = (data: FormValues) => {
+  //   mutate({ ...data, image: imageFile });
+  // };
 
   return (
     <Modal
@@ -48,7 +48,7 @@ export default function PatchMyPageModal({
       onClose={onClose}
       className="bg-white rounded-[30px] p-5 md:w-[648px]"
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
+      {/* <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex md:flex-row flex-col">
           <div className="relative">
             <Image
@@ -83,10 +83,10 @@ export default function PatchMyPageModal({
               <p className="text-red-500 text-sm mt-1">
                 {errors.nickname.message}
               </p>
-            )}
+            )} */}
 
-            <div className="flex items-center justify-between mt-12 w-72">
-              {/* <p className="font-normal text-base tracking-[-2.5%] text-basefont">
+      <div className="flex items-center justify-between mt-12 w-72">
+        {/* <p className="font-normal text-base tracking-[-2.5%] text-basefont">
                 성별을 소개카드에 표시 합니다.
               </p>
               <Controller
@@ -99,8 +99,8 @@ export default function PatchMyPageModal({
                   />
                 )}
               /> */}
-            </div>
-            <div className="flex items-center justify-between mt-6 w-72">
+      </div>
+      {/* <div className="flex items-center justify-between mt-6 w-72">
               <p className="font-normal text-base tracking-[-2.5%] text-basefont">
                 이메일을 소개카드에 표시 합니다.
               </p>
@@ -131,8 +131,8 @@ export default function PatchMyPageModal({
           <MainBlueButton type="submit" className="w-full">
             수정하기
           </MainBlueButton>
-        </div>
-      </form>
+        </div> */}
+      {/* </form> */}
     </Modal>
   );
 }

@@ -5,23 +5,25 @@ import { AxiosError } from 'axios';
 import { PostReview } from '@/axios/review';
 
 interface PostReviewData {
-  themeId: number;
-  content: string;
-  rating: number;
-  success: string;
-  image: File | null;
-  hint: number;
-  numberOfPlayer: number;
-  themeReview: string;
-  storyReview: string;
-  levelReview: string;
+  review: {
+    score: number;
+    themeReview: string;
+    levelReview: string;
+    storyReview: string;
+    isSuccess: string;
+    numberOfPlayer: number;
+    hint: number;
+    content: string;
+    date: Date;
+  };
+  images: File[] | null;
 }
-export const usePostReview = () => {
+export const usePostReview = (themeId: number) => {
   const queryclient = useQueryClient();
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: (data: PostReviewData) => PostReview(data),
+    mutationFn: (data: PostReviewData) => PostReview(data, themeId),
     onSuccess: () => {
       queryclient.invalidateQueries({ queryKey: ['theme'] });
       queryclient.invalidateQueries({ queryKey: ['userReviewTheme'] });
