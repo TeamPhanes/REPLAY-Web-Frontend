@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Tag from '@/components/@shared/cardList/Tag';
 import TitleAndSpot from '@/components/@shared/cardList/TitleAndSpot';
+import PatchReviewModal from '@/components/@shared/modal/PatchReview/PatchReviewModal';
+import PostReviewModal from '@/components/@shared/modal/PostReview/PostReviewModal';
 import Rating from '@/components/@shared/rating/Rating';
 import { VisitThemeListDTO } from '@/types/theme/theme.types';
 import { yearMonthDay } from '@/utils/dateChange';
@@ -20,6 +22,7 @@ export default function ThemeReviewContainer({
 }: ThemeReviewContainerProps) {
   const [isPatchModal, setPatchModal] = useState(false);
   const [isPostModal, setPostModal] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState<VisitThemeListDTO['get']>();
   const themeAndLevelList = {
     LIKE: '적절함',
     NORMAL: '보통',
@@ -211,8 +214,10 @@ export default function ThemeReviewContainer({
                 className="w-full rounded-[4px] border-[1px] border-brand-main500 px-10 py-[14px] text-base tracking-[-2.5%] text-brand-main500 font-semibold"
                 onClick={() => {
                   if (theme.visitDate === null) {
+                    setSelectedRoom(theme);
                     setPostModal(true);
                   } else {
+                    setSelectedRoom(theme);
                     setPatchModal(true);
                   }
                 }}
@@ -223,14 +228,15 @@ export default function ThemeReviewContainer({
           </div>
         );
       })}
-      {/* {selectedRoom && (
+      {selectedRoom && (
         <>
           <PostReviewModal
             isOpen={isPostModal}
             onClose={() => setPostModal(false)}
             room={selectedRoom}
           />
-          <PatchReviewModal
+
+          {/* <PatchReviewModal
             isOpen={isPatchModal}
             onClose={() => setPatchModal(false)}
             room={selectedRoom}
@@ -246,9 +252,9 @@ export default function ThemeReviewContainer({
               storyReview: selectedRoom.storyReview,
               levelReview: selectedRoom.levelReview,
             }}
-          />
+          /> */}
         </>
-      )} */}
+      )}
     </div>
   );
 }

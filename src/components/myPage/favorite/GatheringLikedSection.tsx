@@ -27,7 +27,7 @@ export default function GatheringLikedSection({
   );
   const { isGuardLoading } = useAuthGuard(isLoading);
   const totalItems = userLikeGathering ? userLikeGathering.numberOfElements : 0;
-  const { totalPages } = usePagination(page, totalItems);
+  const { totalPages } = usePagination(page, totalItems, 12);
 
   if (isGuardLoading || isLoading) {
     return (

@@ -21,7 +21,7 @@ export default function CommentCardSection({ sort }: CommentCardSectionProps) {
   const [page, setPage] = useState(0);
   const { MyComment, isLoading, showLoading } = useMyComment(sort, page, 10);
   const { isGuardLoading } = useAuthGuard(showLoading);
-  const { totalPages } = usePagination(page, MyComment?.totalCount);
+  const { totalPages } = usePagination(page, MyComment?.totalCount, 10);
   const toDay = periodFullYearMonthDay(new Date().toLocaleDateString());
 
   if (isGuardLoading || isLoading) {

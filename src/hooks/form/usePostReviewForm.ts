@@ -1,49 +1,55 @@
 import { useForm } from 'react-hook-form';
 
 interface FormValues {
-  themeId: number;
-  content: string;
-  rating: number;
-  success: string;
-  image: File | null;
-  hint: number;
-  numberOfPlayer: number;
-  themeReview: string;
-  storyReview: string;
-  levelReview: string;
+  review: {
+    score: number;
+    themeReview: string;
+    levelReview: string;
+    storyReview: string;
+    isSuccess: string;
+    numberOfPlayer: number;
+    hint: number;
+    content: string;
+    date: Date;
+  };
+  images: File[] | null;
 }
 
 export default function usePostReviewForm(
   mutate: any,
   onclose: () => void,
-  themeId: number,
-  handleImageReset: () => void
+  handleImageReset: () => void,
+  setIsReview: () => void
 ) {
-  const methods = useForm<FormValues>({
+  const now = new Date();
+  const methods = useForm<FormValues['review']>({
     defaultValues: {
-      themeId,
-      content: '',
-      rating: 0,
-      success: 'true',
-      image: null,
-      hint: 0,
-      numberOfPlayer: 0,
+      score: 0,
       themeReview: 'NORMAL',
-      storyReview: 'NORMAL',
       levelReview: 'NORMAL',
+      storyReview: 'NORMAL',
+      isSuccess: 'true',
+      numberOfPlayer: 0,
+      hint: 0,
+      content: '',
+      date: now,
     },
   });
 
   const { reset } = methods;
 
-  const onSubmit = (data: FormValues, imageFile: File | null) => {
+  const onSubmit = (
+    data: FormValues['review'],
+    imageFiles: FormValues['images']
+  ) => {
     mutate(
-      { ...data, image: imageFile },
+      { review: data, images: imageFiles },
       {
         onSuccess: () => {
           onclose();
           reset();
           handleImageReset();
+          setIsReview();
         },
       }
     );

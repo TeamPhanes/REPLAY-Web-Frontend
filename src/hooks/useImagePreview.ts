@@ -1,33 +1,47 @@
-'use client';
+import { useState } from 'react';
 
-import { useEffect, useState } from 'react';
+export default function useImagePreview(initialCount: number) {
+  const [imageFiles, setImageFiles] = useState<(File | null)[]>(
+    Array(initialCount).fill(null)
+  );
+  const [previewUrls, setPreviewUrls] = useState<(string | null)[]>(
+    Array(initialCount).fill(null)
+  );
 
-export default function useImagePreview(reviewImage: string | null) {
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(reviewImage);
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (
+    index: number,
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const selected = e.target.files?.[0];
     if (selected) {
-      setImageFile(selected);
-      const url = URL.createObjectURL(selected);
-      setPreviewUrl(url);
+      const newFiles = [...imageFiles];
+      const newUrls = [...previewUrls];
+      newFiles[index] = selected;
+      newUrls[index] = URL.createObjectURL(selected);
+      setImageFiles(newFiles);
+      setPreviewUrls(newUrls);
     }
   };
 
-  const handleImageReset = () => {
-    setImageFile(null);
-    setPreviewUrl(null);
+  const handleImageReset = (index: number) => {
+    const newFiles = [...imageFiles];
+    const newUrls = [...previewUrls];
+    newFiles[index] = null;
+    newUrls[index] = null;
+    setImageFiles(newFiles);
+    setPreviewUrls(newUrls);
   };
 
-  useEffect(() => {
-    setPreviewUrl(reviewImage);
-  }, [reviewImage]);
+  const resetAllImages = () => {
+    setImageFiles(Array(initialCount).fill(null));
+    setPreviewUrls(Array(initialCount).fill(null));
+  };
 
   return {
-    imageFile,
-    previewUrl,
+    imageFiles,
+    previewUrls,
     handleImageChange,
     handleImageReset,
+    resetAllImages,
   };
 }

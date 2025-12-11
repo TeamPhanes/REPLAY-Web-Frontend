@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import PatchMyPageModal from '@/components/@shared/modal/PatchMyPage/PatchMyPageModal';
 import { useOpen } from '@/hooks/useOpen';
 import WhiteSettings from '@/public/icons/mypage/white_settings.svg';
 
@@ -21,7 +20,7 @@ export default function MyPageModifyButton() {
           className="hover:animate-[spin_3s_linear_infinite]"
         />
       </button>
-      <PatchMyPageModal isOpen={isOpen} onClose={closeModal} />
+      {/* <PatchMyPageModal isOpen={isOpen} onClose={closeModal} /> */}
     </>
   );
 }

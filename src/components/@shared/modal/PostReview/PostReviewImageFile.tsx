@@ -1,95 +1,73 @@
 import Image from 'next/image';
 import Delete from '@/public/icons/modal/delete.svg';
-import ImageIcon from '@/public/icons/modal/image_icon.svg';
+import ReviewDefaultImage from '@/public/icons/modal/review_default_image.svg';
 
 interface PostReviewImageFileProps {
+  index: number;
   previewUrl: string | null;
   handleImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleImageReset: () => void;
 }
 export default function PostReviewImageFile({
+  index,
   previewUrl,
   handleImageChange,
   handleImageReset,
 }: PostReviewImageFileProps) {
   return previewUrl === null ? (
-    <div className="w-full h-[60px] border-[1px] border-spot rounded-xl border-dashed mt-2 cursor-pointer mb-[100px]">
+    <label
+      htmlFor={`image${index}`}
+      className="flex items-center gap-2 justify-center w-[108px] h-[108px] rounded-[4px] p-10 bg-line-lightGray cursor-pointer"
+    >
+      <Image
+        src={ReviewDefaultImage}
+        alt="사진 아이콘"
+        width={28}
+        height={28}
+      />
+      <input
+        id={`image${index}`}
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+        className="sr-only"
+      />
+    </label>
+  ) : (
+    <div className="flex items-center relative group">
       <label
-        htmlFor="image"
-        className="cursor-pointer flex items-center gap-2 w-full justify-center h-full"
+        htmlFor={`image${index}`}
+        className="flex items-center gap-2 justify-center w-[108px] h-[108px] rounded-[4px] bg-line-lightGray cursor-pointer"
       >
         <Image
-          src={ImageIcon}
-          alt="사진 아이콘"
-          width={24}
-          height={24}
-          className="w-6 h-6"
+          src={previewUrl}
+          alt="첨부 이미지 미리보기"
+          width={100}
+          height={100}
+          className="w-[100px] h-[100px] rounded-[4px]"
         />
-        <p className="font-semibold text-xl tracking-[-2.5%] text-basefont">
-          사진 첨부하기
-        </p>
         <input
-          id="image"
+          id={`image${index}`}
           type="file"
           accept="image/*"
           onChange={handleImageChange}
           className="sr-only"
         />
       </label>
-    </div>
-  ) : (
-    <div className="flex items-center">
-      <Image
-        src={previewUrl}
-        alt="첨부 이미지 미리보기"
-        width={200}
-        height={200}
-        className="w-[200xp] h-[200px] p-2 rounded-2xl"
-      />
-      <div className="flex flex-col w-[486px] gap-2">
-        <div className="flex items-center border-[1px] border-spot rounded-xl border-dashed relative h-[90px] justify-center">
-          <label
-            htmlFor="image"
-            className="cursor-pointer flex items-center gap-2 justify-center flex-col md:flex-row"
-          >
-            <Image
-              src={ImageIcon}
-              alt="사진 아이콘"
-              width={24}
-              height={24}
-              className="w-6 h-6"
-            />
-            <p className="font-semibold text-lg md:text-xl tracking-[-2.5%] text-basefont">
-              사진 수정하기
-            </p>
-            <input
-              id="image"
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="sr-only"
-            />
-          </label>
-        </div>
-        <div className="border-[1px] border-spot rounded-xl border-dashed relative h-[90px] flex items-center justify-center">
-          <button
-            type="button"
-            className="flex items-center gap-2 flex-col md:flex-row"
-            onClick={handleImageReset}
-          >
-            <Image
-              src={Delete}
-              alt="지우기 아이콘"
-              width={24}
-              height={24}
-              className="w-6 h-6"
-            />
-            <p className="font-semibold text-lg md:text-xl tracking-[-2.5%] text-basefont">
-              사진 지우기
-            </p>
-          </button>
-        </div>
-      </div>
+
+      <button
+        type="button"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white hidden group-hover:block duration-500 animate-modalIn"
+        onClick={handleImageReset}
+      >
+        <Image
+          src={Delete}
+          alt="지우기 아이콘"
+          width={24}
+          height={24}
+          className="w-6 h-6"
+        />
+      </button>
     </div>
   );
 }

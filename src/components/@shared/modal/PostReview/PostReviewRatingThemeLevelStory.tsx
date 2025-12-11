@@ -30,19 +30,19 @@ export default function PostReviewRatingThemeLevelStory({
     <>
       <div className="flex flex-col justify-center items-center mt-10 gap-2">
         <p className="font-semibold text-2xl/[34px] tracking-[-2.5%] text-basefont">
-          방탈출은 만족 하셨나요?
+          평가하기
         </p>
         <RatingInput
           rating={rating}
-          width={320}
-          height={63}
+          width={544}
+          height={136}
           type="Review"
           onChange={setRating}
         />
       </div>
-      <div className="flex flex-col justify-center items-center mt-10 gap-2">
-        <p className="font-normal text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
-          방탈출이 테마와 잘 맞았나요?
+      <div className="flex flex-col justify-center items-center mt-10 gap-6">
+        <p className="text-base text-font-baseBlack font-semibold">
+          방탈출의 테마는 어땠나요?
         </p>
         <OrderChanger
           options={themeReviewList}
@@ -51,9 +51,9 @@ export default function PostReviewRatingThemeLevelStory({
           gap="gap-2 md:gap-10"
         />
       </div>
-      <div className="flex flex-col justify-center items-center mt-10 gap-2">
-        <p className="font-normal text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
-          방탈출의 난이도는 적절했나요?
+      <div className="flex flex-col justify-center items-center mt-10 gap-6">
+        <p className="text-base text-font-baseBlack font-semibold">
+          방탈출의 난이도는 어땠나요?
         </p>
         <OrderChanger
           options={levelReviewList}
@@ -62,9 +62,9 @@ export default function PostReviewRatingThemeLevelStory({
           gap="gap-2 md:gap-10"
         />
       </div>
-      <div className="flex flex-col justify-center items-center mt-10 gap-2">
-        <p className="font-normal text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont">
-          방탈출의 스토리는 잘 어울렸나요?
+      <div className="flex flex-col justify-center items-center mt-10 gap-6">
+        <p className="text-base text-font-baseBlack font-semibold">
+          방탈출의 스토리는 어땠나요?
         </p>
         <OrderChanger
           options={storyReviewList}

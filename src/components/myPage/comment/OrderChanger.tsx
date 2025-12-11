@@ -10,7 +10,7 @@ interface OrderChangerProps {
   gap?: string;
 }
 
-export default function OrderChanger({
+export default function ㅗOrderChanger({
   options,
   selectedType,
   setSelectedType,
@@ -22,7 +22,7 @@ export default function OrderChanger({
         <button
           key={option.value}
           type="button"
-          className={`rounded-full border-2 px-2 md:px-4 py-1 text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] duration-500 ease-in-out hover:bg-white hover:border-mainBlue hover:text-mainBlue ${
+          className={`rounded-[4px] min-w-[100px] h-[44px] text-sm font-semibold border-[1px] duration-500 ease-in-out hover:bg-white hover:border-mainBlue hover:text-mainBlue ${
             selectedType === option.value
               ? 'border-mainBlue bg-white text-mainBlue'
               : 'border-homeFont bg-homeFont text-grayFont'

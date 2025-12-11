@@ -3,6 +3,8 @@ import ValueDropdown from '@/components/@shared/dropdown/ValueDropdown';
 import OrderChanger from '@/components/myPage/comment/OrderChanger';
 import { successTypeList } from '@/constants/mypage/typeList';
 import { useOpen } from '@/hooks/useOpen';
+import TrophyIcon from '@/public/icons/cardList/trophy_gray_icon.svg';
+import UsersIcon from '@/public/icons/cardList/users_gray_icon.svg';
 
 interface PostReviewPlayerAndSuccessProps {
   numberOfPlayer: number;
@@ -17,54 +19,85 @@ export default function PostReviewPlayerAndSuccess({
   setSelectedSuccess,
 }: PostReviewPlayerAndSuccessProps) {
   const numberOfPlayerList = [2, 3, 4, 5, 6];
-  const { isOpen, toggleOpen } = useOpen();
+  const selectedSuccessList = ['성공', '실패'];
+  const { isOpen: isSuccess, toggleOpen: toggleSuccess } = useOpen();
+  const { isOpen: isNumberOfPlayer, toggleOpen: toggleNumberOfPlayer } =
+    useOpen();
   return (
-    <div className="flex md:items-center mt-5 flex-col md:flex-row gap-2 md:gap-0">
-      <div className="flex items-center gap-5 md:gap-0">
-        <p className="font-normal text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont md:w-44">
-          플레이 인원
+    <>
+      <div className="flex items-center gap-[6px]">
+        <Image src={TrophyIcon} alt="트로피 아이콘" width={20} height={20} />
+        <p className="text-base text-font-baseBlack font-normal w-48">
+          방탈출 성공 여부
         </p>
-        <div className="rounded-full bg-card py-2 px-4 flex items-center justify-center gap-1">
-          <p className="font-normal text-base tracking-[-2.5%] text-basefont">
-            {String(numberOfPlayer).padStart(2, '0')}
+        <div className="py-[6px] px-1 flex items-center justify-center gap-1 border-b-[1px] border-font-baseBlack">
+          <p className="text-sm text-font-baseBlack font-normal">
+            {selectedSuccess === 'true' ? '성공' : '실패'}
           </p>
           <ValueDropdown
-            list={numberOfPlayerList}
-            isOpen={isOpen}
-            selected={numberOfPlayer}
-            onOpenChange={toggleOpen}
-            onClickHandler={setNumberOfPlayer}
-            className="min-w-[88px] absolute left-[-48px]"
+            list={selectedSuccessList}
+            isOpen={isSuccess}
+            selected={selectedSuccess}
+            onOpenChange={toggleSuccess}
+            onClickHandler={(item) => {
+              setSelectedSuccess(item === '성공' ? 'true' : 'false');
+            }}
+            className="min-w-[60px] absolute left-[-36px]"
             marginTop={14}
             align="start"
           >
             <button
               type="button"
               className="flex items-center"
-              onClick={toggleOpen}
+              onClick={toggleSuccess}
             >
               <Image
                 src="/icons/modal/black_chevron_down.svg"
                 alt="모임 인원 버튼"
-                width={20}
-                height={20}
-                className={`transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+                width={18}
+                height={18}
+                className={`transition-transform transform duration-300 ${isSuccess ? 'rotate-180' : 'rotate-0'}`}
               />
             </button>
           </ValueDropdown>
         </div>
       </div>
-      <div className="md:ml-16 flex items-center gap-5 md:gap-0">
-        <p className="font-normal text-xl md:text-2xl/[34px] tracking-[-2.5%] text-basefont md:w-48">
-          방탈출 성공 여부
+
+      <div className="flex items-center gap-[6px]">
+        <Image src={UsersIcon} alt="유저 아이콘" width={20} height={20} />
+        <p className="text-base text-font-baseBlack font-normal w-48">
+          플레이 인원
         </p>
-        <OrderChanger
-          options={successTypeList}
-          selectedType={selectedSuccess}
-          setSelectedType={setSelectedSuccess}
-          gap="gap-2"
-        />
+        <div className="py-[6px] px-1 flex items-center justify-center gap-1 border-b-[1px] border-font-baseBlack">
+          <p className="text-sm text-font-baseBlack font-normal">
+            {String(numberOfPlayer).padStart(2, '0')}
+          </p>
+          <ValueDropdown
+            list={numberOfPlayerList}
+            isOpen={isNumberOfPlayer}
+            selected={numberOfPlayer}
+            onOpenChange={toggleNumberOfPlayer}
+            onClickHandler={setNumberOfPlayer}
+            className="min-w-[60px] absolute left-[-36px]"
+            marginTop={14}
+            align="start"
+          >
+            <button
+              type="button"
+              className="flex items-center"
+              onClick={toggleNumberOfPlayer}
+            >
+              <Image
+                src="/icons/modal/black_chevron_down.svg"
+                alt="모임 인원 버튼"
+                width={18}
+                height={18}
+                className={`transition-transform transform duration-300 ${isNumberOfPlayer ? 'rotate-180' : 'rotate-0'}`}
+              />
+            </button>
+          </ValueDropdown>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

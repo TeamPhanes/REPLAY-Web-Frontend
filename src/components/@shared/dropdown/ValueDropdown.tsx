@@ -54,20 +54,18 @@ export default function ValueDropdown({
         className={`${className} ${flexType === 'flex-col' ? 'flex-col' : 'flex-row'} z-50 flex bg-white shadow-md data-[state=open]:animate-dropdownIn data-[state=closed]:animate-dropdownOut`}
       >
         {list.map((value) => (
-          <div
+          <DropdownMenuItem
+            asChild
             key={value}
-            className={`${flexType === 'flex-col' ? 'flex-col py-1 px-5' : 'flex-row'} flex items-center duration-500 ease-in-out hover:bg-brand-main100`}
+            onClick={() => onClickHandler(value)}
+            className={`${flexType === 'flex-col' ? 'flex-col py-1 px-5' : 'flex-row'} cursor-pointer outline-none flex items-center duration-500 ease-in-out hover:bg-brand-main100`}
           >
-            <DropdownMenuItem asChild className="outline-none">
-              <button
-                type="button"
-                className={`${selected === value ? '!text-brand-main500 !font-semibold' : ''} whitespace-nowrap flex items-center justify-center text-sm text-font-baseBlack font-normal tracking-[-2.5%] transition-colors`}
-                onClick={() => onClickHandler(value)}
-              >
-                {value}
-              </button>
-            </DropdownMenuItem>
-          </div>
+            <div
+              className={`${selected === value ? '!text-brand-main500 !font-semibold' : ''} whitespace-nowrap flex items-center justify-center text-sm text-font-baseBlack font-normal tracking-[-2.5%] transition-colors`}
+            >
+              {value}
+            </div>
+          </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>

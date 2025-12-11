@@ -28,7 +28,7 @@ export default function ThemeReviewSection({
   );
   const { isGuardLoading } = useAuthGuard(showLoading);
   const totalItems = userReviewTheme ? userReviewTheme.totalElements : 0;
-  const { totalPages } = usePagination(page, totalItems);
+  const { totalPages } = usePagination(page, totalItems, 12);
 
   if (isGuardLoading || isLoading) {
     return <ReviewRoomCardSkeleton count={6} className="mt-6" />;
