@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 interface ReviewContentProps {
   content: string;
-  images: string[];
+  images: { id: number; image: string }[];
 }
 
 export default function ReviewContent({ content, images }: ReviewContentProps) {
@@ -13,7 +13,7 @@ export default function ReviewContent({ content, images }: ReviewContentProps) {
       </p>
       {images.length !== 0 && (
         <Image
-          src={images[0]}
+          src={images[0].image}
           alt="리뷰 이미지"
           width={100}
           height={100}

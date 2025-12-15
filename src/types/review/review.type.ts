@@ -7,7 +7,7 @@ export interface ReviewDTO {
       hint: number;
       id: number;
       title: string;
-      images: string[];
+      images: { id: number; image: string }[];
       genres: string[];
       isLiked: boolean;
       isSuccess: boolean;
