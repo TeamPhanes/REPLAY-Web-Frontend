@@ -14,6 +14,7 @@ export const API_PATH = {
     like: `${BASE_URL}/theme/like`,
     visit: `${BASE_URL}/theme/visit`,
     search: `${BASE_URL}/theme/search`,
+    suggest: `${BASE_URL}/theme/notice`,
     preview: `${BASE_URL}/theme/preview`,
   },
   gathering: {
@@ -24,6 +25,9 @@ export const API_PATH = {
   },
   gathering_member: {
     default: `${BASE_URL}/gathering/member`,
+  },
+  notice: {
+    default: `${BASE_URL}/notice`,
   },
   review: {
     default: `${BASE_URL}/review`,

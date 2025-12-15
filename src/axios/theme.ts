@@ -83,7 +83,7 @@ export const GetPreviewTheme = async (
 export const GetSearchTheme = async (keyword: string, size: number) => {
   try {
     const res = await axios.get(
-      `${API_PATH.theme.search}?${keyword !== '' ? `&keyword=${keyword}` : ''}&size=${size}`
+      `${API_PATH.theme.suggest}?${keyword !== '' ? `&keyword=${keyword}` : ''}&size=${size}`
     );
     return res;
   } catch (error) {
