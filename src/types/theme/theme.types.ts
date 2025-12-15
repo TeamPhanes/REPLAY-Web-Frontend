@@ -48,7 +48,7 @@ export interface PreviewThemeListDTO {
   };
 }
 
-export interface SearchThemeListDTO {
+export interface SuggestThemeListDTO {
   get: {
     id: number;
     spotName: string;

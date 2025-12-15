@@ -20,6 +20,7 @@ export const API_PATH = {
   gathering: {
     default: `${BASE_URL}/gathering`,
     likeGathering: `${BASE_URL}/gathering/like`,
+    search: `${BASE_URL}/gathering/search`,
     host: `${BASE_URL}/gathering/host`,
     date: `${BASE_URL}/gathering/date`,
   },

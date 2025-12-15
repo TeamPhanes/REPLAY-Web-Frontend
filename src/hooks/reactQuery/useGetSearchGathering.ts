@@ -1,10 +1,10 @@
 'use client';
 
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { GetSearchTheme } from '@/axios/theme';
+import { GetSearchGathering } from '@/axios/gathering';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
-interface GetSearchThemeProps {
+interface GetSearchGatheringProps {
   accessToken: string | null;
   locations: string[];
   genres: string[];
@@ -13,20 +13,20 @@ interface GetSearchThemeProps {
   cursor?: string;
 }
 
-export const useGetSearchTheme = ({
+export const useGetSearchGathering = ({
   accessToken,
   locations,
   genres,
   size,
   keyword,
   cursor,
-}: GetSearchThemeProps) => {
+}: GetSearchGatheringProps) => {
   const filteredLocations = locations.map((item) =>
     item.endsWith(' 전체') ? item.replace(' 전체', '') : item
   );
   const { data, isLoading, error } = useQuery({
     queryKey: [
-      'searchTheme',
+      'searchGathering',
       accessToken,
       filteredLocations,
       genres,
@@ -34,7 +34,7 @@ export const useGetSearchTheme = ({
       keyword,
     ],
     queryFn: () =>
-      GetSearchTheme({
+      GetSearchGathering({
         accessToken,
         locations: filteredLocations,
         genres,
@@ -46,11 +46,11 @@ export const useGetSearchTheme = ({
     placeholderData: keepPreviousData,
   });
 
-  const searchTheme = data?.data;
+  const searchGathering = data?.data;
   const showLoading = useShowLoading(isLoading);
 
   return {
-    searchTheme,
+    searchGathering,
     isLoading,
     showLoading,
     error,
