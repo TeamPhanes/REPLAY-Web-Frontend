@@ -46,6 +46,34 @@ export const GetLikeGathering = async ({
   }
 };
 
+interface GetSearchGatheringProps {
+  accessToken: string | null;
+  locations: string[];
+  genres: string[];
+  size: number;
+  keyword: string;
+  cursor?: string;
+}
+
+export const GetSearchGathering = async ({
+  accessToken,
+  locations,
+  genres,
+  size,
+  keyword,
+  cursor,
+}: GetSearchGatheringProps) => {
+  try {
+    const res = await (accessToken === null ? axios : axiosInstance).get(
+      `${API_PATH.gathering.search}?${keyword !== '' ? `&keyword=${keyword}` : ''}${locations.length !== 0 ? `&locations=${locations}` : ''}${genres.length !== 0 ? `&genres=${genres}` : ''}&size=${size}`
+    );
+    return res;
+  } catch (error) {
+    toast.error('모임 검색 목록 최신화 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
 export const GetReviewGathering = async ({
   locations,
   genres,

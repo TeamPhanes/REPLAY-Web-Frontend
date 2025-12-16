@@ -80,14 +80,42 @@ export const GetPreviewTheme = async (
   }
 };
 
-export const GetSearchTheme = async (keyword: string, size: number) => {
+export const GetSuggestTheme = async (keyword: string, size: number) => {
   try {
     const res = await axios.get(
-      `${API_PATH.theme.search}?${keyword !== '' ? `&keyword=${keyword}` : ''}&size=${size}`
+      `${API_PATH.theme.suggest}?${keyword !== '' ? `&keyword=${keyword}` : ''}&size=${size}`
     );
     return res;
   } catch (error) {
     toast.error('방탈출 리스트업 진행 중 오류가 있습니다.');
+    throw error;
+  }
+};
+
+interface GetSearchThemeProps {
+  accessToken: string | null;
+  locations: string[];
+  genres: string[];
+  size: number;
+  keyword: string;
+  cursor?: string;
+}
+
+export const GetSearchTheme = async ({
+  accessToken,
+  locations,
+  genres,
+  size,
+  keyword,
+  cursor,
+}: GetSearchThemeProps) => {
+  try {
+    const res = await (accessToken === null ? axios : axiosInstance).get(
+      `${API_PATH.theme.search}?${keyword !== '' ? `&keyword=${keyword}` : ''}${locations.length !== 0 ? `&locations=${locations}` : ''}${genres.length !== 0 ? `&genres=${genres}` : ''}&size=${size}`
+    );
+    return res;
+  } catch (error) {
+    toast.error('방탈출 검색 목록 최신화 중 오류가 있습니다.');
     throw error;
   }
 };

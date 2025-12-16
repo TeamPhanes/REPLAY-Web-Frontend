@@ -14,16 +14,21 @@ export const API_PATH = {
     like: `${BASE_URL}/theme/like`,
     visit: `${BASE_URL}/theme/visit`,
     search: `${BASE_URL}/theme/search`,
+    suggest: `${BASE_URL}/theme/notice`,
     preview: `${BASE_URL}/theme/preview`,
   },
   gathering: {
     default: `${BASE_URL}/gathering`,
     likeGathering: `${BASE_URL}/gathering/like`,
+    search: `${BASE_URL}/gathering/search`,
     host: `${BASE_URL}/gathering/host`,
     date: `${BASE_URL}/gathering/date`,
   },
   gathering_member: {
     default: `${BASE_URL}/gathering/member`,
+  },
+  notice: {
+    default: `${BASE_URL}/notice`,
   },
   review: {
     default: `${BASE_URL}/review`,

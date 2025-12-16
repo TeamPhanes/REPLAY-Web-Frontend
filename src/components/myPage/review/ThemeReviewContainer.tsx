@@ -202,7 +202,7 @@ export default function ThemeReviewContainer({
                 </div>
               ) : (
                 <Image
-                  src={theme.reviewImages[0] || ReviewDefaultImage}
+                  src={theme.reviewImages[0].image || ReviewDefaultImage}
                   alt="리뷰 이미지"
                   width={118}
                   height={118}

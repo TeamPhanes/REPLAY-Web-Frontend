@@ -2,10 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { mockGatherings } from '@/data/mockGatherings';
-import { mockRooms } from '@/data/mockRooms';
 import { useAuthStore } from '@/store/authStore';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import 'swiper/css';
@@ -14,10 +11,9 @@ import 'swiper/css/grid';
 import GatheringCard from '@/components/@shared/cardList/GatheringCard';
 import RoomCard from '@/components/@shared/cardList/RoomCard';
 import EmptySearchResult from '@/components/search/EmptySearchResult';
-import { useGetGathering } from '@/hooks/reactQuery/useGetGathering';
-import { useGetTheme } from '@/hooks/reactQuery/useGetTheme';
+import { useGetSearchGathering } from '@/hooks/reactQuery/useGetSearchGathering';
+import { useGetSearchTheme } from '@/hooks/reactQuery/useGetSearchTheme';
 import { GatheringDTO } from '@/types/gathering/gathering.type';
-import { RoomDTO } from '@/types/room/room.types';
 import { ThemeListDTO } from '@/types/theme/theme.types';
 import ChevronRight from '@/public/icons/arrow/chevron_right.svg';
 
@@ -27,35 +23,21 @@ export default function SearchResults() {
   const { accessToken } = useAuthStore();
   const [page, setPage] = useState(0);
   const { genreList, districtList } = useQueryStringStore();
-
-  const { gathering } = useGetGathering(
+  const { searchTheme } = useGetSearchTheme({
     accessToken,
-    districtList,
-    genreList,
-    page,
-    12
-  );
+    locations: districtList,
+    genres: genreList,
+    size: 2,
+    keyword,
+  });
+  const { searchGathering } = useGetSearchGathering({
+    accessToken,
+    locations: districtList,
+    genres: genreList,
+    size: 2,
+    keyword,
+  });
 
-  // const { theme } = useGetTheme(
-  //   accessToken,
-  //   keyword,
-  //   0,
-  //   10,
-  //   'likes',
-  //   '시.도',
-  //   '시.군.구',
-  //   '전체'
-  // );
-  // const { gathering } = useGetGathering(
-  //   accessToken,
-  //   keyword,
-  //   0,
-  //   10,
-  //   'dateTime',
-  //   '시.도',
-  //   '시.군.구',
-  //   '전체'
-  // );
   return (
     <>
       <div className="flex items-center justify-between">
@@ -76,14 +58,16 @@ export default function SearchResults() {
         </button>
       </div>
 
-      {mockRooms && (
+      {searchTheme && (
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {mockRooms.data.map((room: ThemeListDTO['get']) => (
+          {searchTheme.contents.map((room: ThemeListDTO['get']) => (
             <RoomCard room={room} key={room.id} />
           ))}
         </div>
       )}
-      {mockRooms && mockRooms.data.length === 0 && <EmptySearchResult />}
+      {searchTheme && searchTheme.contents.length === 0 && (
+        <EmptySearchResult />
+      )}
       <div className="flex items-center justify-between mt-[52px]">
         <h2 className="font-semibold text-base md:text-lg tracking-[-2.5%]">
           모임
@@ -102,14 +86,16 @@ export default function SearchResults() {
         </button>
       </div>
 
-      {gathering && (
+      {searchGathering && (
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
-          {gathering.content.map((data: GatheringDTO['get'][][number]) => (
-            <GatheringCard key={data.id} gathering={data} />
-          ))}
+          {searchGathering.contents.map(
+            (data: GatheringDTO['get'][][number]) => (
+              <GatheringCard key={data.id} gathering={data} />
+            )
+          )}
         </div>
       )}
-      {mockGatherings && mockGatherings.data.length === 0 && (
+      {searchGathering && searchGathering.contents.length === 0 && (
         <EmptySearchResult />
       )}
     </>

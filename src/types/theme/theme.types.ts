@@ -29,7 +29,7 @@ export interface VisitThemeListDTO {
     isSuccess: true;
     levelReview: string;
     numberOfPlayer: number;
-    reviewImages: string[];
+    reviewImages: { id: number; image: string }[];
     score: number;
     cafeName: string;
     spotName: string;
@@ -48,7 +48,7 @@ export interface PreviewThemeListDTO {
   };
 }
 
-export interface SearchThemeListDTO {
+export interface SuggestThemeListDTO {
   get: {
     id: number;
     spotName: string;

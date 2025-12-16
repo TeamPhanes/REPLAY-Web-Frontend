@@ -3,10 +3,10 @@
 import { useEffect } from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import Image from 'next/image';
-import { useGetSearchTheme } from '@/hooks/reactQuery/useGetSearchTheme';
+import { useGetSuggestTheme } from '@/hooks/reactQuery/useGetSuggestTheme';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useOpen } from '@/hooks/useOpen';
-import { SearchThemeListDTO } from '@/types/theme/theme.types';
+import { SuggestThemeListDTO } from '@/types/theme/theme.types';
 
 interface FormValues {
   name: string;
@@ -42,7 +42,7 @@ export default function AddGatheringSearchBar({
   const { debouncedValue } = useDebounce(search, 500);
   const { isOpen, openModal, closeModal } = useOpen();
 
-  const { searchTheme } = useGetSearchTheme(debouncedValue, 5, {
+  const { suggestTheme } = useGetSuggestTheme(debouncedValue, 5, {
     enabled: !disabled,
   });
 
@@ -107,8 +107,8 @@ export default function AddGatheringSearchBar({
       <div
         className={`${isOpen ? '' : 'hidden'} w-full absolute bg-card-white top-16 p-4 z-30 flex flex-col gap-1 shadow-lg`}
       >
-        {searchTheme &&
-          searchTheme.contents.map((room: SearchThemeListDTO['get']) => (
+        {suggestTheme &&
+          suggestTheme.contents.map((room: SuggestThemeListDTO['get']) => (
             <button
               type="button"
               key={room.id}
@@ -123,7 +123,7 @@ export default function AddGatheringSearchBar({
               <p className="text-xl">{room.title}</p>
             </button>
           ))}
-        {searchTheme && searchTheme.length === 0 && (
+        {suggestTheme && suggestTheme.length === 0 && (
           <p className="text-xl">검색 결과가 없습니다.</p>
         )}
       </div>
