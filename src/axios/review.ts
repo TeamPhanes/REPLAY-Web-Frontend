@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import { axiosInstance } from '@/libs/axiosInstance';
 import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
+import { ReviewDTO } from '@/types/review/review.type';
 import { toKSTString } from '@/utils/dateChange';
 
 export const GetReview = async (
@@ -30,22 +31,7 @@ export const GetReviewSummary = async (themeId: string | string[]) => {
     throw error;
   }
 };
-
-interface ReviewData {
-  review: {
-    score: number;
-    themeReview: string;
-    levelReview: string;
-    storyReview: string;
-    isSuccess: string;
-    numberOfPlayer: number;
-    hint: number;
-    content: string;
-    date: Date;
-  };
-  images: File[] | null;
-}
-export const PostReview = async (data: ReviewData, themeId: number) => {
+export const PostReview = async (data: ReviewDTO['post'], themeId: number) => {
   const formData = new FormData();
 
   const reviewPayload = {
@@ -57,6 +43,7 @@ export const PostReview = async (data: ReviewData, themeId: number) => {
     numberOfPlayer: data.review.numberOfPlayer,
     hint: data.review.hint,
     content: data.review.content,
+    representativeId: data.review.representativeId,
     date: toKSTString(data.review.date),
   };
 
@@ -66,8 +53,8 @@ export const PostReview = async (data: ReviewData, themeId: number) => {
   );
 
   if (data.images && data.images.length > 0) {
-    data.images.forEach((file) => {
-      formData.append('images', file);
+    data.images.forEach((file, index) => {
+      formData.append(`image${index}`, file.image === null ? '' : file.image);
     });
   }
 
@@ -87,50 +74,48 @@ export const PostReview = async (data: ReviewData, themeId: number) => {
   }
 };
 
-// export const PatchReview = async (
-//   data: ReviewData,
-//   reviewId: number | undefined,
-//   previewUrl: string | null
-// ) => {
-//   const formData = new FormData();
-//   formData.append('themeId', String(data.themeId));
-//   formData.append('content', data.content);
-//   formData.append('rating', String(data.rating));
-//   formData.append('success', data.success);
-//   formData.append('hint', String(data.hint));
-//   formData.append('numberOfPlayer', String(data.numberOfPlayer));
-//   formData.append('themeReview', data.themeReview);
-//   formData.append('storyReview', data.storyReview);
-//   formData.append('levelReview', data.levelReview);
+export const PatchReview = async (
+  data: ReviewDTO['patch'],
+  themeId: number
+) => {
+  const formData = new FormData();
 
-//   if (data.image) {
-//     formData.append('image', data.image);
-//   }
+  const reviewPayload = {
+    score: data.review.score,
+    themeReview: data.review.themeReview,
+    levelReview: data.review.levelReview,
+    storyReview: data.review.storyReview,
+    isSuccess: data.review.isSuccess,
+    numberOfPlayer: data.review.numberOfPlayer,
+    deleteImageIds: data.review.deleteImageIds,
+    hint: data.review.hint,
+    content: data.review.content,
+    representativeId: data.review.representativeId,
+    date: toKSTString(data.review.date),
+  };
 
-//   try {
-//     if (data.image || previewUrl === null) {
-//       await axiosInstance.patch(
-//         `${API_PATH.review.default}/${reviewId}`,
-//         formData,
-//         {
-//           headers: {
-//             'Content-Type': data.image
-//               ? 'multipart/form-data'
-//               : 'application/json',
-//           },
-//         }
-//       );
-//     } else {
-//       await axiosInstance.patch(
-//         `${API_PATH.review.default}/${reviewId}`,
-//         formData
-//       );
-//     }
-//   } catch (error) {
-//     toast.error('리뷰 수정에 실패했습니다.');
-//     throw error;
-//   }
-// };
+  formData.append(
+    'review',
+    new Blob([JSON.stringify(reviewPayload)], { type: 'application/json' })
+  );
+
+  if (data.images && data.images.length > 0) {
+    data.images.forEach((file, index) => {
+      formData.append(`image${index}`, file.image === null ? '' : file.image);
+    });
+  }
+
+  try {
+    await axiosInstance.put(`${API_PATH.review.default}/${themeId}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  } catch (error) {
+    toast.error('리뷰 수정에 실패했습니다.');
+    throw error;
+  }
+};
 
 export const DeleteReview = async (
   reviewId: number | undefined,

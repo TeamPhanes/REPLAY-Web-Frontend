@@ -172,12 +172,7 @@ export default function PostReviewModal({
             ) : (
               <MainBlueButton
                 type="button"
-                onClick={handleSubmit((data) =>
-                  onSubmit(
-                    data,
-                    imageFiles.filter((file): file is File => file !== null)
-                  )
-                )}
+                onClick={handleSubmit((data) => onSubmit(data, imageFiles))}
                 className="!text-base min-w-96 h-[52px]"
               >
                 게시하기

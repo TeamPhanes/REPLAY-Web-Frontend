@@ -1,37 +1,29 @@
 import { useForm } from 'react-hook-form';
-
-interface FormValues {
-  id?: number;
-  themeId?: number;
-  content?: string;
-  rating?: number;
-  success?: string;
-  images?: File | null;
-  hint?: number;
-  numberOfPlayer?: number;
-  themeReview?: string;
-  storyReview?: string;
-  levelReview?: string;
-}
+import { ReviewDTO } from '@/types/review/review.type';
 
 export default function usePatchReviewForm(
   mutate: any,
   onclose: () => void,
-  defaultValues: FormValues
+  defaultValues: ReviewDTO['patch']['review'],
+  handleImageReset: () => void
 ) {
-  const methods = useForm<FormValues>({
+  const methods = useForm<ReviewDTO['patch']['review']>({
     defaultValues,
   });
 
   const { reset } = methods;
 
-  const onSubmit = (data: FormValues, imageFile: File | null) => {
+  const onSubmit = (
+    data: ReviewDTO['patch']['review'],
+    imageFile: ReviewDTO['patch']['images']
+  ) => {
     mutate(
-      { ...data, image: imageFile },
+      { review: data, images: imageFile },
       {
         onSuccess: () => {
           onclose();
           reset();
+          handleImageReset();
         },
       }
     );

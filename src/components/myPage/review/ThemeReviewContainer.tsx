@@ -236,23 +236,25 @@ export default function ThemeReviewContainer({
             room={selectedRoom}
           />
 
-          {/* <PatchReviewModal
+          <PatchReviewModal
             isOpen={isPatchModal}
             onClose={() => setPatchModal(false)}
             room={selectedRoom}
+            reviewImages={selectedRoom.reviewImages}
             defaultValues={{
-              id: selectedRoom.reviewId,
-              themeId: selectedRoom.themeId,
-              content: selectedRoom.reviewComment,
-              rating: selectedRoom.myRating,
-              success: String(selectedRoom.success),
-              hint: selectedRoom.hint,
-              numberOfPlayer: selectedRoom.numberOfPlayer,
+              score: selectedRoom.score,
               themeReview: selectedRoom.themeReview,
-              storyReview: selectedRoom.storyReview,
               levelReview: selectedRoom.levelReview,
+              storyReview: selectedRoom.storyReview,
+              isSuccess: String(selectedRoom.isSuccess),
+              numberOfPlayer: selectedRoom.numberOfPlayer,
+              deleteImageIds: [],
+              hint: selectedRoom.hint,
+              content: selectedRoom.content,
+              representativeId: selectedRoom.representativeId,
+              date: selectedRoom.visitDate,
             }}
-          /> */}
+          />
         </>
       )}
     </div>

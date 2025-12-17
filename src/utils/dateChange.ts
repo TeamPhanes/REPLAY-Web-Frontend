@@ -1,4 +1,4 @@
-const parseDate = (dateString: string) => {
+const parseDate = (dateString: string | Date) => {
   const date = new Date(dateString);
 
   const fullYear = date.getFullYear();
@@ -12,49 +12,49 @@ const parseDate = (dateString: string) => {
 };
 
 // Ex) 2025-04-01
-export const yearMonthDay = (dateString: string) => {
+export const yearMonthDay = (dateString: string | Date) => {
   const { fullYear, month, day } = parseDate(dateString);
   return `${fullYear}-${month}-${day}`;
 };
 
 // Ex) 2025-04-01 13:00
-export const yearMonthDayHourTime = (dateString: string) => {
+export const yearMonthDayHourTime = (dateString: string | Date) => {
   const { fullYear, month, day, hours, minutes } = parseDate(dateString);
   return `${fullYear}-${month}-${day} ${hours}:${minutes}`;
 };
 
 // Ex) 25.04.01
-export const periodYearMonthDay = (dateString: string) => {
+export const periodYearMonthDay = (dateString: string | Date) => {
   const { shortYear, month, day } = parseDate(dateString);
   return `${shortYear}.${month}.${day}`;
 };
 
 // Ex) 2025.04.01
-export const periodFullYearMonthDay = (dateString: string) => {
+export const periodFullYearMonthDay = (dateString: string | Date) => {
   const { fullYear, month, day } = parseDate(dateString);
   return `${fullYear}.${month}.${day}`;
 };
 
 // Ex) 25.04.01 12:50
-export const periodYearMonthDayHourTime = (dateString: string) => {
+export const periodYearMonthDayHourTime = (dateString: string | Date) => {
   const { shortYear, month, day, hours, minutes } = parseDate(dateString);
   return `${shortYear}.${month}.${day} ${hours}:${minutes}`;
 };
 
 // Ex) 2025년 04월 01일
-export const koreaYearMonthDay = (dateString: string) => {
+export const koreaYearMonthDay = (dateString: string | Date) => {
   const { fullYear, month, day } = parseDate(dateString);
   return `${fullYear}년 ${month}월 ${day}일`;
 };
 
 // Ex) 12:30
-export const HourTime = (dateString: string) => {
+export const HourTime = (dateString: string | Date) => {
   const { hours, minutes } = parseDate(dateString);
   return `${hours} : ${minutes}`;
 };
 
 // Ex) 1년 2개월, 2개월 10일, 10일 (활동 기간을 체크하는 함수)
-export const periodOfActivity = (dateString: string) => {
+export const periodOfActivity = (dateString: string | Date) => {
   if (!dateString) {
     return '알 수 없음';
   }
