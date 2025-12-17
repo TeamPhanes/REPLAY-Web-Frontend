@@ -3,27 +3,14 @@ import { useRouter } from 'next/navigation';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { PostReview } from '@/axios/review';
+import { ReviewDTO } from '@/types/review/review.type';
 
-interface PostReviewData {
-  review: {
-    score: number;
-    themeReview: string;
-    levelReview: string;
-    storyReview: string;
-    isSuccess: string;
-    numberOfPlayer: number;
-    hint: number;
-    content: string;
-    date: Date;
-  };
-  images: File[] | null;
-}
 export const usePostReview = (themeId: number) => {
   const queryclient = useQueryClient();
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: (data: PostReviewData) => PostReview(data, themeId),
+    mutationFn: (data: ReviewDTO['post']) => PostReview(data, themeId),
     onSuccess: () => {
       queryclient.invalidateQueries({ queryKey: ['theme'] });
       queryclient.invalidateQueries({ queryKey: ['userReviewTheme'] });

@@ -28,6 +28,7 @@ export interface VisitThemeListDTO {
     image: string;
     isSuccess: true;
     levelReview: string;
+    reviewId: number;
     numberOfPlayer: number;
     reviewImages: { id: number; image: string }[];
     score: number;
@@ -36,7 +37,8 @@ export interface VisitThemeListDTO {
     storyReview: string;
     themeReview: string;
     title: string;
-    visitDate: string;
+    representativeId: string;
+    visitDate: Date;
   };
 }
 

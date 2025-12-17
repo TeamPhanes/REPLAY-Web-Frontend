@@ -25,6 +25,37 @@ export interface ReviewDTO {
       themeReview: string;
     }[];
   };
+  post: {
+    review: {
+      score: number;
+      themeReview: string;
+      levelReview: string;
+      storyReview: string;
+      isSuccess: string;
+      numberOfPlayer: number;
+      hint: number;
+      content: string;
+      representativeId: string;
+      date: Date;
+    };
+    images: { id: string; image: File | null }[];
+  };
+  patch: {
+    review: {
+      score: number;
+      themeReview: string;
+      levelReview: string;
+      storyReview: string;
+      isSuccess: string;
+      numberOfPlayer: number;
+      deleteImageIds: number[];
+      hint: number;
+      content: string;
+      representativeId: string;
+      date: Date;
+    };
+    images: { id: string; image: File | null }[];
+  };
 }
 
 // 리뷰 요약 정보 조회 Response

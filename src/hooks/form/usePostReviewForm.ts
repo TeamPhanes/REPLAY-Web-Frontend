@@ -1,19 +1,5 @@
 import { useForm } from 'react-hook-form';
-
-interface FormValues {
-  review: {
-    score: number;
-    themeReview: string;
-    levelReview: string;
-    storyReview: string;
-    isSuccess: string;
-    numberOfPlayer: number;
-    hint: number;
-    content: string;
-    date: Date;
-  };
-  images: File[] | null;
-}
+import { ReviewDTO } from '@/types/review/review.type';
 
 export default function usePostReviewForm(
   mutate: any,
@@ -22,7 +8,7 @@ export default function usePostReviewForm(
   setIsReview: () => void
 ) {
   const now = new Date();
-  const methods = useForm<FormValues['review']>({
+  const methods = useForm<ReviewDTO['post']['review']>({
     defaultValues: {
       score: 0,
       themeReview: 'NORMAL',
@@ -32,6 +18,7 @@ export default function usePostReviewForm(
       numberOfPlayer: 0,
       hint: 0,
       content: '',
+      representativeId: 'image0',
       date: now,
     },
   });
@@ -39,8 +26,8 @@ export default function usePostReviewForm(
   const { reset } = methods;
 
   const onSubmit = (
-    data: FormValues['review'],
-    imageFiles: FormValues['images']
+    data: ReviewDTO['post']['review'],
+    imageFiles: ReviewDTO['post']['images']
   ) => {
     mutate(
       { review: data, images: imageFiles },
