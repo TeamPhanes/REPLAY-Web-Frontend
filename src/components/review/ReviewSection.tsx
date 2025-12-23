@@ -10,6 +10,7 @@ import LightbulbIcon from '@/public/icons/cardList/lightbulb_gray_icon.svg';
 import TrophyIcon from '@/public/icons/cardList/trophy_gray_icon.svg';
 import UsersIcon from '@/public/icons/cardList/users_gray_icon.svg';
 import SearchIcon from '@/public/icons/search/dark_search.svg';
+import EmptySearchResult from '../search/EmptySearchResult';
 
 interface ReviewSectionProps {
   review: ReviewDTO['get'];
@@ -37,16 +38,9 @@ export default function ReviewSection({
     DISLIKE: '아쉬움',
   };
   if (review.content.length === 0)
-    return (
-      <div className="flex flex-col justify-center items-center md:w-xl h-[364px] rounded-lg bg-card-white gap-4 mt-6">
-        <Image src={SearchIcon} alt="검색 아이콘" width={80} height={80} />
-        <p className="font-normal text-2xl/[34px] tracking-[-2.5%] text-font-baseBlack">
-          리뷰를 찾지 못했어요.
-        </p>
-      </div>
-    );
+    return <EmptySearchResult text="리뷰를 찾지 못했어요." />;
   return (
-    <div className="mt-6 bg-card-white rounded-lg">
+    <div className="bg-card-white rounded-lg">
       <div className="flex justify-between items-center p-20 border-b-4 border-line-lightGray">
         <div className="flex flex-col justify-between text-center h-[174px]">
           <p className="text-lg/[26px] tracking-[-2.5%] text-font-baseBlack font-normal">

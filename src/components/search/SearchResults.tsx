@@ -66,7 +66,7 @@ export default function SearchResults() {
         </div>
       )}
       {searchTheme && searchTheme.contents.length === 0 && (
-        <EmptySearchResult />
+        <EmptySearchResult text="방탈출을 찾지 못했어요." />
       )}
       <div className="flex items-center justify-between mt-[52px]">
         <h2 className="font-semibold text-base md:text-lg tracking-[-2.5%]">
@@ -96,7 +96,7 @@ export default function SearchResults() {
         </div>
       )}
       {searchGathering && searchGathering.contents.length === 0 && (
-        <EmptySearchResult />
+        <EmptySearchResult text="모임을 찾지 못했어요." />
       )}
     </>
   );

@@ -59,7 +59,7 @@ export default function AddGatheringModal({
             <AddGatheringSearchBar
               search={search}
               searchChange={setSearch}
-              themeId={watch('themeId')}
+              themeId={themeIdProps ?? watch('themeId')}
               themeIdChange={(themeId) =>
                 setValue('themeId', themeId, {
                   shouldValidate: true,
