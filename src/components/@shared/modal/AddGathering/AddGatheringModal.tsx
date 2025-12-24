@@ -45,7 +45,7 @@ export default function AddGatheringModal({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      className="bg-[#F7F7FB] rounded-lg p-8 w-[1064px]"
+      className="bg-[#F7F7FB] rounded-lg p-8 w-[1064px] relative"
     >
       <h2 className="text-[28px]/[38px] text-font-baseBlack font-semibold tracking-[-2.5%] text-center mt-7 mb-[60px]">
         모임 생성

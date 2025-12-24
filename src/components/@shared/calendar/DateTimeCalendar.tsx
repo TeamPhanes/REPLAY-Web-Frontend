@@ -4,6 +4,8 @@ import { useRef, useState } from 'react';
 import Calendar from 'react-calendar';
 import '@/styles/dateTimeCalendar.css';
 import ScrollTimePicker from '@/components/@shared/calendar/ScrollTimePicker';
+import { HourTime, koreaYearMonthDay } from '@/utils/dateChange';
+import MainBlueButton from '../button/MainBlueButton';
 
 type CalendarValue = Date | null | [Date | null, Date | null];
 
@@ -72,44 +74,66 @@ export default function DateTimeCalendar({
     onClose();
   };
 
+  if (!isOpen) return null;
+
   return (
     <div
-      className={`${isOpen ? 'animate-dropdownIn' : 'hidden'} ${layout} border-2 absolute z-[80] flex flex-col rounded-[10px] border-grayFont bg-grayFont py-5 px-2 md:pl-6 shadow-xl md:pr-0`}
+      className={`${layout} shrink-0 absolute z-[60] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-[60px] py-8 rounded-lg`}
     >
-      <div className="flex flex-col md:h-[332px] md:flex-row">
-        <Calendar
-          onChange={handleDateChange}
-          value={date}
-          calendarType="gregory"
-          locale="en-us"
-          next2Label={null}
-          prev2Label={null}
-          minDetail="year"
-          className="date-time-calendar"
-        />
-        <ScrollTimePicker
-          selectedHour={selectedHour}
-          selectedMinute={selectedMinute}
-          onHourChange={setSelectedHour}
-          onMinuteChange={setSelectedMinute}
-        />
+      <p className="text-[32px]/[42px] text-font-baseBlack font-semibold text-center">
+        모임 일정을 설정해 주세요
+      </p>
+      <div className="flex h-[527px] flex-row mt-5 border-b-[1px] border-line-lightGray pb-8">
+        <div className="flex flex-col gap-7">
+          <p className="text-2xl/[34px] text-font-baseBlack font-semibold">
+            날짜 선택
+          </p>
+          <Calendar
+            onChange={handleDateChange}
+            value={date}
+            calendarType="gregory"
+            locale="en-us"
+            next2Label={null}
+            prev2Label={null}
+            minDetail="year"
+            className="date-time-calendar"
+          />
+        </div>
+        <div className="flex flex-col gap-7 pl-5">
+          <p className="text-2xl/[34px] text-font-baseBlack font-semibold">
+            시간 선택
+          </p>
+          <p className="text-base text-font-baseBlack font-semibold">
+            {koreaYearMonthDay(date)}
+          </p>
+          <ScrollTimePicker
+            selectedHour={selectedHour}
+            selectedMinute={selectedMinute}
+            onHourChange={setSelectedHour}
+            onMinuteChange={setSelectedMinute}
+          />
+        </div>
       </div>
 
-      <div className="mx-auto flex w-[250px] items-center justify-between">
-        <button
+      <div className="mt-8 flex justify-between items-center">
+        {/* <button
           type="button"
           className="w-[122px] border-cardActive border-2 py-3 px-[10px] text-buttonColor200 rounded-2xl bg-white font-semibold hover:bg-buttonColor200Hover"
           onClick={handleReset}
         >
           초기화
-        </button>
-        <button
+        </button> */}
+        <p className="text-[32px]/[42px] text-font-baseBlack font-semibold">
+          {koreaYearMonthDay(date)} {selectedHour.toString().padStart(2, '0')}:
+          {selectedMinute.toString().padStart(2, '0')}시
+        </p>
+        <MainBlueButton
           type="button"
-          className="w-[122px] bg-mainBlue rounded-2xl font-semibold py-3 px-[10px] hover:bg-mainBlueHover"
+          className="!text-base w-40 h-[52px]"
           onClick={handleSubmit}
         >
-          적용
-        </button>
+          확정 하기
+        </MainBlueButton>
       </div>
     </div>
   );

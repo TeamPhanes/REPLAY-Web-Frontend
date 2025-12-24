@@ -13,7 +13,7 @@ export default function AddGatheringSchedule({
 }: AddGatheringScheduleProps) {
   const { isOpen, toggleOpen } = useOpen();
   return (
-    <div className="relative">
+    <div>
       <p className="text-base text-font-baseBlack font-normal tracking-[-2.5%]">
         모임 일정
       </p>
@@ -29,7 +29,6 @@ export default function AddGatheringSchedule({
         selectedDate={dateTime}
         onClose={toggleOpen}
         onDateChange={dateTimeChange}
-        layout="top-[72px] left-0"
       />
     </div>
   );

@@ -12,20 +12,38 @@ export default function ScrollTimePicker({
   onMinuteChange,
 }: ScrollTimePickerProps) {
   const hours = [
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    21, 22, 23,
+    6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0, 1, 2,
+    3, 4, 5,
   ];
-  const minutes = Array.from({ length: 12 }, (_, i) => i * 5);
+  const minutes = [0, 30];
 
   return (
-    <div className="flex w-[300px] flex-col rounded-md p-5 text-secondary-5 md:w-auto md:flex-row">
-      <div className="flex flex-col gap-4 md:flex-row">
-        <div className="dateTimeCalendar-custom flex overflow-x-scroll overflew-y-hidden border-y-[1px] border-solid border-grayFont py-4 md:flex-col md:overflow-x-hidden md:overflow-y-scroll md:border-x-[1px] md:border-y-0 md:px-4 md:py-0">
+    <div className="flex flex-col overflow-x-hidden overflow-y-scroll">
+      {hours.map((hour, index) => {
+        return minutes.map((minute) => {
+          return (
+            <button
+              type="button"
+              key={index}
+              className={`${selectedHour === hour && selectedMinute === minute ? 'text-brand-main500 font-semibold' : 'text-font-baseBlack font-normal'} hover:bg-brand-main50 text-start text-base p-4 w-[237px]`}
+              onClick={() => {
+                onHourChange(hour);
+                onMinuteChange(minute);
+              }}
+            >
+              {hour.toString().padStart(2, '0')}:
+              {minute.toString().padStart(2, '0')}
+            </button>
+          );
+        });
+      })}
+
+      {/* <div className="dateTimeCalendar-custom flex overflow-x-scroll overflew-y-hidden border-y-[1px] border-solid border-grayFont py-4 md:flex-col md:overflow-x-hidden md:overflow-y-scroll md:border-x-[1px] md:border-y-0 md:px-4 md:py-0">
           {hours.map((hour) => (
             <button
               type="button"
               key={hour}
-              className={`rounded-md p-3 text-center ${
+              className={`text-font-baseBlack rounded-md p-3 text-center ${
                 selectedHour === hour ? 'bg-mainPurple' : ''
               } hover:bg-mainBlue`}
               onClick={() => onHourChange(hour)}
@@ -40,7 +58,7 @@ export default function ScrollTimePicker({
             <button
               type="button"
               key={minute}
-              className={`rounded-md p-3 text-center ${
+              className={`text-font-baseBlack rounded-md p-3 text-center ${
                 selectedMinute === minute ? 'bg-mainPurple' : ''
               } hover:bg-mainBlue`}
               onClick={() => onMinuteChange(minute)}
@@ -48,8 +66,7 @@ export default function ScrollTimePicker({
               {minute.toString().padStart(2, '0')}
             </button>
           ))}
-        </div>
-      </div>
+        </div> */}
     </div>
   );
 }
