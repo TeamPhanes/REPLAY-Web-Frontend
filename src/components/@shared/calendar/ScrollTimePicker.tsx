@@ -18,7 +18,7 @@ export default function ScrollTimePicker({
   const minutes = [0, 30];
 
   return (
-    <div className="flex flex-col overflow-x-hidden overflow-y-scroll">
+    <div className="h-[415px] flex flex-col overflow-x-hidden overflow-y-scroll">
       {hours.map((hour, index) => {
         return minutes.map((minute) => {
           return (
