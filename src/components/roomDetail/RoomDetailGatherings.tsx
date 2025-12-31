@@ -40,7 +40,9 @@ export default function RoomDetailGatherings({
           ))}
       </div>
       <div className="w-full">
-        {data && data.length === 0 && <EmptySearchResult />}
+        {data && data.length === 0 && (
+          <EmptySearchResult text="모임을 찾지 못했어요." />
+        )}
       </div>
     </>
   );

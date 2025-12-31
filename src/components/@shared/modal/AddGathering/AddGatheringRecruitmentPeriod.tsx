@@ -42,7 +42,6 @@ export default function AddGatheringRecruitmentPeriod({
             selectedDate={registrationStart}
             onClose={toggleRegistrationStartDate}
             onDateChange={registrationStartChange}
-            layout="md:top-[72px] md:left-0"
           />
         </div>
       </div>
@@ -63,7 +62,6 @@ export default function AddGatheringRecruitmentPeriod({
             selectedDate={registrationEnd}
             onClose={toggleRegistrationEndDate}
             onDateChange={registrationEndChange}
-            layout="md:top-[72px] md:left-0"
           />
         </div>
       </div>

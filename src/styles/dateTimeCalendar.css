@@ -5,23 +5,20 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  width: 300px;
-  background: #767676;
+  width: 364px;
 }
 
 /* 네비게이션 */
 .date-time-calendar .react-calendar__navigation {
-  display: flex;
-  justify-content: space-between;
-  color: #ffffff;
-  padding: 5px;
-}
-
-/* 네비게이션 타이틀 */
-.date-time-calendar .react-calendar__navigation__label {
+  color: #111111;
   font-weight: 700;
   font-size: 20px;
-  text-align: start;
+  text-align: center;
+}
+
+.react-calendar__navigation__label {
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 /* 네비게이션 버튼 */
@@ -31,37 +28,45 @@
   min-width: 24px;
 }
 
-.date-time-calendar .react-calendar__navigation__prev-button {
-  position: absolute;
-  right: 50px;
+.react-calendar__month-view__weekdays {
+  margin-top: 20px;
+  text-align: center;
 }
 
 /* 요일 */
 .date-time-calendar .react-calendar__month-view__weekdays abbr {
   text-decoration: none;
-  font-weight: 600;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  font-size: 14px;
-  color: #ffffff;
-  height: 32px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #111111;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  width: 52px;
+}
+
+.react-calendar__month-view__days {
+  margin-top: 20px;
+  text-align: center;
 }
 
 /* 날짜 */
-.date-time-calendar .react-calendar__tile {
+.react-calendar__tile {
   font-weight: 400;
   font-size: 16px;
-  line-height: 24px;
-  width: 46px;
-  height: 38px;
-  color: #ffffff;
+  color: #111111;
   position: relative;
   z-index: 0;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
 /* 지난달과 다음달 날짜 */
 .date-time-calendar .react-calendar__month-view__days__day--neighboringMonth {
+  color: #999999;
+}
+
+.react-calendar__tile--active {
   color: #ffffff;
 }
 
@@ -70,10 +75,10 @@
   .react-calendar__month-view__days__day:enabled:hover::before,
 .date-time-calendar .react-calendar__tile--active::before {
   content: '';
-  background-color: #8487fb;
-  border-radius: 9999px;
-  width: 34px;
-  height: 34px;
+  background-color: #2227f7;
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -83,5 +88,19 @@
 
 .date-time-calendar
   .react-calendar__month-view__days__day:enabled:hover::before {
-  background-color: #2227f7;
+  content: '';
+  background-color: #e9e9e9 !important;
+  border-radius: 4px;
+  border: 1px solid #2227f7;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.date-time-calendar .react-calendar__month-view__days__day:enabled:hover {
+  color: #111111;
 }

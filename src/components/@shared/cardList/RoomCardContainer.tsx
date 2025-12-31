@@ -21,7 +21,9 @@ export default function RoomCardContainer({
             <RoomCard key={room.id} room={room} favoriteCheck={favoriteCheck} />
           ))}
       </div>
-      {data && data.length === 0 && <EmptySearchResult />}
+      {data && data.length === 0 && (
+        <EmptySearchResult text="방탈출을 찾지 못했어요." />
+      )}
     </>
   );
 }

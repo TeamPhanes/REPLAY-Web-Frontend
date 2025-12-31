@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import Modal from '@/components/@shared/modal/Modal';
+import chevron_black_down from '@/public/icons/arrow/chevron_black_down.svg';
 
 interface StroyModalProps {
   isOpen: boolean;
@@ -15,19 +17,25 @@ export default function StroyModal({
     <Modal
       isOpen={isOpen}
       onClose={closeModal}
-      className="bg-card-white rounded-[30px]"
+      className="bg-card-white rounded-[4px] px-6 py-3 md:w-[453px]"
     >
-      <div className="m-5 md:w-[655px]">
-        <div className="relative my-6 flex items-center justify-center">
-          <div className="w-[169px] border-t border-black" />
-          <p className="min-w-[90px] text-center text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
-            스토리
-          </p>
-          <div className="w-[169px] border-t border-black" />
-        </div>
-        <p className="text-base font-normal tracking-[-2.5%] text-basefont">
-          {story}
-        </p>
+      <div className="relative flex flex-col items-center justify-center gap-3">
+        <p className="text-xl text-font-baseBlack font-normal">스토리</p>
+        <p className="text-sm text-font-baseBlack font-normal">{story}</p>
+        <button
+          type="button"
+          onClick={closeModal}
+          className="flex items-center"
+        >
+          <p className="text-sm text-font-baseBlack font-normal">닫기</p>
+          <Image
+            src={chevron_black_down}
+            alt="닫기 아이콘"
+            width={18}
+            height={18}
+            className="rotate-180"
+          />
+        </button>
       </div>
     </Modal>
   );
