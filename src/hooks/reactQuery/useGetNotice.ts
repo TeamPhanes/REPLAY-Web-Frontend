@@ -4,10 +4,10 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { GetNotice } from '@/axios/notice';
 import { useShowLoading } from '@/hooks/useShowLoading';
 
-export const useGetNotice = () => {
+export const useGetNotice = (page: number) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ['notice'],
-    queryFn: () => GetNotice(),
+    queryKey: ['notice', page],
+    queryFn: () => GetNotice(page),
     retry: false,
     staleTime: 1000 * 60 * 5,
     placeholderData: keepPreviousData,

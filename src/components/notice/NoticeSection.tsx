@@ -14,8 +14,8 @@ import Loading from '../@shared/loading/Loading';
 
 export default function NoticeSection() {
   const [page, setPage] = useState(0);
-  const { notice, isLoading } = useGetNotice();
-  const totalItems = notice ? notice.totalCount : 0;
+  const { notice, isLoading } = useGetNotice(page);
+  const totalItems = notice ? notice.totalElements : 0;
   const { totalPages } = usePagination(page, totalItems, 10);
 
   if (isLoading) return <Loading isLoading={isLoading} />;

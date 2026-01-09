@@ -3,9 +3,11 @@ import { axiosInstance } from '@/libs/axiosInstance';
 import axios from 'axios';
 import { API_PATH } from '@/axios/path.config';
 
-export const GetNotice = async () => {
+export const GetNotice = async (page: number) => {
   try {
-    const res = await axios.get(`${API_PATH.notice.default}`);
+    const res = await axios.get(
+      `${API_PATH.notice.default}?page=${page}&size=${10}`
+    );
     return res;
   } catch (error) {
     toast.error('공지사항 목록 최신화 중 오류가 있습니다.');
@@ -28,11 +30,12 @@ export const PostNoticeImage = async (image: File) => {
   formData.append('image', image);
 
   try {
-    await axiosInstance.post(`${API_PATH.notice.image}`, formData, {
+    const res = await axiosInstance.post(`${API_PATH.notice.image}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
+    return res.data.image;
   } catch (error) {
     toast.error('이미지 전송에 실패했습니다.');
     throw error;

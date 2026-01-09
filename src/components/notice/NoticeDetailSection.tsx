@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import DOMPurify from 'dompurify';
+import parse from 'html-react-parser';
 import { useGetNoticeDetail } from '@/hooks/reactQuery/useGetNoticeDetail';
 import { periodFullYearMonthDay } from '@/utils/dateChange';
 import chevronWhite from '@/public/icons/arrow/chevron_white_down.svg';
@@ -42,11 +44,29 @@ export default function NoticeDetailSection() {
         </div>
       </div>
       <div className="w-full p-[10px]">
-        <p className="text-xl tracking-[-2.5%] text-font-baseWhite font-semibold">
-          {data.current.content}
-        </p>
+        {parse(DOMPurify.sanitize(data.current.content))}
       </div>
       <div className="w-full mt-20">
+        {data.prev === null ? null : (
+          <Link
+            href={`/notice/${data.prev.id}`}
+            className={`${data.prev === null ? 'hidden' : ''} ${data.next === null ? 'border-b-[1px]' : ''} border-t-[1px] py-6 border-line-secondDarkGray flex items-center`}
+          >
+            <Image
+              src={chevronWhite}
+              alt="윗 방향 화살표"
+              width={24}
+              height={24}
+              className="rotate-180"
+            />
+            <p className="px-[10px] text-2xl tracking-[-2.5%] text-font-baseWhite font-semibold">
+              이전글
+            </p>
+            <p className="text-lg tracking-[-2.5%] text-font-thirdWhite font-semibold">
+              {data.prev.title}
+            </p>
+          </Link>
+        )}
         {data.next === null ? null : (
           <Link
             href={`/notice/${data.next.id}`}
@@ -63,26 +83,6 @@ export default function NoticeDetailSection() {
             </p>
             <p className="text-lg tracking-[-2.5%] text-font-thirdWhite font-semibold">
               {data.next.title}
-            </p>
-          </Link>
-        )}
-        {data.prev === null ? null : (
-          <Link
-            href={`/notice/${data.prev.id}`}
-            className={`${data.prev === null ? 'hidden' : ''} ${data.next === null ? 'border-t-[1px]' : ''} border-b-[1px] py-6 border-line-secondDarkGray flex items-center`}
-          >
-            <Image
-              src={chevronWhite}
-              alt="윗 방향 화살표"
-              width={24}
-              height={24}
-              className="rotate-180"
-            />
-            <p className="px-[10px] text-2xl tracking-[-2.5%] text-font-baseWhite font-semibold">
-              이전글
-            </p>
-            <p className="text-lg tracking-[-2.5%] text-font-thirdWhite font-semibold">
-              {data.prev.title}
             </p>
           </Link>
         )}
