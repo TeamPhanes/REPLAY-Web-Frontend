@@ -29,6 +29,7 @@ export const API_PATH = {
   },
   notice: {
     default: `${BASE_URL}/notice`,
+    image: `${BASE_URL}/notice/image`,
   },
   review: {
     default: `${BASE_URL}/review`,
