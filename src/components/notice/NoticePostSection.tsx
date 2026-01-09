@@ -1,9 +1,16 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import MainWhiteButton from '@/components/@shared/button/MainWhiteButton';
-import NoticeWriteEditor from '@/components/notice/NoticeWriteEditor';
 import usePostNoticeForm from '@/hooks/form/usePostNoticeForm';
 import { usePostNotice } from '@/hooks/reactQuery/usePostNotice';
+
+const NoticeWriteEditor = dynamic(
+  () => import('@/components/notice/NoticeWriteEditor'),
+  {
+    ssr: false,
+  }
+);
 
 export default function NoticePostSection() {
   const { mutate: PostNotice } = usePostNotice();
