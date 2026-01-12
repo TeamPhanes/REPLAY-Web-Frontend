@@ -59,6 +59,7 @@ const config: Config = {
         card: {
           white: '#F3F3F3',
           modal: '#F7F7FB',
+          gray: '#4D4D4D',
         },
         loading: '#333333',
         mainBlue: '#2227F7',
