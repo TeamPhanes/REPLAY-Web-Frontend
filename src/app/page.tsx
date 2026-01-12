@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState } from 'react';
+import { useState } from 'react';
 import { popularList } from '@/data/home/homeBottomCarouselList';
 import { useGenreStore } from '@/store/useGenreStore';
 import Carousel from '@/components/@shared/carousel/Carousel';
@@ -32,7 +32,7 @@ export default function HomePage() {
   return (
     <PageContainer>
       <TypeChanger
-        gap="gap-12"
+        gap="gap-8 md:gap-12"
         list={genreList}
         selectedType={selectedGenre}
         setSelectedType={setSelectedGenre}
@@ -43,7 +43,7 @@ export default function HomePage() {
         imageHeight={520}
         buttonSize={36}
         delayTime={15000}
-        className="!w-[1000px] rounded-lg"
+        className="md:!w-[1000px] rounded-lg"
         buttonPosition={80}
         loop
         center
@@ -83,7 +83,7 @@ export default function HomePage() {
         />
       </div>
 
-      <div className="relative mt-10 md:mt-24 flex flex-col gap-4">
+      {/* <div className="relative mt-10 md:mt-24 flex flex-col gap-4">
         <h2 className="text-xl md:text-2xl font-semibold tracking-[-2.5%] text-white">
           HOT 매장 둘러보기
         </h2>
@@ -96,7 +96,7 @@ export default function HomePage() {
           className="!w-[525px] rounded-lg"
           buttonPosition={-6}
         />
-      </div>
+      </div> */}
     </PageContainer>
   );
 }

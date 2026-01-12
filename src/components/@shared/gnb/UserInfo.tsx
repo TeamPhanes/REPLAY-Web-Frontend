@@ -15,7 +15,7 @@ export default function UserInfo({ user }: UserInfoProps) {
   const { isOpen, toggleOpen } = useOpen();
 
   return (
-    <div className="flex items-center justify-center gap-[6px] shrink-0 max-w-40">
+    <div className="items-center justify-center gap-[6px] shrink-0 hidden md:flex">
       <Image
         src={user.image || userDefault}
         alt="유저 프로필 이미지"
@@ -23,7 +23,7 @@ export default function UserInfo({ user }: UserInfoProps) {
         height={24}
         className="h-6 w-6 rounded-full bg-line-Gray shadow-md"
       />
-      <p className="truncate">{user.nickname} 님</p>
+      <p className="truncate max-w-[130px]">{user.nickname} 님</p>
       <UserInfoDropdown isOpen={isOpen} onOpenChange={toggleOpen}>
         <button
           type="button"

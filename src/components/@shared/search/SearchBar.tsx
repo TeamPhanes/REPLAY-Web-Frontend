@@ -68,7 +68,7 @@ export default function SearchBar({ isFocus, onFocus }: SearchBarProps) {
   return (
     <div
       ref={searchBarRef}
-      className="h-12 px-4 py-3 min-w-[440px] border-b-[1px] border-line-Gray shrink-0 relative"
+      className={`${isFocus ? 'w-full md:w-auto border-b-[1px] px-4 py-3' : 'px-0 py-0 md:px-4 md:py-3'} h-12 md:border-b-[1px] border-line-Gray md:shrink-0 relative`}
     >
       <form
         onSubmit={handleSubmit}
@@ -79,12 +79,13 @@ export default function SearchBar({ isFocus, onFocus }: SearchBarProps) {
           alt="검색하기"
           width={24}
           height={24}
-          className={`${isFocus ? 'absolute right-4' : 'mr-[6px]'}`}
+          className={`${isFocus ? 'absolute right-4' : 'md:mr-[6px]'} cursor-pointer`}
+          onClick={() => onFocus(true)}
         />
         <input
           type="text"
           placeholder="내용을 입력해주세요"
-          className={`${isFocus ? 'w-[850px] pr-8' : 'w-full'} bg-brand-black text-base tracking-[-2.5%] font-normal text-font-baseWhite placeholder-font-disabled transition-all duration-300`}
+          className={`${isFocus ? 'md:w-[800px] pr-8' : 'w-0 md:w-full'} bg-brand-black text-base tracking-[-2.5%] font-normal text-font-baseWhite placeholder-font-disabled md:transition-all md:duration-300`}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onClick={() => onFocus(true)}

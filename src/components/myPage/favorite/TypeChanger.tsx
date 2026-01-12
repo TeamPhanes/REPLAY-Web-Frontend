@@ -22,9 +22,9 @@ export default function TypeChanger({
   const { genreList, addGenre, removeGenre } = useGenreStore();
 
   return (
-    <div className="flex justify-center my-12 items-center">
+    <div className="flex justify-center my-8 md:my-12 items-center">
       {isOpen && <div className="fixed inset-0 bg-black/50 z-40" />}
-      <div className={`flex ${gap}`}>
+      <div className={`flex ${gap} grid grid-cols-3 md:grid-cols-6`}>
         <button
           type="button"
           className={`text-xl md:text-2xl font-semibold tracking-[-2.5%] duration-500 ease-in-out hover:text-white ${
@@ -67,35 +67,22 @@ export default function TypeChanger({
       <div
         className={`${
           isOpen ? 'animate-dropdownIn' : 'hidden'
-        } bg-card-white grid grid-cols-12 absolute w-full rounded-[10px] top-10 z-40`}
+        } bg-card-white grid grid-cols-4 md:grid-cols-12 absolute w-full rounded-[10px] overflow-hidden top-16 md:top-10 z-40 border border-line-secondLightGray`}
       >
         {genreFilterList.map((value, index) => {
-          const isFirstRow = index < 12;
-          const isLastRow = index >= 12;
-          const isFirstCol = index % 12 === 0;
-          const isLastCol = index % 12 === 11;
+          const totalCount = genreFilterList.length;
 
-          let roundedClass = '';
+          const isMobileLastCol = (index + 1) % 4 === 0;
+          const isMobileLastRow = index >= totalCount - (totalCount % 4 || 4);
 
-          if (isFirstRow) {
-            if (isFirstCol) roundedClass = 'rounded-tl-[10px]';
-            else if (isLastCol) roundedClass = 'rounded-tr-[10px]';
-          }
-
-          if (isLastRow) {
-            if (isFirstCol) roundedClass = 'rounded-bl-[10px]';
-            else if (isLastCol) roundedClass = 'rounded-br-[10px]';
-          }
+          const isPcLastCol = (index + 1) % 12 === 0;
+          const isPcLastRow = index >= totalCount - (totalCount % 12 || 12);
 
           return (
             <button
               key={index}
               type="button"
-              className={`py-2 text-lg text-font-baseBlack font-normal hover:bg-brand-sub500 hover:font-semibold duration-500 border-line-secondLightGray 
-                ${isLastCol ? 'border-r-0' : 'border-r-[1px]'} ${isLastRow ? 'border-b-0' : 'border-b-[1px]'} 
-                ${genreList.includes(value) ? 'bg-brand-sub500 font-semibold' : ''} 
-                ${roundedClass}
-              `}
+              className={`py-2 text-lg text-font-baseBlack font-normal hover:bg-brand-sub500 hover:font-semibold duration-500 ${isMobileLastCol ? 'border-r-0' : 'border-r-[1px]'} ${isPcLastCol ? 'md:border-r-0' : 'md:border-r-[1px]'} ${isMobileLastRow ? 'border-b-0' : 'border-b-[1px]'} ${isPcLastRow ? 'md:border-b-0' : 'md:border-b-[1px]'} border-line-secondLightGray ${genreList.includes(value) ? 'bg-brand-sub500 font-semibold' : ''}`}
               onClick={() => {
                 if (genreList.includes(value)) removeGenre(value);
                 else addGenre(value);
