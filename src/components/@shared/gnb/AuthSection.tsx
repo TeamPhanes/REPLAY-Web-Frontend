@@ -5,7 +5,7 @@ import UserInfo from '@/components/@shared/gnb/UserInfo';
 import { useUserInfo } from '@/hooks/reactQuery/useUserInfo';
 import LoginButton from './LoginButton';
 
-export default function AuthSection() {
+export default function AuthSection({ isFocus }: { isFocus: boolean }) {
   const { accessToken } = useAuthStore();
   const { userInfo, isLoading } = useUserInfo({ enabled: !!accessToken });
 
@@ -15,9 +15,13 @@ export default function AuthSection() {
   //   );
   // }
 
-  return userInfo ? (
-    <UserInfo user={userInfo} />
-  ) : (
-    <LoginButton className="hidden md:block" />
+  return (
+    <div className={`${isFocus ? 'hidden xl:block' : ''}`}>
+      {userInfo ? (
+        <UserInfo user={userInfo} />
+      ) : (
+        <LoginButton className="hidden md:flex" />
+      )}
+    </div>
   );
 }

@@ -32,7 +32,7 @@ export default function HomePage() {
   return (
     <PageContainer>
       <TypeChanger
-        gap="gap-8 md:gap-12"
+        gap="gap-6 md:gap-12"
         list={genreList}
         selectedType={selectedGenre}
         setSelectedType={setSelectedGenre}

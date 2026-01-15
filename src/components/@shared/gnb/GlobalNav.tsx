@@ -17,11 +17,11 @@ export default function GlobalNav() {
   return (
     <div className="relative">
       {isSearchFocus && <div className="fixed inset-0 bg-black/50 z-40" />}
-      <div className="fixed top-0 left-0 h-[100px] w-full p-4 md:p-0 bg-brand-black z-50">
-        <div className="mx-auto flex h-full md:w-xl items-center md:gap-6 justify-between relative">
+      <div className="fixed top-0 left-0 h-[100px] w-full p-4 bg-brand-black z-50">
+        <div className="mx-auto flex h-full max-w-screen-xl items-center xl:gap-6 justify-between relative">
           <Link
             href="/"
-            className={`${isSearchFocus ? 'hidden md:block' : ''} flex items-center justify-center`}
+            className={`${isSearchFocus ? 'hidden xl:block' : ''} flex items-center justify-center`}
           >
             <Image
               src={ReplayMainLogo}
@@ -29,12 +29,12 @@ export default function GlobalNav() {
               width={229}
               height={59}
               quality={100}
-              className="w-[120px] h-[31px] md:w-[229px] md:h-[59px] shrink-0"
+              className="w-[229px] h-[59px] shrink-0"
               priority
             />
           </Link>
           <div
-            className={`shrink-0 flex items-center justify-center gap-2 md:gap-10 transition-all duration-300 left-[25%] absolute ${isSearchFocus ? 'opacity-0 pointer-events-none ' : 'opacity-100'}
+            className={`shrink-0 flex items-center justify-center gap-10 transition-all duration-300 left-72 absolute ${isSearchFocus ? 'opacity-0 pointer-events-none ' : 'opacity-100'}
   `}
           >
             {Object.keys(navLabelList).map((key) => {
@@ -50,9 +50,9 @@ export default function GlobalNav() {
               );
             })}
           </div>
-          <div className="w-full md:w-auto flex items-center gap-3 md:gap-6 justify-end">
+          <div className="w-full xl:w-auto flex items-center xl:gap-6 justify-end">
             <SearchBar isFocus={isSearchFocus} onFocus={setIsSearchFocus} />
-            <AuthSection />
+            <AuthSection isFocus={isSearchFocus} />
             <MobileMenuBar isFocus={isSearchFocus} />
           </div>
         </div>
