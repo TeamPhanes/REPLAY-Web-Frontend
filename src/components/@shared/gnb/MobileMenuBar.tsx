@@ -9,7 +9,6 @@ import DeleteIcon from '@/public/icons/delete/white_delete.svg';
 import MenuIcon from '@/public/icons/home/menu_white.svg';
 import LogoutIcon from '@/public/icons/user/gray_logout.svg';
 import userDefault from '@/public/icons/user/user_default.svg';
-import LoginButton from './LoginButton';
 
 interface MobileMenuBarProps {
   isFocus: boolean;
@@ -46,7 +45,20 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
                 <p className="truncate max-w-[130px]">{userInfo.nickname} 님</p>
               </div>
             ) : (
-              <LoginButton />
+              <Link href="/login" className="shrink-0">
+                <button
+                  type="button"
+                  className="items-center gap-[6px] shrink-0 flex"
+                >
+                  <Image
+                    src={userDefault}
+                    alt="유저 기본 이미지"
+                    width={24}
+                    height={24}
+                  />
+                  로그인
+                </button>
+              </Link>
             )}
             <button type="button" onClick={closeModal}>
               <Image src={DeleteIcon} alt="메뉴 끄기" width={24} height={24} />
@@ -56,6 +68,7 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
           <Link
             href="/mypage"
             className="bg-card-gray h-[70px] px-6 flex items-center justify-between"
+            onClick={closeModal}
           >
             <p className="text-2xl/[34px] text-font-baseWhite font-semibold">
               마이페이지
@@ -70,6 +83,7 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
           <Link
             href="/theme"
             className="bg-card-gray h-[70px] px-6 flex items-center justify-between border-t-[1px] border-line-darkGray"
+            onClick={closeModal}
           >
             <p className="text-2xl/[34px] text-font-baseWhite font-semibold">
               방탈출
@@ -84,6 +98,7 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
           <Link
             href="/gathering"
             className="bg-card-gray h-[70px] px-6 flex items-center justify-between border-t-[1px] border-line-darkGray"
+            onClick={closeModal}
           >
             <p className="text-2xl/[34px] text-font-baseWhite font-semibold">
               모임
@@ -98,6 +113,7 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
           <Link
             href="/ranking"
             className="bg-card-gray h-[70px] px-6 flex items-center justify-between border-t-[1px] border-line-darkGray"
+            onClick={closeModal}
           >
             <p className="text-2xl/[34px] text-font-baseWhite font-semibold">
               랭킹
@@ -112,6 +128,7 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
           <Link
             href="/notice"
             className="bg-card-gray h-[70px] px-6 flex items-center justify-between border-t-[1px] border-line-darkGray"
+            onClick={closeModal}
           >
             <p className="text-2xl/[34px] text-font-baseWhite font-semibold">
               공지사항

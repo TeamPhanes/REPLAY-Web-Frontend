@@ -18,16 +18,18 @@ export default function TypeChanger({
   selectedType,
   setSelectedType,
 }: TypeChangerProps) {
-  const { isOpen, toggleOpen } = useOpen();
+  const { isOpen, closeModal, toggleOpen } = useOpen();
   const { genreList, addGenre, removeGenre } = useGenreStore();
 
   return (
-    <div className="flex justify-center my-8 md:my-12 items-center">
-      {isOpen && <div className="fixed inset-0 bg-black/50 z-40" />}
-      <div className={`flex ${gap} grid grid-cols-3 md:grid-cols-6`}>
+    <div className="flex justify-center pt-4 xl:pt-0 mb-8 xl:my-12 items-center">
+      {isOpen && (
+        <div className="fixed inset-0 bg-black/50 z-40" onClick={closeModal} />
+      )}
+      <div className={`${gap} w-full justify-center flex flex-wrap`}>
         <button
           type="button"
-          className={`text-xl md:text-2xl font-semibold tracking-[-2.5%] duration-500 ease-in-out hover:text-white ${
+          className={`w-1/4 xl:w-auto text-[clamp(16px,6vw,20px)] xs:text-xl xl:text-2xl font-semibold tracking-[-2.5%] duration-500 ease-in-out hover:text-white ${
             selectedType === '전체' ? 'text-white' : 'text-grayFont'
           }`}
           onClick={() => setSelectedType('전체')}
@@ -38,7 +40,7 @@ export default function TypeChanger({
           <button
             key={index}
             type="button"
-            className={`text-xl md:text-2xl font-semibold tracking-[-2.5%] duration-500 ease-in-out hover:text-white ${
+            className={`w-1/4 xl:w-auto text-[clamp(16px,6vw,20px)] xs:text-xl xl:text-2xl font-semibold tracking-[-2.5%] duration-500 ease-in-out hover:text-white ${
               selectedType === value ? 'text-white' : 'text-grayFont'
             }`}
             onClick={() => setSelectedType(value)}
@@ -47,27 +49,29 @@ export default function TypeChanger({
           </button>
         ))}
       </div>
-      <p
-        className={`${isOpen ? '' : 'hidden'} absolute right-10 text-sm text-font-baseWhite font-semibold z-40`}
-      >
-        선호장르 다섯개를 선택해 주세요.
-      </p>
-      <button
-        type="button"
-        onClick={toggleOpen}
-        className="absolute flex items-center gap-2 right-0 z-40"
-      >
-        <Image
-          src={isOpen ? onHeart : offHeart}
-          alt="선호 장르 선택하기"
-          width={32}
-          height={32}
-        />
-      </button>
+      <div className="flex items-center absolute -top-4 xl:top-0 right-4 gap-2">
+        <p
+          className={`${isOpen ? '' : 'hidden'} text-sm text-font-baseWhite font-semibold z-40`}
+        >
+          선호장르 다섯개를 선택해 주세요.
+        </p>
+        <button
+          type="button"
+          onClick={toggleOpen}
+          className="flex items-center gap-2 z-40"
+        >
+          <Image
+            src={isOpen ? onHeart : offHeart}
+            alt="선호 장르 선택하기"
+            width={32}
+            height={32}
+          />
+        </button>
+      </div>
       <div
         className={`${
           isOpen ? 'animate-dropdownIn' : 'hidden'
-        } bg-card-white grid grid-cols-4 md:grid-cols-12 absolute w-full rounded-[10px] overflow-hidden top-16 md:top-10 z-40 border border-line-secondLightGray`}
+        } bg-card-white grid grid-cols-4 xl:grid-cols-12 absolute w-full rounded-[10px] overflow-hidden top-16 xl:top-10 z-40 border border-line-secondLightGray`}
       >
         {genreFilterList.map((value, index) => {
           const totalCount = genreFilterList.length;
@@ -82,7 +86,7 @@ export default function TypeChanger({
             <button
               key={index}
               type="button"
-              className={`py-2 text-lg text-font-baseBlack font-normal hover:bg-brand-sub500 hover:font-semibold duration-500 ${isMobileLastCol ? 'border-r-0' : 'border-r-[1px]'} ${isPcLastCol ? 'md:border-r-0' : 'md:border-r-[1px]'} ${isMobileLastRow ? 'border-b-0' : 'border-b-[1px]'} ${isPcLastRow ? 'md:border-b-0' : 'md:border-b-[1px]'} border-line-secondLightGray ${genreList.includes(value) ? 'bg-brand-sub500 font-semibold' : ''}`}
+              className={`py-2 text-lg text-font-baseBlack font-normal hover:bg-brand-sub500 hover:font-semibold duration-500 ${isMobileLastCol ? 'border-r-0' : 'border-r-[1px]'} ${isPcLastCol ? 'xl:border-r-0' : 'xl:border-r-[1px]'} ${isMobileLastRow ? 'border-b-0' : 'border-b-[1px]'} ${isPcLastRow ? 'xl:border-b-0' : 'xl:border-b-[1px]'} border-line-secondLightGray ${genreList.includes(value) ? 'bg-brand-sub500 font-semibold' : ''}`}
               onClick={() => {
                 if (genreList.includes(value)) removeGenre(value);
                 else addGenre(value);

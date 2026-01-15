@@ -3,15 +3,15 @@ import FooterLogo from '@/public/images/Replay_Sub_Logo.svg';
 
 export default function Footer() {
   return (
-    <div className="bg-line-secondDarkGray px-5 py-[40px] md:h-[333px] flex flex-col md:flex-row justify-center relative -z-10">
+    <div className="bg-line-secondDarkGray px-5 py-[40px] xl:h-[333px] flex flex-col xl:flex-row justify-center relative -z-10">
       <Image
         src={FooterLogo}
         alt="서비스 로고"
         width={229}
         height={59}
-        className="w-[120px] h-[31px] md:w-[229px] md:h-[59px] md:absolute md:left-10 md:top-10"
+        className="w-[120px] h-[31px] xl:w-[229px] xl:h-[59px] xl:absolute xl:left-10 xl:top-10"
       />
-      <div className="flex items-center gap-4 mt-10 md:absolute md:top-[124px]">
+      <div className="flex items-center gap-4 mt-10 xl:absolute xl:top-[124px]">
         <button type="button">회사소개</button>
         <button
           type="button"
@@ -21,7 +21,7 @@ export default function Footer() {
         </button>
         <button type="button">배너 광고문의</button>
       </div>
-      <div className="md:absolute md:left-10 md:top-24">
+      <div className="xl:absolute xl:left-10 xl:top-24">
         <div className="flex items-center gap-4 mt-6">
           <p className="text-base tracking-[-2.5%] text-font-baseWhite font-normal">
             서비스명 리플레이
@@ -38,7 +38,7 @@ export default function Footer() {
           Copyright © Phanes
         </p>
       </div>
-      <p className="text-base tracking-[-2.5%] font-normal text-font-baseGray mt-10 md:absolute md:top-[218px]">
+      <p className="text-base tracking-[-2.5%] font-normal text-font-baseGray mt-10 xl:absolute xl:top-[218px]">
         © 2025 REPLAY. All rights reserved Made by Phanes Team
       </p>
     </div>

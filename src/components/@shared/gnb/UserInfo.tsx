@@ -15,19 +15,21 @@ export default function UserInfo({ user }: UserInfoProps) {
   const { isOpen, toggleOpen } = useOpen();
 
   return (
-    <div className="items-center justify-center gap-[6px] shrink-0 hidden md:flex">
-      <Image
-        src={user.image || userDefault}
-        alt="유저 프로필 이미지"
-        width={24}
-        height={24}
-        className="h-6 w-6 rounded-full bg-line-Gray shadow-md"
-      />
-      <p className="truncate max-w-[130px]">{user.nickname} 님</p>
-      <UserInfoDropdown isOpen={isOpen} onOpenChange={toggleOpen}>
+    <UserInfoDropdown isOpen={isOpen} onOpenChange={toggleOpen}>
+      <div className="items-center justify-center gap-[6px] shrink-0 hidden md:flex">
+        <Image
+          src={user.image || userDefault}
+          alt="유저 프로필 이미지"
+          width={24}
+          height={24}
+          className="h-6 w-6 rounded-full bg-line-Gray shadow-md"
+        />
+        <p className="truncate max-w-[130px] hidden xl:block">
+          {user.nickname} 님
+        </p>
         <button
           type="button"
-          className="flex items-center"
+          className="items-center hidden xl:block shrink-0"
           onClick={toggleOpen}
         >
           <Image
@@ -35,10 +37,10 @@ export default function UserInfo({ user }: UserInfoProps) {
             alt="유저 정보 더보기"
             width={18}
             height={18}
-            className={`transition-transform transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+            className={`transition-transform transform block duration-300 shrink-0 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
           />
         </button>
-      </UserInfoDropdown>
-    </div>
+      </div>
+    </UserInfoDropdown>
   );
 }
