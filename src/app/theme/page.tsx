@@ -38,7 +38,7 @@ export default function RoomPage() {
         <>
           <SortContainer>
             <CountListValue value={theme.totalElements} />
-            <Link
+            {/* <Link
               href="/theme-map"
               className="rounded-full p-6 bg-brand-main500 absolute -right-24"
             >
@@ -48,7 +48,7 @@ export default function RoomPage() {
                 width={32}
                 height={32}
               />
-            </Link>
+            </Link> */}
           </SortContainer>
           <RoomCardContainer
             data={theme.content}

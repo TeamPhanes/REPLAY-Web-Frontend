@@ -54,7 +54,7 @@ export default function RankingPage() {
             />
           </div>
         </ValueDropdown>
-        <div className="gap-10 flex items-center">
+        <div className="gap-6 md:gap-10 flex items-center">
           {quarterList.map(({ value, label }) => {
             return (
               <button
@@ -63,7 +63,7 @@ export default function RankingPage() {
                 onClick={() => setQuarter(value)}
               >
                 <span
-                  className={`${quarter === value ? 'text-brand-sub500' : ''} relative md:inline-block group text-base font-semibold tracking-[-2.5%] hidden duration-300`}
+                  className={`${quarter === value ? 'text-brand-sub500' : ''} relative group text-xs md:text-sm xl:text-base font-semibold tracking-[-2.5%] duration-300`}
                 >
                   {label}
                 </span>
@@ -73,7 +73,7 @@ export default function RankingPage() {
         </div>
       </div>
 
-      <div className="bg-card-white rounded-lg py-20 px-32 mt-3 flex justify-between">
+      <div className="bg-card-white rounded-lg py-5 md:py-11 xl:py-20 px-5 md:px-14 xl:px-32 mt-3 flex justify-between">
         <StatCard
           value={87}
           title="이번 분기 성사된 모임의 갯 수"
