@@ -8,12 +8,14 @@ export default function CardSkeleton({
   className,
 }: CardSkeletonProps) {
   return (
-    <div className={`${className} grid grid-cols-1 md:grid-cols-2 gap-5`}>
+    <div
+      className={`${className} grid grid-cols-1 xl:grid-cols-2 place-items-center xl:place-items-stretch gap-5`}
+    >
       {Array.from({ length: count }).map((_, index) => (
         <div
           key={index}
           role="status"
-          className="animate-pulse flex md:flex-row flex-col rounded-[6px] md:w-[630px] md:h-[252px] p-5 bg-card-white"
+          className="animate-pulse flex md:flex-row flex-col rounded-[6px] md:max-w-[630px] md:h-[252px] p-5 bg-card-white"
         >
           <div className="flex items-center justify-center w-[280px] h-[280px] md:w-[145px] md:h-[212px] bg-white rounded-[6px] shrink-0">
             <svg

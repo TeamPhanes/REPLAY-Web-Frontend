@@ -15,7 +15,9 @@ export default function RoomCardContainer({
 }: RoomCardContainerProps) {
   return (
     <>
-      <div className={`${className} mt-6 grid gap-5`}>
+      <div
+        className={`${className} mt-6 grid place-items-center xl:place-items-stretch gap-5`}
+      >
         {data &&
           data.map((room) => (
             <RoomCard key={room.id} room={room} favoriteCheck={favoriteCheck} />

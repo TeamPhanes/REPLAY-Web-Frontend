@@ -6,7 +6,10 @@ import { useQueryStringStore } from '@/store/useQueryStringStore';
 import MainWhiteButton from '@/components/@shared/button/MainWhiteButton';
 import GenreFilter from '@/components/@shared/filter/GenreFilter';
 import LocationFilter from '@/components/@shared/filter/LocationFilter';
+import { useOpen } from '@/hooks/useOpen';
 import BlackDelete from '@/public/icons/delete/black_delete.svg';
+import FilterIcon from '@/public/icons/filter/black_filter.svg';
+import Modal from '../modal/Modal';
 
 interface FilterContainerProps {
   setPage?: (value: number) => void;
@@ -14,6 +17,7 @@ interface FilterContainerProps {
 
 export default function FilterContainer({ setPage }: FilterContainerProps) {
   const [selectedType, setSelectedType] = useState('locate');
+  const { isOpen, openModal, closeModal } = useOpen();
   const {
     genreList,
     removeGenre,
@@ -31,67 +35,88 @@ export default function FilterContainer({ setPage }: FilterContainerProps) {
 
   return (
     <>
-      <div className="relative mt-[52px] flex gap-2">
-        <MainWhiteButton onClick={() => setSelectedType('locate')}>
-          지역
-        </MainWhiteButton>
-        <MainWhiteButton onClick={() => setSelectedType('genre')}>
-          테마
-        </MainWhiteButton>
-      </div>
+      <button
+        type="button"
+        className="absolute right-4 z-10"
+        onClick={openModal}
+      >
+        <Image src={FilterIcon} alt="필터" width={24} height={24} />
+      </button>
 
-      <LocationFilter selectedType={selectedType} />
-      <GenreFilter selectedType={selectedType} />
-
-      <div className="flex items-center gap-2 my-4">
-        {districtList.map((value, index) => {
-          return (
-            <div
-              key={index}
-              className="px-3 py-[6px] bg-brand-main300 text-base tracking-[-2.5%] text-font-baseBlack rounded-[4px] font-semibold flex items-center gap-[6px]"
-            >
-              {value}
-              <button type="button" onClick={() => removeDistrictList(value)}>
-                <Image
-                  src={BlackDelete}
-                  alt="장르 삭제하기"
-                  width={20}
-                  height={20}
-                />
-              </button>
-            </div>
-          );
-        })}
-        {genreList.map((value, index) => {
-          return (
-            <div
-              key={index}
-              className="px-3 py-[6px] bg-brand-sub300 text-base tracking-[-2.5%] text-font-baseBlack rounded-[4px] font-semibold flex items-center gap-[6px]"
-            >
-              {value}
-              <button type="button" onClick={() => removeGenre(value)}>
-                <Image
-                  src={BlackDelete}
-                  alt="장르 삭제하기"
-                  width={20}
-                  height={20}
-                />
-              </button>
-            </div>
-          );
-        })}
-        {(genreList.length !== 0 || districtList.length !== 0) && (
-          <MainWhiteButton
-            onClick={() => {
-              clearGenre();
-              clearDistrict();
-            }}
-            className="absolute right-0"
-          >
-            초기화
+      <Modal
+        isOpen={isOpen}
+        onClose={closeModal}
+        className="w-80 md:w-[600px] bg-card-white rounded-[4px] p-4 relative"
+      >
+        <div className="relative flex justify-center items-center gap-2">
+          <MainWhiteButton onClick={() => setSelectedType('locate')}>
+            지역
           </MainWhiteButton>
-        )}
-      </div>
+          <MainWhiteButton onClick={() => setSelectedType('genre')}>
+            테마
+          </MainWhiteButton>
+        </div>
+        <LocationFilter selectedType={selectedType} />
+        <GenreFilter selectedType={selectedType} />
+
+        {districtList.length > 0 || genreList.length > 0 ? (
+          <div className="flex flex-col gap-2 mt-10">
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-[6px]">
+              {districtList.map((value, index) => {
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => removeDistrictList(value)}
+                    className="flex items-center gap-[6px] px-3 py-[6px] bg-brand-main300 text-base tracking-[-2.5%] text-font-baseBlack rounded-[4px] font-semibold animate-modalIn"
+                  >
+                    {value}
+                    <Image
+                      src={BlackDelete}
+                      alt="장르 삭제하기"
+                      width={20}
+                      height={20}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-[6px]">
+              {genreList.map((value, index) => {
+                return (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => removeGenre(value)}
+                    className="px-3 py-[6px] bg-brand-sub300 text-base tracking-[-2.5%] text-font-baseBlack rounded-[4px] font-semibold flex items-center gap-[6px] animate-modalIn"
+                  >
+                    {value}
+                    <Image
+                      src={BlackDelete}
+                      alt="장르 삭제하기"
+                      width={20}
+                      height={20}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            {(genreList.length !== 0 || districtList.length !== 0) && (
+              <MainWhiteButton
+                onClick={() => {
+                  clearGenre();
+                  clearDistrict();
+                }}
+                className="absolute right-4 bottom-4"
+              >
+                초기화
+              </MainWhiteButton>
+            )}
+          </div>
+        ) : null}
+      </Modal>
     </>
   );
 }

@@ -14,25 +14,25 @@ export default function RankingMyCard({
   prevRank,
 }: RankingMyCardProps) {
   return (
-    <div className="py-6 px-24 my-8">
-      <p className="w-full text-base text-font-baseWhite font-semibold">
+    <div className="py-6 px-5 md:px-10 xl:px-24 my-2 md:my-8">
+      <p className="w-full text-sm md:text-base text-font-baseWhite font-semibold">
         내 순위
       </p>
 
       <div className="grid grid-cols-5 mt-6">
-        <p className="text-4xl/[48px] text-font-baseWhite font-semibold">
+        <p className="text-sm md:text-xl xl:text-4xl/[48px] text-font-baseWhite font-semibold">
           {rank}
         </p>
-        <p className="text-4xl/[48px] text-font-baseWhite font-semibold text-center">
+        <p className="text-sm md:text-xl xl:text-4xl/[48px] text-font-baseWhite font-semibold text-center">
           {nickname}
         </p>
-        <p className="text-4xl/[48px] text-font-baseWhite font-semibold text-center">
+        <p className="text-sm md:text-xl xl:text-4xl/[48px] text-font-baseWhite font-semibold text-center">
           {score}
         </p>
-        <p className="text-4xl/[48px] text-font-baseWhite font-semibold text-center">
+        <p className="text-sm md:text-xl xl:text-4xl/[48px] text-font-baseWhite font-semibold text-center">
           {theme}
         </p>
-        <p className="text-4xl/[48px] text-font-baseWhite font-semibold text-center">
+        <p className="text-sm md:text-xl xl:text-4xl/[48px] text-font-baseWhite font-semibold text-center">
           {prevRank}
         </p>
       </div>

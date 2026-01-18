@@ -17,11 +17,15 @@ export default function RankingRow({
 }: RankingRowProps) {
   const isTop3 = rank <= 3;
 
-  const rankSize = isTop3 ? 'text-[64px]/[80px]' : 'text-[36px]/[48px]';
-  const textSize = isTop3 ? 'text-[32px]/[42px]' : 'text-[28px]/[38px]';
+  const rankSize = isTop3
+    ? 'text-xl md:text-[48px]/[62px] xl:text-[64px]/[80px]'
+    : 'text-xs md:text-[28px]/[38px] xl:text-[36px]/[48px]';
+  const textSize = isTop3
+    ? 'text-sm md:text-[32px]/[42px] xl:text-[32px]/[42px]'
+    : 'text-xs md:text-[28px]/[38px] xl:text-[32px]/[42px]';
 
   return (
-    <div className="px-24 grid grid-cols-5 items-center mt-3">
+    <div className="md:px-10 px-0 grid grid-cols-5 items-center mt-3">
       <p
         className={`${rankSize} text-font-baseWhite font-semibold text-center`}
       >
