@@ -47,7 +47,7 @@ export default function GatheringCard({
   return (
     <div
       key={gathering.id}
-      className="relative flex md:flex-row flex-col md:w-[630px] items-start rounded-[4px] bg-card-white p-5 transition-all hover:scale-[102%]"
+      className="relative flex flex-col items-start rounded-[4px] bg-card-white p-5 transition-all hover:scale-[102%] md:w-[630px] md:flex-row"
     >
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-[145px]">
         {gathering.image !== null ? (
@@ -57,13 +57,13 @@ export default function GatheringCard({
             width={145}
             height={218}
             quality={100}
-            className="rounded-[4px] w-full h-[360px] md:w-[145px] md:h-[218px]"
+            className="h-[360px] w-full rounded-[4px] md:h-[218px] md:w-[145px]"
           />
         ) : (
-          <div className="rounded-[4px] w-[145px] h-[218px] bg-gray-300" />
+          <div className="h-[218px] w-[145px] rounded-[4px] bg-gray-300" />
         )}
       </Link>
-      <div className="absolute top-10 md:top-auto right-10 md:right-5 flex flex-col bg-card rounded-[30px] p-1 md:p-0">
+      <div className="bg-card absolute right-10 top-10 flex flex-col rounded-[30px] p-1 md:right-5 md:top-auto md:p-0">
         <button
           type="button"
           className={`transition-transform duration-300 active:scale-90 ${
@@ -82,7 +82,7 @@ export default function GatheringCard({
         </button>
       </div>
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
-        <div className="md:ml-5 mt-5 md:mt-0 flex min-h-[212px] min-w-[424px] flex-col justify-between">
+        <div className="mt-5 flex min-h-[212px] min-w-[424px] flex-col justify-between md:ml-5 md:mt-0">
           <div className="flex flex-col gap-3">
             <Tag tag={gathering.genres} />
             <TitleAndSpot themeName={gathering.name} cafe={gathering.title} />
@@ -96,7 +96,7 @@ export default function GatheringCard({
                   width={20}
                   height={20}
                 />
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
+                <p className="text-sm font-normal tracking-[-2.5%] text-font-baseBlack">
                   {yearMonthDayHourTime(gathering.date)}
                 </p>
               </div>
@@ -107,7 +107,7 @@ export default function GatheringCard({
                   width={20}
                   height={20}
                 />
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
+                <p className="text-sm font-normal tracking-[-2.5%] text-font-baseBlack">
                   {gathering.participantCount}/{gathering.capacity}
                 </p>
               </div>
@@ -120,7 +120,7 @@ export default function GatheringCard({
                 width={20}
                 height={20}
               />
-              <p className="text-sm tracking-[2.5%] text-font-baseBlack font-normal">
+              <p className="text-sm font-normal tracking-[2.5%] text-font-baseBlack">
                 {gathering.address}
               </p>
             </div>
@@ -133,13 +133,13 @@ export default function GatheringCard({
                 height={20}
               />
               <div className="flex items-center gap-2">
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
+                <p className="text-sm font-semibold tracking-[-2.5%] text-font-baseBlack">
                   {gathering.playtime}분
                 </p>
-                <span className="text-sm tracking-[-2.5%] text-font-disabled font-normal">
+                <span className="text-sm font-normal tracking-[-2.5%] text-font-disabled">
                   •
                 </span>
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
+                <p className="text-sm font-semibold tracking-[-2.5%] text-font-baseBlack">
                   {levelList[gathering.level as keyof typeof levelList]}
                 </p>
               </div>

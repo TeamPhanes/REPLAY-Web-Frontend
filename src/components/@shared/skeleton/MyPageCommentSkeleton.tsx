@@ -13,13 +13,13 @@ export default function MyPageCommentSkeleton({
         <div
           key={index}
           role="status"
-          className="animate-pulse flex flex-col gap-3 bg-card-white px-[30px] py-5 border-[1px] border-line-lightGray"
+          className="flex animate-pulse flex-col gap-3 border-[1px] border-line-lightGray bg-card-white px-[30px] py-5"
         >
-          <div className="flex justify-between items-center h-6 w-full gap-2">
-            <div className="bg-white w-32 h-6" />
-            <div className="bg-white w-14 h-6" />
+          <div className="flex h-6 w-full items-center justify-between gap-2">
+            <div className="h-6 w-32 bg-white" />
+            <div className="h-6 w-14 bg-white" />
           </div>
-          <div className="w-full bg-white h-[34px]" />
+          <div className="h-[34px] w-full bg-white" />
           <span className="sr-only">Loading...</span>
         </div>
       ))}

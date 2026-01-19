@@ -59,15 +59,15 @@ export default function PatchGatheringModal({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      className="bg-[#F7F7FB] rounded-lg p-8 w-[1064px]"
+      className="w-[1064px] rounded-lg bg-[#F7F7FB] p-8"
     >
-      <h2 className="text-[28px]/[38px] text-font-baseBlack font-semibold tracking-[-2.5%] text-center mt-7 mb-[60px]">
+      <h2 className="mb-[60px] mt-7 text-center text-[28px]/[38px] font-semibold tracking-[-2.5%] text-font-baseBlack">
         모임 수정
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex justify-between">
-          <div className="flex flex-col gap-2 w-[454px]">
-            <p className="text-2xl/[34px] text-font-baseBlack font-normal tracking-[-2.5%]">
+          <div className="flex w-[454px] flex-col gap-2">
+            <p className="text-2xl/[34px] font-normal tracking-[-2.5%] text-font-baseBlack">
               모임 정보
             </p>
             <AddGatheringSearchBar
@@ -93,8 +93,8 @@ export default function PatchGatheringModal({
             />
           </div>
 
-          <div className="flex flex-col gap-5 w-[480px]">
-            <p className="text-2xl/[34px] text-font-baseBlack font-normal tracking-[-2.5%]">
+          <div className="flex w-[480px] flex-col gap-5">
+            <p className="text-2xl/[34px] font-normal tracking-[-2.5%] text-font-baseBlack">
               모임 상세
             </p>
             <div className="flex justify-between">
@@ -120,9 +120,9 @@ export default function PatchGatheringModal({
           </div>
         </div>
 
-        <div className="flex justify-between mt-20">
-          <div className="flex flex-col gap-5 w-[454px]">
-            <p className="text-2xl/[34px] text-font-baseBlack font-normal tracking-[-2.5%]">
+        <div className="mt-20 flex justify-between">
+          <div className="flex w-[454px] flex-col gap-5">
+            <p className="text-2xl/[34px] font-normal tracking-[-2.5%] text-font-baseBlack">
               일정 선택
             </p>
             <AddGatheringRecruitmentPeriod

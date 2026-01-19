@@ -28,8 +28,8 @@ export default function PostReviewRatingThemeLevelStory({
 }: PostReviewRatingThemeLevelStoryProps) {
   return (
     <>
-      <div className="flex flex-col justify-center items-center mt-10 gap-2">
-        <p className="font-semibold text-2xl/[34px] tracking-[-2.5%] text-basefont">
+      <div className="mt-10 flex flex-col items-center justify-center gap-2">
+        <p className="text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
           평가하기
         </p>
         <RatingInput
@@ -40,8 +40,8 @@ export default function PostReviewRatingThemeLevelStory({
           onChange={setRating}
         />
       </div>
-      <div className="flex flex-col justify-center items-center mt-10 gap-6">
-        <p className="text-base text-font-baseBlack font-semibold">
+      <div className="mt-10 flex flex-col items-center justify-center gap-6">
+        <p className="text-base font-semibold text-font-baseBlack">
           방탈출의 테마는 어땠나요?
         </p>
         <OrderChanger
@@ -51,8 +51,8 @@ export default function PostReviewRatingThemeLevelStory({
           gap="gap-2 md:gap-10"
         />
       </div>
-      <div className="flex flex-col justify-center items-center mt-10 gap-6">
-        <p className="text-base text-font-baseBlack font-semibold">
+      <div className="mt-10 flex flex-col items-center justify-center gap-6">
+        <p className="text-base font-semibold text-font-baseBlack">
           방탈출의 난이도는 어땠나요?
         </p>
         <OrderChanger
@@ -62,8 +62,8 @@ export default function PostReviewRatingThemeLevelStory({
           gap="gap-2 md:gap-10"
         />
       </div>
-      <div className="flex flex-col justify-center items-center mt-10 gap-6">
-        <p className="text-base text-font-baseBlack font-semibold">
+      <div className="mt-10 flex flex-col items-center justify-center gap-6">
+        <p className="text-base font-semibold text-font-baseBlack">
           방탈출의 스토리는 어땠나요?
         </p>
         <OrderChanger

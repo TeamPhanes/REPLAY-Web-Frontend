@@ -67,17 +67,17 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
   }, [data]);
 
   return (
-    <div className="flex flex-col items-center md:flex-row md:justify-between md:gap-2 relative">
+    <div className="relative flex flex-col items-center md:flex-row md:justify-between md:gap-2">
       <Image
         src={data.image}
         alt={data.title}
         width={145}
         height={218}
         quality={100}
-        className="rounded-[4px] w-full h-[360px] md:w-[295px] md:h-[400px] xl:w-[413px] xl:h-[500px] shrink-0"
+        className="h-[360px] w-full shrink-0 rounded-[4px] md:h-[400px] md:w-[295px] xl:h-[500px] xl:w-[413px]"
       />
-      <div className="md:relative md:min-w-[445px] w-full xl:h-[500px] xl:w-[849px] rounded-b-[6px] md:rounded-[6px] p-5 bg-card-white">
-        <div className="absolute top-0 md:top-auto p-1 md:p-0 md:rounded-none bg-card-white rounded-l-md rounded-t-none right-0 md:right-5 flex gap-3 xl:gap-[18px]">
+      <div className="w-full rounded-b-[6px] bg-card-white p-5 md:relative md:min-w-[445px] md:rounded-[6px] xl:h-[500px] xl:w-[849px]">
+        <div className="absolute right-0 top-0 flex gap-3 rounded-l-md rounded-t-none bg-card-white p-1 md:right-5 md:top-auto md:rounded-none md:p-0 xl:gap-[18px]">
           <button
             type="button"
             className={`transition-transform duration-300 active:scale-90 ${
@@ -92,7 +92,7 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
               alt="heart"
               width={40}
               height={40}
-              className="w-7 h-7 md:w-10 md:h-10"
+              className="h-7 w-7 md:h-10 md:w-10"
             />
           </button>
           <button
@@ -109,7 +109,7 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
               alt="bookmark"
               width={40}
               height={40}
-              className="w-7 h-7 md:w-10 md:h-10"
+              className="h-7 w-7 md:h-10 md:w-10"
             />
           </button>
           <button
@@ -122,7 +122,7 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
               alt="share"
               width={40}
               height={40}
-              className="w-7 h-7 md:w-10 md:h-10"
+              className="h-7 w-7 md:h-10 md:w-10"
             />
           </button>
         </div>
@@ -137,40 +137,40 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
             isDetail
           />
         </div>
-        <div className="mt-8 xl:mt-16 flex items-center text-center">
+        <div className="mt-8 flex items-center text-center xl:mt-16">
           <StorySection story={data.story} />
-          <span className="hidden xl:block bg-line-lightGray h-36 w-[1px]" />
-          <div className="flex flex-col w-full">
-            <div className="flex items-center justify-center xl:justify-between gap-8 xl:gap-0 md:px-10">
+          <span className="hidden h-36 w-[1px] bg-line-lightGray xl:block" />
+          <div className="flex w-full flex-col">
+            <div className="flex items-center justify-center gap-8 md:px-10 xl:justify-between xl:gap-0">
               <div className="flex flex-col gap-[6px]">
-                <p className="text-xl md:text-[28px]/[38px] tracking-[-2.5%] text-font-baseBlack font-semibold">
+                <p className="text-xl font-semibold tracking-[-2.5%] text-font-baseBlack md:text-[28px]/[38px]">
                   {levelList[data.level as keyof typeof levelList]}
                 </p>
-                <p className="text-base tracking-[-2.5%] text-font-baseBlack font-light">
+                <p className="text-base font-light tracking-[-2.5%] text-font-baseBlack">
                   난이도
                 </p>
               </div>
-              <span className="bg-line-lightGray h-5 w-[1px]" />
+              <span className="h-5 w-[1px] bg-line-lightGray" />
               <div className="flex flex-col gap-[6px]">
-                <p className="text-xl md:text-[28px]/[38px] tracking-[-2.5%] text-font-baseBlack font-semibold">
+                <p className="text-xl font-semibold tracking-[-2.5%] text-font-baseBlack md:text-[28px]/[38px]">
                   {data.playtime}분
                 </p>
-                <p className="text-base tracking-[-2.5%] text-font-baseBlack font-light">
+                <p className="text-base font-light tracking-[-2.5%] text-font-baseBlack">
                   시간대
                 </p>
               </div>
-              <span className="bg-line-lightGray h-5 w-[1px]" />
+              <span className="h-5 w-[1px] bg-line-lightGray" />
               <div className="flex flex-col gap-[6px]">
-                <p className="text-xl md:text-[28px]/[38px] tracking-[-2.5%] text-font-baseBlack font-semibold">
+                <p className="text-xl font-semibold tracking-[-2.5%] text-font-baseBlack md:text-[28px]/[38px]">
                   {data.minPlayer}~{data.maxPlayer}명
                 </p>
-                <p className="text-base tracking-[-2.5%] text-font-baseBlack font-light">
+                <p className="text-base font-light tracking-[-2.5%] text-font-baseBlack">
                   인원
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center justify-between xl:pl-5 mt-5 xl:mt-10">
+            <div className="mt-5 flex items-center justify-between xl:mt-10 xl:pl-5">
               <div className="flex items-center gap-2">
                 <Image
                   src={LinkIcon}
@@ -178,7 +178,7 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
                   width={24}
                   height={24}
                 />
-                <p className="text-base md:text-lg/[26px] tracking-[-2.5%] text-font-baseBlack font-normal max-w-64 md:max-w-80 truncate">
+                <p className="max-w-64 truncate text-base font-normal tracking-[-2.5%] text-font-baseBlack md:max-w-80 md:text-lg/[26px]">
                   {data.link}
                 </p>
               </div>
@@ -193,7 +193,7 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
               </a>
             </div>
 
-            <div className="flex items-center justify-between xl:pl-5 mt-3">
+            <div className="mt-3 flex items-center justify-between xl:pl-5">
               <div className="flex items-center gap-2">
                 <Image
                   src={PhoneIcon}
@@ -201,7 +201,7 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
                   width={24}
                   height={24}
                 />
-                <p className="text-base md:text-lg/[26px] tracking-[-2.5%] text-font-baseBlack font-normal">
+                <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack md:text-lg/[26px]">
                   {data.phone}
                 </p>
               </div>
@@ -216,7 +216,7 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
               </button>
             </div>
 
-            <div className="flex items-center justify-between xl:pl-5 mt-3">
+            <div className="mt-3 flex items-center justify-between xl:pl-5">
               <div className="flex items-center gap-2">
                 <Image
                   src={AddressIcon}
@@ -224,7 +224,7 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
                   width={24}
                   height={24}
                 />
-                <p className="text-base md:text-lg/[26px] tracking-[-2.5%] text-font-baseBlack font-normal truncate">
+                <p className="truncate text-base font-normal tracking-[-2.5%] text-font-baseBlack md:text-lg/[26px]">
                   {data.address}
                 </p>
               </div>

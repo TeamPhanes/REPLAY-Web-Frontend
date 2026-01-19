@@ -14,7 +14,7 @@ export default function CardContainer() {
   if (isGuardLoading) return null;
 
   return (
-    <div className="relative mt-[248px] h-[1240px] md:h-[860px] w-full rounded-2xl bg-brand-main500 p-10">
+    <div className="relative mt-[248px] h-[1240px] w-full rounded-2xl bg-brand-main500 p-10 md:h-[860px]">
       <MyPageModifyButton />
       <CardContentContainer user={userProfile} />
       <CardBottomDate

@@ -20,7 +20,7 @@ export default function ProgressBar({
 
   return (
     <div
-      className={`h-20 w-[7px] overflow-hidden rounded-full flex justify-end flex-col ${bgColor}`}
+      className={`flex h-20 w-[7px] flex-col justify-end overflow-hidden rounded-full ${bgColor}`}
     >
       <div
         className={`rounded-full transition-all duration-300 ${progressColor}`}

@@ -18,20 +18,20 @@ export default function DeleteCheckModal({
     <Modal
       isOpen={isOpen}
       onClose={closeModal}
-      className="bg-white rounded-[30px] px-10 py-5"
+      className="rounded-[30px] bg-white px-10 py-5"
     >
-      <p className="font-semibold text-2xl text-basefont">{children}</p>
-      <div className="flex justify-between gap-2 mt-5">
+      <p className="text-2xl font-semibold text-basefont">{children}</p>
+      <div className="mt-5 flex justify-between gap-2">
         <button
           type="button"
-          className="rounded-2xl bg-mainBlue px-[10px] py-3 hover:bg-mainBlueHover w-full"
+          className="w-full rounded-2xl bg-mainBlue px-[10px] py-3 hover:bg-mainBlueHover"
           onClick={() => mutate()}
         >
           확인
         </button>
         <button
           type="button"
-          className="rounded-2xl bg-mainPurple px-[10px] py-3 hover:bg-mainPurpleHover w-full"
+          className="w-full rounded-2xl bg-mainPurple px-[10px] py-3 hover:bg-mainPurpleHover"
           onClick={closeModal}
         >
           취소

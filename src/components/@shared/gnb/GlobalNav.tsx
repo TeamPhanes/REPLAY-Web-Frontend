@@ -16,9 +16,9 @@ export default function GlobalNav() {
 
   return (
     <div className="relative">
-      {isSearchFocus && <div className="fixed inset-0 bg-black/50 z-40" />}
-      <div className="fixed top-0 left-0 h-[100px] w-full p-4 bg-brand-black z-50">
-        <div className="mx-auto flex h-full max-w-screen-xl items-center xl:gap-6 justify-between relative">
+      {isSearchFocus && <div className="fixed inset-0 z-40 bg-black/50" />}
+      <div className="fixed left-0 top-0 z-50 h-[100px] w-full bg-brand-black p-4">
+        <div className="relative mx-auto flex h-full max-w-screen-xl items-center justify-between xl:gap-6">
           <Link
             href="/"
             className={`${isSearchFocus ? 'hidden xl:block' : ''} flex items-center justify-center`}
@@ -29,12 +29,12 @@ export default function GlobalNav() {
               width={229}
               height={59}
               quality={100}
-              className="w-[229px] h-[59px] shrink-0"
+              className="h-[59px] w-[229px] shrink-0"
               priority
             />
           </Link>
           <div
-            className={`shrink-0 flex items-center justify-center gap-10 transition-all duration-300 left-72 absolute ${isSearchFocus ? 'opacity-0 pointer-events-none ' : 'opacity-100'}
+            className={`absolute left-72 flex shrink-0 items-center justify-center gap-10 transition-all duration-300 ${isSearchFocus ? 'pointer-events-none opacity-0 ' : 'opacity-100'}
   `}
           >
             {Object.keys(navLabelList).map((key) => {
@@ -42,7 +42,7 @@ export default function GlobalNav() {
               return (
                 <Link key={key} href={list.value}>
                   <span
-                    className={`${pathName === list.value ? 'text-brand-sub500' : ''} relative md:inline-block group text-base font-semibold tracking-[-2.5%] hidden duration-300`}
+                    className={`${pathName === list.value ? 'text-brand-sub500' : ''} group relative hidden text-base font-semibold tracking-[-2.5%] duration-300 md:inline-block`}
                   >
                     {list.label}
                   </span>
@@ -50,7 +50,7 @@ export default function GlobalNav() {
               );
             })}
           </div>
-          <div className="w-full xl:w-auto flex items-center xl:gap-6 justify-end">
+          <div className="flex w-full items-center justify-end xl:w-auto xl:gap-6">
             <SearchBar isFocus={isSearchFocus} onFocus={setIsSearchFocus} />
             <AuthSection isFocus={isSearchFocus} />
             <MobileMenuBar isFocus={isSearchFocus} />

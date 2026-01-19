@@ -14,12 +14,12 @@ export default function AddGatheringSchedule({
   const { isOpen, toggleOpen } = useOpen();
   return (
     <div>
-      <p className="text-base text-font-baseBlack font-normal tracking-[-2.5%]">
+      <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
         모임 일정
       </p>
       <button
         type="button"
-        className="px-4 py-2 bg-brand-main100 rounded-[4px] text-base text-font-baseBlack font-normal tracking-[-2.5%] mt-1"
+        className="mt-1 rounded-[4px] bg-brand-main100 px-4 py-2 text-base font-normal tracking-[-2.5%] text-font-baseBlack"
         onClick={toggleOpen}
       >
         {yearMonthDayHourTime(String(dateTime))}

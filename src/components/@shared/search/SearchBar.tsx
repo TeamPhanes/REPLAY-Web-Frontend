@@ -68,7 +68,7 @@ export default function SearchBar({ isFocus, onFocus }: SearchBarProps) {
   return (
     <div
       ref={searchBarRef}
-      className={`${isFocus ? 'w-full xl:w-auto border-b-[1px] px-4 py-3' : 'px-0 py-0 xl:px-4 xl:py-3'} h-12 xl:border-b-[1px] border-line-Gray xl:shrink-0 relative`}
+      className={`${isFocus ? 'w-full border-b-[1px] px-4 py-3 xl:w-auto' : 'px-0 py-0 xl:px-4 xl:py-3'} relative h-12 border-line-Gray xl:shrink-0 xl:border-b-[1px]`}
     >
       <form
         onSubmit={handleSubmit}
@@ -85,22 +85,22 @@ export default function SearchBar({ isFocus, onFocus }: SearchBarProps) {
         <input
           type="text"
           placeholder="내용을 입력해주세요"
-          className={`${isFocus ? 'xl:w-[780px] pr-8' : 'w-0 xl:w-full'} bg-brand-black text-base tracking-[-2.5%] font-normal text-font-baseWhite placeholder-font-disabled xl:transition-all xl:duration-300`}
+          className={`${isFocus ? 'pr-8 xl:w-[780px]' : 'w-0 xl:w-full'} bg-brand-black text-base font-normal tracking-[-2.5%] text-font-baseWhite placeholder-font-disabled xl:transition-all xl:duration-300`}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onClick={() => onFocus(true)}
         />
       </form>
       {isFocus && (
-        <div className="bg-card-white w-full top-16 z-50 animate-dropdownIn absolute pt-4 pb-6 px-4 left-0 rounded-[4px] flex flex-col gap-3">
-          <div className="flex justify-between items-center mb-2">
-            <p className="text-base tracking-[-2.5%] text-font-disabled font-normal">
+        <div className="absolute left-0 top-16 z-50 flex w-full animate-dropdownIn flex-col gap-3 rounded-[4px] bg-card-white px-4 pb-6 pt-4">
+          <div className="mb-2 flex items-center justify-between">
+            <p className="text-base font-normal tracking-[-2.5%] text-font-disabled">
               최근 검색어
             </p>
             <button
               type="button"
               onClick={clearRecentSearch}
-              className="text-base tracking-[-2.5%] text-font-disabled font-normal"
+              className="text-base font-normal tracking-[-2.5%] text-font-disabled"
             >
               전체 삭제
             </button>
@@ -117,7 +117,7 @@ export default function SearchBar({ isFocus, onFocus }: SearchBarProps) {
                     onFocus(false);
                   }}
                 >
-                  <p className="text-2xl tracking-[-2.5%] text-font-baseBlack font-normal">
+                  <p className="text-2xl font-normal tracking-[-2.5%] text-font-baseBlack">
                     {list}
                   </p>
                 </button>

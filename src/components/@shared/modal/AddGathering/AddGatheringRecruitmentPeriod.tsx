@@ -25,13 +25,13 @@ export default function AddGatheringRecruitmentPeriod({
   } = useOpen();
   return (
     <div className="flex items-center gap-2">
-      <div className="flex flex-col relative gap-1">
-        <p className="text-base text-font-baseBlack font-normal tracking-[-2.5%]">
+      <div className="relative flex flex-col gap-1">
+        <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
           모집 시작일
         </p>
         <button
           type="button"
-          className="px-4 py-2 bg-brand-main100 rounded-[4px] text-base text-font-baseBlack font-normal tracking-[-2.5%]"
+          className="rounded-[4px] bg-brand-main100 px-4 py-2 text-base font-normal tracking-[-2.5%] text-font-baseBlack"
           onClick={toggleRegistrationStartDate}
         >
           {yearMonthDayHourTime(String(registrationStart))}
@@ -45,13 +45,13 @@ export default function AddGatheringRecruitmentPeriod({
           />
         </div>
       </div>
-      <div className="flex flex-col relative gap-1">
-        <p className="text-base text-font-baseBlack font-normal tracking-[-2.5%] text-end">
+      <div className="relative flex flex-col gap-1">
+        <p className="text-end text-base font-normal tracking-[-2.5%] text-font-baseBlack">
           모집 마감일
         </p>
         <button
           type="button"
-          className="px-4 py-2 bg-brand-main100 rounded-[4px] text-base text-font-baseBlack font-normal tracking-[-2.5%]"
+          className="rounded-[4px] bg-brand-main100 px-4 py-2 text-base font-normal tracking-[-2.5%] text-font-baseBlack"
           onClick={toggleRegistrationEndDate}
         >
           {yearMonthDayHourTime(String(registrationEnd))}

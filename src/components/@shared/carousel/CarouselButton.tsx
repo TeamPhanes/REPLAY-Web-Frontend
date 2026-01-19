@@ -26,7 +26,7 @@ export default function CarouselButton({
       <button
         type="button"
         style={{ left: `${position}px` }}
-        className={`absolute hidden xl:block top-1/2 z-10 -translate-y-1/2 transition-opacity duration-500 active:scale-90 rounded-[4px] p-2 bg-button-carousel/60 ${
+        className={`absolute top-1/2 z-10 hidden -translate-y-1/2 rounded-[4px] bg-button-carousel/60 p-2 transition-opacity duration-500 active:scale-90 xl:block ${
           activeSwiper === 0 ? 'pointer-events-none opacity-0' : 'opacity-100'
         }`}
         onClick={() => swiperRef.current?.slidePrev()}
@@ -45,7 +45,7 @@ export default function CarouselButton({
       <button
         type="button"
         style={{ right: `${position}px` }}
-        className={`absolute hidden xl:block top-1/2 z-10 -translate-y-1/2 transition-opacity duration-500 active:scale-90 rounded-[4px] p-2 bg-button-carousel/60 ${
+        className={`absolute top-1/2 z-10 hidden -translate-y-1/2 rounded-[4px] bg-button-carousel/60 p-2 transition-opacity duration-500 active:scale-90 xl:block ${
           activeSwiper === listLength - perView
             ? 'pointer-events-none opacity-0'
             : 'opacity-100'

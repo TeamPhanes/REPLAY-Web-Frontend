@@ -41,12 +41,12 @@ export default function SearchResults() {
   return (
     <>
       <div className="flex items-center justify-between">
-        <h2 className="font-semibold text-base md:text-lg tracking-[-2.5%] gap-[2px]">
+        <h2 className="gap-[2px] text-base font-semibold tracking-[-2.5%] md:text-lg">
           방탈출
         </h2>
         <button
           type="button"
-          className="text-sm tracking-[-2.5%] text-font-baseWhite font-normal flex items-center p-[2px]"
+          className="flex items-center p-[2px] text-sm font-normal tracking-[-2.5%] text-font-baseWhite"
         >
           더 보기
           <Image
@@ -59,7 +59,7 @@ export default function SearchResults() {
       </div>
 
       {searchTheme && (
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="mt-4 grid grid-cols-1 gap-5 md:grid-cols-2">
           {searchTheme.contents.map((room: ThemeListDTO['get']) => (
             <RoomCard room={room} key={room.id} />
           ))}
@@ -68,13 +68,13 @@ export default function SearchResults() {
       {searchTheme && searchTheme.contents.length === 0 && (
         <EmptySearchResult text="방탈출을 찾지 못했어요." />
       )}
-      <div className="flex items-center justify-between mt-[52px]">
-        <h2 className="font-semibold text-base md:text-lg tracking-[-2.5%]">
+      <div className="mt-[52px] flex items-center justify-between">
+        <h2 className="text-base font-semibold tracking-[-2.5%] md:text-lg">
           모임
         </h2>
         <button
           type="button"
-          className="text-sm tracking-[-2.5%] text-font-baseWhite font-normal flex items-center p-[2px]"
+          className="flex items-center p-[2px] text-sm font-normal tracking-[-2.5%] text-font-baseWhite"
         >
           더 보기
           <Image
@@ -87,7 +87,7 @@ export default function SearchResults() {
       </div>
 
       {searchGathering && (
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="mt-4 grid grid-cols-1 gap-5 md:grid-cols-2">
           {searchGathering.contents.map(
             (data: GatheringDTO['get'][][number]) => (
               <GatheringCard key={data.id} gathering={data} />

@@ -15,7 +15,7 @@ export default function CheckList({
 }: CheckListProps) {
   return (
     <div className="flex items-center gap-2">
-      <p className="font-normal text-base tracking-[-2.5%] text-basefont">
+      <p className="text-base font-normal tracking-[-2.5%] text-basefont">
         {title}
       </p>
       <ul className="flex gap-2">

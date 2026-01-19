@@ -17,21 +17,21 @@ export default function StoryContainer({
       <p className="min-w-[90px] text-center text-xl font-normal tracking-[-2.5%] text-font-baseBlack">
         스토리
       </p>
-      <p className="mx-auto line-clamp-[8] text-[13px]/[18px] font-normal tracking-[-2.5%] text-font-baseBlack mt-3 px-5">
+      <p className="mx-auto mt-3 line-clamp-[8] px-5 text-[13px]/[18px] font-normal tracking-[-2.5%] text-font-baseBlack">
         {story}
       </p>
       <button
         type="button"
-        className="flex items-center justify-center w-full mt-3"
+        className="mt-3 flex w-full items-center justify-center"
         onClick={openModal}
       >
-        <p className="text-sm text-font-baseBlack font-normal">더보기</p>
+        <p className="text-sm font-normal text-font-baseBlack">더보기</p>
         <Image
           src={ChevronDown}
           alt="스토리 더보기"
           width={18}
           height={18}
-          className={`h-[18px] w-[18px] transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+          className={`h-[18px] w-[18px] transform transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
         />
       </button>
     </div>

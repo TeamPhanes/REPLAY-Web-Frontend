@@ -6,7 +6,7 @@ interface TitleContainerProps {
 
 export default function TitleContainer({ children }: TitleContainerProps) {
   return (
-    <h1 className="hidden md:block text-4xl font-semibold tracking-[-2.5%] text-white">
+    <h1 className="hidden text-4xl font-semibold tracking-[-2.5%] text-white md:block">
       {children}
     </h1>
   );

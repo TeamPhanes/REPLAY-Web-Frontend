@@ -31,12 +31,12 @@ export default function GatheringLikedSection({
 
   if (isGuardLoading || isLoading) {
     return (
-      <CardSkeleton className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6" />
+      <CardSkeleton className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2" />
     );
   }
   return (
     <>
-      <p className="mt-6 text-sm tracking-[-2.5%] text-font-baseWhite font-normal">
+      <p className="mt-6 text-sm font-normal tracking-[-2.5%] text-font-baseWhite">
         전체 {totalItems}개
       </p>
       <GatheringCardContainer data={userLikeGathering.content} favoriteCheck />

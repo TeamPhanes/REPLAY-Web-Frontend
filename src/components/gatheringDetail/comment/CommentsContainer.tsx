@@ -29,7 +29,7 @@ export default function CommentsContainer({
   if (!comment || isLoading) return <Loading isLoading={isLoading} />;
 
   return (
-    <div className="mt-14 w-full bg-card-white rounded-lg">
+    <div className="mt-14 w-full rounded-lg bg-card-white">
       <CommentSortMenu sort={sort} setSort={setSort} />
       {comment.content.map((data: CommentDTO['get']) => (
         <div key={data.id}>

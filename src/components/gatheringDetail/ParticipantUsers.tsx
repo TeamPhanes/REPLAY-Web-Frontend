@@ -21,10 +21,10 @@ export default function ParticipantUsers({
   if (!list.nickname) return null;
   return (
     <div
-      className="flex flex-col cursor-pointer items-center z-10 h-full"
+      className="z-10 flex h-full cursor-pointer flex-col items-center"
       onClick={openModal}
     >
-      <p className="text-center text-[10px]/[13px] tracking-[0.2em] text-font-baseWhite font-semibold mt-3">
+      <p className="mt-3 text-center text-[10px]/[13px] font-semibold tracking-[0.2em] text-font-baseWhite">
         PLAY CARD
       </p>
       <Image
@@ -33,9 +33,9 @@ export default function ParticipantUsers({
         width={127}
         height={155}
         quality={100}
-        className="w-[127px] h-[155px] mt-3"
+        className="mt-3 h-[155px] w-[127px]"
       />
-      <div className="flex items-center gap-1 mt-3">
+      <div className="mt-3 flex items-center gap-1">
         <Image
           src={LeaderBadge}
           alt="방장 뱃지"
@@ -43,12 +43,12 @@ export default function ParticipantUsers({
           height={16}
           className={`h-4 w-4 ${leaderCheck !== list.nickname ? 'hidden' : ''}`}
         />
-        <p className="text-xs font-semibold tracking-[-2.5%] text-font-baseBlack truncate">
+        <p className="truncate text-xs font-semibold tracking-[-2.5%] text-font-baseBlack">
           {list.nickname}
         </p>
       </div>
       {list.email !== '' ? (
-        <p className="text-[5px]/[8px] tracking-[-2.5%] text-font-thirdBlack font-normal mt-1">
+        <p className="mt-1 text-[5px]/[8px] font-normal tracking-[-2.5%] text-font-thirdBlack">
           {list.email}
         </p>
       ) : null}

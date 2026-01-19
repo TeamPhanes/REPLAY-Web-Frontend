@@ -19,7 +19,7 @@ export default function PostReviewImageFile({
   return previewUrl.image === null ? (
     <label
       htmlFor={`image${index}`}
-      className="flex items-center gap-2 justify-center w-[108px] h-[108px] rounded-[4px] p-10 bg-line-lightGray cursor-pointer"
+      className="flex h-[108px] w-[108px] cursor-pointer items-center justify-center gap-2 rounded-[4px] bg-line-lightGray p-10"
     >
       <Image
         src={ReviewDefaultImage}
@@ -36,17 +36,17 @@ export default function PostReviewImageFile({
       />
     </label>
   ) : (
-    <div className="flex items-center relative group">
+    <div className="group relative flex items-center">
       <label
         htmlFor={`image${index}`}
-        className="flex items-center gap-2 justify-center w-[108px] h-[108px] rounded-[4px] bg-line-lightGray cursor-pointer"
+        className="flex h-[108px] w-[108px] cursor-pointer items-center justify-center gap-2 rounded-[4px] bg-line-lightGray"
       >
         <Image
           src={previewUrl.image}
           alt="첨부 이미지 미리보기"
           width={100}
           height={100}
-          className="w-[100px] h-[100px] rounded-[4px]"
+          className="h-[100px] w-[100px] rounded-[4px]"
         />
         <input
           id={`image${index}`}
@@ -64,7 +64,7 @@ export default function PostReviewImageFile({
 
       <button
         type="button"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white hidden group-hover:block duration-500 animate-modalIn"
+        className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 animate-modalIn rounded-full bg-white duration-500 group-hover:block"
         onClick={() => {
           handleImageReset();
           if (handleAddDeleteImageIds) {
@@ -77,7 +77,7 @@ export default function PostReviewImageFile({
           alt="지우기 아이콘"
           width={24}
           height={24}
-          className="w-6 h-6"
+          className="h-6 w-6"
         />
       </button>
     </div>

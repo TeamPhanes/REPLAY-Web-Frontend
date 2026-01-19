@@ -19,8 +19,8 @@ export default function LoginPage() {
   }, [router]);
 
   return (
-    <main className="bg-[linear-gradient(to_bottom,#333333_50%,#20239D_100%)] relative mx-auto pt-[148px] px-2 md:px-0 py-11 md:pb-[88px] min-h-screen h-full w-full">
-      <div className="flex flex-col justify-center items-center">
+    <main className="relative mx-auto h-full min-h-screen w-full bg-[linear-gradient(to_bottom,#333333_50%,#20239D_100%)] px-2 py-11 pt-[148px] md:px-0 md:pb-[88px]">
+      <div className="flex flex-col items-center justify-center">
         <Image
           src={Logo}
           alt="서비스 로고"
@@ -28,7 +28,7 @@ export default function LoginPage() {
           height={206}
           quality={100}
           priority
-          className="w-[283px] h-[103px] md:w-[565px] md:h-[206px] mt-5"
+          className="mt-5 h-[103px] w-[283px] md:h-[206px] md:w-[565px]"
         />
         <SocialLoginButton />
       </div>

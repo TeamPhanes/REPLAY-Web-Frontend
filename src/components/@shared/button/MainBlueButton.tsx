@@ -16,7 +16,7 @@ export default function MainBlueButton({
   return (
     <button
       type={type === 'submit' ? 'submit' : 'button'}
-      className={`bg-brand-main500 rounded-[4px] px-[10px] py-3 text-font-baseWhite font-semibold text-xl md:text-2xl/[34px] tracking-[-2.5%] text-center duration-500 ease-in-out hover:bg-mainBlueHover ${className}`}
+      className={`rounded-[4px] bg-brand-main500 px-[10px] py-3 text-center text-xl font-semibold tracking-[-2.5%] text-font-baseWhite duration-500 ease-in-out hover:bg-mainBlueHover md:text-2xl/[34px] ${className}`}
       onClick={onClick}
     >
       {children}

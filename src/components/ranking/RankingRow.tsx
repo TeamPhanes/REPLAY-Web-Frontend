@@ -25,33 +25,33 @@ export default function RankingRow({
     : 'text-xs md:text-[28px]/[38px] xl:text-[32px]/[42px]';
 
   return (
-    <div className="md:px-10 px-0 grid grid-cols-5 items-center mt-3">
+    <div className="mt-3 grid grid-cols-5 items-center px-0 md:px-10">
       <p
-        className={`${rankSize} text-font-baseWhite font-semibold text-center`}
+        className={`${rankSize} text-center font-semibold text-font-baseWhite`}
       >
         {rank}
       </p>
 
       <p
-        className={`${textSize} text-font-baseWhite font-semibold text-center`}
+        className={`${textSize} text-center font-semibold text-font-baseWhite`}
       >
         {nickname}
       </p>
 
       <p
-        className={`${textSize} text-font-baseWhite font-semibold text-center`}
+        className={`${textSize} text-center font-semibold text-font-baseWhite`}
       >
         {score}
       </p>
 
       <p
-        className={`${textSize} text-font-baseWhite font-semibold text-center`}
+        className={`${textSize} text-center font-semibold text-font-baseWhite`}
       >
         {theme}
       </p>
 
       <p
-        className={`${textSize} text-font-baseWhite font-semibold text-center`}
+        className={`${textSize} text-center font-semibold text-font-baseWhite`}
       >
         {prevRank}
       </p>

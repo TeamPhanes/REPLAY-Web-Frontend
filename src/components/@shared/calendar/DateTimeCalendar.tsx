@@ -92,14 +92,14 @@ export default function DateTimeCalendar({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#505050]/60 flex items-center justify-center animate-modalIn">
-      <div className="shrink-0 z-[60] bg-white px-[60px] py-8 rounded-lg">
-        <p className="text-[32px]/[42px] text-font-baseBlack font-semibold text-center">
+    <div className="fixed inset-0 z-50 flex animate-modalIn items-center justify-center bg-[#505050]/60">
+      <div className="z-[60] shrink-0 rounded-lg bg-white px-[60px] py-8">
+        <p className="text-center text-[32px]/[42px] font-semibold text-font-baseBlack">
           모임 일정을 설정해 주세요
         </p>
-        <div className="flex flex-row mt-5 border-b-[1px] border-line-lightGray pb-8">
+        <div className="mt-5 flex flex-row border-b-[1px] border-line-lightGray pb-8">
           <div className="flex flex-col gap-7">
-            <p className="text-2xl/[34px] text-font-baseBlack font-semibold">
+            <p className="text-2xl/[34px] font-semibold text-font-baseBlack">
               날짜 선택
             </p>
             <Calendar
@@ -120,7 +120,7 @@ export default function DateTimeCalendar({
               minDetail="year"
               className="date-time-calendar"
             />
-            <div className="flex items-center relative gap-6">
+            <div className="relative flex items-center gap-6">
               <MainWhiteButton onClick={handleGoToToday}>TODAY</MainWhiteButton>
               <MainWhiteButton onClick={handleNextYear}>
                 NEXT YEAR
@@ -128,7 +128,7 @@ export default function DateTimeCalendar({
               <button
                 type="button"
                 onClick={handleReset}
-                className="absolute right-0 w-10 h-10 rounded-[4px] border-[1px] border-font-baseBlack flex items-center justify-center duration-500 ease-in-out hover:bg-[#F2F2F2] hover:border-line-Gray"
+                className="absolute right-0 flex h-10 w-10 items-center justify-center rounded-[4px] border-[1px] border-font-baseBlack duration-500 ease-in-out hover:border-line-Gray hover:bg-[#F2F2F2]"
               >
                 <Image
                   src={BlackRefreshIcon}
@@ -141,10 +141,10 @@ export default function DateTimeCalendar({
             </div>
           </div>
           <div className="flex flex-col gap-7 pl-5">
-            <p className="text-2xl/[34px] text-font-baseBlack font-semibold">
+            <p className="text-2xl/[34px] font-semibold text-font-baseBlack">
               시간 선택
             </p>
-            <p className="text-base text-font-baseBlack font-semibold">
+            <p className="text-base font-semibold text-font-baseBlack">
               {koreaYearMonthDay(date)}
             </p>
             <ScrollTimePicker
@@ -156,14 +156,14 @@ export default function DateTimeCalendar({
           </div>
         </div>
 
-        <div className="mt-8 flex justify-between items-center">
-          <p className="text-[32px]/[42px] text-font-baseBlack font-semibold">
+        <div className="mt-8 flex items-center justify-between">
+          <p className="text-[32px]/[42px] font-semibold text-font-baseBlack">
             {koreaYearMonthDay(date)} {selectedHour.toString().padStart(2, '0')}
             :{selectedMinute.toString().padStart(2, '0')}시
           </p>
           <MainBlueButton
             type="button"
-            className="!text-base w-40 h-[52px]"
+            className="h-[52px] w-40 !text-base"
             onClick={handleSubmit}
           >
             확정 하기

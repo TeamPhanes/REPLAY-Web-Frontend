@@ -24,7 +24,7 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
 
   return (
     <div className="absolute z-10 backface-hidden rotate-y-180">
-      <p className="line-clamp-5 h-[140px] w-[320px] md:w-[576px] text-xl font-normal tracking-[-2.5%] text-white">
+      <p className="line-clamp-5 h-[140px] w-[320px] text-xl font-normal tracking-[-2.5%] text-white md:w-[576px]">
         &quot;{profileComment}&quot;
       </p>
       <div className="mt-10 flex flex-col gap-6">
@@ -40,10 +40,10 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
         <CardContentFont title="플레이한 방탈출" content={visitThemeCount} />
         <CardContentFont title="성공한 방탈출" content={successThemeCount} />
         <div className="flex items-center">
-          <p className="md:w-72 w-full text-xl md:text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
+          <p className="w-full text-xl font-semibold tracking-[-2.5%] text-basefont md:w-72 md:text-2xl/[34px]">
             현 분기 랭킹/과거 최고 랭킹
           </p>
-          <p className="w-20 text-lg md:text-xl font-normal tracking-[-2.5%] text-basefont">
+          <p className="w-20 text-lg font-normal tracking-[-2.5%] text-basefont md:text-xl">
             -
           </p>
         </div>

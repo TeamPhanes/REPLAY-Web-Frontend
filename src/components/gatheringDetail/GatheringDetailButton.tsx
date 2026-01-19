@@ -32,7 +32,7 @@ export default function GatheringDetailButton({
   return (
     <div>
       {userInfo && userInfo.nickname === leader ? (
-        <div className="mt-5 md:absolute bottom-5 right-5 grid grid-cols-2 md:w-[431px] gap-2">
+        <div className="bottom-5 right-5 mt-5 grid grid-cols-2 gap-2 md:absolute md:w-[431px]">
           <MainBlueButton onClick={openPatchGathering} className="!text-base">
             모임 수정하기
           </MainBlueButton>
@@ -47,12 +47,12 @@ export default function GatheringDetailButton({
       <Modal
         isOpen={isOpen}
         onClose={closeModal}
-        className="bg-card-modal rounded-[4px] px-10 py-5"
+        className="rounded-[4px] bg-card-modal px-10 py-5"
       >
-        <p className="font-semibold text-2xl text-basefont">
+        <p className="text-2xl font-semibold text-basefont">
           모임을 삭제하시겠습니까?
         </p>
-        <div className="grid grid-cols-2 gap-2 mt-5">
+        <div className="mt-5 grid grid-cols-2 gap-2">
           <MainBlueButton className="!text-base" onClick={() => mutate()}>
             확인
           </MainBlueButton>

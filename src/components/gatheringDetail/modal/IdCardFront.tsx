@@ -24,12 +24,12 @@ export default function IdCardFront({ userData }: IdCardFrontProps) {
         className="mt-5 h-[380px] w-[320px] md:h-[494px] md:w-[406px]"
       />
       <h2
-        className={`${email !== '' ? 'mt-10 md:mt-6' : 'md:mt-10'}  text-2xl md:text-[32px]/[42px] font-semibold tracking-[-2.5%] text-basefont`}
+        className={`${email !== '' ? 'mt-10 md:mt-6' : 'md:mt-10'}  text-2xl font-semibold tracking-[-2.5%] text-basefont md:text-[32px]/[42px]`}
       >
         {nickname}
       </h2>
       <p
-        className={`${email !== '' ? '' : 'hidden'} mt-2 text-base font-normal tracking-[-2.5%] text-grayFont absolute -bottom-8`}
+        className={`${email !== '' ? '' : 'hidden'} absolute -bottom-8 mt-2 text-base font-normal tracking-[-2.5%] text-grayFont`}
       >
         {email}
       </p>

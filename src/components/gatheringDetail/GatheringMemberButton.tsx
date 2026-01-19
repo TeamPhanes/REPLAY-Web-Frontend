@@ -24,19 +24,19 @@ export default function GatheringMemberButton({
     .find((check: boolean) => check === true);
   return !FindMember ? (
     <MainBlueButton
-      className="mt-5 md:absolute bottom-5 w-full md:w-[300px] right-5"
+      className="bottom-5 right-5 mt-5 w-full md:absolute md:w-[300px]"
       onClick={() => handleMemberButtonClick('POST')}
     >
-      <p className="text-base tracking-[-2.5%] font-semibold text-font-baseWhite">
+      <p className="text-base font-semibold tracking-[-2.5%] text-font-baseWhite">
         모임 참여하기
       </p>
     </MainBlueButton>
   ) : (
     <MainBlueButton
-      className="mt-5 md:absolute bottom-5 w-full md:w-[300px] right-5"
+      className="bottom-5 right-5 mt-5 w-full md:absolute md:w-[300px]"
       onClick={() => handleMemberButtonClick('DELETE')}
     >
-      <p className="text-base tracking-[-2.5%] font-semibold text-font-baseWhite">
+      <p className="text-base font-semibold tracking-[-2.5%] text-font-baseWhite">
         참여 취소하기
       </p>
     </MainBlueButton>

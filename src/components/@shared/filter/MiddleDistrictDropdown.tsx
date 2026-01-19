@@ -20,14 +20,14 @@ export default function MiddleDistrictDropdown({
   const { isOpen, toggleOpen } = useOpen();
   if (list.length === 0) return null;
   return (
-    <div className="flex items-center justify-center rounded-full bg-card px-4 py-2 gap-1">
+    <div className="bg-card flex items-center justify-center gap-1 rounded-full px-4 py-2">
       <ValueDropdown
         list={list}
         isOpen={isOpen}
         selected={middleDistrict}
         onOpenChange={toggleOpen}
         onClickHandler={setMiddleDistrict}
-        className={`${list.length === 2 ? 'grid-cols-2' : ''} ${list.length === 3 ? 'grid-cols-2 md:grid-cols-3' : ''} ${list.length >= 4 ? 'grid-cols-2 md:grid-cols-4' : ''} max-h-80 overflow-y-scroll md:overflow-hidden rounded-r-md md:rounded-r-[20px] grid p-2`}
+        className={`${list.length === 2 ? 'grid-cols-2' : ''} ${list.length === 3 ? 'grid-cols-2 md:grid-cols-3' : ''} ${list.length >= 4 ? 'grid-cols-2 md:grid-cols-4' : ''} grid max-h-80 overflow-y-scroll rounded-r-md p-2 md:overflow-hidden md:rounded-r-[20px]`}
         marginTop={14}
         align={align}
       >
@@ -35,7 +35,7 @@ export default function MiddleDistrictDropdown({
           type="button"
           className="flex items-center justify-center gap-1"
         >
-          <p className="text-sm md:text-base font-medium tracking-[-2.5%] text-basefont">
+          <p className="text-sm font-medium tracking-[-2.5%] text-basefont md:text-base">
             {middleDistrict}
           </p>
           {middleDistrict === '시.군.구' ? (
@@ -44,7 +44,7 @@ export default function MiddleDistrictDropdown({
               alt="더보기"
               width={20}
               height={20}
-              className={`h-5 w-5 transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+              className={`h-5 w-5 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
             />
           ) : null}
         </button>
@@ -55,7 +55,7 @@ export default function MiddleDistrictDropdown({
           alt="필터 제거"
           width={20}
           height={20}
-          className={`h-5 w-5 transition-transform transform duration-300 cursor-pointer ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+          className={`h-5 w-5 transform cursor-pointer transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
           onClick={() => setMiddleDistrict('시.군.구')}
         />
       ) : null}

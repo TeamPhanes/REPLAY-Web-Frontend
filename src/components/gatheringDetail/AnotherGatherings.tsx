@@ -19,15 +19,15 @@ export default function AnotherGatherings({
   return (
     <div className="mt-14">
       <div className="flex items-center gap-2">
-        <span className="w-1 h-[30px] bg-line-lightGray" />
-        <p className="text-[28px]/[38px] tracking-[-2.5%] text-font-baseWhite font-semibold">
+        <span className="h-[30px] w-1 bg-line-lightGray" />
+        <p className="text-[28px]/[38px] font-semibold tracking-[-2.5%] text-font-baseWhite">
           {title}
         </p>
         <Link
           href="/gathering"
-          className="flex items-center gap-[2px] absolute right-0"
+          className="absolute right-0 flex items-center gap-[2px]"
         >
-          <p className="text-sm tracking-[-2.5%] text-font-baseWhite font-normal">
+          <p className="text-sm font-normal tracking-[-2.5%] text-font-baseWhite">
             모임 더 보기
           </p>
           <Image src={ArrowIcon} alt="더 보기 아이콘" width={18} height={18} />

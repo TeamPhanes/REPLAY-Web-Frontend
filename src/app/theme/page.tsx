@@ -31,7 +31,7 @@ export default function RoomPage() {
       <FilterContainer setPage={setPage} />
       {!theme ? (
         <>
-          <LineSkeleton className="h-6 mt-6" />
+          <LineSkeleton className="mt-6 h-6" />
           <CardSkeleton className="mt-6" />
         </>
       ) : (

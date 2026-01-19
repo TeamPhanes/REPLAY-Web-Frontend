@@ -10,7 +10,7 @@ export default function TestPage() {
     <PageContainer>
       <button
         type="button"
-        className={`${isCheck ? 'left-full -translate-x-full' : 'left-0 translate-x-0'} bg-white w-20 text-black absolute top-10 transition-all duration-500 ease-in-out`}
+        className={`${isCheck ? 'left-full -translate-x-full' : 'left-0 translate-x-0'} absolute top-10 w-20 bg-white text-black transition-all duration-500 ease-in-out`}
         onClick={() => setIsCheck((prev) => !prev)}
       >
         이동 테스트

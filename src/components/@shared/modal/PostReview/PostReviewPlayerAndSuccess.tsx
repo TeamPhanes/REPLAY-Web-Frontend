@@ -27,11 +27,11 @@ export default function PostReviewPlayerAndSuccess({
     <>
       <div className="flex items-center gap-[6px]">
         <Image src={TrophyIcon} alt="트로피 아이콘" width={20} height={20} />
-        <p className="text-base text-font-baseBlack font-normal w-48">
+        <p className="w-48 text-base font-normal text-font-baseBlack">
           방탈출 성공 여부
         </p>
-        <div className="py-[6px] px-1 flex items-center justify-center gap-1 border-b-[1px] border-font-baseBlack">
-          <p className="text-sm text-font-baseBlack font-normal">
+        <div className="flex items-center justify-center gap-1 border-b-[1px] border-font-baseBlack px-1 py-[6px]">
+          <p className="text-sm font-normal text-font-baseBlack">
             {selectedSuccess === 'true' ? '성공' : '실패'}
           </p>
           <ValueDropdown
@@ -42,7 +42,7 @@ export default function PostReviewPlayerAndSuccess({
             onClickHandler={(item) => {
               setSelectedSuccess(item === '성공' ? 'true' : 'false');
             }}
-            className="min-w-[60px] absolute left-[-36px]"
+            className="absolute left-[-36px] min-w-[60px]"
             marginTop={14}
             align="start"
           >
@@ -56,7 +56,7 @@ export default function PostReviewPlayerAndSuccess({
                 alt="모임 인원 버튼"
                 width={18}
                 height={18}
-                className={`transition-transform transform duration-300 ${isSuccess ? 'rotate-180' : 'rotate-0'}`}
+                className={`transform transition-transform duration-300 ${isSuccess ? 'rotate-180' : 'rotate-0'}`}
               />
             </button>
           </ValueDropdown>
@@ -65,11 +65,11 @@ export default function PostReviewPlayerAndSuccess({
 
       <div className="flex items-center gap-[6px]">
         <Image src={UsersIcon} alt="유저 아이콘" width={20} height={20} />
-        <p className="text-base text-font-baseBlack font-normal w-48">
+        <p className="w-48 text-base font-normal text-font-baseBlack">
           플레이 인원
         </p>
-        <div className="py-[6px] px-1 flex items-center justify-center gap-1 border-b-[1px] border-font-baseBlack">
-          <p className="text-sm text-font-baseBlack font-normal">
+        <div className="flex items-center justify-center gap-1 border-b-[1px] border-font-baseBlack px-1 py-[6px]">
+          <p className="text-sm font-normal text-font-baseBlack">
             {String(numberOfPlayer).padStart(2, '0')}
           </p>
           <ValueDropdown
@@ -78,7 +78,7 @@ export default function PostReviewPlayerAndSuccess({
             selected={numberOfPlayer}
             onOpenChange={toggleNumberOfPlayer}
             onClickHandler={setNumberOfPlayer}
-            className="min-w-[60px] absolute left-[-36px]"
+            className="absolute left-[-36px] min-w-[60px]"
             marginTop={14}
             align="start"
           >
@@ -92,7 +92,7 @@ export default function PostReviewPlayerAndSuccess({
                 alt="모임 인원 버튼"
                 width={18}
                 height={18}
-                className={`transition-transform transform duration-300 ${isNumberOfPlayer ? 'rotate-180' : 'rotate-0'}`}
+                className={`transform transition-transform duration-300 ${isNumberOfPlayer ? 'rotate-180' : 'rotate-0'}`}
               />
             </button>
           </ValueDropdown>

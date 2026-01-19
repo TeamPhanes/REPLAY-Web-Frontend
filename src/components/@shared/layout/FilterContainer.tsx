@@ -49,9 +49,9 @@ export default function FilterContainer({ setPage }: FilterContainerProps) {
       <Modal
         isOpen={isOpen}
         onClose={closeModal}
-        className="w-80 md:w-[600px] bg-card-white rounded-[4px] p-4 relative"
+        className="relative w-80 rounded-[4px] bg-card-white p-4 md:w-[600px]"
       >
-        <div className="relative flex justify-center items-center gap-2">
+        <div className="relative flex items-center justify-center gap-2">
           <MainWhiteButton
             onClick={() => {
               setSelectedType('locate');
@@ -72,15 +72,15 @@ export default function FilterContainer({ setPage }: FilterContainerProps) {
         <GenreFilter selectedType={selectedType} />
 
         {districtList.length !== 0 || genreList.length !== 0 ? (
-          <div className="flex flex-col gap-2 mt-10 relative">
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-[6px]">
+          <div className="relative mt-10 flex flex-col gap-2">
+            <div className="flex flex-col items-start gap-[6px] md:flex-row md:items-center">
               {districtList.map((value, index) => {
                 return (
                   <button
                     key={index}
                     type="button"
                     onClick={() => removeDistrictList(value)}
-                    className="flex items-center gap-[6px] px-3 py-[6px] bg-brand-main300 text-base tracking-[-2.5%] text-font-baseBlack rounded-[4px] font-semibold animate-modalIn"
+                    className="flex animate-modalIn items-center gap-[6px] rounded-[4px] bg-brand-main300 px-3 py-[6px] text-base font-semibold tracking-[-2.5%] text-font-baseBlack"
                   >
                     {value}
                     <Image
@@ -95,14 +95,14 @@ export default function FilterContainer({ setPage }: FilterContainerProps) {
             </div>
 
             {genreList.length !== 0 ? (
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-[6px]">
+              <div className="flex flex-col items-start gap-[6px] md:flex-row md:items-center">
                 {genreList.map((value, index) => {
                   return (
                     <button
                       key={index}
                       type="button"
                       onClick={() => removeGenre(value)}
-                      className="px-3 py-[6px] bg-brand-sub300 text-base tracking-[-2.5%] text-font-baseBlack rounded-[4px] font-semibold flex items-center gap-[6px] animate-modalIn"
+                      className="flex animate-modalIn items-center gap-[6px] rounded-[4px] bg-brand-sub300 px-3 py-[6px] text-base font-semibold tracking-[-2.5%] text-font-baseBlack"
                     >
                       {value}
                       <Image
@@ -117,7 +117,7 @@ export default function FilterContainer({ setPage }: FilterContainerProps) {
               </div>
             ) : null}
 
-            <div className="absolute right-0 bottom-0 flex items-center gap-1">
+            <div className="absolute bottom-0 right-0 flex items-center gap-1">
               <MainWhiteButton
                 onClick={() => {
                   setSelectedType('locate');
@@ -135,7 +135,7 @@ export default function FilterContainer({ setPage }: FilterContainerProps) {
                   setSelectedDistrict(null);
                   closeModal();
                 }}
-                className="!text-base/[22px] !py-[7px] !px-6"
+                className="!px-6 !py-[7px] !text-base/[22px]"
               >
                 확인
               </MainBlueButton>

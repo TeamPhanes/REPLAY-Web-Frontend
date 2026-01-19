@@ -5,7 +5,7 @@ import defaultUserImage from '@/public/icons/user/user_default.svg';
 export default function LoginButton({ className }: { className?: string }) {
   return (
     <Link href="/login" className={`${className} shrink-0`}>
-      <button type="button" className="items-center gap-[6px] shrink-0 flex">
+      <button type="button" className="flex shrink-0 items-center gap-[6px]">
         <Image
           src={defaultUserImage}
           alt="유저 기본 이미지"

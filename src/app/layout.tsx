@@ -43,7 +43,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${pretendard.className} antialiased scrollbar-x-hidden`}
+        className={`${pretendard.className} scrollbar-x-hidden antialiased`}
       >
         <QueryProvider>
           <AuthSessionLoader />

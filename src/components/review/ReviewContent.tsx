@@ -7,7 +7,7 @@ interface ReviewContentProps {
 
 export default function ReviewContent({ content, images }: ReviewContentProps) {
   return (
-    <div className="mt-3 flex items-end gap-3 justify-between">
+    <div className="mt-3 flex items-end justify-between gap-3">
       <p className="line-clamp-3 text-base font-normal tracking-[-2.5%] text-basefont">
         {content}
       </p>

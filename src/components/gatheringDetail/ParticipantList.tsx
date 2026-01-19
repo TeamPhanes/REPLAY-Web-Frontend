@@ -43,24 +43,24 @@ export default function ParticipantList({
   };
 
   return (
-    <div className="flex flex-col mt-14">
+    <div className="mt-14 flex flex-col">
       <div className="flex items-center gap-2">
-        <span className="w-1 h-[30px] bg-line-lightGray" />
-        <p className="text-[28px]/[38px] tracking-[-2.5%] text-font-baseWhite font-semibold">
+        <span className="h-[30px] w-1 bg-line-lightGray" />
+        <p className="text-[28px]/[38px] font-semibold tracking-[-2.5%] text-font-baseWhite">
           모임 참여자
         </p>
       </div>
-      <div className="flex items-center mt-6 justify-between">
+      <div className="mt-6 flex items-center justify-between">
         {participants.map((user: GatheringMemberDTO['get'], index: number) => (
           <div
             key={index}
-            className={`relative min-w-[203px] min-h-[308px] flex flex-col items-center ${getBgClass(user.nickname)}`}
+            className={`relative flex min-h-[308px] min-w-[203px] flex-col items-center ${getBgClass(user.nickname)}`}
           >
             <div
-              className={`bg-line-white w-full h-[175px] absolute top-[75px] ${getBgClass(user.nickname)}`}
+              className={`absolute top-[75px] h-[175px] w-full bg-line-white ${getBgClass(user.nickname)}`}
             />
             <div
-              className={`bg-brand-sub300 w-full h-1 absolute top-[243px] ${getBgClass(user.nickname)}`}
+              className={`absolute top-[243px] h-1 w-full bg-brand-sub300 ${getBgClass(user.nickname)}`}
             />
             <ParticipantUsers list={user} leaderCheck={findHostName} />
           </div>

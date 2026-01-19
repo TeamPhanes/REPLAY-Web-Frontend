@@ -18,7 +18,7 @@ export default function RoomDetailStroy({
   return (
     <>
       <StorySection story={story} />
-      <div className="mt-4 flex justify-between md:absolute bottom-5">
+      <div className="bottom-5 mt-4 flex justify-between md:absolute">
         <MainBlueButton
           className="h-[58px] w-full md:w-[431px]"
           onClick={openModal}
