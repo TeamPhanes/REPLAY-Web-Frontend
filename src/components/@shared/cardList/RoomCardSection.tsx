@@ -59,7 +59,7 @@ export default function RoomCardSection({
 
   return (
     <>
-      <div className="top-10 right-10 md:top-auto md:right-5 absolute rounded-[30px] flex p-1 gap-3 md:p-0">
+      <div className="top-auto right-5 absolute bg-card-white rounded-l-md rounded-t-none flex p-1 gap-3 md:p-0">
         <button
           type="button"
           className={`transition-transform duration-300 active:scale-90 ${

@@ -1,15 +1,19 @@
 'use client';
 
-import { useState } from 'react';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
 import { locationDetailList } from '@/constants/filter/locationList';
 
 interface LocationFilterProps {
   selectedType: string;
+  selectedDistrict: string | null;
+  setSelectedDistrict: (value: string | null) => void;
 }
 
-export default function LocationFilter({ selectedType }: LocationFilterProps) {
-  const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
+export default function LocationFilter({
+  selectedType,
+  selectedDistrict,
+  setSelectedDistrict,
+}: LocationFilterProps) {
   const { districtList, addDistrictList, removeDistrictList } =
     useQueryStringStore();
   return (
@@ -28,7 +32,7 @@ export default function LocationFilter({ selectedType }: LocationFilterProps) {
                 if (selectedDistrict === key) setSelectedDistrict(null);
                 else setSelectedDistrict(key);
               }}
-              className={`${selectedDistrict === key ? 'bg-brand-main400 text-font-baseWhite font-semibold !block px-10 duration-500' : 'bg-card-white'} ${selectedDistrict === null ? '' : 'hidden'} text-base tracking-[-2.5%] text-font-baseBlack font-normal py-2 hover:bg-brand-main400 hover:text-font-baseWhite hover:font-semibold md:duration-500`}
+              className={`${selectedDistrict === key ? 'bg-brand-main400 text-font-baseWhite font-semibold !block px-10 duration-500' : 'bg-card-white'} ${selectedDistrict === null ? '' : 'hidden'} text-base tracking-[-2.5%] text-font-baseBlack font-normal py-2 xl:hover:bg-brand-main400 xl:hover:text-font-baseWhite xl:hover:font-semibold md:duration-500`}
             >
               {key}
             </button>
@@ -52,7 +56,7 @@ export default function LocationFilter({ selectedType }: LocationFilterProps) {
                       removeDistrictList(`${key} ${district}`);
                     else addDistrictList(`${key} ${district}`);
                   }}
-                  className={`py-2 text-lg text-font-baseBlack font-normal hover:bg-brand-main200 hover:font-semibold duration-500   
+                  className={`py-2 text-lg text-font-baseBlack font-normal xl:hover:bg-brand-main200 xl:hover:font-semibold duration-500   
                     ${districtList.includes(`${key} ${district}`) ? 'bg-brand-main200 font-semibold' : ''} 
                   `}
                 >
