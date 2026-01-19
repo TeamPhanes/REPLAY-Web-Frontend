@@ -42,7 +42,7 @@ export default function CommentCardSection({ sort }: CommentCardSectionProps) {
         ([date, comments]) => (
           <div key={date} className="mt-8 flex flex-col gap-2">
             <h2
-              className={`${periodFullYearMonthDay(date) === toDay ? 'text-brand-sub500' : 'text-white'} text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%]`}
+              className={`${periodFullYearMonthDay(date) === toDay ? 'text-brand-sub500' : 'text-white'} text-xl font-normal tracking-[-2.5%] md:text-2xl/[34px]`}
             >
               {periodFullYearMonthDay(date) === toDay ? '오늘 - ' : ''}
               {periodFullYearMonthDay(date)}
@@ -51,17 +51,17 @@ export default function CommentCardSection({ sort }: CommentCardSectionProps) {
               {comments.map((comment, index) => (
                 <div
                   key={index}
-                  className="flex flex-col gap-3 bg-card-white px-[30px] py-5 border-[1px] border-line-lightGray"
+                  className="flex flex-col gap-3 border-[1px] border-line-lightGray bg-card-white px-[30px] py-5"
                 >
-                  <p className="text-xl text-font-baseBlack font-semibold tracking-[-2.5%]">
+                  <p className="text-xl font-semibold tracking-[-2.5%] text-font-baseBlack">
                     {comment.content}
                   </p>
                   <div className="flex items-center gap-2">
-                    <p className="text-base text-font-thirdBlack font-normal">
+                    <p className="text-base font-normal text-font-thirdBlack">
                       {comment.nickName}
                     </p>
-                    <span className="w-[1px] h-4 bg-line-darkGray" />
-                    <p className="text-base text-font-thirdBlack font-normal">
+                    <span className="h-4 w-[1px] bg-line-darkGray" />
+                    <p className="text-base font-normal text-font-thirdBlack">
                       {periodFullYearMonthDay(comment.createdAt)}
                     </p>
                   </div>

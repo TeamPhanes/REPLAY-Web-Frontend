@@ -28,7 +28,7 @@ export default function Pagination({
   }
 
   return range.length !== 0 ? (
-    <div className="flex items-center gap-1 justify-center mt-32">
+    <div className="mt-32 flex items-center justify-center gap-1">
       {/* <button
         type="button"
         onClick={() => {
@@ -59,7 +59,7 @@ export default function Pagination({
               onChange(Number(item));
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className={`font-normal text-base tracking-[-2.5%] w-9 h-9 ${currentPage === item ? 'text-font-baseWhite rounded-full bg-brand-main400' : 'text-font-thirdWhite hover:text-font-baseWhite hover:rounded-full hover:bg-brand-main400'}`}
+            className={`h-9 w-9 text-base font-normal tracking-[-2.5%] ${currentPage === item ? 'rounded-full bg-brand-main400 text-font-baseWhite' : 'text-font-thirdWhite hover:rounded-full hover:bg-brand-main400 hover:text-font-baseWhite'}`}
           >
             {Number(item) + 1}
           </button>

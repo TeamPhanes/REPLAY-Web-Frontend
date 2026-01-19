@@ -12,12 +12,12 @@ export default function CardContentContainer({
   user,
 }: CardContentContainerProps) {
   return (
-    <div className="flex justify-between md:flex-row flex-col">
-      <div className="absolute left-0 top-[180px] md:top-[164px] h-[240px] md:h-[558px] w-full bg-white" />
-      <div className="absolute md:hidden left-0 top-[640px] md:top-[248px] h-[380px] md:h-[558px] w-full bg-white" />
-      <div className="absolute left-0 top-[1000px] md:top-[700px] h-3 w-full bg-brand-sub300" />
-      <div className="z-10 md:ml-20 flex flex-col items-center">
-        <p className="text-2xl md:text-[32px]/[42px] font-semibold tracking-[0.2em]">
+    <div className="flex flex-col justify-between md:flex-row">
+      <div className="absolute left-0 top-[180px] h-[240px] w-full bg-white md:top-[164px] md:h-[558px]" />
+      <div className="absolute left-0 top-[640px] h-[380px] w-full bg-white md:top-[248px] md:hidden md:h-[558px]" />
+      <div className="absolute left-0 top-[1000px] h-3 w-full bg-brand-sub300 md:top-[700px]" />
+      <div className="z-10 flex flex-col items-center md:ml-20">
+        <p className="text-2xl font-semibold tracking-[0.2em] md:text-[32px]/[42px]">
           REPLAYer
         </p>
         <Image
@@ -26,9 +26,9 @@ export default function CardContentContainer({
           width={361}
           height={480}
           quality={100}
-          className="mt-5 h-[190px] w-[160px] md:h-[480px] md:w-[361px] border-2 border-[#EAEAEA]"
+          className="mt-5 h-[190px] w-[160px] border-2 border-[#EAEAEA] md:h-[480px] md:w-[361px]"
         />
-        <h2 className="mt-5 text-2xl max-w-[361px] md:max-w-max truncate md:text-[40px]/[52px] font-semibold tracking-[-2.5%] text-font-baseBlack">
+        <h2 className="mt-5 max-w-[361px] truncate text-2xl font-semibold tracking-[-2.5%] text-font-baseBlack md:max-w-max md:text-[40px]/[52px]">
           {user.nickname}
         </h2>
         {user.email !== '' ? (
@@ -45,8 +45,8 @@ export default function CardContentContainer({
         />
       </div>
 
-      <div className="z-10 md:ml-9 absolute md:relative top-[432px] md:top-auto left-0 right-0 px-10">
-        <p className="line-clamp-4 h-[120px] md:w-[576px] text-xl font-normal tracking-[-2.5%] text-font-baseWhite">
+      <div className="absolute left-0 right-0 top-[432px] z-10 px-10 md:relative md:top-auto md:ml-9">
+        <p className="line-clamp-4 h-[120px] text-xl font-normal tracking-[-2.5%] text-font-baseWhite md:w-[576px]">
           &quot;{user.profileComment}&quot;
         </p>
         <div className="mt-8 flex flex-col gap-8">
@@ -68,10 +68,10 @@ export default function CardContentContainer({
             content={user.successThemeCount}
           />
           <div className="flex items-center">
-            <p className="md:w-72 w-full text-xl md:text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
+            <p className="w-full text-xl font-semibold tracking-[-2.5%] text-basefont md:w-72 md:text-2xl/[34px]">
               현 분기 랭킹/과거 최고 랭킹
             </p>
-            <p className="w-20 text-lg md:text-xl font-normal tracking-[-2.5%] text-basefont">
+            <p className="w-20 text-lg font-normal tracking-[-2.5%] text-basefont md:text-xl">
               -
             </p>
           </div>

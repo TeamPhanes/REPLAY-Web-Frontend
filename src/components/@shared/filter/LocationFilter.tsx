@@ -32,7 +32,7 @@ export default function LocationFilter({
                 if (selectedDistrict === key) setSelectedDistrict(null);
                 else setSelectedDistrict(key);
               }}
-              className={`${selectedDistrict === key ? 'bg-brand-main400 text-font-baseWhite font-semibold !block px-10 duration-500' : 'bg-card-white'} ${selectedDistrict === null ? '' : 'hidden'} text-base tracking-[-2.5%] text-font-baseBlack font-normal py-2 xl:hover:bg-brand-main400 xl:hover:text-font-baseWhite xl:hover:font-semibold md:duration-500`}
+              className={`${selectedDistrict === key ? '!block bg-brand-main400 px-10 font-semibold text-font-baseWhite duration-500' : 'bg-card-white'} ${selectedDistrict === null ? '' : 'hidden'} py-2 text-base font-normal tracking-[-2.5%] text-font-baseBlack md:duration-500 xl:hover:bg-brand-main400 xl:hover:font-semibold xl:hover:text-font-baseWhite`}
             >
               {key}
             </button>
@@ -41,7 +41,7 @@ export default function LocationFilter({
       </div>
 
       <div
-        className={`${selectedDistrict === null ? 'hidden' : 'animate-dropdownIn'} bg-card-white grid grid-cols-4 gap-2 rounded-b-[10px] z-40 mt-3`}
+        className={`${selectedDistrict === null ? 'hidden' : 'animate-dropdownIn'} z-40 mt-3 grid grid-cols-4 gap-2 rounded-b-[10px] bg-card-white`}
       >
         {Object.entries(locationDetailList).map(([key, value]) => {
           return (
@@ -56,7 +56,7 @@ export default function LocationFilter({
                       removeDistrictList(`${key} ${district}`);
                     else addDistrictList(`${key} ${district}`);
                   }}
-                  className={`py-2 text-lg text-font-baseBlack font-normal xl:hover:bg-brand-main200 xl:hover:font-semibold duration-500   
+                  className={`py-2 text-lg font-normal text-font-baseBlack duration-500 xl:hover:bg-brand-main200 xl:hover:font-semibold   
                     ${districtList.includes(`${key} ${district}`) ? 'bg-brand-main200 font-semibold' : ''} 
                   `}
                 >

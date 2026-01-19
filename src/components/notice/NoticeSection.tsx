@@ -26,13 +26,13 @@ export default function NoticeSection() {
           <Link
             key={value.id}
             href={`/notice/${value.id}`}
-            className="flex flex-col py-6 gap-1 border-b-[1px] border-line-secondDarkGray"
+            className="flex flex-col gap-1 border-b-[1px] border-line-secondDarkGray py-6"
           >
-            <h2 className="text-xl tracking-[-2.5%] font-semibold text-font-baseWhite">
+            <h2 className="text-xl font-semibold tracking-[-2.5%] text-font-baseWhite">
               {value.title}
             </h2>
-            <div className="flex justify-between items-center">
-              <p className="text-sm tracking-[-2.5%] font-medium text-font-baseWhite">
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-medium tracking-[-2.5%] text-font-baseWhite">
                 Admin
               </p>
               <div className="flex items-center gap-[14px]">
@@ -45,7 +45,7 @@ export default function NoticeSection() {
                 <p className="text-sm tracking-[-2.5%] font-medium text-font-baseWhite mr-1">
                   {value.viewCount}
                 </p> */}
-                <p className="text-sm tracking-[-2.5%] font-medium text-font-baseWhite">
+                <p className="text-sm font-medium tracking-[-2.5%] text-font-baseWhite">
                   {periodFullYearMonthDay(value.createdAt)}
                 </p>
               </div>

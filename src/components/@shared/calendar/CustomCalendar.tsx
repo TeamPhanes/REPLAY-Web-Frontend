@@ -67,7 +67,7 @@ export default function CustomCalendar({
 
   return (
     <div
-      className={`${isOpen ? 'animate-dropdownIn' : 'hidden'} ${layout} border-2 absolute z-[80] flex flex-col rounded-[10px] border-grayFont bg-grayFont py-5 px-2 md:pl-6 shadow-xl md:pr-0`}
+      className={`${isOpen ? 'animate-dropdownIn' : 'hidden'} ${layout} absolute z-[80] flex flex-col rounded-[10px] border-2 border-grayFont bg-grayFont px-2 py-5 shadow-xl md:pl-6 md:pr-0`}
     >
       <div className="flex flex-col md:h-[332px] md:flex-row">
         <Calendar
@@ -85,14 +85,14 @@ export default function CustomCalendar({
       <div className="mx-auto flex w-[250px] items-center justify-between">
         <button
           type="button"
-          className="w-[122px] border-cardActive border-2 py-3 px-[10px] text-buttonColor200 rounded-2xl bg-white font-semibold hover:bg-buttonColor200Hover"
+          className="w-[122px] rounded-2xl border-2 border-cardActive bg-white px-[10px] py-3 font-semibold text-buttonColor200 hover:bg-buttonColor200Hover"
           onClick={handleReset}
         >
           초기화
         </button>
         <button
           type="button"
-          className="w-[122px] bg-mainBlue rounded-2xl font-semibold py-3 px-[10px] hover:bg-mainBlueHover"
+          className="w-[122px] rounded-2xl bg-mainBlue px-[10px] py-3 font-semibold hover:bg-mainBlueHover"
           onClick={handleSubmit}
         >
           적용

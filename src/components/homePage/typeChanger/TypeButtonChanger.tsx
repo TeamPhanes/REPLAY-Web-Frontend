@@ -24,7 +24,7 @@ export default function TypeButtonChanger({
         <MainWhiteButton
           key={option.value}
           type="button"
-          className={`${selectedType === option.value ? 'bg-[#E5E5E5] border-line-secondDarkGray' : ''} md:min-w-[68px] z-10`}
+          className={`${selectedType === option.value ? 'border-line-secondDarkGray bg-[#E5E5E5]' : ''} z-10 md:min-w-[68px]`}
           onClick={() => setSelectedType(option.value)}
         >
           {option.label}

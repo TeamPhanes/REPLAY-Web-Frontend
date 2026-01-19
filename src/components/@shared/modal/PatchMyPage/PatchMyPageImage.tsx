@@ -12,14 +12,14 @@ export default function PatchMyPageImage({
   return (
     <label
       htmlFor="image"
-      className="rounded-full bg-mainBlue w-10 h-10 p-2 flex items-center justify-center absolute cursor-pointer bottom-2 right-2"
+      className="absolute bottom-2 right-2 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-mainBlue p-2"
     >
       <Image
         src={WhitePencil}
         alt="이미지 수정"
         width={24}
         height={24}
-        className="w-6 h-6"
+        className="h-6 w-6"
       />
       <input
         id="image"

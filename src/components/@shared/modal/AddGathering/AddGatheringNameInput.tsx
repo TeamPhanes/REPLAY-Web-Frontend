@@ -27,9 +27,9 @@ export default function AddGatheringNameInput({
   errors,
 }: AddGatheringNameInputProps) {
   return (
-    <div className="w-full relative">
+    <div className="relative w-full">
       <div
-        className={`${errors.name ? 'border-error' : 'border-line-Gray'} flex p-4 border-b-[1px] items-center mt-2`}
+        className={`${errors.name ? 'border-error' : 'border-line-Gray'} mt-2 flex items-center border-b-[1px] p-4`}
       >
         <Image
           src="/icons/pencil/dark_pencil.svg"
@@ -41,13 +41,13 @@ export default function AddGatheringNameInput({
           {...register('name', { required: '내용 입력은 필수입니다.' })}
           type="text"
           placeholder="모임명을 입력해 주세요."
-          className="w-full text-base tracking-[-2.5%] placeholder:text-font-disabled text-font-baseBlack bg-[#F7F7FB] z-20 ml-[6px]"
+          className="z-20 ml-[6px] w-full bg-[#F7F7FB] text-base tracking-[-2.5%] text-font-baseBlack placeholder:text-font-disabled"
           value={name}
           onChange={(e) => nameChange(e.target.value)}
         />
       </div>
       {errors.name && (
-        <p className="text-red-500 text-sm mt-1 ml-5 absolute bottom--5">
+        <p className="absolute bottom--5 ml-5 mt-1 text-sm text-red-500">
           {errors.name.message}
         </p>
       )}

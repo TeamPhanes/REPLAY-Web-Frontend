@@ -31,10 +31,10 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
       </button>
 
       {isOpen && (
-        <div className="fixed min-w-[300px] min-h-[704px] bg-brand-gray right-0 top-0 flex flex-col">
-          <div className="bg-[#2E2E2E] h-[70px] relative flex items-center px-6 justify-between">
+        <div className="fixed right-0 top-0 flex min-h-[704px] min-w-[300px] flex-col bg-brand-gray">
+          <div className="relative flex h-[70px] items-center justify-between bg-[#2E2E2E] px-6">
             {userInfo ? (
-              <div className="items-center justify-center gap-[6px] shrink-0 flex">
+              <div className="flex shrink-0 items-center justify-center gap-[6px]">
                 <Image
                   src={userInfo.image || userDefault}
                   alt="유저 프로필 이미지"
@@ -42,13 +42,13 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
                   height={24}
                   className="h-6 w-6 rounded-full bg-line-Gray shadow-md"
                 />
-                <p className="truncate max-w-[130px]">{userInfo.nickname} 님</p>
+                <p className="max-w-[130px] truncate">{userInfo.nickname} 님</p>
               </div>
             ) : (
               <Link href="/login" className="shrink-0">
                 <button
                   type="button"
-                  className="items-center gap-[6px] shrink-0 flex"
+                  className="flex shrink-0 items-center gap-[6px]"
                 >
                   <Image
                     src={userDefault}
@@ -67,10 +67,10 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
 
           <Link
             href="/mypage"
-            className="bg-card-gray h-[70px] px-6 flex items-center justify-between"
+            className="flex h-[70px] items-center justify-between bg-card-gray px-6"
             onClick={closeModal}
           >
-            <p className="text-2xl/[34px] text-font-baseWhite font-semibold">
+            <p className="text-2xl/[34px] font-semibold text-font-baseWhite">
               마이페이지
             </p>
             <Image
@@ -82,10 +82,10 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
           </Link>
           <Link
             href="/theme"
-            className="bg-card-gray h-[70px] px-6 flex items-center justify-between border-t-[1px] border-line-darkGray"
+            className="flex h-[70px] items-center justify-between border-t-[1px] border-line-darkGray bg-card-gray px-6"
             onClick={closeModal}
           >
-            <p className="text-2xl/[34px] text-font-baseWhite font-semibold">
+            <p className="text-2xl/[34px] font-semibold text-font-baseWhite">
               방탈출
             </p>
             <Image
@@ -97,10 +97,10 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
           </Link>
           <Link
             href="/gathering"
-            className="bg-card-gray h-[70px] px-6 flex items-center justify-between border-t-[1px] border-line-darkGray"
+            className="flex h-[70px] items-center justify-between border-t-[1px] border-line-darkGray bg-card-gray px-6"
             onClick={closeModal}
           >
-            <p className="text-2xl/[34px] text-font-baseWhite font-semibold">
+            <p className="text-2xl/[34px] font-semibold text-font-baseWhite">
               모임
             </p>
             <Image
@@ -112,10 +112,10 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
           </Link>
           <Link
             href="/ranking"
-            className="bg-card-gray h-[70px] px-6 flex items-center justify-between border-t-[1px] border-line-darkGray"
+            className="flex h-[70px] items-center justify-between border-t-[1px] border-line-darkGray bg-card-gray px-6"
             onClick={closeModal}
           >
-            <p className="text-2xl/[34px] text-font-baseWhite font-semibold">
+            <p className="text-2xl/[34px] font-semibold text-font-baseWhite">
               랭킹
             </p>
             <Image
@@ -127,10 +127,10 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
           </Link>
           <Link
             href="/notice"
-            className="bg-card-gray h-[70px] px-6 flex items-center justify-between border-t-[1px] border-line-darkGray"
+            className="flex h-[70px] items-center justify-between border-t-[1px] border-line-darkGray bg-card-gray px-6"
             onClick={closeModal}
           >
-            <p className="text-2xl/[34px] text-font-baseWhite font-semibold">
+            <p className="text-2xl/[34px] font-semibold text-font-baseWhite">
               공지사항
             </p>
             <Image
@@ -144,10 +144,10 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
           {userInfo && (
             <button
               type="button"
-              className="h-[70px] px-6 w-full flex items-center justify-between absolute bottom-0"
+              className="absolute bottom-0 flex h-[70px] w-full items-center justify-between px-6"
               onClick={() => logout()}
             >
-              <p className="text-2xl/[34px] text-font-thirdWhite font-semibold">
+              <p className="text-2xl/[34px] font-semibold text-font-thirdWhite">
                 로그아웃
               </p>
               <Image src={LogoutIcon} alt="로그아웃" width={24} height={24} />

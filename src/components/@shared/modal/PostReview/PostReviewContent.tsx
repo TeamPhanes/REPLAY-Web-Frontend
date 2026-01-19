@@ -11,7 +11,7 @@ export default function PostReviewContent({
       placeholder="리뷰를 작성해주세요."
       value={content}
       onChange={(e) => contentChange(e.target.value)}
-      className="w-full h-[415px] resize-none rounded-lg border-[1px] border-line-secondLightGray bg-white p-4 outline-none text-font-baseBlack"
+      className="h-[415px] w-full resize-none rounded-lg border-[1px] border-line-secondLightGray bg-white p-4 text-font-baseBlack outline-none"
     />
   );
 }

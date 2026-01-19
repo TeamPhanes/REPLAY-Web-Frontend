@@ -11,19 +11,19 @@ export default function CardContentFont({
 }: CardContentFontProps) {
   return (
     <div className="flex items-center">
-      <p className="md:w-72 w-full text-xl md:text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
+      <p className="w-full text-xl font-semibold tracking-[-2.5%] text-basefont md:w-72 md:text-2xl/[34px]">
         {title}
       </p>
       {typeof content === 'number' ? (
-        <p className="w-20 text-lg md:text-xl font-normal tracking-[-2.5%] text-basefont">
+        <p className="w-20 text-lg font-normal tracking-[-2.5%] text-basefont md:text-xl">
           {content}개
         </p>
       ) : (
         <div className="relative flex w-20 items-center gap-3">
-          <p className="text-nowrap text-lg md:text-xl font-normal tracking-[-2.5%] text-basefont">
+          <p className="text-nowrap text-lg font-normal tracking-[-2.5%] text-basefont md:text-xl">
             {periodOfActivity(content)}
           </p>
-          <p className="hidden md:block absolute left-[108px] text-nowrap text-base font-normal tracking-[-2.5%] text-spot">
+          <p className="absolute left-[108px] hidden text-nowrap text-base font-normal tracking-[-2.5%] text-spot md:block">
             {koreaYearMonthDay(content)}
           </p>
         </div>

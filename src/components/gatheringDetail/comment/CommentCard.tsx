@@ -51,29 +51,29 @@ export default function CommentCard({
       className={`${userNickname === leaderCheck ? 'bg-progressBar' : ''} border-b-[1px] border-line-lightGray`}
     >
       <div
-        className={`flex gap-2 px-[20px] py-[30px] items-center ${type === 'comment' ? '' : 'pl-[60px]'}`}
+        className={`flex items-center gap-2 px-[20px] py-[30px] ${type === 'comment' ? '' : 'pl-[60px]'}`}
       >
         <Image
           src={userImage || UserDefaultImg}
           alt={userNickname}
           width={60}
           height={60}
-          className="w-8 h-8 md:h-[60px] md:w-[60px] rounded-full border-2 bg-line-Gray shadow-md"
+          className="h-8 w-8 rounded-full border-2 bg-line-Gray shadow-md md:h-[60px] md:w-[60px]"
         />
         <div className="flex flex-col gap-[6px]">
-          <p className="text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont">
+          <p className="text-xl font-normal tracking-[-2.5%] text-basefont md:text-2xl/[34px]">
             {content}
           </p>
-          <div className="mt-2 flex gap-[6px] items-center">
+          <div className="mt-2 flex items-center gap-[6px]">
             <p className="text-base font-normal tracking-[-2.5%] text-font-thirdBlack">
               {userNickname}
             </p>
-            <span className="bg-line-darkGray w-[1px] h-4" />
+            <span className="h-4 w-[1px] bg-line-darkGray" />
             <p className="text-base font-normal tracking-[-2.5%] text-font-thirdBlack">
               {periodYearMonthDayHourTime(createdAt)}
             </p>
-            <span className="bg-line-darkGray w-[1px] h-4" />
-            <div className="flex items-center gap-3 ml-2">
+            <span className="h-4 w-[1px] bg-line-darkGray" />
+            <div className="ml-2 flex items-center gap-3">
               <button
                 type="button"
                 className="text-base font-normal tracking-[-2.5%] text-font-thirdBlack"
@@ -124,12 +124,12 @@ export default function CommentCard({
       <Modal
         isOpen={isDeleteComment}
         onClose={toggleDeleteComment}
-        className="bg-white rounded-[30px] px-10 py-5"
+        className="rounded-[30px] bg-white px-10 py-5"
       >
-        <p className="font-semibold text-xl md:text-2xl text-basefont">
+        <p className="text-xl font-semibold text-basefont md:text-2xl">
           댓글을 삭제하시겠습니까?
         </p>
-        <div className="flex justify-between gap-2 mt-5">
+        <div className="mt-5 flex justify-between gap-2">
           <MainBlueButton className="w-full" onClick={() => DeleteComment()}>
             확인
           </MainBlueButton>

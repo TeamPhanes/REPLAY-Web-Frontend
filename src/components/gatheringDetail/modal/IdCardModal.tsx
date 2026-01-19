@@ -19,7 +19,7 @@ export default function IdCardModal({
     <Modal
       isOpen={openModal}
       onClose={closeModal}
-      className="perspective-1000 rounded-[30px] cursor-pointer scrollbar-x-hidden"
+      className="scrollbar-x-hidden cursor-pointer rounded-[30px] perspective-1000"
     >
       <IdCardModalContainer>
         <IdCardFront userData={userData} />

@@ -65,7 +65,7 @@ export default function RoomDetailPage() {
     <PageContainer>
       <button
         type="button"
-        className="rounded-full p-4 bg-brand-main500 fixed bottom-10 right-10 z-50 shadow-xl"
+        className="fixed bottom-10 right-10 z-50 rounded-full bg-brand-main500 p-4 shadow-xl"
         onClick={openModal}
       >
         <Image
@@ -73,7 +73,7 @@ export default function RoomDetailPage() {
           alt="모임 생성"
           width={32}
           height={32}
-          className="w-8 h-8"
+          className="h-8 w-8"
         />
       </button>
       <AddGatheringModal
@@ -84,9 +84,9 @@ export default function RoomDetailPage() {
       />
       <RoomDetailCard data={themeDetail} />
       <RoomDetailGatherings data={otherGathering.content} />
-      <div className="flex items-center gap-2 mt-10 xl:mt-16 mb-6">
-        <span className="w-1 h-[30px] bg-line-lightGray" />
-        <p className="text-[28px]/[38px] tracking-[-2.5%] text-font-baseWhite font-semibold">
+      <div className="mb-6 mt-10 flex items-center gap-2 xl:mt-16">
+        <span className="h-[30px] w-1 bg-line-lightGray" />
+        <p className="text-[28px]/[38px] font-semibold tracking-[-2.5%] text-font-baseWhite">
           리뷰
         </p>
       </div>

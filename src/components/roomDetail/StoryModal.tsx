@@ -17,17 +17,17 @@ export default function StroyModal({
     <Modal
       isOpen={isOpen}
       onClose={closeModal}
-      className="bg-card-white rounded-[4px] px-6 py-3 md:w-[453px]"
+      className="rounded-[4px] bg-card-white px-6 py-3 md:w-[453px]"
     >
       <div className="relative flex flex-col items-center justify-center gap-3">
-        <p className="text-xl text-font-baseBlack font-normal">스토리</p>
-        <p className="text-sm text-font-baseBlack font-normal">{story}</p>
+        <p className="text-xl font-normal text-font-baseBlack">스토리</p>
+        <p className="text-sm font-normal text-font-baseBlack">{story}</p>
         <button
           type="button"
           onClick={closeModal}
           className="flex items-center"
         >
-          <p className="text-sm text-font-baseBlack font-normal">닫기</p>
+          <p className="text-sm font-normal text-font-baseBlack">닫기</p>
           <Image
             src={chevron_black_down}
             alt="닫기 아이콘"

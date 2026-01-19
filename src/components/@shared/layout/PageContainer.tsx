@@ -8,7 +8,7 @@ interface PageContainerProps {
 export default function PageContainer({ children }: PageContainerProps) {
   return (
     <>
-      <main className="relative mx-auto mt-32 xl:mt-[148px] px-4 my-11 xl:mb-[88px] min-h-screen h-full w-full xl:w-xl">
+      <main className="relative mx-auto my-11 mt-32 h-full min-h-screen w-full px-4 xl:mb-[88px] xl:mt-[148px] xl:w-xl">
         {children}
       </main>
       <Footer />

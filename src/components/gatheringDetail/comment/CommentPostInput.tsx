@@ -41,9 +41,9 @@ export default function CommentPostInput({
     }
   }, [parentId, setValue]);
   return (
-    <div className="md:h-[293px] px-2 py-5 md:flex md:items-center md: justify-center">
+    <div className="md: justify-center px-2 py-5 md:flex md:h-[293px] md:items-center">
       <div
-        className={`${errors.content ? 'border-red-500' : 'border-line-secondLightGray'} relative h-[223px] md:w-[1200px] rounded-lg border-[1px] bg-white p-5`}
+        className={`${errors.content ? 'border-red-500' : 'border-line-secondLightGray'} relative h-[223px] rounded-lg border-[1px] bg-white p-5 md:w-[1200px]`}
       >
         {/* <div className="max-w-[330px] md:max-w-full flex items-center gap-2">
           <Image
@@ -62,7 +62,7 @@ export default function CommentPostInput({
             {...register('content', {
               required: '내용은 필수입니다.',
             })}
-            className="mt-2 md:mt-1 h-[88px] md:h-[95px] w-full resize-none text-xl md:text-2xl/[34px] font-normal tracking-[-2.5%] text-basefont focus:outline-none"
+            className="mt-2 h-[88px] w-full resize-none text-xl font-normal tracking-[-2.5%] text-basefont focus:outline-none md:mt-1 md:h-[95px] md:text-2xl/[34px]"
             placeholder={
               parentId === undefined
                 ? '댓글을 달아보세요.'
@@ -70,13 +70,13 @@ export default function CommentPostInput({
             }
           />
           {errors.content && (
-            <p className="text-red-500 text-sm mt-1">
+            <p className="mt-1 text-sm text-red-500">
               {errors.content.message}
             </p>
           )}
           <MainBlueButton
             type="submit"
-            className="absolute bottom-5 right-5 w-[100px] h-[44px] flex items-center justify-center !text-sm tracking-[-2.5%]"
+            className="absolute bottom-5 right-5 flex h-[44px] w-[100px] items-center justify-center !text-sm tracking-[-2.5%]"
           >
             등록
           </MainBlueButton>

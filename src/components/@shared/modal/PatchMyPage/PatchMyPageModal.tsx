@@ -46,7 +46,7 @@ export default function PatchMyPageModal({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      className="bg-white rounded-[30px] p-5 md:w-[648px]"
+      className="rounded-[30px] bg-white p-5 md:w-[648px]"
     >
       {/* <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex md:flex-row flex-col">
@@ -85,7 +85,7 @@ export default function PatchMyPageModal({
               </p>
             )} */}
 
-      <div className="flex items-center justify-between mt-12 w-72">
+      <div className="mt-12 flex w-72 items-center justify-between">
         {/* <p className="font-normal text-base tracking-[-2.5%] text-basefont">
                 성별을 소개카드에 표시 합니다.
               </p>

@@ -11,7 +11,7 @@ export default function Loading({ isLoading }: LoadingProps) {
   const message = isLoading ? `열쇠를 찾는 중...` : '열쇠를 찾았습니다!';
 
   return (
-    <div className="fixed inset-0 w-full h-full flex flex-col justify-center items-center bg-brand">
+    <div className="bg-brand fixed inset-0 flex h-full w-full flex-col items-center justify-center">
       <Image
         src={currentImage}
         alt={message}
@@ -20,7 +20,7 @@ export default function Loading({ isLoading }: LoadingProps) {
         quality={100}
         priority
       />
-      <p className="font-normal text-[32px]/[42px] tracking-[-2.5%] text-white">
+      <p className="text-[32px]/[42px] font-normal tracking-[-2.5%] text-white">
         {message}
       </p>
     </div>

@@ -43,18 +43,18 @@ export default function RankingPage() {
           marginTop={14}
           align="center"
         >
-          <div className="flex items-center gap-[2px] py-[6px] px-1 border-b-[1px] border-line-white cursor-pointer">
+          <div className="flex cursor-pointer items-center gap-[2px] border-b-[1px] border-line-white px-1 py-[6px]">
             <p>{year}</p>
             <Image
               src={GrayChevronDown}
               alt="정렬 더보기"
               width={18}
               height={18}
-              className={`h-[18px] w-[18px] transition-transform transform duration-300 ${isYearOpen ? 'rotate-180' : 'rotate-0'}`}
+              className={`h-[18px] w-[18px] transform transition-transform duration-300 ${isYearOpen ? 'rotate-180' : 'rotate-0'}`}
             />
           </div>
         </ValueDropdown>
-        <div className="gap-6 md:gap-10 flex items-center">
+        <div className="flex items-center gap-6 md:gap-10">
           {quarterList.map(({ value, label }) => {
             return (
               <button
@@ -63,7 +63,7 @@ export default function RankingPage() {
                 onClick={() => setQuarter(value)}
               >
                 <span
-                  className={`${quarter === value ? 'text-brand-sub500' : ''} relative group text-xs md:text-sm xl:text-base font-semibold tracking-[-2.5%] duration-300`}
+                  className={`${quarter === value ? 'text-brand-sub500' : ''} group relative text-xs font-semibold tracking-[-2.5%] duration-300 md:text-sm xl:text-base`}
                 >
                   {label}
                 </span>
@@ -73,7 +73,7 @@ export default function RankingPage() {
         </div>
       </div>
 
-      <div className="bg-card-white rounded-lg py-5 md:py-11 xl:py-20 px-5 md:px-14 xl:px-32 mt-3 flex justify-between">
+      <div className="mt-3 flex justify-between rounded-lg bg-card-white px-5 py-5 md:px-14 md:py-11 xl:px-32 xl:py-20">
         <StatCard
           value={87}
           title="이번 분기 성사된 모임의 갯 수"

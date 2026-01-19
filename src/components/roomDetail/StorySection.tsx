@@ -10,7 +10,7 @@ export default function StorySection({ story }: StorySectionProps) {
   const { isOpen, openModal, closeModal } = useOpen();
 
   return (
-    <div className="hidden xl:block xl:w-[405px] shrink-0">
+    <div className="hidden shrink-0 xl:block xl:w-[405px]">
       <StoryContainer isOpen={isOpen} openModal={openModal} story={story} />
       <StroyModal isOpen={isOpen} closeModal={closeModal} story={story} />
     </div>

@@ -16,7 +16,7 @@ export default function UserInfo({ user }: UserInfoProps) {
 
   return (
     <UserInfoDropdown isOpen={isOpen} onOpenChange={toggleOpen}>
-      <div className="items-center justify-center gap-[6px] shrink-0 hidden md:flex">
+      <div className="hidden shrink-0 items-center justify-center gap-[6px] md:flex">
         <Image
           src={user.image || userDefault}
           alt="유저 프로필 이미지"
@@ -24,12 +24,12 @@ export default function UserInfo({ user }: UserInfoProps) {
           height={24}
           className="h-6 w-6 rounded-full bg-line-Gray shadow-md"
         />
-        <p className="truncate max-w-[130px] hidden xl:block">
+        <p className="hidden max-w-[130px] truncate xl:block">
           {user.nickname} 님
         </p>
         <button
           type="button"
-          className="items-center hidden xl:block shrink-0"
+          className="hidden shrink-0 items-center xl:block"
           onClick={toggleOpen}
         >
           <Image
@@ -37,7 +37,7 @@ export default function UserInfo({ user }: UserInfoProps) {
             alt="유저 정보 더보기"
             width={18}
             height={18}
-            className={`transition-transform transform block duration-300 shrink-0 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+            className={`block shrink-0 transform transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
           />
         </button>
       </div>

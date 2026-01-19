@@ -43,7 +43,7 @@ export default function HomePage() {
         imageHeight={520}
         buttonSize={36}
         delayTime={15000}
-        className="md:!w-[1000px] rounded-lg"
+        className="rounded-lg md:!w-[1000px]"
         buttonPosition={80}
         loop
         center
@@ -70,7 +70,7 @@ export default function HomePage() {
 
       <div className="relative">
         <TypeButtonChanger
-          className="absolute gap-3 top-12"
+          className="absolute top-12 gap-3"
           options={defaultLocationList}
           selectedType={selectedLocation}
           setSelectedType={setSelectedLocation}

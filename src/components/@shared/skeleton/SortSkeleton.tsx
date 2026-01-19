@@ -7,9 +7,9 @@ export default function SortSkeleton({ className }: SortSkeletonProps) {
     <div className={`${className}`}>
       <div
         role="status"
-        className="animate-pulse flex w-full h-full justify-between"
+        className="flex h-full w-full animate-pulse justify-between"
       >
-        <div className="bg-card-white w-16 rounded-3xl" />
+        <div className="w-16 rounded-3xl bg-card-white" />
         <span className="sr-only">Loading...</span>
       </div>
     </div>

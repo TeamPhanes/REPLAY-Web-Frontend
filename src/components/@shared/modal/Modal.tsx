@@ -72,12 +72,12 @@ export default function Modal({
   if (!isOpen) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-50 bg-[#505050]/60 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#505050]/60">
       <div
         ref={modalContentRef}
         className={`
-          max-h-[calc(100vh-120px)] md:max-h-[calc(100vh-40px)] max-w-[calc(100vw-20px)]
-          overflow-auto animate-modalIn z-50 scrollbar-x-hidden 
+          scrollbar-x-hidden z-50 max-h-[calc(100vh-120px)]
+          max-w-[calc(100vw-20px)] animate-modalIn overflow-auto md:max-h-[calc(100vh-40px)] 
           ${className}
         `}
         onClick={(e) => e.stopPropagation()}

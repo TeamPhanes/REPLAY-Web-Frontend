@@ -40,7 +40,7 @@ export default function ThemeLikedSection({
 
   return (
     <>
-      <p className="mt-6 text-sm tracking-[-2.5%] text-font-baseWhite font-normal">
+      <p className="mt-6 text-sm font-normal tracking-[-2.5%] text-font-baseWhite">
         전체 {totalItems}개
       </p>
       <RoomCardContainer

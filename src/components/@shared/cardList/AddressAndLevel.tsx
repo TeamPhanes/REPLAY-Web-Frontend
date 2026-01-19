@@ -25,7 +25,7 @@ export default function AddressAndLevel({
           {address}
         </p>
       </div>
-      <div className="flex flex-col md:flex-row justify-start gap-2 md:gap-0">
+      <div className="flex flex-col justify-start gap-2 md:flex-row md:gap-0">
         <div className="flex items-center">
           <Image
             src={LevelIcon}
@@ -51,10 +51,10 @@ export default function AddressAndLevel({
               height={24}
               className="md:ml-4"
             />
-            <p className="font-normal text-base tracking-[-2.5%] text-basefont mx-1">
+            <p className="mx-1 text-base font-normal tracking-[-2.5%] text-basefont">
               인원
             </p>
-            <p className="font-normal text-base tracking-[-2.5%] text-basefont mx-1">
+            <p className="mx-1 text-base font-normal tracking-[-2.5%] text-basefont">
               {String(minPlayer).padStart(2, '0')} ~{' '}
               {String(maxPlayer).padStart(2, '0')}
             </p>

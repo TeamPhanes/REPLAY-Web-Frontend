@@ -68,12 +68,12 @@ export default function NoticeWriteEditor({
       <input
         type="text"
         placeholder="제목을 입력해주세요."
-        className="w-full text-font-baseBlack py-3 px-[15px] rounded-md"
+        className="w-full rounded-md px-[15px] py-3 text-font-baseBlack"
         onChange={(e) => setValue('title', e.target.value)}
       />
       <ReactQuill
         ref={quillRef}
-        className="bg-white text-font-baseBlack mt-4"
+        className="mt-4 bg-white text-font-baseBlack"
         modules={modules}
         onChange={(content) => setValue('content', content)}
       />

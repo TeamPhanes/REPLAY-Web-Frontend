@@ -8,7 +8,7 @@ export const dynamic = 'force-static';
 
 export default function NotFound() {
   return (
-    <div className="w-full mt-80 flex items-center flex-col justify-center">
+    <div className="mt-80 flex w-full flex-col items-center justify-center">
       <Image
         src={error}
         alt="error"
@@ -16,7 +16,7 @@ export default function NotFound() {
         height={71}
         quality={100}
         priority
-        className="md:w-[400px] md:h-[71px]"
+        className="md:h-[71px] md:w-[400px]"
       />
       <Image
         src={image404}
@@ -25,7 +25,7 @@ export default function NotFound() {
         height={320}
         quality={100}
         priority
-        className="mt-10 mb-2 md:w-[730px] md:h-[320px]"
+        className="mb-2 mt-10 md:h-[320px] md:w-[730px]"
       />
       <div className="flex items-end">
         <Image
@@ -35,7 +35,7 @@ export default function NotFound() {
           height={100}
           quality={100}
           priority
-          className="md:w-[93px] md:h-[100px]"
+          className="md:h-[100px] md:w-[93px]"
         />
         <Image
           src={pageNotFound}
@@ -44,7 +44,7 @@ export default function NotFound() {
           height={36}
           quality={100}
           priority
-          className="md:w-[557px] md:h-[36px]"
+          className="md:h-[36px] md:w-[557px]"
         />
       </div>
     </div>

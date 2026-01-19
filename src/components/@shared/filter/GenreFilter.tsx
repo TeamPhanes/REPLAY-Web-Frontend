@@ -13,14 +13,14 @@ export default function GenreFilter({ selectedType }: GenreFilterProps) {
     <div
       className={`${
         selectedType === 'genre' ? 'animate-dropdownIn' : 'hidden'
-      } grid grid-cols-4 mt-3 z-40`}
+      } z-40 mt-3 grid grid-cols-4`}
     >
       {genreFilterList.map((value, index) => {
         return (
           <button
             key={index}
             type="button"
-            className={`py-2 text-base text-font-baseBlack font-normal xl:hover:bg-brand-sub500 xl:hover:font-semibold duration-500 border-line-secondLightGray 
+            className={`border-line-secondLightGray py-2 text-base font-normal text-font-baseBlack duration-500 xl:hover:bg-brand-sub500 xl:hover:font-semibold 
                     ${genreList.includes(value) ? 'bg-brand-sub500 font-semibold' : ''} 
                   `}
             onClick={() => {

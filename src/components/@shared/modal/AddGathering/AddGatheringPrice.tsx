@@ -49,12 +49,12 @@ export default function AddGatheringPrice({
 
   return (
     <div className="flex flex-col">
-      <p className="text-base text-font-baseBlack font-normal tracking-[-2.5%]">
+      <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
         모임 가격
       </p>
-      <div className="flex items-centers gap-2">
-        <div className="py-[6px] px-1 flex items-center justify-center gap-1 border-b-[1px] border-line-secondDarkGray">
-          <p className="font-normal text-base tracking-[-2.5%] text-font-baseBlack">
+      <div className="items-centers flex gap-2">
+        <div className="flex items-center justify-center gap-1 border-b-[1px] border-line-secondDarkGray px-1 py-[6px]">
+          <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
             {priceType}
           </p>
           <Dropdown
@@ -63,7 +63,7 @@ export default function AddGatheringPrice({
             selected={priceType}
             onOpenChange={toggleOpen}
             onClickHandler={priceTypeChange}
-            className="min-w-[60px] absolute left-[-40px]"
+            className="absolute left-[-40px] min-w-[60px]"
             marginTop={14}
             align="start"
           >
@@ -77,13 +77,13 @@ export default function AddGatheringPrice({
                 alt="가격 버튼"
                 width={18}
                 height={18}
-                className={`transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+                className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
               />
             </button>
           </Dropdown>
         </div>
         <div
-          className={`${errors.price ? 'border-error' : 'border-line-secondDarkGray'} relative flex items-center gap-[6px] py-[6px] px-4 border-b-[1px]`}
+          className={`${errors.price ? 'border-error' : 'border-line-secondDarkGray'} relative flex items-center gap-[6px] border-b-[1px] px-4 py-[6px]`}
         >
           <input
             type="hidden"
@@ -103,14 +103,14 @@ export default function AddGatheringPrice({
             type="text"
             placeholder="가격을 입력해 주세요."
             value={price.toLocaleString() === '0' ? '' : price.toLocaleString()}
-            className="placeholder:text-font-disabled bg-[#F7F7FB] text-base text-font-baseBlack font-normal"
+            className="bg-[#F7F7FB] text-base font-normal text-font-baseBlack placeholder:text-font-disabled"
             onChange={priceChangeHandler}
           />
-          <p className="absolute text-base text-font-baseBlack font-normal right-4 top-[6px]">
+          <p className="absolute right-4 top-[6px] text-base font-normal text-font-baseBlack">
             원
           </p>
           {errors.price && (
-            <p className="text-red-500 text-sm mt-1 absolute -bottom-6 w-36">
+            <p className="absolute -bottom-6 mt-1 w-36 text-sm text-red-500">
               {errors.price.message}
             </p>
           )}

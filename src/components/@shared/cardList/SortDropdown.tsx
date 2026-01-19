@@ -28,7 +28,7 @@ export default function SortDropdown({
     >
       <button
         type="button"
-        className="flex gap-1 items-center border-b-[1px] border-line-secondLightGray py-[6px] px-1"
+        className="flex items-center gap-1 border-b-[1px] border-line-secondLightGray px-1 py-[6px]"
       >
         <p className="text-sm font-normal text-font-thirdWhite">{sort}</p>
         <Image
@@ -36,7 +36,7 @@ export default function SortDropdown({
           alt="정렬 더보기"
           width={18}
           height={18}
-          className={`h-[18px] w-[18px] transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+          className={`h-[18px] w-[18px] transform transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
         />
       </button>
     </ValueDropdown>

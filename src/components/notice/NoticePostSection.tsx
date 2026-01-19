@@ -18,7 +18,7 @@ export default function NoticePostSection() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <NoticeWriteEditor setValue={setValue} />
-      <div className="flex justify-end mt-5">
+      <div className="mt-5 flex justify-end">
         <MainWhiteButton type="submit">작성하기</MainWhiteButton>
       </div>
     </form>

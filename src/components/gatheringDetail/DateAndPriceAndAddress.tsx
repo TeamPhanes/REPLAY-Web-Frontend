@@ -19,7 +19,7 @@ export default function DateAndPriceAndAddress({
   return (
     <>
       <div className="flex items-center gap-4 md:gap-14">
-        <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-2">
           <Image
             src={CalendarIcon}
             alt="캘린더 아이콘"
@@ -30,13 +30,13 @@ export default function DateAndPriceAndAddress({
             {yearMonthDayHourTime(dateTime)}
           </p>
         </div>
-        <div className="flex gap-2 items-center group">
+        <div className="group flex items-center gap-2">
           <Image src={CoinIcon} alt="금액 아이콘" width={24} height={24} />
           <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
             {price.toLocaleString()}원
           </p>
           <div className="relative">
-            <p className="absolute min-w-[134px] -top-12 -left-16 text-xs/[18px] tracking-[-2.5%] text-font-disabled font-normal bg-white p-[10px] duration-300 opacity-0 group-hover:opacity-100">
+            <p className="absolute -left-16 -top-12 min-w-[134px] bg-white p-[10px] text-xs/[18px] font-normal tracking-[-2.5%] text-font-disabled opacity-0 duration-300 group-hover:opacity-100">
               일인당 결제금액 입니다.
             </p>
             <Image
@@ -48,7 +48,7 @@ export default function DateAndPriceAndAddress({
           </div>
         </div>
       </div>
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         <Image
           src={AddressIcon}
           alt="매장 위치 아이콘"

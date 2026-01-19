@@ -35,7 +35,7 @@ export default function GatheringPage() {
       <FilterContainer setPage={setPage} />
       {!gathering ? (
         <>
-          <SortSkeleton className="h-6 mt-6" />
+          <SortSkeleton className="mt-6 h-6" />
           <CardSkeleton className="mt-6" />
         </>
       ) : (

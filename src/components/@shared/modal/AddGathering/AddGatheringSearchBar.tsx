@@ -60,10 +60,10 @@ export default function AddGatheringSearchBar({
 
   return (
     <div
-      className={`w-full relative ${disabled ? 'bg-line-lightGray pointer-events-none' : ''}`}
+      className={`relative w-full ${disabled ? 'pointer-events-none bg-line-lightGray' : ''}`}
     >
       <div
-        className={`${errors.themeId ? 'border-error' : 'border-line-Gray'} flex h-full items-center border-b-[1px] justify-between p-4 z-20 relative`}
+        className={`${errors.themeId ? 'border-error' : 'border-line-Gray'} relative z-20 flex h-full items-center justify-between border-b-[1px] p-4`}
       >
         <input
           {...register('themeId', { required: '테마 검색은 필수입니다.' })}
@@ -94,25 +94,25 @@ export default function AddGatheringSearchBar({
         <input
           type="text"
           placeholder="방탈출을 검색해 주세요."
-          className={`${disabled ? 'bg-line-lightGray' : 'bg-card-modal'} w-full text-base tracking-[-2.5%] placeholder:text-font-disabled text-font-baseBlack z-20 ml-[6px]`}
+          className={`${disabled ? 'bg-line-lightGray' : 'bg-card-modal'} z-20 ml-[6px] w-full text-base tracking-[-2.5%] text-font-baseBlack placeholder:text-font-disabled`}
           value={search}
           onChange={(e) => searchChange(e.target.value)}
         />
         {errors.themeId && (
-          <p className="text-red-500 text-sm mt-1 ml-5 absolute left-0 -bottom-6">
+          <p className="absolute -bottom-6 left-0 ml-5 mt-1 text-sm text-red-500">
             {errors.themeId.message}
           </p>
         )}
       </div>
       <div
-        className={`${isOpen ? '' : 'hidden'} w-full absolute bg-card-white top-16 p-4 z-30 flex flex-col gap-1 shadow-lg`}
+        className={`${isOpen ? '' : 'hidden'} absolute top-16 z-30 flex w-full flex-col gap-1 bg-card-white p-4 shadow-lg`}
       >
         {suggestTheme &&
           suggestTheme.contents.map((room: SuggestThemeListDTO['get']) => (
             <button
               type="button"
               key={room.id}
-              className="text-xl text-font-baseBlack flex gap-1 flex-col hover:bg-darkSearch hover:text-font-baseWhite duration-300"
+              className="flex flex-col gap-1 text-xl text-font-baseBlack duration-300 hover:bg-darkSearch hover:text-font-baseWhite"
               onClick={() => {
                 closeModal();
                 searchChange(room.title);

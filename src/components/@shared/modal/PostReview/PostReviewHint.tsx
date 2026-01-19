@@ -13,11 +13,11 @@ export default function PostReviewHint({ hint, setHint }: PostReviewHintProps) {
   return (
     <div className="flex items-center gap-[6px]">
       <Image src={LightbulbIcon} alt="전구 아이콘" width={20} height={20} />
-      <p className="text-base text-font-baseBlack font-normal w-48">
+      <p className="w-48 text-base font-normal text-font-baseBlack">
         힌트 사용 횟수
       </p>
-      <div className="py-[6px] px-1 flex items-center justify-center gap-1 border-b-[1px] border-font-baseBlack">
-        <p className="text-sm text-font-baseBlack font-normal">
+      <div className="flex items-center justify-center gap-1 border-b-[1px] border-font-baseBlack px-1 py-[6px]">
+        <p className="text-sm font-normal text-font-baseBlack">
           {String(hint).padStart(2, '0')}
         </p>
         <ValueDropdown
@@ -26,7 +26,7 @@ export default function PostReviewHint({ hint, setHint }: PostReviewHintProps) {
           selected={hint}
           onOpenChange={toggleOpen}
           onClickHandler={setHint}
-          className="min-w-[88px] absolute left-[-48px]"
+          className="absolute left-[-48px] min-w-[88px]"
           marginTop={14}
           align="start"
         >
@@ -40,7 +40,7 @@ export default function PostReviewHint({ hint, setHint }: PostReviewHintProps) {
               alt="모임 인원 버튼"
               width={18}
               height={18}
-              className={`transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+              className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
             />
           </button>
         </ValueDropdown>

@@ -39,20 +39,20 @@ export default function ThemeReviewContainer({
         return (
           <div
             key={theme.id}
-            className="w-full relative flex items-start rounded-md bg-card-white p-5 transition-all hover:scale-[102%] gap-5"
+            className="relative flex w-full items-start gap-5 rounded-md bg-card-white p-5 transition-all hover:scale-[102%]"
           >
             <Image
               src={theme.image}
               alt={theme.title}
               width={145}
               height={218}
-              className="w-[145px] h-[218px] rounded-[4px]"
+              className="h-[218px] w-[145px] rounded-[4px]"
             />
-            <Link href={`/theme/${theme.id}`} className="w-[338px] h-full">
-              <div className="flex flex-col gap-3 relative">
+            <Link href={`/theme/${theme.id}`} className="h-full w-[338px]">
+              <div className="relative flex flex-col gap-3">
                 <Tag tag={theme.genres} />
                 {theme.visitDate !== null ? (
-                  <p className="absolute top-1 right-0 text-base text-font-baseBlack font-normal tracking-[-2.5%]">
+                  <p className="absolute right-0 top-1 text-base font-normal tracking-[-2.5%] text-font-baseBlack">
                     {yearMonthDay(theme.visitDate)}
                   </p>
                 ) : null}
@@ -69,15 +69,15 @@ export default function ThemeReviewContainer({
                 />
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2">
-                    <p className="px-2 text-sm/6 tracking-[-2.5%] text-font-disabled font-semibold">
+                    <p className="px-2 text-sm/6 font-semibold tracking-[-2.5%] text-font-disabled">
                       테마
                     </p>
                     {theme.themeReview === null ? (
-                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                      <p className="text-base font-semibold tracking-[-2.5%] text-font-disabled">
                         미확인
                       </p>
                     ) : (
-                      <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
+                      <p className="text-base font-semibold tracking-[-2.5%] text-brand-main500">
                         {
                           themeAndLevelList[
                             theme.themeReview as keyof typeof themeAndLevelList
@@ -87,15 +87,15 @@ export default function ThemeReviewContainer({
                     )}
                   </div>
                   <div className="flex gap-2">
-                    <p className="px-2 text-sm/6 tracking-[-2.5%] text-font-disabled font-semibold">
+                    <p className="px-2 text-sm/6 font-semibold tracking-[-2.5%] text-font-disabled">
                       난이도
                     </p>
                     {theme.levelReview === null ? (
-                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                      <p className="text-base font-semibold tracking-[-2.5%] text-font-disabled">
                         미확인
                       </p>
                     ) : (
-                      <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
+                      <p className="text-base font-semibold tracking-[-2.5%] text-brand-main500">
                         {
                           themeAndLevelList[
                             theme.levelReview as keyof typeof themeAndLevelList
@@ -105,15 +105,15 @@ export default function ThemeReviewContainer({
                     )}
                   </div>
                   <div className="flex gap-2">
-                    <p className="px-2 text-sm/6 tracking-[-2.5%] text-font-disabled font-semibold">
+                    <p className="px-2 text-sm/6 font-semibold tracking-[-2.5%] text-font-disabled">
                       스토리
                     </p>
                     {theme.storyReview === null ? (
-                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                      <p className="text-base font-semibold tracking-[-2.5%] text-font-disabled">
                         미확인
                       </p>
                     ) : (
-                      <p className="text-base tracking-[-2.5%] text-brand-main500 font-semibold">
+                      <p className="text-base font-semibold tracking-[-2.5%] text-brand-main500">
                         {
                           StoryList[
                             theme.storyReview as keyof typeof themeAndLevelList
@@ -132,11 +132,11 @@ export default function ThemeReviewContainer({
                       height={24}
                     />
                     {theme.hint === null ? (
-                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                      <p className="text-base font-semibold tracking-[-2.5%] text-font-disabled">
                         0
                       </p>
                     ) : (
-                      <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
+                      <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
                         {theme.hint}
                       </p>
                     )}
@@ -149,11 +149,11 @@ export default function ThemeReviewContainer({
                       height={24}
                     />
                     {theme.numberOfPlayer === null ? (
-                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                      <p className="text-base font-semibold tracking-[-2.5%] text-font-disabled">
                         0
                       </p>
                     ) : (
-                      <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
+                      <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
                         {theme.numberOfPlayer}
                       </p>
                     )}
@@ -166,11 +166,11 @@ export default function ThemeReviewContainer({
                       height={24}
                     />
                     {theme.isSuccess === null ? (
-                      <p className="text-base tracking-[-2.5%] text-font-disabled font-semibold">
+                      <p className="text-base font-semibold tracking-[-2.5%] text-font-disabled">
                         미확인
                       </p>
                     ) : (
-                      <p className="text-base tracking-[-2.5%] text-font-baseBlack font-normal">
+                      <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
                         {theme.isSuccess ? '성공' : '실패'}
                       </p>
                     )}
@@ -178,26 +178,26 @@ export default function ThemeReviewContainer({
                 </div>
               </div>
             </Link>
-            <div className="p-4 rounded-lg w-[537px] h-[218px] border-[1px] border-line-Gray">
+            <div className="h-[218px] w-[537px] rounded-lg border-[1px] border-line-Gray p-4">
               {theme.content === null ? (
-                <p className="text-base tracking-[-2.5%] text-font-disabled font-normal">
+                <p className="text-base font-normal tracking-[-2.5%] text-font-disabled">
                   리뷰를 작성해 주세요.
                 </p>
               ) : (
-                <p className="line-clamp-[8] text-base tracking-[-2.5%] text-font-baseBlack font-normal">
+                <p className="line-clamp-[8] text-base font-normal tracking-[-2.5%] text-font-baseBlack">
                   {theme.content}
                 </p>
               )}
             </div>
             <div className="flex flex-col gap-3">
               {theme.reviewImages.length === 0 ? (
-                <div className="w-[160px] h-[152px] bg-line-lightGray rounded-[4px] flex justify-center items-center mb-16 md:mb-auto">
+                <div className="mb-16 flex h-[152px] w-[160px] items-center justify-center rounded-[4px] bg-line-lightGray md:mb-auto">
                   <Image
                     src={ReviewDefaultImage}
                     alt="리뷰 이미지"
                     width={24}
                     height={24}
-                    className="w-6 h-6"
+                    className="h-6 w-6"
                   />
                 </div>
               ) : (
@@ -206,12 +206,12 @@ export default function ThemeReviewContainer({
                   alt="리뷰 이미지"
                   width={118}
                   height={118}
-                  className="w-[160px] h-[152px] rounded-[4px] bg-line-lightGray"
+                  className="h-[152px] w-[160px] rounded-[4px] bg-line-lightGray"
                 />
               )}
               <button
                 type="button"
-                className="w-full rounded-[4px] border-[1px] border-brand-main500 px-10 py-[14px] text-base tracking-[-2.5%] text-brand-main500 font-semibold"
+                className="w-full rounded-[4px] border-[1px] border-brand-main500 px-10 py-[14px] text-base font-semibold tracking-[-2.5%] text-brand-main500"
                 onClick={() => {
                   if (theme.visitDate === null) {
                     setSelectedRoom(theme);

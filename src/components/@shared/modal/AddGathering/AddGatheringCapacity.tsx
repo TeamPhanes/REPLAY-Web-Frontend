@@ -16,11 +16,11 @@ export default function AddGatheringCapacity({
 
   return (
     <div className="flex flex-col">
-      <p className="text-base text-font-baseBlack font-normal tracking-[-2.5%] text-center">
+      <p className="text-center text-base font-normal tracking-[-2.5%] text-font-baseBlack">
         모임 인원
       </p>
-      <div className="py-[6px] px-1 flex items-center justify-center gap-1 border-b-[1px] border-line-secondDarkGray">
-        <p className="font-normal text-base tracking-[-2.5%] text-font-baseBlack">
+      <div className="flex items-center justify-center gap-1 border-b-[1px] border-line-secondDarkGray px-1 py-[6px]">
+        <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
           {String(capacity).padStart(2, '0')} 명
         </p>
         <ValueDropdown
@@ -29,7 +29,7 @@ export default function AddGatheringCapacity({
           selected={capacity}
           onOpenChange={toggleOpen}
           onClickHandler={capacityChange}
-          className="min-w-[70px] absolute left-[-48px]"
+          className="absolute left-[-48px] min-w-[70px]"
           marginTop={14}
           align="start"
         >
@@ -43,7 +43,7 @@ export default function AddGatheringCapacity({
               alt="모임 인원 버튼"
               width={18}
               height={18}
-              className={`transition-transform transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+              className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
             />
           </button>
         </ValueDropdown>

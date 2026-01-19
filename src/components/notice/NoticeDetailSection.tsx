@@ -19,12 +19,12 @@ export default function NoticeDetailSection() {
   if (isLoading) return <Loading isLoading={isLoading} />;
   return (
     <>
-      <div className="w-full border-t-[5px] border-b-[1px] py-6 border-line-Gray flex flex-col gap-1">
-        <h1 className="text-xl tracking-[-2.5%] text-font-baseWhite font-semibold">
+      <div className="flex w-full flex-col gap-1 border-b-[1px] border-t-[5px] border-line-Gray py-6">
+        <h1 className="text-xl font-semibold tracking-[-2.5%] text-font-baseWhite">
           {data.current.title}
         </h1>
-        <div className="flex justify-between items-center">
-          <p className="text-sm tracking-[-2.5%] text-font-thirdWhite font-medium">
+        <div className="flex items-center justify-between">
+          <p className="text-sm font-medium tracking-[-2.5%] text-font-thirdWhite">
             Admin
           </p>
           <div className="flex items-center gap-[14px]">
@@ -37,7 +37,7 @@ export default function NoticeDetailSection() {
             <p className="text-sm tracking-[-2.5%] font-medium text-font-baseWhite mr-1">
               {data.viewCount}
             </p> */}
-            <p className="text-sm tracking-[-2.5%] font-medium text-font-baseWhite">
+            <p className="text-sm font-medium tracking-[-2.5%] text-font-baseWhite">
               {periodFullYearMonthDay(data.current.createdAt)}
             </p>
           </div>
@@ -46,11 +46,11 @@ export default function NoticeDetailSection() {
       <div className="w-full p-[10px]">
         {parse(DOMPurify.sanitize(data.current.content))}
       </div>
-      <div className="w-full mt-20">
+      <div className="mt-20 w-full">
         {data.prev === null ? null : (
           <Link
             href={`/notice/${data.prev.id}`}
-            className={`${data.prev === null ? 'hidden' : ''} ${data.next === null ? 'border-b-[1px]' : ''} border-t-[1px] py-6 border-line-secondDarkGray flex items-center`}
+            className={`${data.prev === null ? 'hidden' : ''} ${data.next === null ? 'border-b-[1px]' : ''} flex items-center border-t-[1px] border-line-secondDarkGray py-6`}
           >
             <Image
               src={chevronWhite}
@@ -59,10 +59,10 @@ export default function NoticeDetailSection() {
               height={24}
               className="rotate-180"
             />
-            <p className="px-[10px] text-2xl tracking-[-2.5%] text-font-baseWhite font-semibold">
+            <p className="px-[10px] text-2xl font-semibold tracking-[-2.5%] text-font-baseWhite">
               이전글
             </p>
-            <p className="text-lg tracking-[-2.5%] text-font-thirdWhite font-semibold">
+            <p className="text-lg font-semibold tracking-[-2.5%] text-font-thirdWhite">
               {data.prev.title}
             </p>
           </Link>
@@ -70,7 +70,7 @@ export default function NoticeDetailSection() {
         {data.next === null ? null : (
           <Link
             href={`/notice/${data.next.id}`}
-            className="border-y-[1px] py-6 border-line-secondDarkGray flex items-center"
+            className="flex items-center border-y-[1px] border-line-secondDarkGray py-6"
           >
             <Image
               src={chevronWhite}
@@ -78,10 +78,10 @@ export default function NoticeDetailSection() {
               width={24}
               height={24}
             />
-            <p className="px-[10px] text-2xl tracking-[-2.5%] text-font-baseWhite font-semibold">
+            <p className="px-[10px] text-2xl font-semibold tracking-[-2.5%] text-font-baseWhite">
               다음글
             </p>
-            <p className="text-lg tracking-[-2.5%] text-font-thirdWhite font-semibold">
+            <p className="text-lg font-semibold tracking-[-2.5%] text-font-thirdWhite">
               {data.next.title}
             </p>
           </Link>

@@ -43,17 +43,17 @@ export default function GatheringDetailCard({
   }, [data.isLiked]);
 
   return (
-    <div className="flex flex-col md:flex-row justify-between gap-2">
+    <div className="flex flex-col justify-between gap-2 md:flex-row">
       <Image
         src={data.image}
         alt={data.title}
         width={413}
         height={500}
         quality={100}
-        className="w-full h-[360px] md:w-[413px] md:h-[500px] rounded-[6px]"
+        className="h-[360px] w-full rounded-[6px] md:h-[500px] md:w-[413px]"
       />
-      <div className="relative md:h-[500px] md:w-[849px] rounded-[6px] bg-card-white p-5">
-        <div className="absolute top-[-340px] md:top-auto rounded-[30px] p-1 md:p-0 md:rounded-none right-5 flex gap-[18px]">
+      <div className="relative rounded-[6px] bg-card-white p-5 md:h-[500px] md:w-[849px]">
+        <div className="absolute right-5 top-[-340px] flex gap-[18px] rounded-[30px] p-1 md:top-auto md:rounded-none md:p-0">
           <button
             type="button"
             className={`transition-transform duration-300 active:scale-90 ${isLiked ? 'animate-pop' : ''}`}
@@ -79,12 +79,12 @@ export default function GatheringDetailCard({
 
         <Tag tag={data.genres} isDetail />
 
-        <div className="gap-1 flex flex-col mt-8">
+        <div className="mt-8 flex flex-col gap-1">
           <p className="text-lg/[26px] font-normal tracking-[-2.5%] text-font-disabled">
             {periodYearMonthDayHourTime(data.registrationStart)} ~{' '}
             {periodYearMonthDayHourTime(data.registrationEnd)}
           </p>
-          <h2 className="text-4xl/[48px] truncate  font-semibold tracking-[-2.5%] text-font-baseBlack">
+          <h2 className="truncate text-4xl/[48px]  font-semibold tracking-[-2.5%] text-font-baseBlack">
             {data.name}
           </h2>
           <p className="text-lg/[26px] font-normal tracking-[-2.5%] text-font-disabled">
@@ -93,7 +93,7 @@ export default function GatheringDetailCard({
         </div>
 
         <div className="mt-10 flex justify-between">
-          <div className="flex flex-col gap-3 min-w-[385px] min-h-[230px]">
+          <div className="flex min-h-[230px] min-w-[385px] flex-col gap-3">
             <p className="min-w-[90px] text-center text-xl font-normal tracking-[-2.5%] text-font-baseBlack">
               소개
             </p>
@@ -102,15 +102,15 @@ export default function GatheringDetailCard({
             </p>
           </div>
 
-          <span className="bg-line-lightGray h-44 w-[1px]" />
+          <span className="h-44 w-[1px] bg-line-lightGray" />
 
-          <div className="flex flex-col gap-3 w-[385px] min-h-[230px]">
+          <div className="flex min-h-[230px] w-[385px] flex-col gap-3">
             <DateAndPriceAndAddress
               dateTime={data.date}
               price={data.price}
               address={data.address}
             />
-            <div className="flex items-center justify-between mt-10">
+            <div className="mt-10 flex items-center justify-between">
               <Rating
                 rating={data.participantCount}
                 maxRating={6}

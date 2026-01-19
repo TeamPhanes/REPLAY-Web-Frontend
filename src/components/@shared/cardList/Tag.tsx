@@ -13,7 +13,7 @@ export default function Tag({ tag, isDetail }: TagProps) {
         {tag.map((genre, index) => (
           <p
             key={index}
-            className={`${isDetail ? 'text-lg/[26px]' : 'text-[13px]/[18px]'} flex gap-[2px] rounded-[4px] px-3 py-[6px] font-normal text-brand-main600 border-[1px] border-brand-main500`}
+            className={`${isDetail ? 'text-lg/[26px]' : 'text-[13px]/[18px]'} flex gap-[2px] rounded-[4px] border-[1px] border-brand-main500 px-3 py-[6px] font-normal text-brand-main600`}
           >
             <Image
               src={TagIcon}

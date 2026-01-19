@@ -59,7 +59,7 @@ export default function RoomCardSection({
 
   return (
     <>
-      <div className="top-auto right-5 absolute bg-card-white rounded-l-md rounded-t-none flex p-1 gap-3 md:p-0">
+      <div className="absolute right-5 top-auto flex gap-3 rounded-l-md rounded-t-none bg-card-white p-1 md:p-0">
         <button
           type="button"
           className={`transition-transform duration-300 active:scale-90 ${
@@ -102,12 +102,12 @@ export default function RoomCardSection({
           height={218}
           quality={100}
           unoptimized
-          className="rounded-[4px] w-full h-[360px] md:w-[145px] md:h-[218px]"
+          className="h-[360px] w-full rounded-[4px] md:h-[218px] md:w-[145px]"
         />
       </Link>
 
       <Link href={`/theme/${room.id}`} className="w-full md:w-auto">
-        <div className="md:ml-5 mt-5 md:mt-0 flex min-h-[212px] min-w-72 md:min-w-[424px] flex-col justify-between">
+        <div className="mt-5 flex min-h-[212px] min-w-72 flex-col justify-between md:ml-5 md:mt-0 md:min-w-[424px]">
           <div className="flex flex-col gap-3">
             <Tag tag={room.genres} />
             <TitleAndSpot
@@ -125,19 +125,19 @@ export default function RoomCardSection({
                 height={20}
               />
               <div className="flex items-center gap-2">
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
+                <p className="text-sm font-semibold tracking-[-2.5%] text-font-baseBlack">
                   {room.playtime}분
                 </p>
-                <span className="text-sm tracking-[-2.5%] text-font-disabled font-normal">
+                <span className="text-sm font-normal tracking-[-2.5%] text-font-disabled">
                   •
                 </span>
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
+                <p className="text-sm font-semibold tracking-[-2.5%] text-font-baseBlack">
                   {room.minPlayer}~{room.maxPlayer}인
                 </p>
-                <span className="text-sm tracking-[-2.5%] text-font-disabled font-normal">
+                <span className="text-sm font-normal tracking-[-2.5%] text-font-disabled">
                   •
                 </span>
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
+                <p className="text-sm font-semibold tracking-[-2.5%] text-font-baseBlack">
                   {levelList[room.level as keyof typeof levelList]}
                 </p>
               </div>
@@ -150,7 +150,7 @@ export default function RoomCardSection({
                 width={20}
                 height={20}
               />
-              <p className="text-sm tracking-[2.5%] text-font-baseBlack font-normal">
+              <p className="text-sm font-normal tracking-[2.5%] text-font-baseBlack">
                 {room.address}
               </p>
             </div>
@@ -163,7 +163,7 @@ export default function RoomCardSection({
                   width={20}
                   height={20}
                 />
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
+                <p className="text-sm font-normal tracking-[-2.5%] text-font-baseBlack">
                   {room.reviewCount >= 999 ? '999+' : room.reviewCount}
                 </p>
               </div>
@@ -174,7 +174,7 @@ export default function RoomCardSection({
                   width={20}
                   height={20}
                 />
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
+                <p className="text-sm font-normal tracking-[-2.5%] text-font-baseBlack">
                   {room.avgScore?.toFixed(1)}
                 </p>
               </div>

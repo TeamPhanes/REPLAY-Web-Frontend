@@ -10,10 +10,10 @@ export default function PatchMyPageSwitch({
   return (
     <div
       onClick={() => onChange(!checked)}
-      className={`w-[52px] py-[2px] h-8 rounded-full transition-colors duration-300 flex items-center cursor-pointer ${
+      className={`flex h-8 w-[52px] cursor-pointer items-center rounded-full py-[2px] transition-colors duration-300 ${
         checked
           ? 'bg-mainBlue px-[2px]'
-          : 'bg-homeFont px-1 border-2 border-spot'
+          : 'border-2 border-spot bg-homeFont px-1'
       }`}
     >
       <input
@@ -23,10 +23,10 @@ export default function PatchMyPageSwitch({
         onChange={(e) => onChange(e.target.checked)}
       />
       <div
-        className={`rounded-full shadow-md transform transition-transform duration-300 ${
+        className={`transform rounded-full shadow-md transition-transform duration-300 ${
           checked
-            ? 'translate-x-5 bg-white w-6 h-6'
-            : 'translate-x-1 bg-spot w-4 h-4'
+            ? 'h-6 w-6 translate-x-5 bg-white'
+            : 'h-4 w-4 translate-x-1 bg-spot'
         }`}
       />
     </div>

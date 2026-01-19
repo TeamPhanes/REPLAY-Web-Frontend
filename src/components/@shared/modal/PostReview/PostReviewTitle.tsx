@@ -19,13 +19,13 @@ export default function PostReviewTitle({
         alt="방탈출 이미지"
         width={99}
         height={99}
-        className="w-[99px] h-[99px] rounded-2xl"
+        className="h-[99px] w-[99px] rounded-2xl"
       />
       <div className="flex flex-col">
-        <p className="font-semibold text-base md:text-xl tracking-[-2.5%] text-basefont">
+        <p className="text-base font-semibold tracking-[-2.5%] text-basefont md:text-xl">
           {themeName}
         </p>
-        <p className="font-normal text-sm md:text-base tracking-[-2.5%] text-basefont">
+        <p className="text-sm font-normal tracking-[-2.5%] text-basefont md:text-base">
           {cafe} {spot}
         </p>
       </div>

@@ -38,7 +38,7 @@ export default function GatheringCardReview({
   return (
     <div
       key={gathering.id}
-      className="md:h-[352px] relative flex md:w-[630px] items-start rounded-[4px] bg-card-white p-5 flex-col md:flex-row"
+      className="relative flex flex-col items-start rounded-[4px] bg-card-white p-5 md:h-[352px] md:w-[630px] md:flex-row"
     >
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
         <Image
@@ -47,10 +47,10 @@ export default function GatheringCardReview({
           width={212}
           height={212}
           quality={100}
-          className="rounded-[4px] w-full h-[360px] md:w-[212px] md:h-[212px]"
+          className="h-[360px] w-full rounded-[4px] md:h-[212px] md:w-[212px]"
         />
       </Link>
-      <div className="absolute top-10 md:top-auto right-10 md:right-5 flex flex-col bg-card rounded-[4px] p-1 md:p-0">
+      <div className="bg-card absolute right-10 top-10 flex flex-col rounded-[4px] p-1 md:right-5 md:top-auto md:p-0">
         <button
           type="button"
           onClick={() =>
@@ -66,7 +66,7 @@ export default function GatheringCardReview({
         </button>
       </div>
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
-        <div className="md:ml-5 mt-5 md:mt-0 flex min-h-[212px] min-w-[424px] flex-col justify-between">
+        <div className="mt-5 flex min-h-[212px] min-w-[424px] flex-col justify-between md:ml-5 md:mt-0">
           <div className="flex flex-col gap-3">
             <Tag tag={gathering.genres} />
             <TitleAndSpot themeName={gathering.name} cafe={gathering.title} />
@@ -80,7 +80,7 @@ export default function GatheringCardReview({
                   width={20}
                   height={20}
                 />
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
+                <p className="text-sm font-normal tracking-[-2.5%] text-font-baseBlack">
                   {yearMonthDayHourTime(gathering.date)}
                 </p>
               </div>
@@ -91,7 +91,7 @@ export default function GatheringCardReview({
                   width={20}
                   height={20}
                 />
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-normal">
+                <p className="text-sm font-normal tracking-[-2.5%] text-font-baseBlack">
                   {gathering.participants.length}/{gathering.capacity}
                 </p>
               </div>
@@ -104,7 +104,7 @@ export default function GatheringCardReview({
                 width={20}
                 height={20}
               />
-              <p className="text-sm tracking-[2.5%] text-font-baseBlack font-normal">
+              <p className="text-sm font-normal tracking-[2.5%] text-font-baseBlack">
                 {gathering.address}
               </p>
             </div>
@@ -117,13 +117,13 @@ export default function GatheringCardReview({
                 height={20}
               />
               <div className="flex items-center gap-2">
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
+                <p className="text-sm font-semibold tracking-[-2.5%] text-font-baseBlack">
                   {gathering.playtime}분
                 </p>
-                <span className="text-sm tracking-[-2.5%] text-font-disabled font-normal">
+                <span className="text-sm font-normal tracking-[-2.5%] text-font-disabled">
                   •
                 </span>
-                <p className="text-sm tracking-[-2.5%] text-font-baseBlack font-semibold">
+                <p className="text-sm font-semibold tracking-[-2.5%] text-font-baseBlack">
                   {levelList[gathering.level as keyof typeof levelList]}
                 </p>
               </div>
@@ -143,7 +143,7 @@ export default function GatheringCardReview({
               alt={user.nickname}
               width={60}
               height={60}
-              className="w-11 h-11 md:h-[60px] md:w-[60px] rounded-full border-2 border-mainBlue shadow-md"
+              className="h-11 w-11 rounded-full border-2 border-mainBlue shadow-md md:h-[60px] md:w-[60px]"
             />
           ))}
         </div>

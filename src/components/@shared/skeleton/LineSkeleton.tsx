@@ -7,7 +7,7 @@ export default function LineSkeleton({ className }: LineSkeletonProps) {
     <div className={`${className}`}>
       <div
         role="status"
-        className="animate-pulse flex w-full h-full justify-between"
+        className="flex h-full w-full animate-pulse justify-between"
       >
         <div className="bg-card w-28 rounded-3xl" />
         <span className="sr-only">Loading...</span>

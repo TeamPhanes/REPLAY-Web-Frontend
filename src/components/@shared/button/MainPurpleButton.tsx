@@ -16,7 +16,7 @@ export default function MainPurpleButton({
   return (
     <button
       type={type === 'submit' ? 'submit' : 'button'}
-      className={`bg-mainPurple rounded-2xl px-[10px] py-3 text-white font-semibold text-xl md:text-2xl/[34px] tracking-[-2.5%] text-center duration-500 ease-in-out hover:bg-mainPurpleHover ${className}`}
+      className={`rounded-2xl bg-mainPurple px-[10px] py-3 text-center text-xl font-semibold tracking-[-2.5%] text-white duration-500 ease-in-out hover:bg-mainPurpleHover md:text-2xl/[34px] ${className}`}
       onClick={onClick}
     >
       {children}
