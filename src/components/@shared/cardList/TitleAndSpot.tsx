@@ -14,7 +14,7 @@ export default function TitleAndSpot({
   return (
     <div className={`${isDetail ? 'gap-1' : 'gap-[2px]'} flex flex-col`}>
       <h2
-        className={`${isDetail ? 'text-4xl/[48px]' : 'text-2xl/[34px]'} truncate  font-semibold tracking-[-2.5%] text-font-baseBlack`}
+        className={`${isDetail ? 'text-3xl xl:text-4xl/[48px]' : 'text-2xl/[34px]'} truncate  font-semibold tracking-[-2.5%] text-font-baseBlack`}
       >
         {themeName}
       </h2>
