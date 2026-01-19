@@ -20,7 +20,7 @@ export default function GenreFilter({ selectedType }: GenreFilterProps) {
           <button
             key={index}
             type="button"
-            className={`py-2 text-base text-font-baseBlack font-normal hover:bg-brand-sub500 hover:font-semibold duration-500 border-line-secondLightGray 
+            className={`py-2 text-base text-font-baseBlack font-normal xl:hover:bg-brand-sub500 xl:hover:font-semibold duration-500 border-line-secondLightGray 
                     ${genreList.includes(value) ? 'bg-brand-sub500 font-semibold' : ''} 
                   `}
             onClick={() => {
