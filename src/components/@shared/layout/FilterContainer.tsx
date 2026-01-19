@@ -72,7 +72,7 @@ export default function FilterContainer({ setPage }: FilterContainerProps) {
         <GenreFilter selectedType={selectedType} />
 
         {districtList.length !== 0 || genreList.length !== 0 ? (
-          <div className="flex flex-col gap-2 mt-10">
+          <div className="flex flex-col gap-2 mt-10 relative">
             <div className="flex flex-col md:flex-row items-start md:items-center gap-[6px]">
               {districtList.map((value, index) => {
                 return (
@@ -117,7 +117,7 @@ export default function FilterContainer({ setPage }: FilterContainerProps) {
               </div>
             ) : null}
 
-            <div className="absolute right-4 bottom-4 flex items-center gap-1">
+            <div className="absolute right-0 bottom-0 flex items-center gap-1">
               <MainWhiteButton
                 onClick={() => {
                   setSelectedType('locate');
