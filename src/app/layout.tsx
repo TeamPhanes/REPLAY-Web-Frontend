@@ -42,9 +42,7 @@ export default function RootLayout({
           type="image/gif"
         />
       </head>
-      <body
-        className={`${pretendard.className} scrollbar-x-hidden antialiased`}
-      >
+      <body className={`${pretendard.className} antialiased`}>
         <QueryProvider>
           <AuthSessionLoader />
           <GlobalNav />

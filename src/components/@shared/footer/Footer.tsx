@@ -11,18 +11,22 @@ export default function Footer() {
         height={59}
         className="h-[31px] w-[120px] xl:absolute xl:left-10 xl:top-10 xl:h-[59px] xl:w-[229px]"
       />
-      <div className="mt-10 flex items-center gap-4 xl:absolute xl:top-[124px]">
-        <button type="button">회사소개</button>
+      <div className="mt-10 flex items-center gap-2 md:gap-4 xl:absolute xl:top-[124px]">
+        <button type="button" className="text-sm md:text-base">
+          회사소개
+        </button>
         <button
           type="button"
-          className="border-x-[1px] border-line-darkGray px-4"
+          className="border-x-[1px] border-line-darkGray px-2 text-sm md:px-4 md:text-base"
         >
           개인정보처리방침
         </button>
-        <button type="button">배너 광고문의</button>
+        <button type="button" className="text-sm md:text-base">
+          배너 광고문의
+        </button>
       </div>
       <div className="xl:absolute xl:left-10 xl:top-24">
-        <div className="mt-6 flex items-center gap-4">
+        <div className="mt-6 flex items-center gap-2 md:gap-4">
           <p className="text-base font-normal tracking-[-2.5%] text-font-baseWhite">
             서비스명 리플레이
           </p>
