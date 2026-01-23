@@ -1,9 +1,6 @@
-import Image from 'next/image';
-import AchievementBadge from '@/components/gatheringDetail/AchievementBadge';
 import CardBottomDate from '@/components/myPage/home/CardBottomDate';
 import CardContentFont from '@/components/myPage/home/CardContentFont';
 import { OtherUserDTO } from '@/types/user/user.types';
-import MainLogo from '@/public/images/Replay_Main_Logo2.svg';
 
 interface IdCardBackProps {
   userData: OtherUserDTO['get'];
@@ -18,13 +15,11 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
     visitGatheringCount,
     visitThemeCount,
     successThemeCount,
-    nickname,
-    achievements,
   } = userData;
 
   return (
-    <div className="absolute z-10 backface-hidden rotate-y-180">
-      <p className="line-clamp-5 h-[140px] w-[320px] text-xl font-normal tracking-[-2.5%] text-white md:w-[576px]">
+    <div className="absolute z-10 w-full px-5 backface-hidden rotate-y-180">
+      <p className="line-clamp-5 h-[110px] text-base font-normal tracking-[-2.5%] text-white md:h-[140px] md:text-xl">
         &quot;{profileComment}&quot;
       </p>
       <div className="mt-10 flex flex-col gap-6">
@@ -48,23 +43,10 @@ export default function IdCardBack({ userData }: IdCardBackProps) {
           </p>
         </div>
       </div>
-      <Image
-        src={MainLogo}
-        alt="로고"
-        width={406}
-        height={118}
-        className="absolute bottom-[-180px] h-[118px] w-[406px] opacity-[92%]"
-      />
       <CardBottomDate
         updatedAt={updatedAt}
         createdAt={createdAt}
         type="detail"
-      />
-      <AchievementBadge
-        nickname={nickname}
-        achievement={achievements}
-        absoluteLayout="gap-3 md:gap-10 left-0 right-0 bottom-[-365px]"
-        type="mypage"
       />
     </div>
   );

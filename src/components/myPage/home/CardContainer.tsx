@@ -1,6 +1,8 @@
 'use client';
 
-import AchievementBadge from '@/components/gatheringDetail/AchievementBadge';
+import IdCardBack from '@/components/gatheringDetail/modal/IdCardBack';
+import IdCardFront from '@/components/gatheringDetail/modal/IdCardFront';
+import IdCardModalContainer from '@/components/gatheringDetail/modal/IdCardModalContainer';
 import CardBottomDate from '@/components/myPage/home/CardBottomDate';
 import CardContentContainer from '@/components/myPage/home/CardContentContainer';
 import MyPageModifyButton from '@/components/myPage/home/MyPageModifyButton';
@@ -14,19 +16,21 @@ export default function CardContainer() {
   if (isGuardLoading) return null;
 
   return (
-    <div className="relative mt-[248px] h-[1240px] w-full rounded-2xl bg-brand-main500 p-10 md:h-[860px]">
-      <MyPageModifyButton />
-      <CardContentContainer user={userProfile} />
-      <CardBottomDate
-        updatedAt={userProfile.updatedAt}
-        createdAt={userProfile.createdAt}
-      />
-      <AchievementBadge
-        nickname={userProfile.nickname}
-        achievement={userProfile.achievements}
-        absoluteLayout="md:mt-9 bottom-2 left-1/2 transform -translate-x-1/2 md:transform-none md:left-auto md:right-10 gap-2 md:gap-10"
-        type="mypage"
-      />
-    </div>
+    <>
+      <div className="relative mt-[248px] hidden h-[1240px] w-full rounded-2xl bg-brand-main500 p-10 md:h-[860px] xl:block">
+        <MyPageModifyButton />
+        <CardContentContainer user={userProfile} />
+        <CardBottomDate
+          updatedAt={userProfile.updatedAt}
+          createdAt={userProfile.createdAt}
+        />
+      </div>
+      <div className="relative mt-40 flex items-center justify-center md:mt-[248px] xl:hidden">
+        <IdCardModalContainer>
+          <IdCardFront userData={userProfile} />
+          <IdCardBack userData={userProfile} />
+        </IdCardModalContainer>
+      </div>
+    </>
   );
 }

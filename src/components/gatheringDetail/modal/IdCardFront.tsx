@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { OtherUserDTO } from '@/types/user/user.types';
 import userDefault from '@/public/icons/user/user_default.svg';
-import MainLogo from '@/public/images/Replay_Main_Logo.svg';
 
 interface IdCardFrontProps {
   userData: OtherUserDTO['get'];
@@ -23,9 +22,7 @@ export default function IdCardFront({ userData }: IdCardFrontProps) {
         quality={100}
         className="mt-5 h-[380px] w-[320px] md:h-[494px] md:w-[406px]"
       />
-      <h2
-        className={`${email !== '' ? 'mt-10 md:mt-6' : 'md:mt-10'}  text-2xl font-semibold tracking-[-2.5%] text-basefont md:text-[32px]/[42px]`}
-      >
+      <h2 className="mt-6 text-2xl font-semibold tracking-[-2.5%] text-basefont md:text-[32px]/[42px]">
         {nickname}
       </h2>
       <p
@@ -33,14 +30,6 @@ export default function IdCardFront({ userData }: IdCardFrontProps) {
       >
         {email}
       </p>
-      <Image
-        src={MainLogo}
-        alt="로고"
-        width={458}
-        height={118}
-        quality={100}
-        className={`${email !== '' ? 'md:bottom-[-240px]' : 'md:bottom-[-224px]'} absolute bottom-[-340px] h-[118px] w-[458px]`}
-      />
     </div>
   );
 }

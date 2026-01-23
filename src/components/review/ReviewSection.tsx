@@ -41,9 +41,9 @@ export default function ReviewSection({
     return <EmptySearchResult text="리뷰를 찾지 못했어요." />;
   return (
     <div className="rounded-lg bg-card-white">
-      <div className="flex flex-col items-center justify-between border-b-4 border-line-lightGray p-5 md:gap-10 xl:flex-row xl:p-20">
-        <div className="flex items-center justify-between gap-5 md:gap-10 xl:gap-20">
-          <div className="flex h-[174px] w-28 flex-col justify-center text-center md:w-auto md:justify-between">
+      <div className="flex flex-col items-center justify-between border-b-4 border-line-lightGray p-5 md:gap-10 md:p-20 xl:flex-row xl:justify-normal xl:gap-0">
+        <div className="flex w-full items-center justify-between xl:justify-normal">
+          <div className="flex h-[174px] w-full flex-col justify-center text-center md:w-auto md:justify-between xl:w-[272px]">
             <p className="text-lg/[26px] font-normal tracking-[-2.5%] text-font-baseBlack">
               사용자 총 평점
             </p>
@@ -61,8 +61,8 @@ export default function ReviewSection({
               </div>
             </div>
           </div>
-          <span className="h-[120px] w-[1px] bg-line-secondLightGray" />
-          <div className="flex h-[174px] w-28 flex-col justify-center text-center md:w-[272px] md:justify-between xl:w-auto">
+          <span className="h-[120px] w-[1px] bg-line-secondLightGray xl:hidden" />
+          <div className="flex h-[174px] w-full flex-col justify-center text-center md:w-[272px] md:justify-between xl:w-[272px]">
             <p className="text-lg/[26px] font-normal tracking-[-2.5%] text-font-baseBlack">
               생성된 모임
             </p>
@@ -71,9 +71,8 @@ export default function ReviewSection({
             </p>
           </div>
         </div>
-        <span className="hidden h-[120px] w-[1px] bg-line-secondLightGray xl:block" />
-        <div className="flex items-center justify-between gap-5 md:gap-10 xl:gap-20">
-          <div className="flex h-[174px] w-28 flex-col justify-between text-center md:w-[272px] xl:w-auto">
+        <div className="flex w-full items-center justify-between xl:justify-normal">
+          <div className="flex h-[174px] w-full flex-col justify-between text-center md:w-[272px] xl:w-[272px]">
             <p className="text-lg/[26px] font-normal tracking-[-2.5%] text-font-baseBlack">
               리뷰 평점 수치
             </p>
@@ -99,12 +98,12 @@ export default function ReviewSection({
                 ))}
             </div>
           </div>
-          <span className="h-[120px] w-[1px] bg-line-secondLightGray" />
-          <div className="flex h-[174px] w-28 flex-col gap-3 text-center md:w-[272px] md:px-10 xl:w-auto xl:px-0">
+          <span className="h-[120px] w-[1px] bg-line-secondLightGray xl:hidden" />
+          <div className="flex h-[174px] w-full flex-col gap-3 text-center md:w-[272px] md:px-10 xl:w-[272px] xl:px-0">
             <p className="text-lg/[26px] font-normal tracking-[-2.5%] text-font-baseBlack">
               사용자 평가
             </p>
-            <div className="mt-2 flex items-center justify-between xl:w-44">
+            <div className="mt-2 flex items-center justify-center gap-2">
               <p className="px-[6px] text-sm font-semibold tracking-[-2.5%] text-font-thirdBlack">
                 테마
               </p>
@@ -120,7 +119,7 @@ export default function ReviewSection({
                 {reviewSummary.userEvaluation.theme.percent.toFixed()}%
               </p>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-center gap-2">
               <p className="text-sm font-semibold tracking-[-2.5%] text-font-thirdBlack">
                 난이도
               </p>
@@ -136,7 +135,7 @@ export default function ReviewSection({
                 {reviewSummary.userEvaluation.level.percent.toFixed()}%
               </p>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-center gap-2">
               <p className="text-sm font-semibold tracking-[-2.5%] text-font-thirdBlack">
                 스토리
               </p>

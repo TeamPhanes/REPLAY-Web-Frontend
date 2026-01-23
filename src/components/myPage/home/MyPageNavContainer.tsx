@@ -8,7 +8,7 @@ export default function MyPageNavContainer({
   children,
 }: MyPageNavContainerProps) {
   return (
-    <div className="fixed left-0 top-[100px] z-40 flex w-full justify-center bg-brand-black py-2 md:justify-between md:px-28">
+    <div className="fixed left-0 top-[100px] z-40 flex w-full justify-between bg-brand-black p-1 md:p-2">
       {children}
     </div>
   );

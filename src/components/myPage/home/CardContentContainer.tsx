@@ -39,9 +39,9 @@ export default function CardContentContainer({
         <Image
           src={Logo}
           alt="REPLAY 로고"
-          width={458}
-          height={118}
-          className="absolute bottom-2"
+          width={240}
+          height={62}
+          className="absolute bottom-10 right-10"
         />
       </div>
 

@@ -141,7 +141,7 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
           <StorySection story={data.story} />
           <span className="hidden h-36 w-[1px] bg-line-lightGray xl:block" />
           <div className="flex w-full flex-col">
-            <div className="flex items-center justify-center gap-8 md:px-10 xl:justify-between xl:gap-0">
+            <div className="flex items-center justify-center gap-6 md:gap-8 md:px-10 xl:justify-between xl:gap-0">
               <div className="flex flex-col gap-[6px]">
                 <p className="text-xl font-semibold tracking-[-2.5%] text-font-baseBlack md:text-[28px]/[38px]">
                   {levelList[data.level as keyof typeof levelList]}
@@ -178,17 +178,16 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
                   width={24}
                   height={24}
                 />
-                <p className="max-w-64 truncate text-base font-normal tracking-[-2.5%] text-font-baseBlack md:max-w-80 md:text-lg/[26px]">
+                <p className="max-w-48 truncate text-base font-normal tracking-[-2.5%] text-font-baseBlack md:max-w-80 md:text-lg/[26px]">
                   {data.link}
                 </p>
               </div>
-              <a href={data.link} target="tap">
+              <a href={data.link} target="tap" className="shrink-0">
                 <Image
                   src={ExternalIcon}
                   alt="공식 홈페이지 바로가기"
                   width={24}
                   height={24}
-                  className="shrink-0"
                 />
               </a>
             </div>

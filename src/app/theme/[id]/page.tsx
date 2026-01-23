@@ -65,7 +65,7 @@ export default function RoomDetailPage() {
     <PageContainer>
       <button
         type="button"
-        className="fixed bottom-10 right-10 z-50 rounded-full bg-brand-main500 p-4 shadow-xl"
+        className="fixed bottom-10 right-10 z-40 rounded-full bg-brand-main500 p-4 shadow-xl"
         onClick={openModal}
       >
         <Image

@@ -29,7 +29,7 @@ export default function GlobalNav() {
               width={229}
               height={59}
               quality={100}
-              className="h-[59px] w-[229px] shrink-0"
+              className="h-[52px] w-[200px] shrink-0 md:h-[59px] md:w-[229px]"
               priority
             />
           </Link>

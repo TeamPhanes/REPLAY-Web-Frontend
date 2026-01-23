@@ -31,7 +31,7 @@ export default function MobileMenuBar({ isFocus }: MobileMenuBarProps) {
       </button>
 
       {isOpen && (
-        <div className="fixed right-0 top-0 flex min-h-[704px] min-w-[300px] flex-col bg-brand-gray">
+        <div className="fixed right-0 top-0 z-50 flex h-screen min-w-[300px] flex-col bg-brand-gray">
           <div className="relative flex h-[70px] items-center justify-between bg-[#2E2E2E] px-6">
             {userInfo ? (
               <div className="flex shrink-0 items-center justify-center gap-[6px]">

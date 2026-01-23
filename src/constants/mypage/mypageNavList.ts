@@ -24,8 +24,4 @@ export const mypageNavList: { [key: string]: ListType } = {
     label: '내가 쓴 댓글',
     value: '/mypage/comment',
   },
-  '/mypage/achievements': {
-    label: '나의 업적',
-    value: '/mypage/achievements',
-  },
 };

@@ -70,7 +70,7 @@ export default function HomePage() {
 
       <div className="relative">
         <TypeButtonChanger
-          className="absolute top-12 gap-3"
+          className="absolute top-12 gap-1 md:gap-3"
           options={defaultLocationList}
           selectedType={selectedLocation}
           setSelectedType={setSelectedLocation}
