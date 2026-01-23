@@ -10,7 +10,7 @@ export default function CardContentFont({
   content,
 }: CardContentFontProps) {
   return (
-    <div className="flex items-center">
+    <div className="flex w-full items-center">
       <p className="w-full text-xl font-semibold tracking-[-2.5%] text-basefont md:w-72 md:text-2xl/[34px]">
         {title}
       </p>
