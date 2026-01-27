@@ -47,7 +47,7 @@ export default function GatheringCard({
   return (
     <div
       key={gathering.id}
-      className="relative flex flex-col items-start rounded-[4px] bg-card-white p-5 transition-all hover:scale-[102%] md:w-[630px] md:flex-row"
+      className="relative flex w-[335px] flex-col items-start rounded-[4px] bg-card-white p-5 transition-all hover:scale-[102%] md:w-[630px] md:flex-row"
     >
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-[145px]">
         {gathering.image !== null ? (
@@ -63,7 +63,7 @@ export default function GatheringCard({
           <div className="h-[218px] w-[145px] rounded-[4px] bg-gray-300" />
         )}
       </Link>
-      <div className="bg-card absolute right-10 top-10 flex flex-col rounded-[30px] p-1 md:right-5 md:top-auto md:p-0">
+      <div className="absolute right-5 top-auto flex gap-3 rounded-l-md rounded-t-none bg-card-white p-1 md:p-0">
         <button
           type="button"
           className={`transition-transform duration-300 active:scale-90 ${
@@ -82,7 +82,7 @@ export default function GatheringCard({
         </button>
       </div>
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
-        <div className="mt-5 flex min-h-[212px] min-w-[424px] flex-col justify-between md:ml-5 md:mt-0">
+        <div className="mt-5 flex min-h-[212px] flex-col justify-between md:ml-5 md:mt-0 md:min-w-[424px]">
           <div className="flex flex-col gap-3">
             <Tag tag={gathering.genres} />
             <TitleAndSpot themeName={gathering.name} cafe={gathering.title} />

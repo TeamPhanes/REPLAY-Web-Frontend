@@ -38,7 +38,7 @@ export default function GatheringCardReview({
   return (
     <div
       key={gathering.id}
-      className="relative flex flex-col items-start rounded-[4px] bg-card-white p-5 md:h-[352px] md:w-[630px] md:flex-row"
+      className="relative flex h-[728px] w-[335px] flex-col items-start rounded-[4px] bg-card-white p-5 md:h-[352px] md:w-[630px] md:flex-row"
     >
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
         <Image
@@ -66,7 +66,7 @@ export default function GatheringCardReview({
         </button>
       </div>
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
-        <div className="mt-5 flex min-h-[212px] min-w-[424px] flex-col justify-between md:ml-5 md:mt-0">
+        <div className="mt-5 flex min-h-[212px] flex-col justify-between md:ml-5 md:mt-0 md:min-w-[424px]">
           <div className="flex flex-col gap-3">
             <Tag tag={gathering.genres} />
             <TitleAndSpot themeName={gathering.name} cafe={gathering.title} />

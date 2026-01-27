@@ -10,7 +10,7 @@ export default function RoomCard({ room, favoriteCheck }: RoomCardProps) {
   return (
     <div
       key={room.id}
-      className="relative flex flex-col items-start rounded-md bg-card-white p-5 transition-all hover:scale-[102%] md:flex-row xl:max-w-[630px]"
+      className="relative flex w-[335px] flex-col items-start rounded-md bg-card-white p-5 transition-all hover:scale-[102%] md:flex-row xl:max-w-[630px]"
     >
       <RoomCardSection room={room} favoriteCheck={favoriteCheck} />
     </div>

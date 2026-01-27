@@ -1,12 +1,12 @@
-import MyPageContainer from '@/components/@shared/layout/MyPageContainer';
+import PageContainer from '@/components/@shared/layout/PageContainer';
 import MyPageNav from '@/components/myPage/home/MyPageNav';
 import ReviewRenderingPage from '@/components/myPage/review/ReviewRenderingPage';
 
 export default function MyReviewPage() {
   return (
-    <MyPageContainer>
+    <PageContainer>
       <MyPageNav />
       <ReviewRenderingPage />
-    </MyPageContainer>
+    </PageContainer>
   );
 }
