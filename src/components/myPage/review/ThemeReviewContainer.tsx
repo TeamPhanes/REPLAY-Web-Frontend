@@ -34,21 +34,24 @@ export default function ThemeReviewContainer({
     DISLIKE: '아쉬움',
   };
   return (
-    <div className="mt-6 grid gap-5">
+    <div className="mt-6 grid place-items-center gap-5">
       {data.map((theme) => {
         return (
           <div
             key={theme.id}
-            className="relative flex w-full items-start gap-5 rounded-md bg-card-white p-5 transition-all hover:scale-[102%]"
+            className="relative flex flex-col justify-center gap-5 rounded-md bg-card-white p-5 transition-all hover:scale-[102%] md:h-[520px] md:w-[740px] md:flex-row xl:h-auto xl:w-full"
           >
             <Image
               src={theme.image}
               alt={theme.title}
               width={145}
               height={218}
-              className="h-[218px] w-[145px] rounded-[4px]"
+              className="h-[360px] w-full shrink-0 rounded-[4px] md:h-[218px] md:w-[145px]"
             />
-            <Link href={`/theme/${theme.id}`} className="h-full w-[338px]">
+            <Link
+              href={`/theme/${theme.id}`}
+              className="h-full w-full xl:w-[338px]"
+            >
               <div className="relative flex flex-col gap-3">
                 <Tag tag={theme.genres} />
                 {theme.visitDate !== null ? (
@@ -178,7 +181,7 @@ export default function ThemeReviewContainer({
                 </div>
               </div>
             </Link>
-            <div className="h-[218px] w-[537px] rounded-lg border-[1px] border-line-Gray p-4">
+            <div className="bottom-5 left-5 h-[180px] w-[295px] rounded-lg border-[1px] border-line-Gray p-4 md:absolute md:h-[218px] md:w-[537px] xl:static">
               {theme.content === null ? (
                 <p className="text-base font-normal tracking-[-2.5%] text-font-disabled">
                   리뷰를 작성해 주세요.
@@ -189,9 +192,9 @@ export default function ThemeReviewContainer({
                 </p>
               )}
             </div>
-            <div className="flex flex-col gap-3">
+            <div className="bottom-5 right-5 flex justify-between gap-3 md:absolute md:flex-col md:gap-7 xl:static xl:gap-3">
               {theme.reviewImages.length === 0 ? (
-                <div className="mb-16 flex h-[152px] w-[160px] items-center justify-center rounded-[4px] bg-line-lightGray md:mb-auto">
+                <div className="flex h-[118px] w-[118px] items-center justify-center rounded-[4px] bg-line-lightGray md:mb-auto md:h-[135px] md:w-[135px] xl:h-[152px] xl:w-[160px]">
                   <Image
                     src={ReviewDefaultImage}
                     alt="리뷰 이미지"
@@ -201,17 +204,18 @@ export default function ThemeReviewContainer({
                   />
                 </div>
               ) : (
-                <Image
-                  src={theme.reviewImages[0].image || ReviewDefaultImage}
-                  alt="리뷰 이미지"
-                  width={118}
-                  height={118}
-                  className="h-[152px] w-[160px] rounded-[4px] bg-line-lightGray"
-                />
+                <div className="relative h-[118px] w-[118px] rounded-[4px] bg-line-lightGray md:h-[135px] md:w-[135px] xl:h-[152px] xl:w-[160px]">
+                  <Image
+                    src={theme.reviewImages[0].image || ReviewDefaultImage}
+                    alt="리뷰 이미지"
+                    fill
+                    className="rounded-[4px]"
+                  />
+                </div>
               )}
               <button
                 type="button"
-                className="w-full rounded-[4px] border-[1px] border-brand-main500 px-10 py-[14px] text-base font-semibold tracking-[-2.5%] text-brand-main500"
+                className="absolute bottom-5 right-5 h-[54px] w-[118px] rounded-[4px] border-[1px] border-brand-main500 text-base font-semibold tracking-[-2.5%] text-brand-main500 md:static md:w-[135px] xl:w-[160px]"
                 onClick={() => {
                   if (theme.visitDate === null) {
                     setSelectedRoom(theme);

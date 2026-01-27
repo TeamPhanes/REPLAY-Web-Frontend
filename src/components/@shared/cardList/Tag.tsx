@@ -4,11 +4,12 @@ import TagIcon from '@/public/icons/cardList/genre_tag_icon.svg';
 interface TagProps {
   tag: string[];
   isDetail?: boolean;
+  className?: string;
 }
 
-export default function Tag({ tag, isDetail }: TagProps) {
+export default function Tag({ tag, isDetail, className }: TagProps) {
   return (
-    <div className="flex justify-between">
+    <div className={`${className} flex justify-between`}>
       <div className="flex gap-2">
         {tag.map((genre, index) => (
           <p

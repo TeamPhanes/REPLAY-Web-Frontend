@@ -11,7 +11,7 @@ export default function FavoriteRenderingPage() {
   const [page, setPage] = useState(0);
 
   return (
-    <div className="mt-[248px]">
+    <div className="mt-40 md:mt-[248px]">
       <MypageTypeChanger
         selectedType={selectedType}
         setSelectedType={setSelectedType}

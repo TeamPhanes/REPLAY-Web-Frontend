@@ -1,6 +1,5 @@
 import { useAuthStore } from '@/store/authStore';
 import { useQueryStringStore } from '@/store/useQueryStringStore';
-import EmptyArrayContainer from '@/components/@shared/cardList/EmptyArrayContainer';
 import RoomCardContainer from '@/components/@shared/cardList/RoomCardContainer';
 import Pagination from '@/components/@shared/pagination/Pagination';
 import CardSkeleton from '@/components/@shared/skeleton/CardSkeleton';
@@ -31,11 +30,7 @@ export default function ThemeLikedSection({
   const { totalPages } = usePagination(page, totalItems, 12);
 
   if (isGuardLoading || isLoading) {
-    return <CardSkeleton className="mt-6" />;
-  }
-
-  if (!userLikeTheme || userLikeTheme.content.length === 0) {
-    return <EmptyArrayContainer type="찜한" kind="방탈출" />;
+    return <CardSkeleton className="mt-16" />;
   }
 
   return (
@@ -46,7 +41,7 @@ export default function ThemeLikedSection({
       <RoomCardContainer
         data={userLikeTheme.content}
         favoriteCheck
-        className="grid-cols-1 md:grid-cols-2"
+        className="grid-cols-1 xl:grid-cols-2"
       />
       <Pagination
         currentPage={page}
