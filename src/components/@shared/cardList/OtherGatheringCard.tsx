@@ -68,7 +68,7 @@ export default function OtherGatheringCard({ gathering }: GatheringCardProps) {
         </button>
       </div>
       <Link href={`/gathering/${gathering.id}`} className="w-full md:w-auto">
-        <div className="mt-5 flex min-h-[212px] min-w-[424px] flex-col justify-between md:ml-5 md:mt-0">
+        <div className="mt-5 flex min-h-[212px] flex-col justify-between md:ml-5 md:mt-0 md:min-w-[424px]">
           <div className="flex flex-col gap-3">
             <Tag tag={gathering.genres} />
             <TitleAndSpot themeName={gathering.name} cafe={gathering.title} />
