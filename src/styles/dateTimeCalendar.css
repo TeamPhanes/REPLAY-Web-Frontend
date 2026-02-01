@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  width: 364px;
+  width: 100%;
 }
 
 /* 네비게이션 */
