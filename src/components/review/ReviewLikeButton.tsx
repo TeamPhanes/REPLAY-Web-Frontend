@@ -30,7 +30,7 @@ export default function ReviewLikeButton({
   return (
     <button
       type="button"
-      className={`${className} absolute -top-[2px] right-0 flex items-center gap-1 rounded-full bg-white px-2 py-[2px]`}
+      className={`${className} absolute -top-[2px] right-0 z-10 flex items-center gap-1 rounded-full bg-white px-2 py-[2px]`}
       onClick={() =>
         handleLikeButtonClick(isReviewLiked ? 'UNLIKE_POST' : 'LIKE_POST')
       }

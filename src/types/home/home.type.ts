@@ -1,5 +1,5 @@
 export interface CarouselDTO {
-  name: string;
+  name?: string;
   image: string;
   genres?: string[];
   link?: string;
