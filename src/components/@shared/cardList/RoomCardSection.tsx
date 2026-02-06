@@ -94,7 +94,7 @@ export default function RoomCardSection({
         </button>
       </div>
 
-      <Link href={`/theme/${room.id}`} className="w-full md:w-[145px]">
+      <Link href={`/theme/${room.id}`} className="w-full shrink-0 md:w-[145px]">
         <Image
           src={room.image === null ? DefaultImage : room.image}
           alt={room.title}

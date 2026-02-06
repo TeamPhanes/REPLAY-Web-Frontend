@@ -15,8 +15,8 @@ export default function AddGatheringCapacity({
   const { isOpen, toggleOpen } = useOpen();
 
   return (
-    <div className="flex flex-col">
-      <p className="text-center text-base font-normal tracking-[-2.5%] text-font-baseBlack">
+    <div className="flex shrink-0 flex-col">
+      <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
         모임 인원
       </p>
       <div className="flex items-center justify-center gap-1 border-b-[1px] border-line-secondDarkGray px-1 py-[6px]">

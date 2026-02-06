@@ -48,12 +48,12 @@ export default function AddGatheringPrice({
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex w-full flex-col">
       <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
         모임 가격
       </p>
-      <div className="items-centers flex gap-2">
-        <div className="flex items-center justify-center gap-1 border-b-[1px] border-line-secondDarkGray px-1 py-[6px]">
+      <div className="items-centers flex justify-between gap-2">
+        <div className="flex shrink-0 items-center justify-center gap-1 border-b-[1px] border-line-secondDarkGray px-1 py-[6px]">
           <p className="text-base font-normal tracking-[-2.5%] text-font-baseBlack">
             {priceType}
           </p>

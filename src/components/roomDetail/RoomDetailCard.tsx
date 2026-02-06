@@ -76,7 +76,7 @@ export default function RoomDetailCard({ data }: RoomDetailCardProps) {
         quality={100}
         className="h-[360px] w-full shrink-0 rounded-[4px] md:h-[400px] md:w-[295px] xl:h-[500px] xl:w-[413px]"
       />
-      <div className="w-full rounded-b-[6px] bg-card-white p-5 md:relative md:min-w-[445px] md:rounded-[6px] xl:h-[500px] xl:w-[849px]">
+      <div className="w-full rounded-b-[6px] bg-card-white p-5 md:relative md:rounded-[6px] xl:h-[500px] xl:w-[849px]">
         <div className="absolute right-0 top-0 flex gap-3 rounded-l-md rounded-t-none bg-card-white p-1 md:right-5 md:top-auto md:rounded-none md:p-0 xl:gap-[18px]">
           <button
             type="button"

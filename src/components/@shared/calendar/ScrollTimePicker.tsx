@@ -18,14 +18,14 @@ export default function ScrollTimePicker({
   const minutes = [0, 30];
 
   return (
-    <div className="flex h-[415px] flex-col overflow-x-hidden overflow-y-scroll">
+    <div className="grid h-[415px] grid-cols-3 overflow-x-hidden overflow-y-scroll xl:grid-cols-1">
       {hours.map((hour, index) => {
         return minutes.map((minute) => {
           return (
             <button
               type="button"
               key={index}
-              className={`${selectedHour === hour && selectedMinute === minute ? 'font-semibold text-brand-main500' : 'font-normal text-font-baseBlack'} w-[237px] p-4 text-start text-base hover:bg-brand-main50`}
+              className={`${selectedHour === hour && selectedMinute === minute ? 'font-semibold text-brand-main500' : 'font-normal text-font-baseBlack'} p-4 text-start text-base hover:bg-brand-main50 xl:w-[237px]`}
               onClick={() => {
                 onHourChange(hour);
                 onMinuteChange(minute);
