@@ -144,7 +144,7 @@ export default function ReviewCardModal({
           <p className="text-base font-normal tracking-[-2.5%] text-basefont">
             {data.content}
           </p>
-          {data.images.length !== 0 && (
+          {/* {data.images.length !== 0 && (
             <Image
               src={data.images[0].image}
               alt="리뷰 이미지"
@@ -153,7 +153,7 @@ export default function ReviewCardModal({
               quality={100}
               className="h-[100px] w-[100px]"
             />
-          )}
+          )} */}
         </div>
       </div>
     </Modal>

@@ -6,6 +6,7 @@ import LightbulbIcon from '@/public/icons/cardList/lightbulb_gray_icon.svg';
 import TrophyIcon from '@/public/icons/cardList/trophy_gray_icon.svg';
 import UsersIcon from '@/public/icons/cardList/users_gray_icon.svg';
 import Rating from '../@shared/rating/Rating';
+import ImageCardModal from './ImageCardModal';
 import ReviewCardModal from './ReviewCardModal';
 import ReviewLikeButton from './ReviewLikeButton';
 
@@ -14,7 +15,16 @@ interface ReviewCardProps {
 }
 
 export default function ReviewCard({ review }: ReviewCardProps) {
-  const { isOpen, openModal, closeModal } = useOpen();
+  const {
+    isOpen: isReviewCardModal,
+    openModal: openReviewCardModal,
+    closeModal: closeReviewCardModal,
+  } = useOpen();
+  const {
+    isOpen: isImageCardModal,
+    openModal: openImageCardModal,
+    closeModal: closeImageCardModal,
+  } = useOpen();
   const themeAndLevelList = {
     LIKE: '적절함',
     NORMAL: '보통',
@@ -72,7 +82,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
 
           <div
             className="flex cursor-pointer flex-col items-center p-1 md:flex-row md:gap-[60px] md:p-4"
-            onClick={openModal}
+            onClick={openReviewCardModal}
           >
             <div className="flex w-full items-center justify-between md:w-auto md:gap-8">
               <div className="flex items-center gap-2">
@@ -145,7 +155,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
             </div>
           </div>
           <div className="mt-3 flex items-end justify-between gap-3">
-            <div className="cursor-pointer" onClick={openModal}>
+            <div className="cursor-pointer" onClick={openReviewCardModal}>
               <p className="line-clamp-3 text-base font-normal tracking-[-2.5%] text-basefont">
                 {data.content}
               </p>
@@ -158,15 +168,21 @@ export default function ReviewCard({ review }: ReviewCardProps) {
                 width={100}
                 height={100}
                 quality={100}
-                className="h-[100px] w-[100px]"
+                className="h-[100px] w-[100px] cursor-pointer"
+                onClick={openImageCardModal}
               />
             )}
           </div>
           <ReviewCardModal
-            isOpen={isOpen}
-            onClose={closeModal}
+            isOpen={isReviewCardModal}
+            onClose={closeReviewCardModal}
             key={index}
             data={data}
+          />
+          <ImageCardModal
+            isOpen={isImageCardModal}
+            onClose={closeImageCardModal}
+            list={data.images}
           />
         </div>
       ))}

@@ -50,7 +50,7 @@ export default function CarouselSwiper({
         <SwiperSlide key={index} className={className}>
           <Image
             src={list.image}
-            alt={list.name}
+            alt={list.name || '이미지'}
             width={imageWidth}
             height={imageHeight}
             unoptimized
