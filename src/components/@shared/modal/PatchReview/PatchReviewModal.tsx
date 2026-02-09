@@ -86,7 +86,7 @@ export default function PatchReviewModal({
         <p className="text-base font-normal tracking-widest text-font-baseBlack">
           {isReview ? '1' : '2'}/2
         </p>
-        <div className="absolute right-0 flex items-center gap-[6px]">
+        <div className="absolute top-12 flex items-center gap-[6px] md:right-0 md:top-auto">
           <Image
             src={CalendarIcon}
             alt="캘린더 아이콘"
@@ -138,7 +138,7 @@ export default function PatchReviewModal({
             </div>
 
             <div className={`${isReview ? 'hidden' : ''} w-1/2`}>
-              <div className="mt-12 flex items-center justify-center gap-12">
+              <div className="mt-16 flex flex-col md:flex-row md:items-center md:justify-center md:gap-12">
                 <PostReviewPlayerAndSuccess
                   numberOfPlayer={watch('numberOfPlayer')}
                   setNumberOfPlayer={(numberOfPlayer) =>
@@ -176,14 +176,17 @@ export default function PatchReviewModal({
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-[10px]">
-            <MainWhiteButton onClick={onClose} className="h-[52px] min-w-40">
+          <div className="mt-3 flex items-center justify-center gap-[10px] md:mt-auto">
+            <MainWhiteButton
+              onClick={onClose}
+              className="h-[52px] shrink-0 md:min-w-40"
+            >
               취소하기
             </MainWhiteButton>
             {isReview ? (
               <MainBlueButton
-                onClick={() => setIsReview(false)}
-                className="h-[52px] min-w-96 !text-base"
+                onClick={() => setIsReview((prev) => !prev)}
+                className="h-[52px] w-full !text-base md:min-w-96"
               >
                 다음으로
               </MainBlueButton>
@@ -191,9 +194,9 @@ export default function PatchReviewModal({
               <MainBlueButton
                 type="button"
                 onClick={handleSubmit((data) => onSubmit(data, imageFiles))}
-                className="h-[52px] min-w-96 !text-base"
+                className="h-[52px] w-full !text-base md:min-w-96"
               >
-                수정하기
+                게시하기
               </MainBlueButton>
             )}
           </div>
