@@ -28,19 +28,30 @@ export default function PostReviewRatingThemeLevelStory({
 }: PostReviewRatingThemeLevelStoryProps) {
   return (
     <>
-      <div className="mt-10 flex flex-col items-center justify-center gap-2">
+      <div className="mt-20 flex flex-col items-center justify-center gap-2 md:mt-10">
         <p className="text-2xl/[34px] font-semibold tracking-[-2.5%] text-basefont">
           평가하기
         </p>
-        <RatingInput
-          rating={rating}
-          width={544}
-          height={136}
-          type="Review"
-          onChange={setRating}
-        />
+        <div className="hidden md:block">
+          <RatingInput
+            rating={rating}
+            width={544}
+            height={136}
+            type="Review"
+            onChange={setRating}
+          />
+        </div>
+        <div className="block md:hidden">
+          <RatingInput
+            rating={rating}
+            width={280}
+            height={70}
+            type="Review"
+            onChange={setRating}
+          />
+        </div>
       </div>
-      <div className="mt-10 flex flex-col items-center justify-center gap-6">
+      <div className="mt-6 flex flex-col items-center justify-center gap-6 md:mt-10">
         <p className="text-base font-semibold text-font-baseBlack">
           방탈출의 테마는 어땠나요?
         </p>
@@ -51,7 +62,7 @@ export default function PostReviewRatingThemeLevelStory({
           gap="gap-2 md:gap-10"
         />
       </div>
-      <div className="mt-10 flex flex-col items-center justify-center gap-6">
+      <div className="mt-6 flex flex-col items-center justify-center gap-6 md:mt-10">
         <p className="text-base font-semibold text-font-baseBlack">
           방탈출의 난이도는 어땠나요?
         </p>
@@ -62,7 +73,7 @@ export default function PostReviewRatingThemeLevelStory({
           gap="gap-2 md:gap-10"
         />
       </div>
-      <div className="mt-10 flex flex-col items-center justify-center gap-6">
+      <div className="mt-6 flex flex-col items-center justify-center gap-6 md:mt-10">
         <p className="text-base font-semibold text-font-baseBlack">
           방탈출의 스토리는 어땠나요?
         </p>

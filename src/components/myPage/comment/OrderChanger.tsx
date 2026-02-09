@@ -22,7 +22,7 @@ export default function ㅗOrderChanger({
         <button
           key={option.value}
           type="button"
-          className={`h-[44px] min-w-[100px] rounded-[4px] border-[1px] text-sm font-semibold duration-500 ease-in-out hover:border-mainBlue hover:bg-white hover:text-mainBlue ${
+          className={`h-[44px] min-w-[68px] rounded-[4px] border-[1px] text-sm font-semibold duration-500 ease-in-out hover:border-mainBlue hover:bg-white hover:text-mainBlue md:min-w-[100px] ${
             selectedType === option.value
               ? 'border-mainBlue bg-white text-mainBlue'
               : 'border-homeFont bg-homeFont text-grayFont'
