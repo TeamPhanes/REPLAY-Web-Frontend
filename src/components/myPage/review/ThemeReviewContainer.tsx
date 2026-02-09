@@ -187,7 +187,7 @@ export default function ThemeReviewContainer({
                   리뷰를 작성해 주세요.
                 </p>
               ) : (
-                <p className="line-clamp-[8] text-base font-normal tracking-[-2.5%] text-font-baseBlack">
+                <p className="line-clamp-6 text-base font-normal tracking-[-2.5%] text-font-baseBlack md:line-clamp-[8]">
                   {theme.content}
                 </p>
               )}

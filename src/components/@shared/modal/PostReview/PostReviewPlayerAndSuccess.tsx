@@ -25,11 +25,13 @@ export default function PostReviewPlayerAndSuccess({
     useOpen();
   return (
     <>
-      <div className="flex items-center gap-[6px]">
-        <Image src={TrophyIcon} alt="트로피 아이콘" width={20} height={20} />
-        <p className="w-48 text-base font-normal text-font-baseBlack">
-          방탈출 성공 여부
-        </p>
+      <div className="flex items-center justify-between gap-[6px]">
+        <div className="flex items-center gap-[6px]">
+          <Image src={TrophyIcon} alt="트로피 아이콘" width={20} height={20} />
+          <p className="text-base font-normal text-font-baseBlack xl:w-48">
+            방탈출 성공 여부
+          </p>
+        </div>
         <div className="flex items-center justify-center gap-1 border-b-[1px] border-font-baseBlack px-1 py-[6px]">
           <p className="text-sm font-normal text-font-baseBlack">
             {selectedSuccess === 'true' ? '성공' : '실패'}
@@ -42,7 +44,7 @@ export default function PostReviewPlayerAndSuccess({
             onClickHandler={(item) => {
               setSelectedSuccess(item === '성공' ? 'true' : 'false');
             }}
-            className="absolute left-[-36px] min-w-[60px]"
+            className="absolute left-[-44px] min-w-[60px] md:left-[-36px]"
             marginTop={14}
             align="start"
           >
@@ -63,11 +65,13 @@ export default function PostReviewPlayerAndSuccess({
         </div>
       </div>
 
-      <div className="flex items-center gap-[6px]">
-        <Image src={UsersIcon} alt="유저 아이콘" width={20} height={20} />
-        <p className="w-48 text-base font-normal text-font-baseBlack">
-          플레이 인원
-        </p>
+      <div className="flex items-center justify-between gap-[6px]">
+        <div className="flex items-center gap-[6px]">
+          <Image src={UsersIcon} alt="유저 아이콘" width={20} height={20} />
+          <p className="text-base font-normal text-font-baseBlack xl:w-48">
+            플레이 인원
+          </p>
+        </div>
         <div className="flex items-center justify-center gap-1 border-b-[1px] border-font-baseBlack px-1 py-[6px]">
           <p className="text-sm font-normal text-font-baseBlack">
             {String(numberOfPlayer).padStart(2, '0')}
@@ -78,7 +82,7 @@ export default function PostReviewPlayerAndSuccess({
             selected={numberOfPlayer}
             onOpenChange={toggleNumberOfPlayer}
             onClickHandler={setNumberOfPlayer}
-            className="absolute left-[-36px] min-w-[60px]"
+            className="absolute left-[-40px] min-w-[60px] md:left-[-36px]"
             marginTop={14}
             align="start"
           >

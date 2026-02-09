@@ -53,7 +53,7 @@ export default function PostReviewModal({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      className="relative w-[1064px] rounded-lg bg-card-modal p-8"
+      className="relative rounded-lg bg-card-modal p-8 md:w-[1064px]"
     >
       <div className="relative flex items-center justify-center gap-5">
         <button
@@ -69,7 +69,7 @@ export default function PostReviewModal({
         <p className="text-base font-normal tracking-widest text-font-baseBlack">
           {isReview ? '1' : '2'}/2
         </p>
-        <div className="absolute right-0 flex items-center gap-[6px]">
+        <div className="absolute top-12 flex items-center gap-[6px] md:right-0 md:top-auto">
           <Image
             src={CalendarIcon}
             alt="캘린더 아이콘"
@@ -121,7 +121,7 @@ export default function PostReviewModal({
             </div>
 
             <div className={`${isReview ? 'hidden' : ''} w-1/2`}>
-              <div className="mt-12 flex items-center justify-center gap-12">
+              <div className="mt-16 flex flex-col md:flex-row md:items-center md:justify-center md:gap-12">
                 <PostReviewPlayerAndSuccess
                   numberOfPlayer={watch('numberOfPlayer')}
                   setNumberOfPlayer={(numberOfPlayer) =>
@@ -144,7 +144,7 @@ export default function PostReviewModal({
                 />
               </div>
 
-              <div className="flex items-center justify-end gap-2">
+              <div className="flex items-center justify-between md:justify-end md:gap-2">
                 {previewUrls.map((url, index) => (
                   <PostReviewImageFile
                     key={index}
@@ -158,14 +158,17 @@ export default function PostReviewModal({
             </div>
           </div>
 
-          <div className="flex items-center justify-center gap-[10px]">
-            <MainWhiteButton onClick={onClose} className="h-[52px] min-w-40">
+          <div className="mt-3 flex items-center justify-center gap-[10px] md:mt-auto">
+            <MainWhiteButton
+              onClick={onClose}
+              className="h-[52px] shrink-0 md:min-w-40"
+            >
               취소하기
             </MainWhiteButton>
             {isReview ? (
               <MainBlueButton
                 onClick={() => setIsReview((prev) => !prev)}
-                className="h-[52px] min-w-96 !text-base"
+                className="h-[52px] w-full !text-base md:min-w-96"
               >
                 다음으로
               </MainBlueButton>
@@ -173,7 +176,7 @@ export default function PostReviewModal({
               <MainBlueButton
                 type="button"
                 onClick={handleSubmit((data) => onSubmit(data, imageFiles))}
-                className="h-[52px] min-w-96 !text-base"
+                className="h-[52px] w-full !text-base md:min-w-96"
               >
                 게시하기
               </MainBlueButton>
